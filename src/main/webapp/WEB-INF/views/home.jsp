@@ -50,7 +50,7 @@
   					<span class="caret"></span></button>
   					<ul class="dropdown-menu">
    						<li><a href="#">HỢP ĐỒNG CÁN BỘ</a></li>
-    					<li><a href="#">HỢP ĐỒNG NGẮN HẠN</a></li>
+    					<li><a href="/hopdongnganhan">HỢP ĐỒNG NGẮN HẠN</a></li>
  					</ul>
 				</div>
 				</li>
