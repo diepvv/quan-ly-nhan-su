@@ -1,8 +1,11 @@
 package quanlynhansu.rest;
 
+import java.sql.SQLException;
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +29,15 @@ public class CanBoRestController {
 	}
 
 	@RequestMapping(path = "/hopDongNganHan", method = RequestMethod.GET)
-	public List<HopDongNganHan> getHDNH() {
-		return hopdongnganhan.createListHDNH(100);
+	public List<HopDongNganHan> getHDNH() throws SQLException {
+		return hopdongnganhan.getAll();
+	}
+
+	@RequestMapping(path = "/hopdongnganhan/{maHDNganHan}", method = RequestMethod.GET)
+	public HopDongNganHan getDatabyID(@PathVariable int maHDNganHan)
+			throws ParseException, SQLException {
+		HopDongNganHan hdnh = hopdongnganhan.getById(maHDNganHan);
+		return hdnh;
+
 	}
 }

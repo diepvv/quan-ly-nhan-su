@@ -36,9 +36,6 @@
 <title>HD Ngắn Hạn</title>
 
 <script type="text/javascript">
-	function xoa() {
-		alert('xoa');
-	}
 	
 	$(document).ready(function() {
 		var table = $('#HopDongNganHanTable').DataTable({
@@ -47,34 +44,34 @@
 			"order" : [ [ 0, "asc" ] ],
 			"aoColumnDefs": [ 
 			      {
-				      "aTargets": [ 0 ],
-				      "mData": "tenHopDong"
+				       "aTargets": [ 0 ],
+				       "mData": "tenHopDong"
 			      },
 			      {
-					  "aTargets": [ 1 ],
-					  "mData": "tenNhanVien"
+					   "aTargets": [ 1 ],
+					   "mData": "tenNhanVien"
 				  },
 				  {
-					  "aTargets": [ 2 ],
-					  "mData": "ngayKy"
+					   "aTargets": [ 2 ],
+					   "mData": "ngayKy"
 				  },
 				  {
 					   "aTargets": [ 3 ],
 					   "mData": "tuNgay"
-				   },
-				   {
-						"aTargets": [ 4 ],
-						"mData": "denNgay"
-				   },
+				  },
+				  {
+					   "aTargets": [ 4 ],
+					   "mData": "denNgay"
+				  },
 				  {
 				       "targets": -1,
 				       "data": null,
-				       "defaultContent": "<button id='btnDel'>Xóa</button>"
+				       "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal' id='btnDel'>Xóa</button>"
 			      },
 			      {
 					   "targets": -2,
 					   "data": null,
-					   "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#formSuaHDNganHan'>Sửa</button>"
+					   "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal' id='btnUpdate'>Sửa</button>"
 				  },
 			],
 			scrollY : "600px",
@@ -87,7 +84,7 @@
 			          {
 		                 text: 'THÊM HỢP ĐỒNG NGẮN HẠN',
 		                 action: function ( e, dt, node, config ) {
-		                     $('#formThemHopDong').modal('show');
+		                     $('#formHDNganHan').modal('show');
 		                 },
 		              }
 			          ],
@@ -98,32 +95,70 @@
             }
 		});
 	
-	$('#HopDongNganHanTable tbody').on( 'click', 'button', function () {
-		var id = $(this)[0].id;
-		if("btnDel" == id){
-        var data = table.row($(this).parents('tr')).data();
-        alert($(this)[0].id + ": " + data['maHDNganHan']);
-		}
-    });
+		$('#HopDongNganHanTable tbody').on( 'click', 'button', function () {
+			var id = $(this)[0].id;
+			if("btnDel" == id){
+	        var data = table.row($(this).parents('tr')).data();
+	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
+                    + data['tenNhanVien'])
+                    var maHDNganHan = data['maHDNganHan'];
+	            if(check==true){
+	            	$.ajax({  
+	                    url: 'hopdongnganhan/'+maHDNganHan,  
+	                    type: 'DELETE',  
+	                    success: function (res) {  
+	                    	table.ajax.reload();	                    }  
+	                });
+	            }
+                    
+			}
+	    });
+		
+		$('#HopDongNganHanTable tbody').on( 'click', 'button', function () {
+			var id = $(this)[0].id;
+			if("btnUpdate" == id){
+	        var data = table.row($(this).parents('tr')).data();
+                    var maHDNganHan = data['maHDNganHan'];
+	            	$.ajax({  
+	                    url: 'hopdongnganhan/'+maHDNganHan,  
+	                    type: 'GET',  
+	                    success: function (res) {
+	                    	//alert(res.tenNhanVien);
+	                    	//tenhopdong: id cua the input, res.tenHopDong : lay tu chuoi json dc get tu co do du lieu
+	                    	//lay thong tin tu co so du lieu gan nen form
+	                    	var txtTenHopDong=$(tenhopdong);
+	                    	txtTenHopDong.val(res.tenHopDong);
+	                    	
+	                    	var txtTenNhanVien=$(tennhanvien);
+	                    	txtTenNhanVien.val(res.tenNhanVien);
+	                    	
+	                    	var txtNgayKy=$(dpNgayKy);
+	                    	txtNgayKy.val(res.ngayKy);
+	                    	
+	                    	var txtTuNgay=$(dpTuNgay);
+	                    	txtTuNgay.val(res.tuNgay);
+	                    	
+	                    	var txtDenNgay=$(dpDenNgay);
+	                    	txtDenNgay.val(res.denNgay);
+	                    	
+		                    $('#formHDNganHan').modal('show');
+	                    }
+	                });
+			}
+	    });
 	
-	$('#btnDel').on( 'click', function () {
-	        alert('xoa');
-	    } );
 	} );
 	
 	/*  datepicker*/
-	$.fn.datepicker.defaults.format = "dd-mm-yyyy";
+	$.fn.datepicker.defaults.format = "yyyy-mm-dd";
 		$('.datepicker').datepicker(
 			{
 			 	startDate: '-3d'
 			}
-		);
-		
+	);
 </script>
-
 </head>
 <body>
-
 <nav class="navbar navbar-inverse">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -232,75 +267,22 @@
 	</div>
 	<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
 	
-	<!-- form Thêm hợp đồng ngắn hạn -->
-<div id="formThemHopDong" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">THÊM HỢP ĐỒNG NGẮN HẠN</h4>
-      </div>
-      <div class="modal-body">
-        <label for="inputdefault">Tên hợp đồng</label>
-    	<input class="form-control" id="inputdefault" type="text">
-    	
-    	 <label for="inputdefault">Tên nhân viên</label>
-    	<input class="form-control" id="inputdefault" type="text">
-    	
-    	 <label for="inputdefault">Ngày ký</label>
-    	 
-		<div class="input-group date" data-provide="datepicker">
-    		<input type="text" class="form-control" id = "dpNgayKy" readonly="readonly">
-    		<div class="input-group-addon">
-      		  <span class="glyphicon glyphicon-th"></span>
-    		</div>
-	    </div>
-    	
-    	 <label for="inputdefault">Từ Ngày</label>
-    	 
-		<div class="input-group date" data-provide="datepicker">
-    		<input type="text" class="form-control" id = "dpTuNgay" readonly="readonly">
-    		<div class="input-group-addon">
-      		  <span class="glyphicon glyphicon-th"></span>
-    		</div>
-	    </div>
-    	
-    	 <label for="inputdefault">Đến ngày</label>
-    	 
-		<div class="input-group date" data-provide="datepicker">
-    		<input type="text" class="form-control" id = "dpDenNgay" readonly="readonly">
-    		<div class="input-group-addon">
-      		  <span class="glyphicon glyphicon-th"></span>
-    		</div>
-	    </div>
-   
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Thêm</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
-      </div>
-    </div>
-
-  </div>
-</div>
 
 <!-- form Sửa Hợp đồng ngắn hạn -->
-<div id="formSuaHDNganHan" class="modal fade" role="dialog">
+<div id="formHDNganHan" class="modal fade" role="dialog">
  <div class="modal-dialog modal-lg">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">SỬA ĐỒNG NGẮN HẠN</h4>
+        <h4 class="modal-title">HỢP ĐỒNG NGẮN HẠN</h4>
       </div>
       <div class="modal-body">
          <label for="inputdefault">Tên hợp đồng</label>
-    	 <input class="form-control" id="inputdefault" type="text">
+    	 <input class="form-control" id="tenhopdong" type="text">
     	
     	 <label for="inputdefault">Tên nhân viên</label>
-    	 <input class="form-control" id="inputdefault" type="text">
+    	 <input class="form-control" id="tennhanvien" type="text">
     	
     	 <label for="inputdefault">Ngày ký</label>
 		 <div class="input-group date" data-provide="datepicker">

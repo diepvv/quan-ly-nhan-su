@@ -62,12 +62,12 @@
 				  {
 			       "targets": -1,
 			       "data": null,
-			       "defaultContent": "<button id='btnDel'>Xóa CB</button>"
+			       "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal' id='btnDel'>Xóa</button>"
 			      },
 			      {
 				   "targets": -2,
 				   "data": null,
-				   "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal'>Open Modal</button>"
+				   "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#myModal'>Sửa</button>"
 				  },
 			],
 			scrollY : "600px",
