@@ -1,5 +1,8 @@
 package quanlynhansu;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -11,6 +14,19 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @ComponentScan
 public class App extends SpringBootServletInitializer {
+	public static Connection getConnection() {
+		Connection con = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver").newInstance();
+			con = DriverManager.getConnection(
+					"jdbc:mysql://127.0.0.1/quanlynhansu?useUnicode=yes&characterEncoding=UTF-8", "root", "02251995");
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			e.printStackTrace();
+		}
+		return con;
+	}
+	
 	@Override
 	protected SpringApplicationBuilder configure(
 			SpringApplicationBuilder application) {
