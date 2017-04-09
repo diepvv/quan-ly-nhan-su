@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Date;
+import java.sql.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
@@ -90,13 +90,13 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 	public boolean update(HopDongNganHanDTO t) throws SQLException {
 		boolean ketqua = false;
 		Connection connection = App.getConnection();
-		String sql = "UPDATE quanlynhansu SET tenHopDong=?, tenNhanVien=?, ngayKy=?, tuNgay=?, denNgay=? WHERE maHDNganHan=?";
+		String sql = "UPDATE hopdongnganhan SET tenHopDong=?, tenNhanVien=?, ngayKy=?, tuNgay=?, denNgay=? WHERE maHDNganHan=?";
 		PreparedStatement preStatement = connection.prepareStatement(sql);
 		preStatement.setString(1, t.getTenHopDong());
 		preStatement.setString(2, t.getTenNhanVien());
-		preStatement.setDate(3, (java.sql.Date) t.getNgayKy());
-		preStatement.setDate(4, (java.sql.Date) t.getTuNgay());
-		preStatement.setDate(5, (java.sql.Date) t.getDenNgay());
+		preStatement.setDate(3,  t.getNgayKy());
+		preStatement.setDate(4,  t.getTuNgay());
+		preStatement.setDate(5,  t.getDenNgay());
 		preStatement.setInt(6, t.getMaHDNganHan());
 
 		int check = preStatement.executeUpdate();

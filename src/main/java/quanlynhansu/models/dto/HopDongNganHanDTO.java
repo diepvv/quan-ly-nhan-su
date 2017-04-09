@@ -1,7 +1,7 @@
 package quanlynhansu.models.dto;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Date;
 
 public class HopDongNganHanDTO implements Serializable {
 	private static final long serialVersionUID = 8020888727398957523L;
