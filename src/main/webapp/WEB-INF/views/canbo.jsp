@@ -3,9 +3,14 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
 <link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css">
 <script type="text/javascript" src="webjars/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
@@ -39,7 +44,7 @@
 	}
 	$(document).ready(function() {
 		var table = $('#canBoTable').DataTable({
-			"sAjaxSource" : "/getCanBo",
+			"sAjaxSource" : "/canBoService/getAll",
 			"sAjaxDataProp" : "",
 			"order" : [ [ 0, "asc" ] ],
 			"aoColumnDefs": [ 
@@ -126,7 +131,7 @@
   				<button class="btn btn-primary navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">QUẢN LÝ CÁN BỘ
   					<span class="caret"></span></button>
   					<ul class="dropdown-menu">
-   						<li><a href="/canbo">DANH SÁCH CÁN BỘ</a></li>
+   						<li><a href="/canBoController/show">DANH SÁCH CÁN BỘ</a></li>
     					<li><a href="#">DANH SÁCH CÁN BỘ KHOÁN GỌN</a></li>
     					<li><a href="#">DANH SÁCH CÁN BỘ KIÊM NHIỆM</a></li>
    						<li><a href="#">DANH SÁCH CÁN BỘ THÂM NIÊN</a></li>
@@ -152,7 +157,7 @@
   					<span class="caret"></span></button>
   					<ul class="dropdown-menu">
    						<li><a href="#">HỢP ĐỒNG CÁN BỘ</a></li>
-    					<li><a href="/hopdongnganhan">HỢP ĐỒNG NGẮN HẠN</a></li>
+    					<li><a href="/hopDongNganHanController/show">HỢP ĐỒNG NGẮN HẠN</a></li>
  					</ul>
 				</div>
 				</li>

@@ -24,7 +24,7 @@
   				<button class="btn btn-primary navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">QUẢN LÝ CÁN BỘ
   					<span class="caret"></span></button>
   					<ul class="dropdown-menu">
-   						<li><a href="/canBoController">DANH SÁCH CÁN BỘ</a></li>
+   						<li><a href="/canBoController/show">DANH SÁCH CÁN BỘ</a></li>
     					<li><a href="#">DANH SÁCH CÁN BỘ KHOÁN GỌN</a></li>
     					<li><a href="#">DANH SÁCH CÁN BỘ KHOÁN GỌN</a></li>
    						<li><a href="#">DANH SÁCH CÁN BỘ THÂM NIÊN</a></li>

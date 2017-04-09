@@ -44,8 +44,8 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 			Date ngayKy = re.getDate("ngayKy");
 			Date tuNgay = re.getDate("tuNgay");
 			Date denNgay = re.getDate("denNgay");
-			HopDongNganHanDTO p = new HopDongNganHanDTO(maHDNganHan, tenHopDong,
-					tenNhanVien, ngayKy, tuNgay, denNgay);
+			HopDongNganHanDTO p = new HopDongNganHanDTO(maHDNganHan,
+					tenHopDong, tenNhanVien, ngayKy, tuNgay, denNgay);
 			ketqua.add(p);
 		}
 		return ketqua;
@@ -90,7 +90,7 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 	public boolean update(HopDongNganHanDTO t) throws SQLException {
 		boolean ketqua = false;
 		Connection connection = App.getConnection();
-		String sql = "UPDATE quanlynhansu SET maHDNganHan=?, tenHopDong=?, tenNhanVien=?, ngayKy=?, tuNgay=?, denNgay=? WHERE maHDNganHan=?";
+		String sql = "UPDATE quanlynhansu SET tenHopDong=?, tenNhanVien=?, ngayKy=?, tuNgay=?, denNgay=? WHERE maHDNganHan=?";
 		PreparedStatement preStatement = connection.prepareStatement(sql);
 		preStatement.setString(1, t.getTenHopDong());
 		preStatement.setString(2, t.getTenNhanVien());
