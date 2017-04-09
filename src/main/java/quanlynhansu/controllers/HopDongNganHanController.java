@@ -36,6 +36,7 @@ public class HopDongNganHanController {
 	public String update(@RequestBody HopDongNganHanDTO hd, Model model)
 			throws SQLException {
 		hopDongNganHan.update(hd);
+		System.out.println("aaaaaaaaaa");
 		return "hopdongnganhan";
 	}
 

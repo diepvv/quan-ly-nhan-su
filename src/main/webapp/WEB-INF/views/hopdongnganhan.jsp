@@ -161,7 +161,7 @@
                             type : "POST",
                             contentType: "application/json; charset=utf-8",
                             data : JSON.stringify(json),
-                            url : 'hopDongNganHanController/update',
+                            url : '/hopDongNganHanController/update',
                             success : function(msg) {
                             	table.ajax.reload();
                             },
@@ -198,7 +198,7 @@
   				<button class="btn btn-primary navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">QUẢN LÝ CÁN BỘ
   					<span class="caret"></span></button>
   					<ul class="dropdown-menu">
-   						<li><a href="/canbo">DANH SÁCH CÁN BỘ</a></li>
+   						<li><a href="/canBoController">DANH SÁCH CÁN BỘ</a></li>
     					<li><a href="#">DANH SÁCH CÁN BỘ KHOÁN GỌN</a></li>
     					<li><a href="#">DANH SÁCH CÁN BỘ KIÊM NHIỆM</a></li>
    						<li><a href="#">DANH SÁCH CÁN BỘ THÂM NIÊN</a></li>
@@ -224,7 +224,7 @@
   					<span class="caret"></span></button>
   					<ul class="dropdown-menu">
    						<li><a href="#">HỢP ĐỒNG CÁN BỘ</a></li>
-    					<li><a href="/hopdongnganhan">HỢP ĐỒNG NGẮN HẠN</a></li>
+    					<li><a href="/hopDongNganHanController">HỢP ĐỒNG NGẮN HẠN</a></li>
  					</ul>
 				</div>
 				</li>
