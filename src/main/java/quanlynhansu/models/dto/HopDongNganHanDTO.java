@@ -1,8 +1,10 @@
-package quanlynhansu.models;
+package quanlynhansu.models.dto;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class HopDongNganHan {
+public class HopDongNganHanDTO implements Serializable {
+	private static final long serialVersionUID = 8020888727398957523L;
 	private int maHDNganHan;
 	private String tenHopDong;
 	private String tenNhanVien;
@@ -10,7 +12,11 @@ public class HopDongNganHan {
 	private Date tuNgay;
 	private Date denNgay;
 
-	public HopDongNganHan(int maHDNganHan, String tenHopDong,
+	public HopDongNganHanDTO() {
+	}
+
+	@Deprecated
+	public HopDongNganHanDTO(int maHDNganHan, String tenHopDong,
 			String tenNhanVien, Date ngayKy, Date tuNgay, Date denNgay) {
 		this.maHDNganHan = maHDNganHan;
 		this.tenHopDong = tenHopDong;

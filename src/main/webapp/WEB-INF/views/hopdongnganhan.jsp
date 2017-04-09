@@ -7,8 +7,13 @@
 <script type="text/javascript" src="webjars/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+
 
 
 <link href="https://cdn.datatables.net/colreorder/1.2.0/css/colReorder.dataTables.css" rel="stylesheet" type="text/css" />
@@ -38,8 +43,10 @@
 <script type="text/javascript">
 	
 	$(document).ready(function() {
+		var hopDongNganHanService = "/hopDongNganHanService";
+		var hopDongNganHanController = "/hopDongNganHanController";
 		var table = $('#HopDongNganHanTable').DataTable({
-			"sAjaxSource" : "/hopDongNganHan",
+			"sAjaxSource" : "/hopDongNganHanService"+"/getAll",
 			"sAjaxDataProp" : "",
 			"order" : [ [ 0, "asc" ] ],
 			"aoColumnDefs": [ 
@@ -104,7 +111,7 @@
                     var maHDNganHan = data['maHDNganHan'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: 'hopdongnganhan/'+maHDNganHan,  
+	                    url: hopDongNganHanController+"/delete/"+maHDNganHan,  
 	                    type: 'DELETE',  
 	                    success: function (res) {  
 	                    	table.ajax.reload();	                    }  
@@ -119,31 +126,51 @@
 			if("btnUpdate" == id){
 	        var data = table.row($(this).parents('tr')).data();
                     var maHDNganHan = data['maHDNganHan'];
+                    var txtTenHopDong=$(tenhopdong);
+                    var txtTenNhanVien=$(tennhanvien);
+                    var txtNgayKy=$(dpNgayKy);
+                    var txtTuNgay=$(dpTuNgay);
+                    var txtDenNgay=$(dpDenNgay);
 	            	$.ajax({  
-	                    url: 'hopdongnganhan/'+maHDNganHan,  
+	                    url: "/hopDongNganHanService"+"/getById/"+maHDNganHan,  
 	                    type: 'GET',  
 	                    success: function (res) {
 	                    	//alert(res.tenNhanVien);
 	                    	//tenhopdong: id cua the input, res.tenHopDong : lay tu chuoi json dc get tu co do du lieu
 	                    	//lay thong tin tu co so du lieu gan nen form
-	                    	var txtTenHopDong=$(tenhopdong);
 	                    	txtTenHopDong.val(res.tenHopDong);
-	                    	
-	                    	var txtTenNhanVien=$(tennhanvien);
 	                    	txtTenNhanVien.val(res.tenNhanVien);
-	                    	
-	                    	var txtNgayKy=$(dpNgayKy);
 	                    	txtNgayKy.val(res.ngayKy);
-	                    	
-	                    	var txtTuNgay=$(dpTuNgay);
 	                    	txtTuNgay.val(res.tuNgay);
-	                    	
-	                    	var txtDenNgay=$(dpDenNgay);
 	                    	txtDenNgay.val(res.denNgay);
 	                    	
 		                    $('#formHDNganHan').modal('show');
+		                    
 	                    }
 	                });
+	            	//twitter bootstrap script
+                    $("button#btnCapNhap").click(function(e) {
+                    	var json = new Object();
+                    	json.maHDNganHan = maHDNganHan;
+                    	json.tenHopDong = txtTenHopDong.val();
+                    	json.tenNhanVien = txtTenNhanVien.val();
+                    	json.ngayKy = txtNgayKy.val();
+                    	json.tuNgay= txtTuNgay.val();
+                    	json.denNgay = txtDenNgay.val();
+                        $.ajax({
+                            type : "POST",
+                            contentType: "application/json; charset=utf-8",
+                            data : JSON.stringify(json),
+                            url : 'hopDongNganHanController/update',
+                            success : function(msg) {
+                            	table.ajax.reload();
+                            },
+                            error : function() {
+                                alert("Failed");
+                            }
+                        });
+                    }); 	
+	            	
 			}
 	    });
 	
@@ -311,7 +338,7 @@
 	    
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Cập Nhập</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id = "btnCapNhap">Cập Nhập</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
       </div>
     </div>

@@ -1,13 +1,13 @@
 package quanlynhansu.controllers;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-@RequestMapping("/canbo")
+@RequestMapping("/canBoController")
 public class CanBoController {
-	@RequestMapping(method = RequestMethod.GET)
+	@GetMapping
 	public String showCanbo() {
 		return "canbo";
 	}

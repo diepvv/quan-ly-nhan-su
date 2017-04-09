@@ -1,12 +1,19 @@
-package quanlynhansu.models;
+package quanlynhansu.models.dto;
 
-public class CanBo {
+import java.io.Serializable;
+
+public class CanBoDTO implements Serializable {
+	private static final long serialVersionUID = 7660631391091782293L;
 	private int soHieuCB;
 	private String tenCB;
 	private String dvCongTac;
 	private String chucVuHienTai;
 
-	public CanBo(int soHieuCB, String tenCB, String dvCongTac,
+	public CanBoDTO() {
+	}
+
+	@Deprecated
+	public CanBoDTO(int soHieuCB, String tenCB, String dvCongTac,
 			String chucVuHienTai) {
 		this.soHieuCB = soHieuCB;
 		this.tenCB = tenCB;
