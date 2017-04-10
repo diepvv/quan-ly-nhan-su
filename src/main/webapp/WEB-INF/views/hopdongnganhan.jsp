@@ -8,8 +8,9 @@
 <script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
+ <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
@@ -46,7 +47,7 @@
 		var hopDongNganHanService = "/hopDongNganHanService";
 		var hopDongNganHanController = "/hopDongNganHanController";
 		var table = $('#HopDongNganHanTable').DataTable({
-			"sAjaxSource" : "/hopDongNganHanService"+"/getAll",
+			"sAjaxSource" : hopDongNganHanService+"/getAll",
 			"sAjaxDataProp" : "",
 			"order" : [ [ 0, "asc" ] ],
 			"aoColumnDefs": [ 
@@ -113,7 +114,8 @@
 	            	$.ajax({  
 	                    url: hopDongNganHanController+"/delete/"+maHDNganHan,  
 	                    type: 'DELETE',  
-	                    success: function (res) {  
+	                    success: function (res) {
+	                    	alert("Xóa Thành Công");
 	                    	table.ajax.reload();	                    }  
 	                });
 	            }
@@ -132,7 +134,7 @@
                     var txtTuNgay=$(dpTuNgay);
                     var txtDenNgay=$(dpDenNgay);
 	            	$.ajax({  
-	                    url: "/hopDongNganHanService"+"/getById/"+maHDNganHan,  
+	                    url: hopDongNganHanService+"/getById/"+maHDNganHan,  
 	                    type: 'GET',  
 	                    success: function (res) {
 	                    	//alert(res.tenNhanVien);
@@ -143,46 +145,65 @@
 	                    	txtNgayKy.val(res.ngayKy);
 	                    	txtTuNgay.val(res.tuNgay);
 	                    	txtDenNgay.val(res.denNgay);
-	                    	
 		                    $('#formHDNganHan').modal('show');
-		                    
 	                    }
 	                });
 	            	//twitter bootstrap script
-                    $("button#btnCapNhap").click(function(e) {
-                    	var json = new Object();
-                    	json.maHDNganHan = maHDNganHan;
-                    	json.tenHopDong = txtTenHopDong.val();
-                    	json.tenNhanVien = txtTenNhanVien.val();
-                    	json.ngayKy = txtNgayKy.val();
-                    	json.tuNgay= txtTuNgay.val();
-                    	json.denNgay = txtDenNgay.val();
-                        $.ajax({
-                            type : "POST",
-                            contentType: "application/json; charset=utf-8",
-                            data : JSON.stringify(json),
-                            url : '/hopDongNganHanController/update',
-                            success : function(msg) {
-                            	table.ajax.reload();
-                            },
-                            error : function() {
-                                alert("Failed");
-                            }
-                        });
-                    }); 	
+	            	$("button#btnCapNhap").click(function(e) {
+	                 	var json = new Object();
+		                json.maHDNganHan = maHDNganHan;
+		                json.tenHopDong = txtTenHopDong.val();
+		                json.tenNhanVien = txtTenNhanVien.val();
+		                json.ngayKy = txtNgayKy.val();
+		                json.tuNgay= txtTuNgay.val();
+		                json.denNgay = txtDenNgay.val();
+	                 	$.ajax({
+		                     type : "POST",
+		                     contentType: "application/json; charset=utf-8",
+		                     data : JSON.stringify(json),
+		                     url : hopDongNganHanController+'/update',
+		                     success : function(msg) {
+		                         	alert("Sửa thành công");
+		                         	table.ajax.reload();
+		                         	txtTenHopDong.val("");
+		                         	txtTenNhanVien.val("");
+		                         	txtNgayKy.val("");
+		                         	txtTuNgay.val("");
+		                         	txtDenNgay.val("");
+		                      },
+		                      error : function() {
+		                            alert("Sửa không thành công");
+		                            txtTenHopDong.val("");
+		                         	txtTenNhanVien.val("");
+		                         	txtNgayKy.val("");
+		                         	txtTuNgay.val("");
+		                         	txtDenNgay.val("");
+		                      }
+		                 });
+	                });
 	            	
-			}
+	            	$("button#btnDong").click(function(e) {
+			         	txtTenHopDong.val("");
+			         	txtTenNhanVien.val("");
+			         	txtNgayKy.val("");
+			         	txtTuNgay.val("");
+			         	txtDenNgay.val("");
+			        }); 
+                    
+			}	
 	    });
-	
+		
+		
+		
+		
+		
 	} );
 	
 	/*  datepicker*/
 	$.fn.datepicker.defaults.format = "yyyy-mm-dd";
-		$('.datepicker').datepicker(
-			{
+		$('.datepicker').datepicker({
 			 	startDate: '-3d'
-			}
-	);
+	});
 </script>
 </head>
 <body>
@@ -295,7 +316,7 @@
 	<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
 	
 
-<!-- form Sửa Hợp đồng ngắn hạn -->
+<!-- form Thêm, Sửa Hợp đồng ngắn hạn -->
 <div id="formHDNganHan" class="modal fade" role="dialog">
  <div class="modal-dialog modal-lg">
     <!-- Modal content-->
@@ -335,11 +356,10 @@
     		</div>
 	    </div>
 	    
-	    
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" id = "btnCapNhap">Cập Nhập</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id = "btnDong">Đóng</button>
       </div>
     </div>
 

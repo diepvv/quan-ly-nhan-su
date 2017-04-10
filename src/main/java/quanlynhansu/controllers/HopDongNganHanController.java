@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import quanlynhansu.models.dto.HopDongNganHanDTO;
 import quanlynhansu.services.IHopDongNganHanService;
@@ -25,7 +26,7 @@ public class HopDongNganHanController {
 		return "hopdongnganhan";
 	}
 
-	@GetMapping("/delete/{maHDNganHan}")
+	@RequestMapping(value = "/delete/{maHDNganHan}", method = RequestMethod.DELETE)
 	public String delete(@PathVariable int maHDNganHan, Model model)
 			throws SQLException {
 		hopDongNganHan.delete(maHDNganHan);
@@ -36,7 +37,6 @@ public class HopDongNganHanController {
 	public String update(@RequestBody HopDongNganHanDTO hd, Model model)
 			throws SQLException {
 		hopDongNganHan.update(hd);
-		System.out.println("aaaaaaaaaa");
 		return "hopdongnganhan";
 	}
 
