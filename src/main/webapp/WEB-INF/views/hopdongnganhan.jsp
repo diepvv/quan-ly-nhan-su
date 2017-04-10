@@ -14,8 +14,6 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 
-
-
 <link href="https://cdn.datatables.net/colreorder/1.2.0/css/colReorder.dataTables.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.datatables.net/colreorder/1.2.0/js/dataTables.colReorder.js"></script>
 <link href="https://cdn.datatables.net/select/1.0.0/css/select.dataTables.css" rel="stylesheet" type="text/css" />
@@ -42,10 +40,6 @@
 
 <title>HD Ngắn Hạn</title>
 
-<script type="text/javascript">
-	
-	
-</script>
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -200,7 +194,7 @@
 	    
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" id = "btnCapNhap">Cập Nhập</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCapNhap">Cập Nhập</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
       </div>
     </div>
