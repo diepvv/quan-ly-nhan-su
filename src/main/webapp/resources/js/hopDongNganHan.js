@@ -93,9 +93,10 @@ $(document).ready(function() {
 		$('#HopDongNganHanTable tbody').on( 'click', 'button', function () {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
-	        var data = table.row($(this).parents('tr')).data();
+					var data = table.row($(this).parents('tr')).data();
                     var maHDNganHan = data['maHDNganHan'];
                     //$(tenhopdong) giá trị ban đầu : Rỗng
+                    var txtMaHDNganHan = $(maHopDongNganHan);
                     var txtTenHopDong=$(tenhopdong);
                     var txtTenNhanVien=$(tennhanvien);
                     var txtNgayKy=$(dpNgayKy);
@@ -108,6 +109,7 @@ $(document).ready(function() {
 	                    	//alert(res.tenNhanVien);
 	                    	//tenhopdong: id cua the input, res.tenHopDong : lay tu chuoi json dc get tu co do du lieu
 	                    	//lay thong tin tu co so du lieu gan nen form
+	                    	txtMaHDNganHan.val(maHDNganHan);
 	                    	txtTenHopDong.val(res.tenHopDong);
 	                    	txtTenNhanVien.val(res.tenNhanVien);
 	                    	txtNgayKy.val(res.ngayKy);
@@ -121,9 +123,9 @@ $(document).ready(function() {
 		
 		//twitter bootstrap btnCapNhap
     	$("button#btnCapNhap").click(function(e) {
-    		
     		var endpointUrl = '/hopDongNganHanController/update';
     		//$(tenhopdong) là giá trị sau khi lấy ở database nên gắn vào form khi click nút Sửa
+    		var txtMaHDNganHan = $(maHopDongNganHan);
     		var txtTenHopDong = $(tenhopdong);
             var txtTenNhanVien = $(tennhanvien);
             var txtNgayKy = $(dpNgayKy);
@@ -131,7 +133,8 @@ $(document).ready(function() {
             var txtDenNgay = $(dpDenNgay);
             
          	var json = new Object();
-            json.maHDNganHan = 7;
+         	//truyen du lieu thanh chuoi Json gui xuong database
+            json.maHDNganHan = txtMaHDNganHan.val();
             json.tenHopDong = txtTenHopDong.val();
             json.tenNhanVien = txtTenNhanVien.val();
             json.ngayKy = txtNgayKy.val();

@@ -39,5 +39,12 @@ public class HopDongNganHanController {
 		hopDongNganHan.update(hd);
 		return "hopdongnganhan";
 	}
+	
+	@PostMapping("/add")
+	public String insert(@RequestBody HopDongNganHanDTO hd, Model model)
+			throws SQLException {
+		hopDongNganHan.insert(hd);
+		return "hopdongnganhan";
+	}
 
 }

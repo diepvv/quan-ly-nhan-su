@@ -94,9 +94,9 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 		PreparedStatement preStatement = connection.prepareStatement(sql);
 		preStatement.setString(1, t.getTenHopDong());
 		preStatement.setString(2, t.getTenNhanVien());
-		preStatement.setDate(3,  t.getNgayKy());
-		preStatement.setDate(4,  t.getTuNgay());
-		preStatement.setDate(5,  t.getDenNgay());
+		preStatement.setDate(3, t.getNgayKy());
+		preStatement.setDate(4, t.getTuNgay());
+		preStatement.setDate(5, t.getDenNgay());
 		preStatement.setInt(6, t.getMaHDNganHan());
 
 		int check = preStatement.executeUpdate();
@@ -105,6 +105,26 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 		}
 		return ketqua;
 
+	}
+
+	@Override
+	public boolean insert(HopDongNganHanDTO t) throws SQLException {
+		boolean ketqua = false;
+		Connection connection = App.getConnection();
+		String sql = "INSERT INTO hopdongnganhan VALUES(?,?,?,?,?,?)";
+		PreparedStatement preStatement = connection.prepareStatement(sql);
+		preStatement.setString(1, null);
+		preStatement.setString(2, t.getTenHopDong());
+		preStatement.setString(3, t.getTenNhanVien());
+		preStatement.setDate(4, t.getNgayKy());
+		preStatement.setDate(5, t.getTuNgay());
+		preStatement.setDate(6, t.getDenNgay());
+
+		int check = preStatement.executeUpdate();
+		if (check > 0) {
+			ketqua = true;
+		}
+		return ketqua;
 	}
 
 }

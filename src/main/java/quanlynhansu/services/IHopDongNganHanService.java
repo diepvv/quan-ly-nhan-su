@@ -17,4 +17,6 @@ public interface IHopDongNganHanService {
 
 	boolean update(HopDongNganHanDTO t) throws SQLException;
 
+	 boolean insert(HopDongNganHanDTO t) throws SQLException;
+
 }
