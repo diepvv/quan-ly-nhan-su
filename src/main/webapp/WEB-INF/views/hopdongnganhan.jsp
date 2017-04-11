@@ -15,8 +15,6 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
 <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 
-
-
 <link href="https://cdn.datatables.net/colreorder/1.2.0/css/colReorder.dataTables.css" rel="stylesheet" type="text/css" />
 <script src="https://cdn.datatables.net/colreorder/1.2.0/js/dataTables.colReorder.js"></script>
 <link href="https://cdn.datatables.net/select/1.0.0/css/select.dataTables.css" rel="stylesheet" type="text/css" />
@@ -39,8 +37,11 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/js/bootstrap-datepicker.js"></script>
 
+<script src="<c:url value='/resources/js/hopDongNganHan.js' />"></script>
+
 <title>HD Ngắn Hạn</title>
 
+<<<<<<< HEAD
 <script type="text/javascript">
 	
 	$(document).ready(function() {
@@ -204,6 +205,8 @@
 			 	startDate: '-3d'
 	});
 </script>
+=======
+>>>>>>> 19db0a815171ae7035f14339558c12227234e3a5
 </head>
 <body>
 <nav class="navbar navbar-inverse">
@@ -357,8 +360,13 @@
 	    
       </div>
       <div class="modal-footer">
+<<<<<<< HEAD
         <button type="button" class="btn btn-default" data-dismiss="modal" id = "btnCapNhap">Cập Nhập</button>
         <button type="button" class="btn btn-default" data-dismiss="modal" id = "btnDong">Đóng</button>
+=======
+        <button type="button" class="btn btn-default" data-dismiss="modal" id="btnCapNhap">Cập Nhập</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+>>>>>>> 19db0a815171ae7035f14339558c12227234e3a5
       </div>
     </div>
 
