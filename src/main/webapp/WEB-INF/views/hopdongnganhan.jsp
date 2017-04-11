@@ -163,7 +163,6 @@
 		                     data : JSON.stringify(json),
 		                     url : hopDongNganHanController+'/update',
 		                     success : function(msg) {
-		                         	alert("Sửa thành công");
 		                         	table.ajax.reload();
 		                         	txtTenHopDong.val("");
 		                         	txtTenNhanVien.val("");
