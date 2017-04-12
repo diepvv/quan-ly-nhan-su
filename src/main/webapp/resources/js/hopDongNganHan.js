@@ -47,12 +47,13 @@ $(document).ready(function() {
 			          {
 		                 text: 'THÊM HỢP ĐỒNG NGẮN HẠN',
 		                 action: function ( e, dt, node, config ) {
+		                	 var txtMaHDNganHan = $(maHopDongNganHan);
 		                	 var txtTenHopDong=$(tenhopdong);
 		                     var txtTenNhanVien=$(tennhanvien);
 		                     var txtNgayKy=$(dpNgayKy);
 		                     var txtTuNgay=$(dpTuNgay);
 		                     var txtDenNgay=$(dpDenNgay);
-		                     
+		                     	 txtMaHDNganHan.val(-1);
 		                     	 txtTenHopDong.val("");
 	                         	 txtTenNhanVien.val("");
 	                         	 txtNgayKy.val("");
@@ -123,7 +124,7 @@ $(document).ready(function() {
 		
 		//twitter bootstrap btnCapNhap
     	$("button#btnCapNhap").click(function(e) {
-    		var endpointUrl = '/hopDongNganHanController/update';
+    		var endpointUrl = '/hopDongNganHanController/add';
     		//$(tenhopdong) là giá trị sau khi lấy ở database nên gắn vào form khi click nút Sửa
     		var txtMaHDNganHan = $(maHopDongNganHan);
     		var txtTenHopDong = $(tenhopdong);
@@ -132,7 +133,7 @@ $(document).ready(function() {
             var txtTuNgay = $(dpTuNgay);
             var txtDenNgay = $(dpDenNgay);
             
-         	var json = new Object();
+            var json = new Object();
          	//truyen du lieu thanh chuoi Json gui xuong database
             json.maHDNganHan = txtMaHDNganHan.val();
             json.tenHopDong = txtTenHopDong.val();
@@ -140,18 +141,21 @@ $(document).ready(function() {
             json.ngayKy = txtNgayKy.val();
             json.tuNgay= txtTuNgay.val();
             json.denNgay = txtDenNgay.val();
-         	$.ajax({
-                 type : "POST",
-                 contentType: "application/json; charset=utf-8",
-                 data : JSON.stringify(json),
-                 url : endpointUrl,
-                 success : function(msg) {
-                     	table.ajax.reload();
-                  },
-                  error : function() {
-                        alert("Sửa không thành công");
-                  }
-             });
+            if(txtMaHDNganHan.val() != -1){
+            	var endpointUrl = '/hopDongNganHanController/update';
+            }
+            $.ajax({
+                type : "POST",
+                contentType: "application/json; charset=utf-8",
+                data : JSON.stringify(json),
+                url : endpointUrl,
+                success : function(msg) {
+                     table.ajax.reload();
+                },
+                error : function() {
+                      alert("Cập nhập không thành công");
+                }
+            });
         });
     	
     	$("button#btnDong").click(function(e) {
