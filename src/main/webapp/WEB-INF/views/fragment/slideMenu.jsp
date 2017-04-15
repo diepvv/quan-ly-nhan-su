@@ -19,13 +19,13 @@
 									<ul class="gn-submenu">
 										<li class="mini_list_agile"><a href="/canBoController/show"><i
 												class="fa fa-caret-right" aria-hidden="true"></i>  Cán bộ giảng viên</a></li>
-										<li class="mini_list_w3"><a href="grids.html"> <i
+										<li class="mini_list_w3"><a href="/canBoKhoanGonController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i>  Cán bộ khoán gọn
 										</a></li>
-										<li class="mini_list_w3"><a href="grids.html"> <i
+										<li class="mini_list_w3"><a href="/canBoKiemNhiemController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i>  Cán bộ kiêm nhiệm
 										</a></li>
-										<li class="mini_list_w3"><a href="grids.html"> <i
+										<li class="mini_list_w3"><a href="/canBoThamNienController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i>  Cán bộ thâm niên
 										</a></li>
 									</ul></li>
@@ -33,7 +33,7 @@
 										aria-hidden="true"></i>Quản lý hợp đồng <i class="fa fa-angle-down"
 										aria-hidden="true"></i></a>
 									<ul class="gn-submenu">
-										<li class="mini_list_agile"><a href="input.html"><i
+										<li class="mini_list_agile"><a href="/hopDongCanBoController/show"><i
 												class="fa fa-caret-right" aria-hidden="true"></i> Hợp đồng cán bộ</a></li>
 										<li class="mini_list_w3"><a href="/hopDongNganHanController/show"><i
 												class="fa fa-caret-right" aria-hidden="true"></i> Hợp đồng ngắn hạn</a></li>
@@ -43,9 +43,9 @@
 										aria-hidden="true"></i> Lương, Tài sản<i class="fa fa-angle-down"
 										aria-hidden="true"> </i></a>
 									<ul class="gn-submenu">
-										<li class="mini_list_agile"><a href="typo.html"><i
+										<li class="mini_list_agile"><a href="/luongCanBoController/show"><i
 												class="fa fa-caret-right" aria-hidden="true"></i> Quá trình lương</a></li>
-										<li class="mini_list_w3"><a href="icons.html"> <i
+										<li class="mini_list_w3"><a href="/keKhaiTaiSanController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i> Kê khai tài sản
 										</a></li>
 
@@ -55,12 +55,12 @@
 										aria-hidden="true"></i>Quản lý quyết định <i class="fa fa-angle-down"
 										aria-hidden="true"> </i></a>
 									<ul class="gn-submenu">
-										<li class="mini_list_agile"><a href="typo.html"><i
+										<li class="mini_list_agile"><a href="/danhSachQuyetDinhController/show"><i
 												class="fa fa-caret-right" aria-hidden="true"></i> Danh sách quyết định</a></li>
-										<li class="mini_list_w3"><a href="icons.html"> <i
+										<li class="mini_list_w3"><a href="/quyetDinhKhenThuongController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i> Quyết định khen thưởng
 										</a></li>
-										<li class="mini_list_w3"><a href="icons.html"> <i
+										<li class="mini_list_w3"><a href="/quyetDinhKyLuatController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i> Quyết định kỷ luật
 										</a></li>
 
@@ -71,28 +71,28 @@
 										aria-hidden="true"></i></a>
 									<ul class="gn-submenu">
 
-										<li class="mini_list_agile"><a href="signin.html"> <i
+										<li class="mini_list_agile"><a href="/chucVuController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i> Chức vụ
 										</a></li>
-										<li class="mini_list_w3"><a href="signup.html"> <i
+										<li class="mini_list_w3"><a href="/ngachCongChucController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i> Ngạch công chức
 										</a></li>
-										<li class="mini_list_agile error"><a href="404.html">
+										<li class="mini_list_agile error"><a href="/loaiHopDongController/show">
 												<i class="fa fa-caret-right" aria-hidden="true"></i> Loại hợp đồng
 										</a></li>
-										<li class="mini_list_agile error"><a href="404.html">
+										<li class="mini_list_agile error"><a href="/loaiQuyetDinhController/show">
 												<i class="fa fa-caret-right" aria-hidden="true"></i> Loại quyết định
 										</a></li>
-										<li class="mini_list_agile error"><a href="404.html">
+										<li class="mini_list_agile error"><a href="/danTocController/show">
 												<i class="fa fa-caret-right" aria-hidden="true"></i> Dân tộc
 										</a></li>
-										<li class="mini_list_agile error"><a href="404.html">
+										<li class="mini_list_agile error"><a href="/tonGiaoController/show">
 												<i class="fa fa-caret-right" aria-hidden="true"></i> Tôn giáo
 										</a></li>
-										<li class="mini_list_agile error"><a href="404.html">
+										<li class="mini_list_agile error"><a href="/donViChucNangController/show">
 												<i class="fa fa-caret-right" aria-hidden="true"></i> Đơn vị chức năng
 										</a></li>
-										<li class="mini_list_agile error"><a href="404.html">
+										<li class="mini_list_agile error"><a href="/bacLuongController/show">
 												<i class="fa fa-caret-right" aria-hidden="true"></i> Bậc lương
 										</a></li>
 
@@ -101,7 +101,7 @@
 										aria-hidden="true"></i>Thoát <i class="fa fa-angle-down"
 										aria-hidden="true"></i></a>
 									<ul class="gn-submenu">
-										<li class="mini_list_agile"><a href="faq.html"> <i
+										<li class="mini_list_agile"><a href="/loginController"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i> Đăng xuất
 										</a></li>
 									</ul></li>
