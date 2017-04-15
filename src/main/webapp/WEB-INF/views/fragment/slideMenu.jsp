@@ -10,7 +10,7 @@
 					<nav class="gn-menu-wrapper">
 						<div class="gn-scroller scrollbar1">
 							<ul class="gn-menu agile_menu_drop">
-								<li><a href="main-page.html"> <i
+								<li><a href="/"> <i
 										class="fa fa-tachometer"></i> Trang chủ
 								</a></li>
 								<li><a href="#"><i class="fa fa-cogs"

@@ -8,7 +8,7 @@
 		<%@include file="slideMenu.jsp" %>
 		
 				<li class="second logo"><h1>
-						<a href="man-page.html"><i class="fa fa-graduation-cap"
+						<a href="/"><i class="fa fa-graduation-cap"
 							aria-hidden="true"></i>TRANG CHỦ </a>
 					</h1></li>
 				<li class="second admin-pic">
