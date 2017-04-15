@@ -17,7 +17,7 @@
 							class="dropdown-toggle" data-toggle="dropdown"
 							aria-expanded="false">
 								<div class="profile_img">
-									<span class="prfil-img"><img src="resources/images/admin.jpg"
+									<span class="prfil-img"><img src="<c:url value='/resources/images/admin.jpg'/>"
 										alt=""> </span>
 								</div>
 						</a>

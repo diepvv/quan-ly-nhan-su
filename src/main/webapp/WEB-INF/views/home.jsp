@@ -196,27 +196,9 @@
 		</div>
 		<!-- //inner_content-->
 	</div>
-	<!-- banner -->
 	<!--copy rights start here-->
 		<%@include file="fragment/footer.jsp"%>
-
 	<!--copy rights end here-->
-	<!-- js -->
-
-	<script type="text/javascript" src="<c:url value='/resources/js/vendor/jquery-2.1.4.min.js'/>"></script>
-
-	
-	<!-- Chart code -->
-	<script>
-		
-	</script>
-
-	<!-- //amcharts -->
-	<script src="<c:url value='/resources/js/vendor/chart1.js'/>"></script>
-	<script src="<c:url value='/resources/js/vendor/Chart.min.js'/>"></script>
-	<script src="<c:url value='/resources/js/vendor/modernizr.custom.js'/>"></script>
-	<script src="<c:url value='/resources/js/vendor/classie.js'/>"></script>
-	
 
 	<!--skycons-icons-->
 	<script src="<c:url value='/resources/js/vendor/skycons.js'/>"></script>

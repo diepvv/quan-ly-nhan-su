@@ -39,4 +39,5 @@
 <script src="<c:url value='/resources/js/init.js'/>"></script>
 
 <script src="<c:url value='/resources/js/vendor/screenfull.js'/>"></script>
-	
+<script src="<c:url value='/resources/js/vendor/modernizr.custom.js'/>"></script>
+<script src="<c:url value='/resources/js/vendor/classie.js'/>"></script>
