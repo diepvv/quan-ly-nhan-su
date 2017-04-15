@@ -165,10 +165,10 @@
     	 <input class="form-control" id="maHopDongNganHan" type="hidden">
       
          <label for="inputdefault">Tên hợp đồng</label>
-    	 <input class="form-control" id="tenhopdong" type="text">
+    	 <input class="form-control" id="tenhopdong" type="text"></br>
     	
     	 <label for="inputdefault">Tên nhân viên</label>
-    	 <input class="form-control" id="tennhanvien" type="text">
+    	 <input class="form-control" id="tennhanvien" type="text"></br>
     	
     	 <label for="inputdefault">Ngày ký</label>
 		 <div class="input-group date" data-provide="datepicker">
@@ -176,7 +176,7 @@
     		<div class="input-group-addon">
       		  <span class="glyphicon glyphicon-th"></span>
     		</div>
-	     </div>
+	     </div></br>
     	
     	 <label for="inputdefault">Từ Ngày</label>
 		 <div class="input-group date" data-provide="datepicker">
@@ -184,7 +184,7 @@
     		<div class="input-group-addon">
       		  <span class="glyphicon glyphicon-th"></span>
     		</div>
-	     </div>
+	     </div></br>
     	
     	 <label for="inputdefault">Đến ngày</label>
 		<div class="input-group date" data-provide="datepicker">
@@ -192,7 +192,7 @@
     		<div class="input-group-addon">
       		  <span class="glyphicon glyphicon-th"></span>
     		</div>
-	    </div>
+	    </div></br>
 	    
       </div>
       <div class="modal-footer">

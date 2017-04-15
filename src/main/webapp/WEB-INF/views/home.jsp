@@ -1,94 +1,265 @@
-<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ page session="false"%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Home Pages</title>
-<link rel="stylesheet" type="text/css" href="<c:url value="style.css"/>" />
-<link rel="stylesheet" href="/webjars/bootstrap/3.3.7/css/bootstrap.min.css">
+<title>Insert title here</title>
+<%@include file="fragment/importResources.jsp" %>
 
-<script type="text/javascript" src="webjars/jquery/3.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
 </head>
 <body>
-	<nav class="navbar navbar-inverse">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" href="#">MENU</a>
+<!-- banner -->
+<%@include file="fragment/header.jsp" %>
+		<!-- /inner_content-->
+		<div class="inner_content">
+			<!-- /inner_content_w3_agile_info-->
+			<div class="inner_content_w3_agile_info">
+				<!-- /agile_top_w3_grids-->
+
+				<!-- //agile_top_w3_grids-->
+				<!-- /agile_top_w3_post_sections-->
+				<div class="agile_top_w3_post_sections">
+					<div class="col-md-6 agile_top_w3_post agile_info_shadow">
+						<div class="img_wthee_post">
+							<h3 class="w3_inner_tittle">LƯỢT TRUY CẬP</h3>
+							<div class="stats-wrap">
+								<div class="count_info">
+									<h4 class="count">1000</h4>
+									<span class="year">QUẢN LÝ CÁN BỘ</span>
+								</div>
+								<div class="year-info">
+									<p class="text-no">20</p>
+									<span class="year">Năm</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="stats-wrap">
+								<div class="count_info">
+									<h4 class="count">800</h4>
+									<span class="year">QUẢN LÝ QUYẾT ĐỊNH</span>
+								</div>
+								<div class="year-info">
+									<p class="text-no">40</p>
+									<span class="year">Tháng</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="stats-wrap">
+								<div class="count_info">
+									<h4 class="count">1200</h4>
+									<span class="year">QUẢN LÝ HỢP ĐỒNG</span>
+								</div>
+								<div class="year-info">
+									<p class="text-no">30</p>
+									<span class="year">Tuần</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+							<div class="stats-wrap">
+								<div class="count_info">
+									<h4 class="count">1204</h4>
+									<span class="year">QUẢN LÝ TẢI SẢN</span>
+								</div>
+								<div class="year-info">
+									<p class="text-no">10</p>
+									<span class="year">Ngày</span>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+
+						</div>
+					</div>
+					<div class="col-md-6 agile_top_w3_post_info agile_info_shadow">
+						<div class="img_wthee_post1">
+							<h3 class="w3_inner_tittle">THỜI GIAN TRUY CẬP</h3>
+							<div class="main-example">
+								<div class="clock"></div>
+								<div class="message"></div>
+
+							</div>
+						</div>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+
+				<!-- //agile_top_w3_post_sections-->
+
+
+				<!-- /w3ls_agile_circle_progress-->
+				<div class="w3ls_agile_circle_progress agile_info_shadow">
+
+					<div class="cir_agile_info ">
+						<h3 class="w3_inner_tittle">Circular Progress</h3>
+						<div class="skill-grids">
+							<div class="skills-grid text-center">
+								<div class="circle" id="circles-1"></div>
+								<p>HTML</p>
+							</div>
+							<div class="skills-grid text-center">
+								<div class="circle" id="circles-2"></div>
+								<p>PHOTOGRAPHY</p>
+							</div>
+							<div class="skills-grid text-center">
+								<div class="circle" id="circles-3"></div>
+
+								<p>ILLUSTRATOR</p>
+							</div>
+							<div class="skills-grid text-center">
+								<div class="circle" id="circles-4"></div>
+								<p>CSS3</p>
+							</div>
+
+
+
+							<div class="clearfix"></div>
+
+						</div>
+					</div>
+				</div>
+				<!-- /w3ls_agile_circle_progress-->
+				<!--/prograc-blocks_agileits-->
+
+				<!-- //bottom_agileits_grids-->
+				<!-- /weather_w3_agile_info-->
+				<div class="weather_w3_agile_info agile_info_shadow">
+					<div class="weather_w3_inner_info">
+
+						<div class="over_lay_agile">
+							<h3 class="w3_inner_tittle">Dự Báo Thời Tiết</h3>
+							<ul>
+								<li>
+									<figure class="icons">
+										<canvas id="partly-cloudy-day" width="60" height="60"></canvas>
+									</figure>
+									<h3>25 °C</h3>
+									<div class="clearfix"></div>
+								</li>
+								<li>
+									<figure class="icons">
+										<canvas id="clear-day" width="60" height="60"></canvas>
+									</figure>
+									<div class="weather-text">
+										<h4>THỨ 2</h4>
+										<h5>27 °C</h5>
+									</div>
+									<div class="clearfix"></div>
+								</li>
+								<li>
+									<figure class="icons">
+										<canvas id="snow" width="60" height="60"></canvas>
+									</figure>
+									<div class="weather-text">
+										<h4>THỨ 3</h4>
+										<h5>13 °C</h5>
+									</div>
+									<div class="clearfix"></div>
+								</li>
+								<li>
+									<figure class="icons">
+										<canvas id="partly-cloudy-night" width="60" height="60"></canvas>
+									</figure>
+									<div class="weather-text">
+										<h4>THỨ 4</h4>
+										<h5>18 °C</h5>
+									</div>
+									<div class="clearfix"></div>
+								</li>
+								<li>
+									<figure class="icons">
+										<canvas id="cloudy" width="60" height="60"></canvas>
+									</figure>
+									<div class="weather-text">
+										<h4>THỨ 5</h4>
+										<h5>15 °C</h5>
+									</div>
+									<div class="clearfix"></div>
+								</li>
+								<li>
+									<figure class="icons">
+										<canvas id="fog" width="60" height="60"></canvas>
+									</figure>
+									<div class="weather-text">
+										<h4>THỨ 6</h4>
+										<h5>11 °C</h5>
+									</div>
+									<div class="clearfix"></div>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- //weather_w3_agile_info-->
 			</div>
-			
-		<ul class="nav navbar-nav">
-				<li>
-				<div class="dropdown">
-  				<button class="btn btn-primary navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">QUẢN LÝ CÁN BỘ
-  					<span class="caret"></span></button>
-  					<ul class="dropdown-menu">
-   						<li><a href="/canBoController/show">DANH SÁCH CÁN BỘ</a></li>
-    					<li><a href="#">DANH SÁCH CÁN BỘ KHOÁN GỌN</a></li>
-    					<li><a href="#">DANH SÁCH CÁN BỘ KHOÁN GỌN</a></li>
-   						<li><a href="#">DANH SÁCH CÁN BỘ THÂM NIÊN</a></li>
- 					</ul>
-				</div>
-				</li>
-				
-				<li>
-				<div class="dropdown">
-  				<button class="btn btn-primary navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">QUẢN LÝ QUYẾT ĐỊNH
-  					<span class="caret"></span></button>
-  					<ul class="dropdown-menu">
-   						<li><a href="#">DANH SÁCH QUYẾT ĐỊNH</a></li>
-    					<li><a href="#">DANH SÁCH QUYẾT ĐỊNH KHEN THƯỞNG</a></li>
-   						<li><a href="#">DANH SÁCH QUYẾT ĐỊNH KỶ LUẬT</a></li>
- 					</ul>
-				</div>
-				</li>
-				
-				<li>
-				<div class="dropdown">
-  				<button class="btn btn-primary navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">QUẢN LÝ HỢP ĐỒNG
-  					<span class="caret"></span></button>
-  					<ul class="dropdown-menu">
-   						<li><a href="#">HỢP ĐỒNG CÁN BỘ</a></li>
-    					<li><a href="/hopDongNganHanController/show">HỢP ĐỒNG NGẮN HẠN</a></li>
- 					</ul>
-				</div>
-				</li>
-				
-				<li>
-				<div class="dropdown">
-  				<button class="btn btn-primary navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">QUẢN LÝ DANH MỤC
-  					<span class="caret"></span></button>
-  					<ul class="dropdown-menu">
-   						<li><a href="#">CHỨC VỤ</a></li>
-    					<li><a href="#">NGẠCH CÔNG CHỨC</a></li>
-    					<li><a href="#">LOẠI HỢP ĐỒNG</a></li>
-    					<li><a href="#">LOẠI QUYẾT ĐỊNH</a></li>
-    					<li><a href="#">DÂN TỘC</a></li>
-    					<li><a href="#">TÔN GIÁO</a></li>
-    					<li><a href="#">ĐƠN VỊ CHỨC NĂNG</a></li>
- 					</ul>
-				</div>
-				</li>
-				 <li><a href="#">KÊ KHAI TÀI SẢN</a></li>
-     			 <li><a href="#">QUÁ TRÌNH LƯƠNG</a></li>
-     			 
-				<form class="navbar-form navbar-left">
-      				<div class="form-group">
-        				<input type="text" class="form-control" placeholder="Search">
-      				</div>
-    			</form>
-    			
-			</ul>
+			<!-- //inner_content_w3_agile_info-->
 		</div>
-	</nav>
-<!-- 	<div class="container"> -->
-<!-- 		<div class="starter-template"> -->
-<!-- 			<h1>BODY THYMELEAF</h1> -->
-<!-- 			<h2> -->
-<!-- 				TRUONG DAI HOC GIAO THONG VAN TAI-PHAN HIEU THANH PHO HO CHI MINH -->
-<!-- 			</h2> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
+		<!-- //inner_content-->
+	</div>
+	<!-- banner -->
+	<!--copy rights start here-->
+	<div class="copyrights">
+		<p>
+			© 2017 DiepVu. All Rights Reserved | Design by <a
+				href="https://www.facebook.com/diepvu02" target="_blank">DiepVu</a>
+		</p>
+	</div>
+	<!--copy rights end here-->
+	<!-- js -->
+
+	<script type="text/javascript" src="<c:url value='/resources/js/vendor/jquery-2.1.4.min.js'/>"></script>
+
+	
+	<!-- Chart code -->
+	<script>
+		
+	</script>
+
+	<!-- //amcharts -->
+	<script src="<c:url value='/resources/js/vendor/chart1.js'/>"></script>
+	<script src="<c:url value='/resources/js/vendor/Chart.min.js'/>"></script>
+	<script src="<c:url value='/resources/js/vendor/modernizr.custom.js'/>"></script>
+	<script src="<c:url value='/resources/js/vendor/classie.js'/>"></script>
+	
+
+	<!--skycons-icons-->
+	<script src="<c:url value='/resources/js/vendor/skycons.js'/>"></script>
+	<script>
+		var icons = new Skycons({
+			"color" : "#fcb216"
+		}), list = [ "partly-cloudy-day" ], i;
+
+		for (i = list.length; i--;)
+			icons.set(list[i], list[i]);
+		icons.play();
+	</script>
+	<script>
+		var icons = new Skycons({
+			"color" : "#fff"
+		}), list = [ "clear-night", "partly-cloudy-night", "cloudy",
+				"clear-day", "sleet", "snow", "wind", "fog" ], i;
+
+		for (i = list.length; i--;)
+			icons.set(list[i], list[i]);
+		icons.play();
+	</script>
+	<!--//skycons-icons-->
+	<!-- //js -->
+	
+	<script src="<c:url value='/resources/js/vendor/flipclock.js'/>"></script>
+
+	<script type="text/javascript">
+		var clock;
+
+		$(document).ready(function() {
+
+			clock = $('.clock').FlipClock({
+				clockFace : 'HourlyCounter'
+			});
+		});
+	</script>
+	
+
 </body>
 </html>

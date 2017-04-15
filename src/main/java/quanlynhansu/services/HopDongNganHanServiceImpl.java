@@ -32,7 +32,7 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 		Connection connection = App.getConnection();
 
 		// 2
-		String sql = "SELECT * FROM hopdongnganhan";
+		String sql = "SELECT * FROM HOPDONGNGANHAN";
 		PreparedStatement preStatement = connection.prepareStatement(sql);
 
 		// 3 execute
@@ -55,7 +55,7 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 	public boolean delete(int id) throws SQLException {
 		boolean ketqua = false;
 		Connection connection = App.getConnection();
-		String sql = "DELETE FROM hopdongnganhan WHERE maHDNganHan=?";
+		String sql = "DELETE FROM HOPDONGNGANHAN WHERE maHDNganHan=?";
 		PreparedStatement preStatement = connection.prepareStatement(sql);
 		preStatement.setInt(1, id);
 		int check = preStatement.executeUpdate();
@@ -69,7 +69,7 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 	public HopDongNganHanDTO getById(int id) throws SQLException {
 		HopDongNganHanDTO h = null;
 		Connection connection = App.getConnection();
-		String sql = "Select * from hopdongnganhan where maHDNganHan ='" + id
+		String sql = "Select * from HOPDONGNGANHAN where maHDNganHan ='" + id
 				+ "'";
 		PreparedStatement preparedStatement = connection.prepareStatement(sql);
 		ResultSet re = preparedStatement.executeQuery();
@@ -90,7 +90,7 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 	public boolean update(HopDongNganHanDTO t) throws SQLException {
 		boolean ketqua = false;
 		Connection connection = App.getConnection();
-		String sql = "UPDATE hopdongnganhan SET tenHopDong=?, tenNhanVien=?, ngayKy=?, tuNgay=?, denNgay=? WHERE maHDNganHan=?";
+		String sql = "UPDATE HOPDONGNGANHAN SET tenHopDong=?, tenNhanVien=?, ngayKy=?, tuNgay=?, denNgay=? WHERE maHDNganHan=?";
 		PreparedStatement preStatement = connection.prepareStatement(sql);
 		preStatement.setString(1, t.getTenHopDong());
 		preStatement.setString(2, t.getTenNhanVien());
@@ -111,7 +111,7 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 	public boolean insert(HopDongNganHanDTO t) throws SQLException {
 		boolean ketqua = false;
 		Connection connection = App.getConnection();
-		String sql = "INSERT INTO hopdongnganhan VALUES(?,?,?,?,?,?)";
+		String sql = "INSERT INTO HOPDONGNGANHAN VALUES(?,?,?,?,?,?)";
 		PreparedStatement preStatement = connection.prepareStatement(sql);
 		preStatement.setString(1, null);
 		preStatement.setString(2, t.getTenHopDong());
