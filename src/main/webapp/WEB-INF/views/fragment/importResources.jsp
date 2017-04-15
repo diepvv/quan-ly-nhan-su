@@ -8,6 +8,8 @@
 
 <link href="<c:url value='/resources/css/bootstrap.css'/>"
 	rel="stylesheet" type="text/css" media="all" />
+<link href="<c:url value='/resources/css/snow.css'/>" rel="stylesheet"
+	type="text/css" media="all" />
 <link href="<c:url value='/resources/css/component.css'/>"
 	rel="stylesheet" type="text/css" media="all" />
 <link href="<c:url value='/resources/css/export.css'/>" rel="stylesheet"
@@ -41,3 +43,8 @@
 <script src="<c:url value='/resources/js/vendor/screenfull.js'/>"></script>
 <script src="<c:url value='/resources/js/vendor/modernizr.custom.js'/>"></script>
 <script src="<c:url value='/resources/js/vendor/classie.js'/>"></script>
+
+<script src="<c:url value='/resources/js/vendor/snow.js'/>"></script>
+
+
+
