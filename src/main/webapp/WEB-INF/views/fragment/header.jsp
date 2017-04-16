@@ -22,8 +22,8 @@
 								</div>
 						</a>
 							<ul class="dropdown-menu drp-mnu">
-								<li><a href="#"><i class="fa fa-cog"></i> Cài đặt</a></li>
-								<li><a href="#"><i class="fa fa-user"></i> Thêm admin</a></li>
+								<li><a href="#"><i class="fa fa-cog"></i> Xin chào AD</a></li>
+								<li><a href="/addAdminController"><i class="fa fa-user"></i> Thêm admin</a></li>
 								<li><a href="/loginController"><i class="fa fa-sign-out"></i> Đăng xuất</a></li>
 							</ul></li>
 
