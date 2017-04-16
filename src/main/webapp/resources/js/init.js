@@ -9,4 +9,6 @@ $(document).ready(function() {
 	$('#toggle').click(function() {
 		screenfull.toggle($('#container')[0]);
 	});
+	//chay khi page duoc bat
+	$('.valida').valida();
 });

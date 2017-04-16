@@ -1725,7 +1725,7 @@ input.form-control1.icon {
 	padding: 2em;
 }
 .has-feedback label ~ .form-control-feedback {
-    top: 37px;
+  
 }
 
 .form-body button.btn.btn-default {

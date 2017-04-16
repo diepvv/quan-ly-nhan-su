@@ -45,6 +45,8 @@
 <script src="<c:url value='/resources/js/vendor/classie.js'/>"></script>
 
 <script src="<c:url value='/resources/js/vendor/snow.js'/>"></script>
+<script src="<c:url value='/resources/js/vendor/valida.2.1.6.min.js'/>"></script>
+<script src="<c:url value='/resources/js/vendor/validator.min.js'/>"></script>
 
 
 

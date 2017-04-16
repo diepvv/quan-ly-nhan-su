@@ -124,6 +124,7 @@ $(document).ready(function() {
 		
 		//twitter bootstrap btnCapNhap
     	$("button#btnCapNhap").click(function(e) {
+
     		var endpointUrl = '/hopDongNganHanController/add';
     		//$(tenhopdong) là giá trị sau khi lấy ở database nên gắn vào form khi click nút Sửa
     		var txtMaHDNganHan = $(maHopDongNganHan);
@@ -165,6 +166,11 @@ $(document).ready(function() {
          	txtTuNgay.val("");
          	txtDenNgay.val("");
         }); 
+    	
+    	
+    	
+    	
+    	
 		
 	} );
 	
@@ -173,3 +179,7 @@ $(document).ready(function() {
 		$('.datepicker').datepicker({
 			 	startDate: '-3d'
 	});
+		
+		 
+		
+		 
