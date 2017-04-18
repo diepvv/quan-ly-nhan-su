@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Hop Dong Ngan Han</title>
+<title>Don Vi Chuc Nang</title>
 <%@include file="fragment/importResources.jsp"%>
 <%@include file="fragment/importDataTableResources.jsp"%>
-<script src="<c:url value='/resources/js/hopDongNganHan.js' />"></script>
+<script src="<c:url value='/resources/js/donViChucNang.js' />"></script>
 <link href="<c:url value='/resources/css/myDataTable.css' />"
 	rel="stylesheet" type="text/css" />
 </head>
@@ -22,38 +22,30 @@
 
 
 		<!-- datatable start  -->
-		<h1>DANH SÁCH HỢP ĐỒNG NGẮN HẠN</h1>
+		<h1>DANH SÁCH ĐƠN VỊ CHỨC NĂNG</h1>
 		<!-- 	<button id="button">btn</button> -->
-		<table id="HopDongNganHanTable" class="display">
+		<table id="DonViChucNangTable" class="display">
 
 			<!-- Header Table -->
 			<thead>
 				<tr>
-					<th>Tên Hợp Đồng</th>
-					<th>Tên Nhân Viên</th>
-					<th>Ngày Ký</th>
-					<th>Từ Ngày</th>
-					<th>Đến Ngày</th>
-					<th>Sửa HD</th>
-					<th>Xóa HD</th>
+					<th>Tên Đơn Vị</th>
+					<th>Sửa DV</th>
+					<th>Xóa DV</th>
 				</tr>
 			</thead>
 			<!-- Footer Table -->
 			<tfoot>
 				<tr>
-					<th>Tên Hợp Đồng</th>
-					<th>Tên Nhân Viên</th>
-					<th>Ngày Ký</th>
-					<th>Từ Ngày</th>
-					<th>Đến Ngày</th>
-					<th>Sửa HD</th>
-					<th>Xóa HD</th>
+					<th>Tên Đơn Vị</th>
+					<th>Sửa DV</th>
+					<th>Xóa DV</th>
 				</tr>
 			</tfoot>
 		</table>
 		<!-- datatable end -->
 	</div>
-	<%@include file="form/hopDongNganHanForm.jsp"%>
+	<%@include file="form/donViChucNangForm.jsp"%>
 	<!-- //inner_content-->
 	<!-- footer -->
 	<%@include file="fragment/footer.jsp"%>
