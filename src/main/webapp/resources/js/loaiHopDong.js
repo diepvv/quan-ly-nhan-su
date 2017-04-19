@@ -8,7 +8,7 @@ $(document).ready(function() {
 			"aoColumnDefs": [ 
 			      {
 				       "aTargets": [ 0 ],
-				       "mData": "tenLoaiQuyetDinh"
+				       "mData": "tenLoaiHopDong"
 			      },
 				  {
 				       "targets": -1,

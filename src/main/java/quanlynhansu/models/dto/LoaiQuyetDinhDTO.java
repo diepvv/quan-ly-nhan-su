@@ -12,7 +12,6 @@ public class LoaiQuyetDinhDTO implements Serializable {
 
 	@Deprecated
 	public LoaiQuyetDinhDTO(int maLoaiQuyetDinh, String tenLoaiQuyetDinh) {
-		super();
 		this.maLoaiQuyetDinh = maLoaiQuyetDinh;
 		this.tenLoaiQuyetDinh = tenLoaiQuyetDinh;
 	}

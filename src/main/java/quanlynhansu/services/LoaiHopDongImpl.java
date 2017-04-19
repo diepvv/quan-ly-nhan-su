@@ -83,7 +83,7 @@ public class LoaiHopDongImpl implements ILoaiHopDongService {
 	public boolean insert(LoaiHopDongDTO t) throws SQLException {
 		boolean ketqua = false;
 		Connection connection = App.getConnection();
-		String sql = "INSERT INTO loaiquyetdinh VALUES(?,?)";
+		String sql = "INSERT INTO loaihopdong VALUES(?,?)";
 		PreparedStatement preStatement = connection.prepareStatement(sql);
 		preStatement.setString(1, null);
 		preStatement.setString(2, t.getTenLoaiHopDong());
