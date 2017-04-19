@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Chuc Vu</title>
+<title>Dan Toc</title>
 <%@include file="fragment/importResources.jsp"%>
 <%@include file="fragment/importDataTableResources.jsp"%>
-<script src="<c:url value='/resources/js/chucVu.js' />"></script>
+<script src="<c:url value='/resources/js/danToc.js' />"></script>
 <link href="<c:url value='/resources/css/myDataTable.css' />"
 	rel="stylesheet" type="text/css" />
 </head>
@@ -22,30 +22,30 @@
 
 
 		<!-- datatable start  -->
-		<h1>DANH SÁCH CHỨC VỤ</h1>
+		<h1>DANH SÁCH DÂN TỘC</h1>
 		<!-- 	<button id="button">btn</button> -->
-		<table id="ChucVuTable" class="display">
+		<table id="DanTocTable" class="display">
 
 			<!-- Header Table -->
 			<thead>
 				<tr>
-					<th>Tên Chức Vụ</th>
-					<th>Sửa Chức Vụ</th>
-					<th>Xóa Chức Vụ</th>
+					<th>Tên Dân Tộc</th>
+					<th>Sửa Dân Tộc</th>
+					<th>Xóa Dân Tộc</th>
 				</tr>
 			</thead>
 			<!-- Footer Table -->
 			<tfoot>
 				<tr>
-					<th>Tên Chức Vụ</th>
-					<th>Sửa Chức Vụ</th>
-					<th>Xóa Chức Vụ</th>
+					<th>Tên Dân Tộc</th>
+					<th>Sửa Dân Tộc</th>
+					<th>Xóa Dân Tộc</th>
 				</tr>
 			</tfoot>
 		</table>
 		<!-- datatable end -->
 	</div>
-	<%@include file="form/chucVuForm.jsp"%>
+	<%@include file="form/danTocForm.jsp"%>
 	<!-- //inner_content-->
 	<!-- footer -->
 	<%@include file="fragment/footer.jsp"%>
