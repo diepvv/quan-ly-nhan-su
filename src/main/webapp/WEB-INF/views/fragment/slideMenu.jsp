@@ -18,15 +18,15 @@
 										class="fa fa-angle-down" aria-hidden="true"></i></a>
 									<ul class="gn-submenu">
 										<li class="mini_list_agile"><a href="/canBoController/show"><i
-												class="fa fa-caret-right" aria-hidden="true"></i>  Cán bộ giảng viên</a></li>
+												class="fa fa-caret-right" aria-hidden="true"></i>  Danh sách cán bộ</a></li>
 										<li class="mini_list_w3"><a href="/canBoKhoanGonController/show"> <i
-												class="fa fa-caret-right" aria-hidden="true"></i>  Cán bộ khoán gọn
+												class="fa fa-caret-right" aria-hidden="true"></i>  Danh sách khoán gọn
 										</a></li>
 										<li class="mini_list_w3"><a href="/canBoKiemNhiemController/show"> <i
-												class="fa fa-caret-right" aria-hidden="true"></i>  Cán bộ kiêm nhiệm
+												class="fa fa-caret-right" aria-hidden="true"></i>  Danh sách kiêm nhiệm
 										</a></li>
 										<li class="mini_list_w3"><a href="/canBoThamNienController/show"> <i
-												class="fa fa-caret-right" aria-hidden="true"></i>  Cán bộ thâm niên
+												class="fa fa-caret-right" aria-hidden="true"></i>  Danh sách thâm niên
 										</a></li>
 									</ul></li>
 								<li><a href="#"> <i class="fa fa-file-text-o"
