@@ -7,7 +7,7 @@
 <title>DANH SACH CAN BO</title>
 <%@include file="fragment/importResources.jsp"%>
 <%@include file="fragment/importDataTableResources.jsp"%>
-<script src="<c:url value='/resources/js/canBo.js' />"></script>
+<script src="<c:url value='/resources/js/canbo.js' />"></script>
 <link href="<c:url value='/resources/css/myDataTable.css' />" rel="stylesheet" type="text/css"/>
 </head>
 <body>

@@ -19,13 +19,13 @@
 									<ul class="gn-submenu">
 										<li class="mini_list_agile"><a href="/canBoController/show"><i
 												class="fa fa-caret-right" aria-hidden="true"></i>  Danh sách cán bộ</a></li>
-										<li class="mini_list_w3"><a href="/canBoKhoanGonController/show"> <i
+										<li class="mini_list_w3"><a href="/danhSachKhoanGonController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i>  Danh sách khoán gọn
 										</a></li>
-										<li class="mini_list_w3"><a href="/canBoKiemNhiemController/show"> <i
+										<li class="mini_list_w3"><a href="/danhSachKiemNhiemController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i>  Danh sách kiêm nhiệm
 										</a></li>
-										<li class="mini_list_w3"><a href="/canBoThamNienController/show"> <i
+										<li class="mini_list_w3"><a href="/danhSachThamNienController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i>  Danh sách thâm niên
 										</a></li>
 									</ul></li>
