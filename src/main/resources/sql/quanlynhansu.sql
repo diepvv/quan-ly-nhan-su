@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: quanlynhansu
 Target Host: localhost
 Target Database: quanlynhansu
-Date: 4/13/2017 12:27:29 AM
+Date: 4/22/2017 5:00:23 PM
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -13,9 +13,19 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `bacluong`;
 CREATE TABLE `bacluong` (
-  `maBacLuong` int(11) NOT NULL,
+  `maBacLuong` int(11) NOT NULL AUTO_INCREMENT,
   `heSoLuong` double DEFAULT NULL,
   PRIMARY KEY (`maBacLuong`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Table structure for bomon
+-- ----------------------------
+DROP TABLE IF EXISTS `bomon`;
+CREATE TABLE `bomon` (
+  `maBoMon` int(11) NOT NULL AUTO_INCREMENT,
+  `tenBoMon` char(255) COLLATE utf8_unicode_ci NOT NULL,
+  PRIMARY KEY (`maBoMon`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
@@ -63,7 +73,7 @@ CREATE TABLE `canbo` (
   `tinHoc` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngayVaoDCSVNDubi` date DEFAULT NULL,
   `ngayVaoDCSVNChinhthuc` date DEFAULT NULL,
-  `ngayThamGiaToChucCTXH` date DEFAULT NULL,
+  `thamGiaToChucCTXH` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngayNhapNgu` date DEFAULT NULL,
   `ngayXuatNgu` date DEFAULT NULL,
   `quanHamCaoNhat` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -85,10 +95,20 @@ CREATE TABLE `canbo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
--- Table structure for canbokhoangon
+-- Table structure for chucvu
 -- ----------------------------
-DROP TABLE IF EXISTS `canbokhoangon`;
-CREATE TABLE `canbokhoangon` (
+DROP TABLE IF EXISTS `chucvu`;
+CREATE TABLE `chucvu` (
+  `maChucVu` int(11) NOT NULL AUTO_INCREMENT,
+  `tenChucVu` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`maChucVu`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Table structure for danhsachkhoangon
+-- ----------------------------
+DROP TABLE IF EXISTS `danhsachkhoangon`;
+CREATE TABLE `danhsachkhoangon` (
   `maCanBoKhoanGon` int(11) NOT NULL AUTO_INCREMENT,
   `maDonVi` int(11) DEFAULT NULL,
   `hoTenCanBo` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -97,13 +117,13 @@ CREATE TABLE `canbokhoangon` (
   `diaChi` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ngayKyHopDong` date DEFAULT NULL,
   PRIMARY KEY (`maCanBoKhoanGon`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
--- Table structure for canbokiemnhiem
+-- Table structure for danhsachkiemnhiem
 -- ----------------------------
-DROP TABLE IF EXISTS `canbokiemnhiem`;
-CREATE TABLE `canbokiemnhiem` (
+DROP TABLE IF EXISTS `danhsachkiemnhiem`;
+CREATE TABLE `danhsachkiemnhiem` (
   `maCanBoKiemNhiem` int(11) NOT NULL AUTO_INCREMENT,
   `maDonVi` int(11) DEFAULT NULL,
   `maCanBo` int(11) DEFAULT NULL,
@@ -114,10 +134,10 @@ CREATE TABLE `canbokiemnhiem` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
--- Table structure for canbothamnien
+-- Table structure for danhsachthamnien
 -- ----------------------------
-DROP TABLE IF EXISTS `canbothamnien`;
-CREATE TABLE `canbothamnien` (
+DROP TABLE IF EXISTS `danhsachthamnien`;
+CREATE TABLE `danhsachthamnien` (
   `maCanBoThamNien` int(11) NOT NULL AUTO_INCREMENT,
   `maDonVi` int(11) DEFAULT NULL,
   `maCanBo` int(11) DEFAULT NULL,
@@ -137,16 +157,6 @@ CREATE TABLE `canbothamnien` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
--- Table structure for chucvu
--- ----------------------------
-DROP TABLE IF EXISTS `chucvu`;
-CREATE TABLE `chucvu` (
-  `maChucVu` int(11) NOT NULL AUTO_INCREMENT,
-  `tenChucVu` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`maChucVu`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
--- ----------------------------
 -- Table structure for dantoc
 -- ----------------------------
 DROP TABLE IF EXISTS `dantoc`;
@@ -154,7 +164,7 @@ CREATE TABLE `dantoc` (
   `maDanToc` int(11) NOT NULL AUTO_INCREMENT,
   `tenDanToc` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`maDanToc`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for donvichucnang
@@ -164,7 +174,7 @@ CREATE TABLE `donvichucnang` (
   `maDonVi` int(11) NOT NULL AUTO_INCREMENT,
   `tenDonVi` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`maDonVi`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for hopdongcanbo
@@ -196,7 +206,7 @@ CREATE TABLE `hopdongnganhan` (
   `tuNgay` date DEFAULT NULL,
   `denNgay` date DEFAULT NULL,
   PRIMARY KEY (`maHDNganHan`)
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for kekhaitaisan
@@ -219,7 +229,7 @@ CREATE TABLE `loaihopdong` (
   `maLoaiHopDong` int(11) NOT NULL AUTO_INCREMENT,
   `tenLoaiHopDong` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`maLoaiHopDong`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for loaiquyetdinh
@@ -229,7 +239,7 @@ CREATE TABLE `loaiquyetdinh` (
   `maLoaiQuyetDinh` int(11) NOT NULL AUTO_INCREMENT,
   `tenLoaiQuyetDinh` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`maLoaiQuyetDinh`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for luong
@@ -257,10 +267,10 @@ CREATE TABLE `luong` (
 -- ----------------------------
 DROP TABLE IF EXISTS `ngachcongchuc`;
 CREATE TABLE `ngachcongchuc` (
-  `maNgachCongChuc` char(255) COLLATE utf8_unicode_ci NOT NULL,
-  `tenNgachCongChuc` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `maNgach` char(255) COLLATE utf8_unicode_ci NOT NULL,
+  `tenNgach` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `soNamNangBacLuong` int(11) DEFAULT NULL,
-  PRIMARY KEY (`maNgachCongChuc`)
+  PRIMARY KEY (`maNgach`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
@@ -374,10 +384,53 @@ CREATE TABLE `tongiao` (
   `maTonGiao` int(11) NOT NULL AUTO_INCREMENT,
   `tenTonGiao` char(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`maTonGiao`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `hopdongnganhan` VALUES ('7', 'Tuyển dụng lao động', 'Messi 1', '2017-04-10', '2017-04-10', '2017-04-20');
-INSERT INTO `hopdongnganhan` VALUES ('14', 'Chặt cây C2', 'Nguyễn Văn Tèo', '2017-04-09', '2017-04-13', '2017-04-20');
+INSERT INTO `bacluong` VALUES ('1', '2.34');
+INSERT INTO `bacluong` VALUES ('2', '2.51');
+INSERT INTO `bacluong` VALUES ('3', '2.29');
+INSERT INTO `bacluong` VALUES ('4', '3.35');
+INSERT INTO `bacluong` VALUES ('5', '3.4');
+INSERT INTO `bacluong` VALUES ('6', '3.58');
+INSERT INTO `bacluong` VALUES ('7', '4.32');
+INSERT INTO `bacluong` VALUES ('8', '4.54');
+INSERT INTO `bacluong` VALUES ('9', '4.6');
+INSERT INTO `bacluong` VALUES ('10', '5.6');
+INSERT INTO `bacluong` VALUES ('11', '5.78');
+INSERT INTO `chucvu` VALUES ('1', 'Trưởng ban đào tạo');
+INSERT INTO `chucvu` VALUES ('2', 'Phó ban đào tạo');
+INSERT INTO `chucvu` VALUES ('3', 'Trưởng phòng công tác chính tri sinh viên');
+INSERT INTO `chucvu` VALUES ('4', 'Trưởng ban thư viện');
+INSERT INTO `danhsachkhoangon` VALUES ('1', '2', 'Vũ Văn Điệp', '972328574', '122170970', 'Hồ Chí Minh', '2017-04-22');
+INSERT INTO `dantoc` VALUES ('1', 'Mường');
+INSERT INTO `dantoc` VALUES ('2', 'Thái');
+INSERT INTO `dantoc` VALUES ('3', 'Kinh');
+INSERT INTO `dantoc` VALUES ('4', 'Tày');
+INSERT INTO `dantoc` VALUES ('5', 'Ê ĐÊ');
+INSERT INTO `donvichucnang` VALUES ('1', 'Phòng công tác chính trị sinh viên');
+INSERT INTO `donvichucnang` VALUES ('2', 'Phòng hành chính');
+INSERT INTO `donvichucnang` VALUES ('3', 'Ban thư viện');
+INSERT INTO `donvichucnang` VALUES ('4', 'Phòng đào tạo');
+INSERT INTO `donvichucnang` VALUES ('5', 'Bộ môn điện-điện tử');
+INSERT INTO `hopdongnganhan` VALUES ('7', 'Tuyển dụng lao động', 'Nguyễn Văn A', '2017-04-10', '2017-04-10', '2017-04-20');
+INSERT INTO `hopdongnganhan` VALUES ('14', 'Tuyển dụng bảo vệ', 'Nguyễn Văn Tí', '2017-04-09', '2017-04-13', '2017-04-20');
+INSERT INTO `hopdongnganhan` VALUES ('17', 'Tuyển dụng nhân sự', 'Không Như Ngọc', '2017-04-14', '2017-04-15', '2017-04-29');
+INSERT INTO `hopdongnganhan` VALUES ('18', 'Sửa Cửa Kính C2', 'Trần Thị Bình', '2017-04-26', '2017-04-26', '2017-04-30');
+INSERT INTO `hopdongnganhan` VALUES ('19', 'a', 'a', '2017-04-18', '2017-05-05', '2017-04-29');
+INSERT INTO `loaihopdong` VALUES ('1', 'Tuyển dụng công chức');
+INSERT INTO `loaihopdong` VALUES ('2', 'Hợp đồng giảng dạy ngắn hạn');
+INSERT INTO `loaihopdong` VALUES ('3', 'Trưởng ban đào tạo');
+INSERT INTO `loaiquyetdinh` VALUES ('1', 'Cử đi học nước ngoài');
+INSERT INTO `loaiquyetdinh` VALUES ('2', 'Điều chuyển cán bộ');
+INSERT INTO `ngachcongchuc` VALUES ('01002', 'Chuyên viên chính trị', '3');
+INSERT INTO `ngachcongchuc` VALUES ('01003', 'Chuyên viên', '2');
+INSERT INTO `ngachcongchuc` VALUES ('01004', 'Cán sự', '2');
+INSERT INTO `ngachcongchuc` VALUES ('01006', 'Nhân viên đánh máy', '2');
+INSERT INTO `ngachcongchuc` VALUES ('01007', 'Nhân viên kỹ thuật', '2');
+INSERT INTO `ngachcongchuc` VALUES ('01008', 'Nhân viên đánh máy', '2');
+INSERT INTO `tongiao` VALUES ('1', 'Phật giáo');
+INSERT INTO `tongiao` VALUES ('2', 'Thiên chúa giáo');
+INSERT INTO `tongiao` VALUES ('3', 'Không');
