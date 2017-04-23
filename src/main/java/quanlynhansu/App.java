@@ -3,10 +3,12 @@ package quanlynhansu;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import org.dozer.DozerBeanMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,6 +16,13 @@ import org.springframework.context.annotation.Configuration;
 @EnableAutoConfiguration
 @ComponentScan
 public class App extends SpringBootServletInitializer {
+    
+    @Bean
+    public DozerBeanMapper mapper() {
+        DozerBeanMapper mapper = new DozerBeanMapper();
+        return mapper;
+    }
+    
 	public static Connection getConnection() {
 		Connection con = null;
 		try {
