@@ -1,4 +1,5 @@
 $(document).ready(function() {
+		var canBoController = "/canBoController";
 		var table = $('#canBoTable').DataTable({
 			"sAjaxSource" : "/canBoService/getAll",
 			"sAjaxDataProp" : "",
@@ -28,7 +29,7 @@ $(document).ready(function() {
 			      {
 				   "targets": -2,
 				   "data": null,
-				   "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#CAPNHAPCANBO'>Sửa</button>"
+				   "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal'  id='btnChiTiet'>Chi Tiết</button>"
 				  },
 			],
 			scrollY : "600px",
@@ -39,12 +40,31 @@ $(document).ready(function() {
 			          'pdf',
 			          'print',
 			          {
+			             text: 'Đơn Vị',
+			             action: function ( e, dt, node, config ) {
+		                     $('#thongKeForm').modal('show');
+			             },
+			          },
+			          {
+				             text: 'Quản Lý Cán Bộ',
+				             action: function ( e, dt, node, config ) {
+			                     $('#thongKeForm').modal('show');
+				             },
+				      },
+			          {
 		                 text: 'Thêm Cán Bộ',
 		                 action: function ( e, dt, node, config ) {
 		                    // alert( 'Button activated' );
 		                     $('#CAPNHAPCANBO').modal('show');
 		                 },
-		              }
+		              },
+		              {
+			                 text: 'Thống Kê',
+			                 action: function ( e, dt, node, config ) {
+			                    // alert( 'Button activated' );
+			                     $('#thongKeForm').modal('show');
+			                 },
+			          }
 			          ],
 		    colReorder: true,
 		    select: true,
@@ -53,22 +73,37 @@ $(document).ready(function() {
             }
 		});
 	
-	$('#canBoTable tbody').on( 'click', 'button', function () {
-		var id = $(this)[0].id;
-		if("btnDel" == id){
-        var data = table.row($(this).parents('tr')).data();
-        alert($(this)[0].id + ": " + data['soHieuCB']);
-		}
-    });
-	
-	$('#btnDel').on( 'click', function () {
-	        alert('xoa');
-	    } );
-	} );
-	
-	
-	/*  datepicker*/
-	$.fn.datepicker.defaults.format = "yyyy-mm-dd";
-	$('.datepicker').datepicker({
-			 	startDate: '-3d'
-	});
+		$('#canBoTable tbody').on( 'click', 'button', function () {
+			var id = $(this)[0].id;
+			if("btnChiTiet" == id){
+		        var data = table.row($(this).parents('tr')).data();
+		       // alert($(this)[0].id + ": " + data['soHieuCB']);
+		        /*$.ajax({  
+                    url: canBoController+"/ChiTietCanBo",  
+                    type: 'GET',  
+                    success: function (res) {
+                    	alert('succcess');
+                    }
+                });*/
+		        $('#ChiTietCanBoForm').modal('show');
+			}
+	    });
+		
+		$('#btnDel').on( 'click', function () {
+		    alert('xoa');
+		});
+		
+		$("button#btnXacNhan").click(function(e) {
+			alert($(hidTieuChi).val());
+		});
+		
+		$("button#btnXacNhanChiTietCanBo").click(function(e) {
+			alert($(hidTieuChiChiTietCanBo).val());
+		});
+});
+
+/*  datepicker*/
+$.fn.datepicker.defaults.format = "yyyy-mm-dd";
+$('.datepicker').datepicker({
+		 	startDate: '-3d'
+});

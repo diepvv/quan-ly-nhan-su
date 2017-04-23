@@ -2,7 +2,6 @@
 	pageEncoding="utf-8"%>
 	<div id="CAPNHAPCANBO" class="modal fade" role="dialog">
   <div class="modal-dialog ">
-
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
@@ -314,3 +313,4 @@
 
   </div>
 </div>
+	<%@include file="thongKeForm.jsp"%>

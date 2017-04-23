@@ -8,7 +8,7 @@ $(document).ready(function() {
 			"aoColumnDefs": [ 
 			      {
 				       "aTargets": [ 0 ],
-				       "mData": "hoTenCanbo"
+				       "mData": "hoTenCanBo"
 			      },
 			      {
 				       "aTargets": [ 1 ],
