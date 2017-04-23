@@ -2,6 +2,7 @@ package quanlynhansu.service;
 
 import java.util.ArrayList;
 
+import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -15,6 +16,9 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
     @Autowired
     private IHopDongNganHanRepository repo;
 
+    @Autowired
+    protected DozerBeanMapper mapper;
+
     @Override
     public ArrayList<HopDongNganHanDTO> getAll() {
 
@@ -23,8 +27,7 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
         Iterable<Hopdongnganhan> listFromDb = repo.findAll();
 
         for (Hopdongnganhan h : listFromDb) {
-            ketqua.add(new HopDongNganHanDTO(h.getMaHDNganHan().intValue(), h.getTenHopDong(), h.getTenNhanVien(),
-                    h.getNgayKy(), h.getTuNgay(), h.getDenNgay()));
+            ketqua.add(mapper.map(h, HopDongNganHanDTO.class));
         }
 
         return ketqua;
@@ -38,8 +41,7 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
     @Override
     public HopDongNganHanDTO getById(int id) {
         Hopdongnganhan entity = repo.findOne(Integer.valueOf(id));
-        return new HopDongNganHanDTO(entity.getMaHDNganHan().intValue(), entity.getTenHopDong(),
-                entity.getTenNhanVien(), entity.getNgayKy(), entity.getTuNgay(), entity.getDenNgay());
+        return mapper.map(entity, HopDongNganHanDTO.class);
     }
 
     @Override
@@ -60,11 +62,8 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
             entity = repo.findOne(Integer.valueOf(dto.getMaHDNganHan()));
         }
 
-        entity.setTuNgay(dto.getTuNgay());
-        entity.setDenNgay(dto.getDenNgay());
-        entity.setNgayKy(dto.getNgayKy());
-        entity.setTenHopDong(dto.getTenHopDong());
-        entity.setTenNhanVien(dto.getTenNhanVien());
+        mapper.map(dto, entity);
+
         return repo.save(entity);
     }
 }
