@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import quanlynhansu.models.dto.CanBoDTO;
-import quanlynhansu.services.ICanBoService;
+import quanlynhansu.model.dto.CanBoDTO;
+import quanlynhansu.service.ICanBoService;
 
 @RestController
 @RequestMapping("/canBoService")

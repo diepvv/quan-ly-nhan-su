@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import quanlynhansu.models.dto.HopDongNganHanDTO;
-import quanlynhansu.services.IHopDongNganHanService;
+import quanlynhansu.model.dto.HopDongNganHanDTO;
+import quanlynhansu.service.IHopDongNganHanService;
 
 @RestController
 @RequestMapping("/hopDongNganHanService")
