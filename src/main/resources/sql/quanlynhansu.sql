@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: quanlynhansu
 Target Host: localhost
 Target Database: quanlynhansu
-Date: 4/25/2017 1:31:59 PM
+Date: 4/25/2017 4:38:26 PM
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -268,7 +268,6 @@ CREATE TABLE `hopdongnganhan` (
   `tuNgay` date DEFAULT NULL,
   `denNgay` date DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
-  `maHDNganHan` int(11) NOT NULL,
   PRIMARY KEY (`pk`)
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -537,11 +536,11 @@ INSERT INTO `donvichucnang` VALUES ('8', null, 'Ban thư viện', null);
 INSERT INTO `donvichucnang` VALUES ('9', null, 'Phòng đào tạo', null);
 INSERT INTO `donvichucnang` VALUES ('10', null, 'Bộ môn điện-điện tử', null);
 INSERT INTO `hibernate_sequence` VALUES ('1');
-INSERT INTO `hopdongnganhan` VALUES ('7', 'Tuyển dụng lao động', 'Nguyễn Văn A', '2017-04-10', '2017-04-10', '2017-04-20', null, '0');
-INSERT INTO `hopdongnganhan` VALUES ('14', 'Tuyển dụng bảo vệ', 'Nguyễn Văn Tí', '2017-04-09', '2017-04-13', '2017-04-20', null, '0');
-INSERT INTO `hopdongnganhan` VALUES ('17', 'Tuyển dụng nhân sự', 'Không Như Ngọc', '2017-04-14', '2017-04-15', '2017-04-29', null, '0');
-INSERT INTO `hopdongnganhan` VALUES ('18', 'Sửa Cửa Kính C2', 'Trần Thị Bình', '2017-04-26', '2017-04-26', '2017-04-30', null, '0');
-INSERT INTO `hopdongnganhan` VALUES ('19', 'a', 'a', '2017-04-18', '2017-04-26', '2017-04-29', null, '0');
+INSERT INTO `hopdongnganhan` VALUES ('7', 'Tuyển dụng lao động', 'Nguyễn Văn A', '2017-04-10', '2017-04-10', '2017-04-20', null);
+INSERT INTO `hopdongnganhan` VALUES ('14', 'Tuyển dụng bảo vệ', 'Nguyễn Văn Tí', '2017-04-09', '2017-04-13', '2017-04-20', null);
+INSERT INTO `hopdongnganhan` VALUES ('17', 'Tuyển dụng nhân sự', 'Không Như Ngọc', '2017-04-14', '2017-04-15', '2017-04-29', null);
+INSERT INTO `hopdongnganhan` VALUES ('18', 'Sửa Cửa Kính C2', 'Trần Thị Bình', '2017-04-26', '2017-04-26', '2017-04-30', null);
+INSERT INTO `hopdongnganhan` VALUES ('19', 'a', 'a', '2017-04-18', '2017-04-26', '2017-04-29', null);
 INSERT INTO `loaihopdong` VALUES ('1', 'Hợp đồng làm việc không xác định thời hạn', null);
 INSERT INTO `loaihopdong` VALUES ('2', 'Hợp đồng lao động 12 tháng', null);
 INSERT INTO `loaihopdong` VALUES ('3', 'Hợp đồng thử việc', null);
