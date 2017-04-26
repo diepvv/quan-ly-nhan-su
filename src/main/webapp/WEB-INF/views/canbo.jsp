@@ -28,7 +28,7 @@
 				<th>Tên Cán Bô</th>
 				<th>Đơn Vị Công Tác</th>
 				<th>Chức Vụ Hiện Tại</th>
-				<th>Sửa CB</th>
+				<th>Chi Tiết CB</th>
 				<th>Xóa CB</th>
 			</tr>
 		</thead>
@@ -39,7 +39,7 @@
 				<th>Tên Cán Bô</th>
 				<th>Đơn Vị Công Tác</th>
 				<th>Chức Vụ Hiện Tại</th>
-				<th>Sửa CB</th>
+				<th>Chi Tiết</th>
 				<th>Xóa CB</th>
 			</tr>
 		</tfoot>
@@ -49,6 +49,7 @@
 		</div>
 		<%@include file="form/canBoForm.jsp"%>
 		<%@include file="form/chiTietCanBoForm.jsp"%>
+		<%@include file="form/thongKeForm.jsp"%>
 		<!-- footer -->
 	<%@include file="fragment/footer.jsp"%>
 </body>

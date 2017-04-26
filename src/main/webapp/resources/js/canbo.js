@@ -35,7 +35,7 @@ $(document).ready(function() {
 			scrollY : "600px",
 			scrollCollapse: true,
 			dom: 'Blfrtip',
-			buttons: ['copy',
+			buttons: [
 			          'excel',
 			          'pdf',
 			          'print',

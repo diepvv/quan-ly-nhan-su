@@ -313,4 +313,3 @@
 
   </div>
 </div>
-	<%@include file="thongKeForm.jsp"%>

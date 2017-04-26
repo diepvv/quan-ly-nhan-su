@@ -5335,7 +5335,7 @@ a.list-group-item-danger.active:focus {
 .panel-title > .small,
 .panel-title > small > a,
 .panel-title > .small > a {
-  color: inherit;
+  color: green;
 }
 .panel-footer {
   padding: 10px 15px;
@@ -5795,6 +5795,7 @@ button.close {
 .modal-title {
   margin: 0;
   line-height: 1.42857143;
+  color: goldenrod;
 }
 .modal-body {
   position: relative;
