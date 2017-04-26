@@ -11,7 +11,7 @@
 					<h4 class="modal-title">DÂN TỘC</h4>
 				</div>
 				<div class="modal-body">
-					<input class="form-control" id="maDanToc" type="hidden">
+					<input class="form-control" id="pk" type="hidden">
 					<div class="form-group">
 						<label for="tenDanToc">Tên Dân Tộc</label> <input
 							class="form-control" id="tenDanToc" name="tenDanToc"

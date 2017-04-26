@@ -8,11 +8,11 @@ import quanlynhansu.model.dto.DanTocDTO;
 public interface IDanTocService {
 	public ArrayList<DanTocDTO> getAll() throws SQLException;
 
-	boolean delete(int id) throws SQLException;
+	void delete(Integer id) throws SQLException;
 
-	public DanTocDTO getById(int id) throws SQLException;
+	public DanTocDTO getById(Integer id) throws SQLException;
 
-	boolean update(DanTocDTO t) throws SQLException;
+	DanTocDTO update(DanTocDTO t) throws SQLException;
 
-	boolean insert(DanTocDTO t) throws SQLException;
+	DanTocDTO insert(DanTocDTO t) throws SQLException;
 }

@@ -47,13 +47,13 @@ $(document).ready(function() {
 			          {
 		                 text: 'THÊM HỢP ĐỒNG NGẮN HẠN',
 		                 action: function ( e, dt, node, config ) {
-		                	 var txtMaHDNganHan = $(maHopDongNganHan);
+		                	 var txtPk = $(pk);
 		                	 var txtTenHopDong=$(tenhopdong);
 		                     var txtTenNhanVien=$(tennhanvien);
 		                     var txtNgayKy=$(dpNgayKy);
 		                     var txtTuNgay=$(dpTuNgay);
 		                     var txtDenNgay=$(dpDenNgay);
-		                     	 txtMaHDNganHan.val(-1);
+		                     	 txtPk.val(-1);
 		                     	 txtTenHopDong.val("");
 	                         	 txtTenNhanVien.val("");
 	                         	 txtNgayKy.val("");
@@ -77,10 +77,10 @@ $(document).ready(function() {
 	        var data = table.row($(this).parents('tr')).data();
 	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
                     + data['tenNhanVien'])
-                    var maHDNganHan = data['maHDNganHan'];
+                    var Pk = data['pk'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: hopDongNganHanController+"/delete/"+maHDNganHan,  
+	                    url: hopDongNganHanController+"/delete/"+Pk,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -95,22 +95,22 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
 					var data = table.row($(this).parents('tr')).data();
-                    var maHDNganHan = data['maHDNganHan'];
+                    var Pk = data['pk'];
                     //$(tenhopdong) giá trị ban đầu : Rỗng
-                    var txtMaHDNganHan = $(maHopDongNganHan);
+                    var txtPk = $(pk);
                     var txtTenHopDong=$(tenhopdong);
                     var txtTenNhanVien=$(tennhanvien);
                     var txtNgayKy=$(dpNgayKy);
                     var txtTuNgay=$(dpTuNgay);
                     var txtDenNgay=$(dpDenNgay);
 	            	$.ajax({  
-	                    url: hopDongNganHanService+"/getById/"+maHDNganHan,  
+	                    url: hopDongNganHanService+"/getById/"+Pk,  
 	                    type: 'GET',  
 	                    success: function (res) {
 	                    	//alert(res.tenNhanVien);
 	                    	//tenhopdong: id cua the input, res.tenHopDong : lay tu chuoi json dc get tu co do du lieu
 	                    	//lay thong tin tu co so du lieu gan nen form
-	                    	txtMaHDNganHan.val(maHDNganHan);
+	                    	txtPk.val(Pk);
 	                    	txtTenHopDong.val(res.tenHopDong);
 	                    	txtTenNhanVien.val(res.tenNhanVien);
 	                    	txtNgayKy.val(res.ngayKy);
@@ -127,7 +127,7 @@ $(document).ready(function() {
 
     		var endpointUrl = '/hopDongNganHanController/add';
     		//$(tenhopdong) là giá trị sau khi lấy ở database nên gắn vào form khi click nút Sửa
-    		var txtMaHDNganHan = $(maHopDongNganHan);
+    		var txtPk = $(pk);
     		var txtTenHopDong = $(tenhopdong);
             var txtTenNhanVien = $(tennhanvien);
             var txtNgayKy = $(dpNgayKy);
@@ -136,13 +136,13 @@ $(document).ready(function() {
             
             var json = new Object();
          	//truyen du lieu thanh chuoi Json gui xuong database
-            json.maHDNganHan = txtMaHDNganHan.val();
+            json.pk = txtPk.val();
             json.tenHopDong = txtTenHopDong.val();
             json.tenNhanVien = txtTenNhanVien.val();
             json.ngayKy = txtNgayKy.val();
             json.tuNgay= txtTuNgay.val();
             json.denNgay = txtDenNgay.val();
-            if(txtMaHDNganHan.val() != -1){
+            if(txtPk.val() != -1){
             	var endpointUrl = '/hopDongNganHanController/update';
             }
             $.ajax({
@@ -167,11 +167,6 @@ $(document).ready(function() {
          	txtDenNgay.val("");
         }); 
     	
-    	
-    	
-    	
-    	
-		
 	} );
 	
 	/*  datepicker*/

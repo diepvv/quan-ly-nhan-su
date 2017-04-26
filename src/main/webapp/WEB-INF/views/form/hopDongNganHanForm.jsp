@@ -11,7 +11,7 @@
 					<h4 class="modal-title">HỢP ĐỒNG NGẮN HẠN</h4>
 				</div>
 				<div class="modal-body">
-					<input class="form-control" id="maHopDongNganHan" type="hidden">
+					<input class="form-control" id="pk" type="hidden">
 					<div class="form-group">
 						<label for="tenhopdong">Tên hợp đồng</label> <input
 							class="form-control" id="tenhopdong" name="tenhopdong"

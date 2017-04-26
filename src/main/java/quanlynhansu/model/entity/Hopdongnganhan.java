@@ -1,23 +1,24 @@
 package quanlynhansu.model.entity;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.util.Date;
 
+import javax.persistence.*;
+
+import java.util.Date;
 
 /**
  * The persistent class for the hopdongnganhan database table.
  * 
  */
 @Entity
-@Table(name="hopdongnganhan")
-@NamedQuery(name="Hopdongnganhan.findAll", query="SELECT h FROM Hopdongnganhan h")
+@Table(name = "hopdongnganhan")
+@NamedQuery(name = "Hopdongnganhan.findAll", query = "SELECT h FROM Hopdongnganhan h")
 public class Hopdongnganhan implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer maHDNganHan;
+	private Integer pk;
 
 	@Temporal(TemporalType.DATE)
 	private Date denNgay;
@@ -35,12 +36,12 @@ public class Hopdongnganhan implements Serializable {
 	public Hopdongnganhan() {
 	}
 
-	public Integer getMaHDNganHan() {
-		return this.maHDNganHan;
+	public Integer getPk() {
+		return pk;
 	}
 
-	public void setMaHDNganHan(Integer maHDNganHan) {
-		this.maHDNganHan = maHDNganHan;
+	public void setPk(Integer pk) {
+		this.pk = pk;
 	}
 
 	public Date getDenNgay() {

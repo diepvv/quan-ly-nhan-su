@@ -25,10 +25,10 @@ public class HopDongNganHanRestController {
 		return hopdongnganhan.getAll();
 	}
 
-	@GetMapping("/getById/{maHDNganHan}")
-	public HopDongNganHanDTO getById(@PathVariable int maHDNganHan)
+	@GetMapping("/getById/{Pk}")
+	public HopDongNganHanDTO getById(@PathVariable int Pk)
 			throws ParseException, SQLException {
-		HopDongNganHanDTO hdnh = hopdongnganhan.getById(maHDNganHan);
+		HopDongNganHanDTO hdnh = hopdongnganhan.getById(Pk);
 		return hdnh;
 	}
 }

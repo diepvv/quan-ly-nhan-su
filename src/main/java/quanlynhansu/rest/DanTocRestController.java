@@ -24,10 +24,10 @@ public class DanTocRestController {
 		return dantoc.getAll();
 	}
 
-	@GetMapping("/getById/{maDT}")
-	public DanTocDTO getById(@PathVariable int maDT) throws ParseException,
+	@GetMapping("/getById/{pK}")
+	public DanTocDTO getById(@PathVariable Integer pK) throws ParseException,
 			SQLException {
-		DanTocDTO dt = dantoc.getById(maDT);
+		DanTocDTO dt = dantoc.getById(pK);
 		return dt;
 	}
 }

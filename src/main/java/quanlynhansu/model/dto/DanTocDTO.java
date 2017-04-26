@@ -4,24 +4,24 @@ import java.io.Serializable;
 
 public class DanTocDTO implements Serializable {
 	private static final long serialVersionUID = -159413676766566667L;
-	private int maDanToc;
+	private Integer pk;
 	private String tenDanToc;
 
 	public DanTocDTO() {
 	}
 
 	@Deprecated
-	public DanTocDTO(int maDanToc, String tenDanToc) {
-		this.maDanToc = maDanToc;
+	public DanTocDTO(Integer pk, String tenDanToc) {
+		this.pk = pk;
 		this.tenDanToc = tenDanToc;
 	}
 
-	public int getMaDanToc() {
-		return maDanToc;
+	public Integer getPk() {
+		return pk;
 	}
 
-	public void setMaDanToc(int maDanToc) {
-		this.maDanToc = maDanToc;
+	public void setPk(Integer pk) {
+		this.pk = pk;
 	}
 
 	public String getTenDanToc() {

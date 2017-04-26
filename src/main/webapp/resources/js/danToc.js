@@ -28,9 +28,9 @@ $(document).ready(function() {
 			          {
 		                 text: 'THÊM DÂN TỘC',
 		                 action: function ( e, dt, node, config ) {
-		                	 var txtMaDanToc = $(maDanToc);
+		                	 var txtPk = $(pk);
 		                	 var txtTenDanToc=$(tenDanToc);
-		                	 txtMaDanToc.val(-1);
+		                	 txtPk.val(-1);
 		                	 txtTenDanToc.val("");
 		                     
 		                     $('#formDanToc').modal('show');
@@ -50,10 +50,10 @@ $(document).ready(function() {
 	        var data = table.row($(this).parents('tr')).data();
 	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
                     + data['tenDanToc'])
-                    var maDanToc = data['maDanToc'];
+                    var pK = data['pk'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: danTocController+"/delete/"+maDanToc,  
+	                    url: danTocController+"/delete/"+pK,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -68,14 +68,14 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
 					var data = table.row($(this).parents('tr')).data();
-                    var maDT = data['maDanToc'];
-					var txtMaDanToc = $(maDanToc);
+                    var pK = data['pk'];
+					var txtPk = $(pk);
                 	var txtTenDanToc=$(tenDanToc);
 	            	$.ajax({  
-	                    url: danTocService+"/getById/"+maDT,  
+	                    url: danTocService+"/getById/"+pK,  
 	                    type: 'GET',  
 	                    success: function (res) {
-	                    	 txtMaDanToc.val(maDT);
+	                    	 txtPk.val(pK);
 		                	 txtTenDanToc.val(res.tenDanToc);
 		                     $('#formDanToc').modal('show');
 	                    }
@@ -87,14 +87,14 @@ $(document).ready(function() {
     	$("button#btnCapNhap").click(function(e) {
 
     		var endpointUrl = '/danTocController/add';
-    		 var txtMaDanToc = $(maDanToc);
+    		 var txtPk = $(pk);
         	 var txtTenDanToc=$(tenDanToc);
            
             
             var json = new Object();
-            json.maDanToc = txtMaDanToc.val();
+            json.pk = txtPk.val();
             json.tenDanToc = txtTenDanToc.val();
-            if(txtMaDanToc.val() != -1){
+            if(txtPk.val() != -1){
             	var endpointUrl = '/danTocController/update';
             }
             $.ajax({

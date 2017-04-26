@@ -13,57 +13,57 @@ import quanlynhansu.repository.IHopDongNganHanRepository;
 @Component
 public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 
-    @Autowired
-    private IHopDongNganHanRepository repo;
+	@Autowired
+	private IHopDongNganHanRepository repo;
 
-    @Autowired
-    protected DozerBeanMapper mapper;
+	@Autowired
+	protected DozerBeanMapper mapper;
 
-    @Override
-    public ArrayList<HopDongNganHanDTO> getAll() {
+	@Override
+	public ArrayList<HopDongNganHanDTO> getAll() {
 
-        ArrayList<HopDongNganHanDTO> ketqua = new ArrayList<>();
+		ArrayList<HopDongNganHanDTO> ketqua = new ArrayList<>();
 
-        Iterable<Hopdongnganhan> listFromDb = repo.findAll();
+		Iterable<Hopdongnganhan> listFromDb = repo.findAll();
 
-        for (Hopdongnganhan h : listFromDb) {
-            ketqua.add(mapper.map(h, HopDongNganHanDTO.class));
-        }
+		for (Hopdongnganhan h : listFromDb) {
+			ketqua.add(mapper.map(h, HopDongNganHanDTO.class));
+		}
 
-        return ketqua;
-    }
+		return ketqua;
+	}
 
-    @Override
-    public void delete(int id) {
-        repo.delete(Integer.valueOf(id));
-    }
+	@Override
+	public void delete(int id) {
+		repo.delete(Integer.valueOf(id));
+	}
 
-    @Override
-    public HopDongNganHanDTO getById(int id) {
-        Hopdongnganhan entity = repo.findOne(Integer.valueOf(id));
-        return mapper.map(entity, HopDongNganHanDTO.class);
-    }
+	@Override
+	public HopDongNganHanDTO getById(int id) {
+		Hopdongnganhan entity = repo.findOne(Integer.valueOf(id));
+		return mapper.map(entity, HopDongNganHanDTO.class);
+	}
 
-    @Override
-    public HopDongNganHanDTO update(HopDongNganHanDTO t) {
-        addOrUpdate(t);
-        return t;
-    }
+	@Override
+	public HopDongNganHanDTO update(HopDongNganHanDTO t) {
+		addOrUpdate(t);
+		return t;
+	}
 
-    @Override
-    public HopDongNganHanDTO insert(HopDongNganHanDTO t) {
-        addOrUpdate(t);
-        return t;
-    }
+	@Override
+	public HopDongNganHanDTO insert(HopDongNganHanDTO t) {
+		addOrUpdate(t);
+		return t;
+	}
 
-    private Hopdongnganhan addOrUpdate(HopDongNganHanDTO dto) {
-        Hopdongnganhan entity = new Hopdongnganhan();
-        if (dto.getMaHDNganHan() != null && dto.getMaHDNganHan().intValue() != -1) {
-            entity = repo.findOne(Integer.valueOf(dto.getMaHDNganHan()));
-        }
+	private Hopdongnganhan addOrUpdate(HopDongNganHanDTO dto) {
+		Hopdongnganhan entity = new Hopdongnganhan();
+		if (dto.getPk() != null && dto.getPk().intValue() != -1) {
+			entity = repo.findOne(Integer.valueOf(dto.getPk()));
+		}
 
-        mapper.map(dto, entity);
+		mapper.map(dto, entity);
 
-        return repo.save(entity);
-    }
+		return repo.save(entity);
+	}
 }

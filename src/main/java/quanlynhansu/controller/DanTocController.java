@@ -26,10 +26,10 @@ public class DanTocController {
 		return "dantoc";
 	}
 
-	@RequestMapping(value = "/delete/{maDanToc}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable int maDanToc, Model model)
+	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
+	public String delete(@PathVariable Integer pK, Model model)
 			throws SQLException {
-		dantoc.delete(maDanToc);
+		dantoc.delete(pK);
 		return "dantoc";
 	}
 
@@ -41,9 +41,9 @@ public class DanTocController {
 	}
 
 	@PostMapping("/add")
-	public String insert(@RequestBody DanTocDTO cv, Model model)
+	public String insert(@RequestBody DanTocDTO dt, Model model)
 			throws SQLException {
-		dantoc.insert(cv);
+		dantoc.insert(dt);
 		return "dantoc";
 	}
 }
