@@ -40,15 +40,15 @@ $(document).ready(function() {
 			          'pdf',
 			          'print',
 			          {
-			             text: 'Đơn Vị',
+			             text: 'Chọn Theo Đơn Vị',
 			             action: function ( e, dt, node, config ) {
-		                     $('#thongKeForm').modal('show');
+		                     $('#DonViForm').modal('show');
 			             },
 			          },
 			          {
 				             text: 'Quản Lý Cán Bộ',
 				             action: function ( e, dt, node, config ) {
-			                     $('#thongKeForm').modal('show');
+			                     $('#QuanLyCanBoForm').modal('show');
 				             },
 				      },
 			          {
@@ -77,21 +77,17 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnChiTiet" == id){
 		        var data = table.row($(this).parents('tr')).data();
-		       // alert($(this)[0].id + ": " + data['soHieuCB']);
-		        /*$.ajax({  
-                    url: canBoController+"/ChiTietCanBo",  
-                    type: 'GET',  
-                    success: function (res) {
-                    	alert('succcess');
-                    }
-                });*/
 		        $('#ChiTietCanBoForm').modal('show');
 			}
 	    });
 		
-		$('#btnDel').on( 'click', function () {
-		    alert('xoa');
-		});
+		$('#canBoTable tbody').on( 'click', 'button', function () {
+			var id = $(this)[0].id;
+			if("btnDel" == id){
+		        var data = table.row($(this).parents('tr')).data();
+		        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : " + data['soHieuCB'])
+			}
+	    });
 		
 		$("button#btnXacNhan").click(function(e) {
 			alert($(hidTieuChi).val());
@@ -99,6 +95,10 @@ $(document).ready(function() {
 		
 		$("button#btnXacNhanChiTietCanBo").click(function(e) {
 			alert($(hidTieuChiChiTietCanBo).val());
+		});
+		
+		$("button#btnXacNhanQuanLyCanBo").click(function(e) {
+			alert($(hidTieuChiQLCB).val());
 		});
 });
 

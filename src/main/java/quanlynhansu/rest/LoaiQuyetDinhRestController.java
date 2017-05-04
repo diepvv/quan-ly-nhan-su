@@ -24,10 +24,10 @@ public class LoaiQuyetDinhRestController {
 		return loaiquyetdinh.getAll();
 	}
 
-	@GetMapping("/getById/{maLoaiQD}")
-	public LoaiQuyetDinhDTO getById(@PathVariable int maLoaiQD)
+	@GetMapping("/getById/{pK}")
+	public LoaiQuyetDinhDTO getById(@PathVariable Integer pK)
 			throws ParseException, SQLException {
-		LoaiQuyetDinhDTO lqd = loaiquyetdinh.getById(maLoaiQD);
+		LoaiQuyetDinhDTO lqd = loaiquyetdinh.getById(pK);
 		return lqd;
 	}
 }

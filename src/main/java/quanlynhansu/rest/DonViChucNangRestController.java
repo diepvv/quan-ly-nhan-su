@@ -25,10 +25,10 @@ public class DonViChucNangRestController {
 		return donvichucnang.getAll();
 	}
 
-	@GetMapping("/getById/{maDonViChucNang}")
-	public DonViChucNangDTO getById(@PathVariable int maDonViChucNang)
+	@GetMapping("/getById/{pK}")
+	public DonViChucNangDTO getById(@PathVariable Integer pK)
 			throws ParseException, SQLException {
-		DonViChucNangDTO dvcn = donvichucnang.getById(maDonViChucNang);
+		DonViChucNangDTO dvcn = donvichucnang.getById(pK);
 		return dvcn;
 	}
 

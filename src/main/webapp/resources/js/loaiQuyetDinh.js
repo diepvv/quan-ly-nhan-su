@@ -28,9 +28,9 @@ $(document).ready(function() {
 			          {
 		                 text: 'THÊM LOẠI QUYẾT ĐỊNH',
 		                 action: function ( e, dt, node, config ) {
-		                	 var txtMaLoaiQuyetDinh = $(maLoaiQuyetDinh);
+		                	 var txtPk = $(pk);
 		                	 var txtTenLoaiQuyetDinh=$(tenLoaiQuyetDinh);
-		                	 txtMaLoaiQuyetDinh.val(-1);
+		                	 txtPk.val(-1);
 		                	 txtTenLoaiQuyetDinh.val("");
 		                     
 		                     $('#formLoaiQuyetDinh').modal('show');
@@ -50,10 +50,10 @@ $(document).ready(function() {
 	        var data = table.row($(this).parents('tr')).data();
 	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
                     + data['tenLoaiQuyetDinh'])
-                    var maLoaiQuyetDinh = data['maLoaiQuyetDinh'];
+                    var pK = data['pk'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: loaiQuyetDinhController+"/delete/"+maLoaiQuyetDinh,  
+	                    url: loaiQuyetDinhController+"/delete/"+pK,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -68,14 +68,14 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
 					var data = table.row($(this).parents('tr')).data();
-                    var maLoaiQD = data['maLoaiQuyetDinh'];
-					var txtMaLoaiQuyetDinh = $(maLoaiQuyetDinh);
+                    var pK = data['pk'];
+					var txtPk = $(pk);
                 	var txtTenLoaiQuyetDinh=$(tenLoaiQuyetDinh);
 	            	$.ajax({  
-	                    url: loaiQuyetDinhService+"/getById/"+maLoaiQD,  
+	                    url: loaiQuyetDinhService+"/getById/"+pK,  
 	                    type: 'GET',  
 	                    success: function (res) {
-	                    	 txtMaLoaiQuyetDinh.val(maLoaiQD);
+	                    	 txtPk.val(pK);
 		                	 txtTenLoaiQuyetDinh.val(res.tenLoaiQuyetDinh);
 		                     $('#formLoaiQuyetDinh').modal('show');
 	                    }
@@ -87,14 +87,14 @@ $(document).ready(function() {
     	$("button#btnCapNhap").click(function(e) {
 
     		var endpointUrl = '/loaiQuyetDinhController/add';
-    		 var txtMaLoaiQuyetDinh = $(maLoaiQuyetDinh);
+    		 var txtPk = $(pk);
         	 var txtTenLoaiQuyetDinh=$(tenLoaiQuyetDinh);
            
             
             var json = new Object();
-            json.maLoaiQuyetDinh = txtMaLoaiQuyetDinh.val();
+            json.pk = txtPk.val();
             json.tenLoaiQuyetDinh = txtTenLoaiQuyetDinh.val();
-            if(txtMaLoaiQuyetDinh.val() != -1){
+            if(txtPk.val() != -1){
             	var endpointUrl = '/loaiQuyetDinhController/update';
             }
             $.ajax({

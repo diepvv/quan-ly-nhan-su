@@ -11,7 +11,7 @@
 					<h4 class="modal-title">TÔN GIÁO</h4>
 				</div>
 				<div class="modal-body">
-					<input class="form-control" id="maTonGiao" type="hidden">
+					<input class="form-control" id="pk" type="hidden">
 					<div class="form-group">
 						<label for="tenTonGiao">Tên Tôn Giáo</label> <input
 							class="form-control" id="tenTonGiao" name="tenTonGiao"

@@ -4,24 +4,25 @@ import java.io.Serializable;
 
 public class LoaiQuyetDinhDTO implements Serializable {
 	private static final long serialVersionUID = -6209458097983841791L;
-	private int maLoaiQuyetDinh;
+	private Integer pk;
 	private String tenLoaiQuyetDinh;
 
 	public LoaiQuyetDinhDTO() {
 	}
 
 	@Deprecated
-	public LoaiQuyetDinhDTO(int maLoaiQuyetDinh, String tenLoaiQuyetDinh) {
-		this.maLoaiQuyetDinh = maLoaiQuyetDinh;
+	public LoaiQuyetDinhDTO(Integer pk, String tenLoaiQuyetDinh) {
+		super();
+		this.pk = pk;
 		this.tenLoaiQuyetDinh = tenLoaiQuyetDinh;
 	}
 
-	public int getMaLoaiQuyetDinh() {
-		return maLoaiQuyetDinh;
+	public Integer getPk() {
+		return pk;
 	}
 
-	public void setMaLoaiQuyetDinh(int maLoaiQuyetDinh) {
-		this.maLoaiQuyetDinh = maLoaiQuyetDinh;
+	public void setPk(Integer pk) {
+		this.pk = pk;
 	}
 
 	public String getTenLoaiQuyetDinh() {

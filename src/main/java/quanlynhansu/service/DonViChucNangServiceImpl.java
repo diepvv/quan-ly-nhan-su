@@ -1,96 +1,64 @@
 package quanlynhansu.service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import quanlynhansu.App;
 import quanlynhansu.model.dto.DonViChucNangDTO;
+import quanlynhansu.model.entity.Donvichucnang;
+import quanlynhansu.repository.IDonViChucNangRepository;
 
 @Component
 public class DonViChucNangServiceImpl implements IDonViChucNangService {
+	@Autowired
+	private IDonViChucNangRepository repo;
+	@Autowired
+	protected DozerBeanMapper mapper;
+
 	@Override
-	public ArrayList<DonViChucNangDTO> getAll() throws SQLException {
+	public ArrayList<DonViChucNangDTO> getAll() {
 		ArrayList<DonViChucNangDTO> ketqua = new ArrayList<>();
-		// 1
-		Connection connection = App.getConnection();
-		// 2
-		String sql = "SELECT * FROM donvichucnang";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		// 3 execute
-		ResultSet re = preStatement.executeQuery();
-		while (re.next()) {
-			int maDonVi = re.getInt("maDonVi");
-			String tenDonVi = re.getString("tenDonVi");
-			DonViChucNangDTO p = new DonViChucNangDTO(maDonVi, tenDonVi);
-			ketqua.add(p);
+
+		Iterable<Donvichucnang> listFromDb = repo.findAll();
+
+		for (Donvichucnang d : listFromDb) {
+			ketqua.add(mapper.map(d, DonViChucNangDTO.class));
 		}
 		return ketqua;
 	}
 
 	@Override
-	public boolean delete(int id) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "DELETE FROM donvichucnang WHERE maDonVi=?";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setInt(1, id);
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
-		}
-		return ketqua;
+	public void delete(Integer id) {
+		repo.delete(id);
 	}
 
 	@Override
-	public DonViChucNangDTO getById(int id) throws SQLException {
-		DonViChucNangDTO d = null;
-		Connection connection = App.getConnection();
-		String sql = "Select * from donvichucnang where maDonVi ='" + id + "'";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		ResultSet re = preparedStatement.executeQuery();
-		if (re.next()) {
-			int maDonVi = re.getInt("maDonVi");
-			String tenDonVi = re.getString("tenDonVi");
-			d = new DonViChucNangDTO(maDonVi, tenDonVi);
-		}
-		return d;
+	public DonViChucNangDTO getById(Integer id) {
+		Donvichucnang entity = repo.findOne(id);
+		return mapper.map(entity, DonViChucNangDTO.class);
 	}
 
 	@Override
-	public boolean update(DonViChucNangDTO t) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "UPDATE donvichucnang SET tenDonVi=? WHERE maDonVi=?";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setString(1, t.gettenDonVi());
-		preStatement.setInt(2, t.getmaDonVi());
-
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
-		}
-		return ketqua;
-
+	public DonViChucNangDTO update(DonViChucNangDTO t) {
+		addOrUpdate(t);
+		return t;
 	}
 
 	@Override
-	public boolean insert(DonViChucNangDTO t) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "INSERT INTO donvichucnang VALUES(?,?)";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setString(1, null);
-		preStatement.setString(2, t.gettenDonVi());
+	public DonViChucNangDTO insert(DonViChucNangDTO t) {
+		addOrUpdate(t);
+		return t;
+	}
 
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
+	private Donvichucnang addOrUpdate(DonViChucNangDTO dto) {
+		Donvichucnang entity = new Donvichucnang();
+
+		if (dto.getPk() != null && dto.getPk() != -1) {
+			entity = repo.findOne(dto.getPk());
 		}
-		return ketqua;
+		mapper.map(dto, entity);
+		return repo.save(entity);
 	}
 }

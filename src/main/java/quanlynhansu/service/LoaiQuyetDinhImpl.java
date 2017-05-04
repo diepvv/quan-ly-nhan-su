@@ -1,98 +1,65 @@
 package quanlynhansu.service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import quanlynhansu.App;
 import quanlynhansu.model.dto.LoaiQuyetDinhDTO;
+import quanlynhansu.model.entity.Loaiquyetdinh;
+import quanlynhansu.repository.ILoaiQuyetDinhRepository;
 
 @Component
 public class LoaiQuyetDinhImpl implements ILoaiQuyetDinhService {
+	@Autowired
+	private ILoaiQuyetDinhRepository repo;
+
+	@Autowired
+	protected DozerBeanMapper mapper;
+
 	@Override
-	public ArrayList<LoaiQuyetDinhDTO> getAll() throws SQLException {
+	public ArrayList<LoaiQuyetDinhDTO> getAll() {
 		ArrayList<LoaiQuyetDinhDTO> ketqua = new ArrayList<>();
-		// 1
-		Connection connection = App.getConnection();
-		// 2
-		String sql = "SELECT * FROM loaiquyetdinh";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		// 3 execute
-		ResultSet re = preStatement.executeQuery();
-		while (re.next()) {
-			int maLoaiQuyetDinh = re.getInt("maLoaiQuyetDinh");
-			String tenLoaiQuyetDinh = re.getString("tenLoaiQuyetDinh");
-			LoaiQuyetDinhDTO p = new LoaiQuyetDinhDTO(maLoaiQuyetDinh,
-					tenLoaiQuyetDinh);
-			ketqua.add(p);
+
+		Iterable<Loaiquyetdinh> listFromDb = repo.findAll();
+
+		for (Loaiquyetdinh d : listFromDb) {
+			ketqua.add(mapper.map(d, LoaiQuyetDinhDTO.class));
 		}
 		return ketqua;
 	}
 
 	@Override
-	public boolean delete(int id) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "DELETE FROM loaiquyetdinh WHERE maLoaiQuyetDinh=?";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setInt(1, id);
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
-		}
-		return ketqua;
+	public void delete(Integer id) {
+		repo.delete(id);
 	}
 
 	@Override
-	public LoaiQuyetDinhDTO getById(int id) throws SQLException {
-		LoaiQuyetDinhDTO d = null;
-		Connection connection = App.getConnection();
-		String sql = "Select * from loaiquyetdinh where maLoaiQuyetDinh ='"
-				+ id + "'";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		ResultSet re = preparedStatement.executeQuery();
-		if (re.next()) {
-			int maLoaiQuyetDinh = re.getInt("maLoaiQuyetDinh");
-			String tenLoaiQuyetDinh = re.getString("tenLoaiQuyetDinh");
-			d = new LoaiQuyetDinhDTO(maLoaiQuyetDinh, tenLoaiQuyetDinh);
-		}
-		return d;
+	public LoaiQuyetDinhDTO getById(Integer id) {
+		Loaiquyetdinh entity = repo.findOne(id);
+		return mapper.map(entity, LoaiQuyetDinhDTO.class);
 	}
 
 	@Override
-	public boolean update(LoaiQuyetDinhDTO t) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "UPDATE loaiquyetdinh SET tenLoaiQuyetDinh=? WHERE maLoaiQuyetDinh=?";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setString(1, t.getTenLoaiQuyetDinh());
-		preStatement.setInt(2, t.getMaLoaiQuyetDinh());
-
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
-		}
-		return ketqua;
-
+	public LoaiQuyetDinhDTO update(LoaiQuyetDinhDTO t) {
+		addOrUpdate(t);
+		return t;
 	}
 
 	@Override
-	public boolean insert(LoaiQuyetDinhDTO t) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "INSERT INTO loaiquyetdinh VALUES(?,?)";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setString(1, null);
-		preStatement.setString(2, t.getTenLoaiQuyetDinh());
+	public LoaiQuyetDinhDTO insert(LoaiQuyetDinhDTO t) {
+		addOrUpdate(t);
+		return t;
+	}
 
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
+	private Loaiquyetdinh addOrUpdate(LoaiQuyetDinhDTO dto) {
+		Loaiquyetdinh entity = new Loaiquyetdinh();
+
+		if (dto.getPk() != null && dto.getPk().intValue() != -1) {
+			entity = repo.findOne(dto.getPk());
 		}
-		return ketqua;
+		mapper.map(dto, entity);
+		return repo.save(entity);
 	}
 }

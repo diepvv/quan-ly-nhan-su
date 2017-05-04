@@ -4,25 +4,25 @@ import java.io.Serializable;
 
 public class TonGiaoDTO implements Serializable {
 	private static final long serialVersionUID = -1300578656885073505L;
-	private int maTonGiao;
+	private Integer pk;
 	private String tenTonGiao;
 
 	public TonGiaoDTO() {
 	}
 
 	@Deprecated
-	public TonGiaoDTO(int maTonGiao, String tenTonGiao) {
+	public TonGiaoDTO(Integer pk, String tenTonGiao) {
 		super();
-		this.maTonGiao = maTonGiao;
+		this.pk = pk;
 		this.tenTonGiao = tenTonGiao;
 	}
 
-	public int getMaTonGiao() {
-		return maTonGiao;
+	public Integer getPk() {
+		return pk;
 	}
 
-	public void setMaTonGiao(int maTonGiao) {
-		this.maTonGiao = maTonGiao;
+	public void setPk(Integer pk) {
+		this.pk = pk;
 	}
 
 	public String getTenTonGiao() {
@@ -31,10 +31,6 @@ public class TonGiaoDTO implements Serializable {
 
 	public void setTenTonGiao(String tenTonGiao) {
 		this.tenTonGiao = tenTonGiao;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
 	}
 
 }

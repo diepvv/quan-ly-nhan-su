@@ -28,9 +28,9 @@ $(document).ready(function() {
 			          {
 		                 text: 'THÊM LOẠI HỢP ĐỒNG',
 		                 action: function ( e, dt, node, config ) {
-		                	 var txtMaLoaiHopDong = $(maLoaiHopDong);
+		                	 var txtPk = $(pk);
 		                	 var txtTenLoaiHopDong=$(tenLoaiHopDong);
-		                	 txtMaLoaiHopDong.val(-1);
+		                	 txtPk.val(-1);
 		                	 txtTenLoaiHopDong.val("");
 		                     
 		                     $('#formLoaiHopDong').modal('show');
@@ -50,10 +50,10 @@ $(document).ready(function() {
 	        var data = table.row($(this).parents('tr')).data();
 	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
                     + data['tenLoaiHopDong'])
-                    var maLoaiHopDong = data['maLoaiHopDong'];
+                    var pK = data['pk'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: loaiHopDongController+"/delete/"+maLoaiHopDong,  
+	                    url: loaiHopDongController+"/delete/"+pK,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -68,14 +68,14 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
 					var data = table.row($(this).parents('tr')).data();
-                    var maLoaiHD = data['maLoaiHopDong'];
-					var txtMaLoaiHopDong = $(maLoaiHopDong);
+                    var pK = data['pk'];
+					var txtPk = $(pk);
                 	var txtTenLoaiHopDong=$(tenLoaiHopDong);
 	            	$.ajax({  
-	                    url: loaiHopDongService+"/getById/"+maLoaiHD,  
+	                    url: loaiHopDongService+"/getById/"+pK,  
 	                    type: 'GET',  
 	                    success: function (res) {
-	                    	 txtMaLoaiHopDong.val(maLoaiHD);
+	                    	 txtPk.val(pK);
 		                	 txtTenLoaiHopDong.val(res.tenLoaiHopDong);
 		                     $('#formLoaiHopDong').modal('show');
 	                    }
@@ -87,14 +87,14 @@ $(document).ready(function() {
     	$("button#btnCapNhap").click(function(e) {
 
     		var endpointUrl = '/loaiHopDongController/add';
-    		 var txtMaLoaiHopDong = $(maLoaiHopDong);
+    		 var txtPk = $(pk);
         	 var txtTenLoaiHopDong=$(tenLoaiHopDong);
            
             
             var json = new Object();
-            json.maLoaiHopDong = txtMaLoaiHopDong.val();
+            json.pk = txtPk.val();
             json.tenLoaiHopDong = txtTenLoaiHopDong.val();
-            if(txtMaLoaiHopDong.val() != -1){
+            if(txtPk.val() != -1){
             	var endpointUrl = '/loaiHopDongController/update';
             }
             $.ajax({

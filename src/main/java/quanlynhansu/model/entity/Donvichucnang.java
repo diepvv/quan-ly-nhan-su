@@ -1,21 +1,21 @@
-package quanlynhansu.model.dto;
+package quanlynhansu.model.entity;
 
 import java.io.Serializable;
 
-public class DonViChucNangDTO implements Serializable {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "donvichucnang")
+@NamedQuery(name = "Donvichucnang.findAll", query = "SELECT d FROM Donvichucnang d")
+public class Donvichucnang implements Serializable {
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
 	private String maDonVi;
 	private String tenDonVi;
 
-	public DonViChucNangDTO() {
-	}
-
-	@Deprecated
-	public DonViChucNangDTO(Integer pk, String maDonVi, String tenDonVi) {
-		this.pk = pk;
-		this.maDonVi = maDonVi;
-		this.tenDonVi = tenDonVi;
+	public Donvichucnang() {
 	}
 
 	public Integer getPk() {

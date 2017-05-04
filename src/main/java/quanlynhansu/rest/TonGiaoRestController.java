@@ -24,10 +24,10 @@ public class TonGiaoRestController {
 		return tongiao.getAll();
 	}
 
-	@GetMapping("/getById/{maTG}")
-	public TonGiaoDTO getById(@PathVariable int maTG) throws ParseException,
+	@GetMapping("/getById/{pK}")
+	public TonGiaoDTO getById(@PathVariable Integer pK) throws ParseException,
 			SQLException {
-		TonGiaoDTO tg = tongiao.getById(maTG);
+		TonGiaoDTO tg = tongiao.getById(pK);
 		return tg;
 	}
 }

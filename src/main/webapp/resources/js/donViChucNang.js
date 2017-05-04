@@ -6,8 +6,12 @@ $(document).ready(function() {
 			"sAjaxDataProp" : "",
 			"order" : [ [ 0, "asc" ] ],
 			"aoColumnDefs": [ 
+				  {
+				      "aTargets": [ 0 ],
+				      "mData": "maDonVi"
+				  },
 			      {
-				       "aTargets": [ 0 ],
+				       "aTargets": [ 1 ],
 				       "mData": "tenDonVi"
 			      },
 				  {
@@ -28,9 +32,11 @@ $(document).ready(function() {
 			          {
 		                 text: 'THÊM ĐƠN VỊ',
 		                 action: function ( e, dt, node, config ) {
+		                	 var txtPk = $(pk);
 		                	 var txtMaDonVi = $(maDonVi);
 		                	 var txtTenDonVi=$(tenDonVi);
-		                	 txtMaDonVi.val(-1);
+		                	 txtPk.val(-1);
+		                	 txtMaDonVi.val("");
 		                	 txtTenDonVi.val("");
 		                     
 		                     $('#formDonViChucNang').modal('show');
@@ -50,10 +56,10 @@ $(document).ready(function() {
 	        var data = table.row($(this).parents('tr')).data();
 	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
                     + data['tenDonVi'])
-                    var maDonVi = data['maDonVi'];
+                    var pK = data['pk'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: donViChucNangController+"/delete/"+maDonVi,  
+	                    url: donViChucNangController+"/delete/"+pK,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -68,14 +74,16 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
 					var data = table.row($(this).parents('tr')).data();
-                    var maDonViChucNang = data['maDonVi'];
+                    var pK = data['pk'];
+                    var txtPk = $(pk);
 					var txtMaDonVi = $(maDonVi);
                 	var txtTenDonVi=$(tenDonVi);
 	            	$.ajax({  
-	                    url: donViChucNangService+"/getById/"+maDonViChucNang,  
+	                    url: donViChucNangService+"/getById/"+pK,  
 	                    type: 'GET',  
 	                    success: function (res) {
-	                    	 txtMaDonVi.val(maDonViChucNang);
+	                    	 txtPk.val(pK);
+	                    	 txtMaDonVi.val(res.maDonVi);
 		                	 txtTenDonVi.val(res.tenDonVi);
 		                     $('#formDonViChucNang').modal('show');
 	                    }
@@ -83,18 +91,19 @@ $(document).ready(function() {
 			}	
 	    });
 		
-		//twitter bootstrap btnCapNhap
     	$("button#btnCapNhap").click(function(e) {
 
     		var endpointUrl = '/donViChucNangController/add';
+    		var txtPk = $(pk);
     		 var txtMaDonVi = $(maDonVi);
         	 var txtTenDonVi=$(tenDonVi);
            
             
             var json = new Object();
+            json.pk = txtPk.val();
             json.maDonVi = txtMaDonVi.val();
             json.tenDonVi = txtTenDonVi.val();
-            if(txtMaDonVi.val() != -1){
+            if(txtPk.val() != -1){
             	var endpointUrl = '/donViChucNangController/update';
             }
             $.ajax({
@@ -112,7 +121,9 @@ $(document).ready(function() {
         });
     	
     	$("button#btnDong").click(function(e) {
+    		var txtMaDonVi = $(maDonVi);
     		var txtTenDonVi=$(tenDonVi);
+    		txtMaDonVi.val("");
          	txtTenDonVi.val("");
         }); 
     	

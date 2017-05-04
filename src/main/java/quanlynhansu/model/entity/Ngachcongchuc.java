@@ -1,23 +1,24 @@
-package quanlynhansu.model.dto;
+package quanlynhansu.model.entity;
 
 import java.io.Serializable;
 
-public class NgachCongChucDTO implements Serializable {
-	private static final long serialVersionUID = -3444123799992239424L;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "ngachcongchuc")
+@NamedQuery(name = "Ngachcongchuc.findAll", query = "SELECT n FROM Ngachcongchuc n")
+public class Ngachcongchuc implements Serializable {
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
+
 	private String maNgach;
 	private String tenNgach;
 	private Integer soNamNangBacLuong;
 
-	public NgachCongChucDTO() {
-	}
-
-	public NgachCongChucDTO(Integer pk, String maNgach, String tenNgach,
-			Integer soNamNangBacLuong) {
-		this.pk = pk;
-		this.maNgach = maNgach;
-		this.tenNgach = tenNgach;
-		this.soNamNangBacLuong = soNamNangBacLuong;
+	public Ngachcongchuc() {
 	}
 
 	public Integer getPk() {

@@ -4,24 +4,23 @@ import java.io.Serializable;
 
 public class ChucVuDTO implements Serializable {
 	private static final long serialVersionUID = 2354478821226203760L;
-	private int maChucVu;
+	private Integer pk;
 	private String tenChucVu;
 
 	public ChucVuDTO() {
 	}
 
-	@Deprecated
-	public ChucVuDTO(int maChucVu, String tenChucVu) {
-		this.maChucVu = maChucVu;
+	public ChucVuDTO(Integer pk, String tenChucVu) {
+		this.pk = pk;
 		this.tenChucVu = tenChucVu;
 	}
 
-	public int getMaChucVu() {
-		return maChucVu;
+	public Integer getPk() {
+		return pk;
 	}
 
-	public void setMaChucVu(int maChucVu) {
-		this.maChucVu = maChucVu;
+	public void setPk(Integer pk) {
+		this.pk = pk;
 	}
 
 	public String getTenChucVu() {
@@ -31,9 +30,4 @@ public class ChucVuDTO implements Serializable {
 	public void setTenChucVu(String tenChucVu) {
 		this.tenChucVu = tenChucVu;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 }

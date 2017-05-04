@@ -4,24 +4,23 @@ import java.io.Serializable;
 
 public class LoaiHopDongDTO implements Serializable {
 	private static final long serialVersionUID = -763988430173346533L;
-	private int maLoaiHopDong;
+	private Integer pk;
 	private String tenLoaiHopDong;
 
 	public LoaiHopDongDTO() {
 	}
 
-	@Deprecated
-	public LoaiHopDongDTO(int maLoaiHopDong, String tenLoaiHopDong) {
-		this.maLoaiHopDong = maLoaiHopDong;
+	public LoaiHopDongDTO(Integer pk, String tenLoaiHopDong) {
+		this.pk = pk;
 		this.tenLoaiHopDong = tenLoaiHopDong;
 	}
 
-	public int getMaLoaiHopDong() {
-		return maLoaiHopDong;
+	public Integer getPk() {
+		return pk;
 	}
 
-	public void setMaLoaiHopDong(int maLoaiHopDong) {
-		this.maLoaiHopDong = maLoaiHopDong;
+	public void setPk(Integer pk) {
+		this.pk = pk;
 	}
 
 	public String getTenLoaiHopDong() {
@@ -31,9 +30,4 @@ public class LoaiHopDongDTO implements Serializable {
 	public void setTenLoaiHopDong(String tenLoaiHopDong) {
 		this.tenLoaiHopDong = tenLoaiHopDong;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 }

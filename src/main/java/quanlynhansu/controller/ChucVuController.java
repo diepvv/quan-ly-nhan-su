@@ -26,10 +26,10 @@ public class ChucVuController {
 		return "chucvu";
 	}
 
-	@RequestMapping(value = "/delete/{maChucVu}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable int maChucVu, Model model)
+	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
+	public String delete(@PathVariable Integer pK, Model model)
 			throws SQLException {
-		chucvu.delete(maChucVu);
+		chucvu.delete(pK);
 		return "chucvu";
 	}
 

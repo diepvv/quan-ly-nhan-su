@@ -29,6 +29,7 @@
 			<!-- Header Table -->
 			<thead>
 				<tr>
+					<th>Mã Đơn Vị</th>
 					<th>Tên Đơn Vị</th>
 					<th>Sửa DV</th>
 					<th>Xóa DV</th>
@@ -37,6 +38,7 @@
 			<!-- Footer Table -->
 			<tfoot>
 				<tr>
+					<th>Mã Đơn Vị</th>
 					<th>Tên Đơn Vị</th>
 					<th>Sửa DV</th>
 					<th>Xóa DV</th>

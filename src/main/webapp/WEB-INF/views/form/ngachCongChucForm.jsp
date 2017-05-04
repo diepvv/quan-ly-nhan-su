@@ -11,6 +11,7 @@
 					<h4 class="modal-title">NGẠCH CÔNG CHỨC</h4>
 				</div>
 				<div class="modal-body">
+					<input class="form-control" id="pk" type="hidden">
 					<div class="form-group">
 						<label for="maNgach">Mã Ngạch</label> <input class="form-control"
 							id="maNgach" name="maNgach" required="true" type="text"></br>

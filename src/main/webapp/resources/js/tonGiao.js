@@ -28,9 +28,9 @@ $(document).ready(function() {
 			          {
 		                 text: 'THÊM DÂN TỘC',
 		                 action: function ( e, dt, node, config ) {
-		                	 var txtMaTonGiao = $(maTonGiao);
+		                	 var txtPk = $(pk);
 		                	 var txtTenTonGiao=$(tenTonGiao);
-		                	 txtMaTonGiao.val(-1);
+		                	 txtPk.val(-1);
 		                	 txtTenTonGiao.val("");
 		                     
 		                     $('#formTonGiao').modal('show');
@@ -50,10 +50,10 @@ $(document).ready(function() {
 	        var data = table.row($(this).parents('tr')).data();
 	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
                     + data['tenTonGiao'])
-                    var maTonGiao = data['maTonGiao'];
+                    var pK = data['pk'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: tonGiaoController+"/delete/"+maTonGiao,  
+	                    url: tonGiaoController+"/delete/"+pK,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -68,14 +68,14 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
 					var data = table.row($(this).parents('tr')).data();
-                    var maTG = data['maTonGiao'];
-					var txtMaTonGiao = $(maTonGiao);
+                    var pK = data['pk'];
+					var txtPk = $(pk);
                 	var txtTenTonGiao=$(tenTonGiao);
 	            	$.ajax({  
-	                    url: tonGiaoService+"/getById/"+maTG,  
+	                    url: tonGiaoService+"/getById/"+pK,  
 	                    type: 'GET',  
 	                    success: function (res) {
-	                    	 txtMaTonGiao.val(maTG);
+	                    	 txtPk.val(pK);
 		                	 txtTenTonGiao.val(res.tenTonGiao);
 		                     $('#formTonGiao').modal('show');
 	                    }
@@ -87,14 +87,14 @@ $(document).ready(function() {
     	$("button#btnCapNhap").click(function(e) {
 
     		var endpointUrl = '/tonGiaoController/add';
-    		 var txtMaTonGiao = $(maTonGiao);
+    		 var txtPk = $(pk);
         	 var txtTenTonGiao=$(tenTonGiao);
            
             
             var json = new Object();
-            json.maTonGiao = txtMaTonGiao.val();
+            json.pk = txtPk.val();
             json.tenTonGiao = txtTenTonGiao.val();
-            if(txtMaTonGiao.val() != -1){
+            if(txtPk.val() != -1){
             	var endpointUrl = '/tonGiaoController/update';
             }
             $.ajax({

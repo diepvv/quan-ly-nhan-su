@@ -36,10 +36,12 @@ $(document).ready(function() {
 			          {
 		                 text: 'THÊM NGẠCH CÔNG CHỨC',
 		                 action: function ( e, dt, node, config ) {
+		                	 var txtPk = $(pk);
 		                	 var txtMaNgach = $(maNgach);
 		                	 var txtTenNgach=$(tenNgach);
 		                	 var txtSoNamNangBacLuong = $(soNamNangBacLuong);
-		                	 txtMaNgach.val(null);
+		                	 txtPk.val(-1);
+		                	 txtMaNgach.val("");
 		                	 txtTenNgach.val("");
 		                	 txtSoNamNangBacLuong.val("");
 		                     
@@ -60,10 +62,10 @@ $(document).ready(function() {
 	        var data = table.row($(this).parents('tr')).data();
 	        check = confirm("Bạn có chắc chắn muốn xóa mã ngạch : "
                     + data['maNgach'])
-                    var maNgach = data['maNgach'];
+                     var pK = data['pk'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: ngachCongChucController+"/delete/"+maNgach,  
+	                    url: ngachCongChucController+"/delete/"+pK,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -78,17 +80,19 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
 					var data = table.row($(this).parents('tr')).data();
-                    var maNgachCongChuc = data['maNgach'];
+					var pK = data['pk'];
+					var txtPk = $(pk);
                     var txtMaNgach = $(maNgach);
                	 	var txtTenNgach=$(tenNgach);
                	 	var txtSoNamNangBacLuong = $(soNamNangBacLuong);
 	            	$.ajax({  
-	                    url: ngachCongChucService+"/getById/"+maNgachCongChuc,  
+	                    url: ngachCongChucService+"/getById/"+pK,  
 	                    type: 'GET',  
 	                    success: function (res) {
-	                    	 txtMaNgach.val(maNgachCongChuc);
+	                    	 txtPk.val(pK);
+	                    	 txtMaNgach.val(res.maNgach);
 		                	 txtTenNgach.val(res.tenNgach);
-		                	 txtSoNamNangBacLuong.val(res.soNamNangBacLuong)
+		                	 txtSoNamNangBacLuong.val(res.soNamNangBacLuong);
 		                     $('#formNgachCongChuc').modal('show');
 	                    }
 	                });
@@ -99,16 +103,19 @@ $(document).ready(function() {
     	$("button#btnCapNhap").click(function(e) {
 
     		var endpointUrl = '/ngachCongChucController/add';
+    		 var txtPk = $(pk);
     		 var txtMaNgach = $(maNgach);
         	 var txtTenNgach=$(tenNgach);
         	 var txtSoNamNangBacLuong = $(soNamNangBacLuong);
-        	 /*if(txtMaNgach.val()!= null){
-             	var endpointUrl = '/ngachCongChucController/update';
-             }*/
+        	
             var json = new Object();
+            json.pk = txtPk.val();
             json.maNgach = txtMaNgach.val();
             json.tenNgach = txtTenNgach.val();
             json.soNamNangBacLuong = txtSoNamNangBacLuong.val();
+            if(txtPk.val() != -1){
+            	var endpointUrl = '/ngachCongChucController/update';
+            }
             $.ajax({
                 type : "POST",
                 contentType: "application/json; charset=utf-8",

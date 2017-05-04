@@ -1,18 +1,17 @@
 package quanlynhansu.service;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import quanlynhansu.model.dto.ChucVuDTO;
 
 public interface IChucVuService {
-	public ArrayList<ChucVuDTO> getAll() throws SQLException;
+	public ArrayList<ChucVuDTO> getAll();
 
-	boolean delete(int id) throws SQLException;
+	void delete(Integer id);
 
-	public ChucVuDTO getById(int id) throws SQLException;
+	public ChucVuDTO getById(Integer id);
 
-	boolean update(ChucVuDTO t) throws SQLException;
+	ChucVuDTO update(ChucVuDTO t);
 
-	boolean insert(ChucVuDTO t) throws SQLException;
+	ChucVuDTO insert(ChucVuDTO t);
 }

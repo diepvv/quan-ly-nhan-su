@@ -1,96 +1,65 @@
 package quanlynhansu.service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import quanlynhansu.App;
 import quanlynhansu.model.dto.ChucVuDTO;
+import quanlynhansu.model.entity.Chucvu;
+import quanlynhansu.repository.IChucVuRepository;
 
 @Component
 public class ChucVuImpl implements IChucVuService {
+	@Autowired
+	private IChucVuRepository repo;
+	
+	@Autowired
+	protected DozerBeanMapper mapper;
+
 	@Override
-	public ArrayList<ChucVuDTO> getAll() throws SQLException {
+	public ArrayList<ChucVuDTO> getAll() {
 		ArrayList<ChucVuDTO> ketqua = new ArrayList<>();
-		// 1
-		Connection connection = App.getConnection();
-		// 2
-		String sql = "SELECT * FROM chucvu";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		// 3 execute
-		ResultSet re = preStatement.executeQuery();
-		while (re.next()) {
-			int maChucVu = re.getInt("maChucVu");
-			String tenChucVu = re.getString("tenChucVu");
-			ChucVuDTO p = new ChucVuDTO(maChucVu, tenChucVu);
-			ketqua.add(p);
+
+		Iterable<Chucvu> listFromDb = repo.findAll();
+
+		for (Chucvu d : listFromDb) {
+			ketqua.add(mapper.map(d, ChucVuDTO.class));
 		}
 		return ketqua;
 	}
 
 	@Override
-	public boolean delete(int id) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "DELETE FROM chucvu WHERE maChucVu=?";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setInt(1, id);
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
-		}
-		return ketqua;
+	public void delete(Integer id) {
+		repo.delete(id);
 	}
 
 	@Override
-	public ChucVuDTO getById(int id) throws SQLException {
-		ChucVuDTO cv = null;
-		Connection connection = App.getConnection();
-		String sql = "Select * from chucvu where maChucVu ='" + id + "'";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		ResultSet re = preparedStatement.executeQuery();
-		if (re.next()) {
-			int maChucVu = re.getInt("maChucVu");
-			String tenChucVu = re.getString("tenChucVu");
-			cv = new ChucVuDTO(maChucVu, tenChucVu);
-		}
-		return cv;
+	public ChucVuDTO getById(Integer id) {
+		Chucvu entity = repo.findOne(id);
+		return mapper.map(entity, ChucVuDTO.class);
 	}
 
 	@Override
-	public boolean update(ChucVuDTO t) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "UPDATE chucvu SET tenChucVu=? WHERE maChucVu=?";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setString(1, t.getTenChucVu());
-		preStatement.setInt(2, t.getMaChucVu());
-
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
-		}
-		return ketqua;
-
+	public ChucVuDTO update(ChucVuDTO t) {
+		addOrUpdate(t);
+		return t;
 	}
 
 	@Override
-	public boolean insert(ChucVuDTO t) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "INSERT INTO chucvu VALUES(?,?)";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setString(1, null);
-		preStatement.setString(2, t.getTenChucVu());
+	public ChucVuDTO insert(ChucVuDTO t) {
+		addOrUpdate(t);
+		return t;
+	}
 
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
+	private Chucvu addOrUpdate(ChucVuDTO dto) {
+		Chucvu entity = new Chucvu();
+
+		if (dto.getPk() != null && dto.getPk() != -1) {
+			entity = repo.findOne(dto.getPk());
 		}
-		return ketqua;
+		mapper.map(dto, entity);
+		return repo.save(entity);
 	}
 }

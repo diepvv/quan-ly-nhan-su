@@ -8,8 +8,6 @@
 	padding: 0;
 }
 
-k
-
 .modal-content {
 	height: auto;
 	min-height: 100%;
@@ -30,13 +28,15 @@ k
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<a data-toggle="collapse" href="#collapseSoYeuLyLich"
+								<a data-toggle="collapse" href="#SoYeuLyLichForm"
 									data-parent="#accordion1"
 									onclick="$(hidTieuChiChiTietCanBo).val('soYeuLyLich')">SƠ
 									YẾU LÝ LỊCH</a>
 							</h4>
 						</div>
-						<%@include file="soYeuLyLich.jsp"%>
+						<div id="SoYeuLyLichForm" class="panel-collapse collapse">
+							<%@include file="soYeuLyLich.jsp"%>
+						</div>
 					</div>
 
 					<div class="panel panel-default">
@@ -224,16 +224,42 @@ k
 						</div>
 					</div>
 
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4 class="panel-title">
+								<a data-toggle="collapse" href="#collapseLuanChuyenCanBo"
+									data-parent="#accordion1"
+									onclick="$(hidTieuChiChiTietCanBo).val('luanChuyenCanBo')">LUÂN
+									CHUYỂN CÁN BỘ</a>
+							</h4>
+						</div>
+						<div id="collapseLuanChuyenCanBo" class="panel-collapse collapse">
+							<div class="row">
+								<div class="col-md-3">
+									<label for="txtDonViDangCongTac">Đơn vị cán bộ đang công tác</label>
+									<input class="form-control" id="txtDonViDangCongTac" type="text">
+								</div>
+								<div class="col-md-3">
+									<label for="txtDonViChuyen">Đơn vị cán bộ chuyển công tác</label> 
+									<input class="form-control" id="txtDonViChuyen" type="text" list="phanloai">
+									<datalist id="phanloai">
+										<option value="Khối hành chính"></option>
+										<option value="Khối giảng viên"></option>
+									</datalist>
+								</div>
+							</div>
+						</div>
+					</div>
 
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						id="btnXacNhanChiTietCanBo">Xác nhận</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						id="btnDong">Đóng</button>
 				</div>
 			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="btnXacNhanChiTietCanBo">Xác nhận</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="btnDong">Đóng</button>
-			</div>
-		</div>
 
+		</div>
 	</div>
-</div>

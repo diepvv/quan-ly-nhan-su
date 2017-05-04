@@ -24,10 +24,10 @@ public class ChucVuRestController {
 		return chucvu.getAll();
 	}
 
-	@GetMapping("/getById/{maCV}")
-	public ChucVuDTO getById(@PathVariable int maCV) throws ParseException,
+	@GetMapping("/getById/{pK}")
+	public ChucVuDTO getById(@PathVariable Integer pK) throws ParseException,
 			SQLException {
-		ChucVuDTO cv = chucvu.getById(maCV);
+		ChucVuDTO cv = chucvu.getById(pK);
 		return cv;
 	}
 }

@@ -11,7 +11,12 @@
 					<h4 class="modal-title">ĐƠN VỊ CHỨC NĂNG</h4>
 				</div>
 				<div class="modal-body">
-					<input class="form-control" id="maDonVi" type="hidden">
+					<input class="form-control" id="pk" type="hidden">
+					<div class="form-group">
+						<label for="maDonVi">Mã đơn vị</label> <input
+							class="form-control" id="maDonVi" name="maDonVi"
+							required="true" type="text"></br>
+					</div>
 					<div class="form-group">
 						<label for="tenDonVi">Tên đơn vị</label> <input
 							class="form-control" id="tenDonVi" name="tenDonVi"

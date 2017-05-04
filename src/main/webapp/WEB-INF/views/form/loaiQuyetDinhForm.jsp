@@ -11,7 +11,7 @@
 					<h4 class="modal-title">LOẠI QUYẾT ĐỊNH</h4>
 				</div>
 				<div class="modal-body">
-					<input class="form-control" id="maLoaiQuyetDinh" type="hidden">
+					<input class="form-control" id="pk" type="hidden">
 					<div class="form-group">
 						<label for="tenLoaiQuyetDinh">Tên Loại Quyết Định</label> <input
 							class="form-control" id="tenLoaiQuyetDinh"

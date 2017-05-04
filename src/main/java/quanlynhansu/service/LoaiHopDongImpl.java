@@ -1,97 +1,65 @@
 package quanlynhansu.service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import quanlynhansu.App;
 import quanlynhansu.model.dto.LoaiHopDongDTO;
+import quanlynhansu.model.entity.ILoaiHopDongRepository;
+import quanlynhansu.model.entity.Loaihopdong;
 
 @Component
 public class LoaiHopDongImpl implements ILoaiHopDongService {
+	@Autowired
+	private ILoaiHopDongRepository repo;
+
+	@Autowired
+	protected DozerBeanMapper mapper;
+
 	@Override
-	public ArrayList<LoaiHopDongDTO> getAll() throws SQLException {
+	public ArrayList<LoaiHopDongDTO> getAll() {
 		ArrayList<LoaiHopDongDTO> ketqua = new ArrayList<>();
-		// 1
-		Connection connection = App.getConnection();
-		// 2
-		String sql = "SELECT * FROM loaihopdong";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		// 3 execute
-		ResultSet re = preStatement.executeQuery();
-		while (re.next()) {
-			int maLoaiHopDong = re.getInt("maLoaiHopDong");
-			String tenLoaiHopDong = re.getString("tenLoaiHopDong");
-			LoaiHopDongDTO p = new LoaiHopDongDTO(maLoaiHopDong, tenLoaiHopDong);
-			ketqua.add(p);
+
+		Iterable<Loaihopdong> listFromDb = repo.findAll();
+
+		for (Loaihopdong d : listFromDb) {
+			ketqua.add(mapper.map(d, LoaiHopDongDTO.class));
 		}
 		return ketqua;
 	}
 
 	@Override
-	public boolean delete(int id) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "DELETE FROM loaihopdong WHERE maLoaiHopDong=?";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setInt(1, id);
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
-		}
-		return ketqua;
+	public void delete(Integer id) {
+		repo.delete(id);
 	}
 
 	@Override
-	public LoaiHopDongDTO getById(int id) throws SQLException {
-		LoaiHopDongDTO d = null;
-		Connection connection = App.getConnection();
-		String sql = "Select * from loaihopdong where maLoaiHopDong ='" + id
-				+ "'";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		ResultSet re = preparedStatement.executeQuery();
-		if (re.next()) {
-			int maLoaiHopDong = re.getInt("maLoaiHopDong");
-			String tenLoaiHopDong = re.getString("tenLoaiHopDong");
-			d = new LoaiHopDongDTO(maLoaiHopDong, tenLoaiHopDong);
-		}
-		return d;
+	public LoaiHopDongDTO getById(Integer id) {
+		Loaihopdong entity = repo.findOne(id);
+		return mapper.map(entity, LoaiHopDongDTO.class);
 	}
 
 	@Override
-	public boolean update(LoaiHopDongDTO t) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "UPDATE loaihopdong SET tenLoaiHopDong=? WHERE maLoaiHopDong=?";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setString(1, t.getTenLoaiHopDong());
-		preStatement.setInt(2, t.getMaLoaiHopDong());
-
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
-		}
-		return ketqua;
-
+	public LoaiHopDongDTO update(LoaiHopDongDTO t) {
+		addOrUpdate(t);
+		return t;
 	}
 
 	@Override
-	public boolean insert(LoaiHopDongDTO t) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "INSERT INTO loaihopdong VALUES(?,?)";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setString(1, null);
-		preStatement.setString(2, t.getTenLoaiHopDong());
+	public LoaiHopDongDTO insert(LoaiHopDongDTO t) {
+		addOrUpdate(t);
+		return t;
+	}
 
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
+	private Loaihopdong addOrUpdate(LoaiHopDongDTO dto) {
+		Loaihopdong entity = new Loaihopdong();
+
+		if (dto.getPk() != null && dto.getPk().intValue() != -1) {
+			entity = repo.findOne(dto.getPk());
 		}
-		return ketqua;
+		mapper.map(dto, entity);
+		return repo.save(entity);
 	}
 }
