@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: quanlynhansu
 Target Host: localhost
 Target Database: quanlynhansu
-Date: 4/25/2017 4:38:26 PM
+Date: 5/6/2017 6:38:50 PM
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -14,7 +14,8 @@ SET FOREIGN_KEY_CHECKS=0;
 DROP TABLE IF EXISTS `bacluong`;
 CREATE TABLE `bacluong` (
   `pk` int(11) NOT NULL AUTO_INCREMENT,
-  `heSoLuong` double(11,0) DEFAULT NULL,
+  `maBacLuong` int(11) DEFAULT NULL,
+  `heSoLuong` binary(11) DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`pk`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -38,6 +39,7 @@ CREATE TABLE `canbo` (
   `pk` int(11) NOT NULL AUTO_INCREMENT,
   `soHieu` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `donViChucNang_pk` int(11) DEFAULT NULL,
+  `boMon_pk` int(11) DEFAULT NULL,
   `imageUrl` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `ten` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `tenGoiKhac` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
@@ -101,7 +103,9 @@ CREATE TABLE `canbo` (
   KEY `ngachCongChuc_pk` (`ngachCongChuc_pk`),
   KEY `bacLuong_pk` (`bacLuong_pk`),
   KEY `donViChucNang_pk` (`donViChucNang_pk`),
+  KEY `boMon_pk` (`boMon_pk`),
   CONSTRAINT `bacLuong_pk` FOREIGN KEY (`bacLuong_pk`) REFERENCES `bacluong` (`pk`) ON UPDATE CASCADE,
+  CONSTRAINT `boMon_pk` FOREIGN KEY (`boMon_pk`) REFERENCES `bomon` (`pk`) ON UPDATE CASCADE,
   CONSTRAINT `chucVu_pk` FOREIGN KEY (`chucVu_pk`) REFERENCES `chucvu` (`pk`) ON UPDATE CASCADE,
   CONSTRAINT `danToc_pk` FOREIGN KEY (`danToc_pk`) REFERENCES `dantoc` (`pk`) ON UPDATE CASCADE,
   CONSTRAINT `donViChucNang_pk` FOREIGN KEY (`donViChucNang_pk`) REFERENCES `donvichucnang` (`pk`) ON UPDATE CASCADE,
@@ -118,7 +122,7 @@ CREATE TABLE `chucvu` (
   `tenChucVu` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for danhsachkhoangon
@@ -136,7 +140,7 @@ CREATE TABLE `danhsachkhoangon` (
   PRIMARY KEY (`pk`),
   KEY `donViChucNangDskg_pk` (`donViChucNangDskg_pk`),
   CONSTRAINT `donViChucNangDskg_pk` FOREIGN KEY (`donViChucNangDskg_pk`) REFERENCES `donvichucnang` (`pk`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for danhsachkiemnhiem
@@ -208,7 +212,7 @@ CREATE TABLE `donvichucnang` (
   `tenDonVi` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for donvichucnang_bomon
@@ -269,7 +273,7 @@ CREATE TABLE `hopdongnganhan` (
   `denNgay` date DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for kekhaitaisan
@@ -298,7 +302,7 @@ CREATE TABLE `loaihopdong` (
   `tenLoaiHopDong` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for loaiquyetdinh
@@ -309,7 +313,7 @@ CREATE TABLE `loaiquyetdinh` (
   `tenLoaiQuyetDinh` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for luong
@@ -351,7 +355,7 @@ CREATE TABLE `ngachcongchuc` (
   `tenNgach` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `soNamNangBacLuong` int(11) DEFAULT NULL,
   PRIMARY KEY (`pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for quanhegiadinh
@@ -495,22 +499,22 @@ CREATE TABLE `tongiao` (
   `tenTonGiao` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `bacluong` VALUES ('1', '2', null);
-INSERT INTO `bacluong` VALUES ('2', '3', null);
-INSERT INTO `bacluong` VALUES ('3', '2', null);
-INSERT INTO `bacluong` VALUES ('4', '3', null);
-INSERT INTO `bacluong` VALUES ('5', '3', null);
-INSERT INTO `bacluong` VALUES ('6', '4', null);
-INSERT INTO `bacluong` VALUES ('7', '4', null);
-INSERT INTO `bacluong` VALUES ('8', '5', null);
-INSERT INTO `bacluong` VALUES ('9', '5', null);
-INSERT INTO `bacluong` VALUES ('10', '6', null);
-INSERT INTO `bacluong` VALUES ('11', '6', null);
+INSERT INTO `bacluong` VALUES ('1', '1', '2.3', null);
+INSERT INTO `bacluong` VALUES ('2', '2', '3', null);
+INSERT INTO `bacluong` VALUES ('3', '3', '2', null);
+INSERT INTO `bacluong` VALUES ('4', '4', '3', null);
+INSERT INTO `bacluong` VALUES ('5', '5', '3', null);
+INSERT INTO `bacluong` VALUES ('6', '6', '4', null);
+INSERT INTO `bacluong` VALUES ('7', '7', '4', null);
+INSERT INTO `bacluong` VALUES ('8', '8', '5', null);
+INSERT INTO `bacluong` VALUES ('9', '9', '5', null);
+INSERT INTO `bacluong` VALUES ('10', '10', '6.5', null);
+INSERT INTO `bacluong` VALUES ('11', '11', '6', null);
 INSERT INTO `chucvu` VALUES ('1', 'Giảng viên BM. Cầu hầm', null);
 INSERT INTO `chucvu` VALUES ('2', 'Giảng viên BM. Cơ khí ô tô', null);
 INSERT INTO `chucvu` VALUES ('3', 'Giảng viên BM. Cơ bản', null);
@@ -525,22 +529,28 @@ INSERT INTO `chucvu` VALUES ('11', 'Nhân viên Ban CTCT và SV', null);
 INSERT INTO `chucvu` VALUES ('12', 'Chuyên viên Ban Khoa học CN và ĐN', null);
 INSERT INTO `chucvu` VALUES ('13', 'Chuyên viên Ban TTTV', null);
 INSERT INTO `chucvu` VALUES ('14', 'Nhân viên ban TCHC', null);
+INSERT INTO `danhsachkhoangon` VALUES ('1', '10', 'Nguyen Van A', '0989777777', '122189876', 'Ho Chi Minh', '2017-05-07', null);
 INSERT INTO `dantoc` VALUES ('1', 'Mường', null);
 INSERT INTO `dantoc` VALUES ('2', 'Nùng', null);
 INSERT INTO `dantoc` VALUES ('3', 'Kinh', null);
-INSERT INTO `dantoc` VALUES ('4', 'Tày', null);
-INSERT INTO `dantoc` VALUES ('5', 'Ê ĐÊ', null);
-INSERT INTO `donvichucnang` VALUES ('6', null, 'Phòng công tác chính trị sinh viên', null);
-INSERT INTO `donvichucnang` VALUES ('7', null, 'Phòng hành chính', null);
-INSERT INTO `donvichucnang` VALUES ('8', null, 'Ban thư viện', null);
-INSERT INTO `donvichucnang` VALUES ('9', null, 'Phòng đào tạo', null);
-INSERT INTO `donvichucnang` VALUES ('10', null, 'Bộ môn điện-điện tử', null);
-INSERT INTO `hibernate_sequence` VALUES ('1');
+INSERT INTO `dantoc` VALUES ('4', 'Ê đê', null);
+INSERT INTO `dantoc` VALUES ('5', 'Tày', null);
+INSERT INTO `donvichucnang` VALUES ('10', 'BGD', 'Ban Giám Đốc', null);
+INSERT INTO `donvichucnang` VALUES ('11', '01', 'Ban công tác chính trị và sinh viên', null);
+INSERT INTO `donvichucnang` VALUES ('12', '02', 'Ban đào tạo', null);
+INSERT INTO `donvichucnang` VALUES ('13', '03', 'Ban khảo thí và kiểm định chất lượng', null);
+INSERT INTO `donvichucnang` VALUES ('14', '04', 'Ban khoa học công nghệ và đối ngoại', null);
+INSERT INTO `donvichucnang` VALUES ('15', '05', 'Ban quản lý Ký túc xá', null);
+INSERT INTO `donvichucnang` VALUES ('16', '06', 'Ban tài chính - kế toán', null);
+INSERT INTO `donvichucnang` VALUES ('17', '07', 'Ban thiết bị quản trị', null);
+INSERT INTO `donvichucnang` VALUES ('18', '08', 'Ban Tổ chức - Hành chính', null);
+INSERT INTO `donvichucnang` VALUES ('19', '09', 'Ban Thanh tra', null);
+INSERT INTO `donvichucnang` VALUES ('20', '10', 'Ban thông tin thư viện', null);
+INSERT INTO `hibernate_sequence` VALUES ('25');
 INSERT INTO `hopdongnganhan` VALUES ('7', 'Tuyển dụng lao động', 'Nguyễn Văn A', '2017-04-10', '2017-04-10', '2017-04-20', null);
 INSERT INTO `hopdongnganhan` VALUES ('14', 'Tuyển dụng bảo vệ', 'Nguyễn Văn Tí', '2017-04-09', '2017-04-13', '2017-04-20', null);
 INSERT INTO `hopdongnganhan` VALUES ('17', 'Tuyển dụng nhân sự', 'Không Như Ngọc', '2017-04-14', '2017-04-15', '2017-04-29', null);
-INSERT INTO `hopdongnganhan` VALUES ('18', 'Sửa Cửa Kính C2', 'Trần Thị Bình', '2017-04-26', '2017-04-26', '2017-04-30', null);
-INSERT INTO `hopdongnganhan` VALUES ('19', 'a', 'a', '2017-04-18', '2017-04-26', '2017-04-29', null);
+INSERT INTO `hopdongnganhan` VALUES ('18', 'Sửa Cửa Kính C2', 'Trần Thị Bình B', '2017-04-26', '2017-04-26', '2017-04-30', null);
 INSERT INTO `loaihopdong` VALUES ('1', 'Hợp đồng làm việc không xác định thời hạn', null);
 INSERT INTO `loaihopdong` VALUES ('2', 'Hợp đồng lao động 12 tháng', null);
 INSERT INTO `loaihopdong` VALUES ('3', 'Hợp đồng thử việc', null);
@@ -566,13 +576,9 @@ INSERT INTO `ngachcongchuc` VALUES ('3', '01004', 'Cán sự', '2');
 INSERT INTO `ngachcongchuc` VALUES ('4', '01006', 'Nhân viên đánh máy', '2');
 INSERT INTO `ngachcongchuc` VALUES ('5', '01007', 'Nhân viên kỹ thuật', '2');
 INSERT INTO `ngachcongchuc` VALUES ('6', '01009', 'Nhân viên tạp vụ', '2');
-INSERT INTO `ngachcongchuc` VALUES ('7', '01010', 'Nhân viên lái xe', null);
-INSERT INTO `ngachcongchuc` VALUES ('8', '01011', 'Bảo vệ tuần tra', null);
-INSERT INTO `ngachcongchuc` VALUES ('9', '06031', 'Kế toán viên', null);
-INSERT INTO `ngachcongchuc` VALUES ('10', '16169', 'Y sĩ', null);
-INSERT INTO `ngachcongchuc` VALUES ('11', '17170', 'Thư viện viên', null);
-INSERT INTO `ngachcongchuc` VALUES ('12', 'V.07.01.02', 'Giảng viên chính', null);
-INSERT INTO `ngachcongchuc` VALUES ('13', 'V.07.01.03', 'Giảng viên', null);
+INSERT INTO `ngachcongchuc` VALUES ('7', '01010', 'Nhân viên lái xe', '2');
+INSERT INTO `ngachcongchuc` VALUES ('8', '01011', 'Bảo vệ tuần tra', '3');
+INSERT INTO `ngachcongchuc` VALUES ('9', '06031', 'Kế toán viên', '3');
 INSERT INTO `tongiao` VALUES ('1', 'Phật giáo', null);
 INSERT INTO `tongiao` VALUES ('2', 'Thiên chúa giáo', null);
 INSERT INTO `tongiao` VALUES ('3', 'Không', null);
