@@ -28,9 +28,9 @@ $(document).ready(function() {
 			          {
 		                 text: 'THÊM CHỨC VỤ',
 		                 action: function ( e, dt, node, config ) {
-		                	 var txtMaChucVu = $(maChucVu);
+		                	 var txtPk = $(pk);
 		                	 var txtTenChucVu=$(tenChucVu);
-		                	 txtMaChucVu.val(-1);
+		                	 txtPk.val(-1);
 		                	 txtTenChucVu.val("");
 		                     
 		                     $('#formChucVu').modal('show');
@@ -50,10 +50,10 @@ $(document).ready(function() {
 	        var data = table.row($(this).parents('tr')).data();
 	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
                     + data['tenChucVu'])
-                    var maChucVu = data['maChucVu'];
+                    var pK = data['pk'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: chucVuController+"/delete/"+maChucVu,  
+	                    url: chucVuController+"/delete/"+pK,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -68,14 +68,14 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
 					var data = table.row($(this).parents('tr')).data();
-                    var maCV = data['maChucVu'];
-					var txtMaChucVu = $(maChucVu);
+                    var pK = data['pk'];
+					var txtPk = $(pk);
                 	var txtTenChucVu=$(tenChucVu);
 	            	$.ajax({  
-	                    url: chucVuService+"/getById/"+maCV,  
+	                    url: chucVuService+"/getById/"+pK,  
 	                    type: 'GET',  
 	                    success: function (res) {
-	                    	 txtMaChucVu.val(maCV);
+	                    	 txtPk.val(pK);
 		                	 txtTenChucVu.val(res.tenChucVu);
 		                     $('#formChucVu').modal('show');
 	                    }
@@ -87,14 +87,14 @@ $(document).ready(function() {
     	$("button#btnCapNhap").click(function(e) {
 
     		var endpointUrl = '/chucVuController/add';
-    		 var txtMaChucVu = $(maChucVu);
+    		 var txtPk = $(pk);
         	 var txtTenChucVu=$(tenChucVu);
            
             
             var json = new Object();
-            json.maChucVu = txtMaChucVu.val();
+            json.pk = txtPk.val();
             json.tenChucVu = txtTenChucVu.val();
-            if(txtMaChucVu.val() != -1){
+            if(txtPk.val() != -1){
             	var endpointUrl = '/chucVuController/update';
             }
             $.ajax({

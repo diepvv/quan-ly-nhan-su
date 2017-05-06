@@ -11,7 +11,12 @@
 					<h4 class="modal-title">BẬC LƯƠNG</h4>
 				</div>
 				<div class="modal-body">
-					<input class="form-control" id="maBacLuong" type="hidden">
+					<input class="form-control" id="pk" type="hidden">
+					<div class="form-group">
+						<label for="maBacLuong">Mã Bậc Lương</label> <input
+							class="form-control" id="maBacLuong" name="maBacLuong"
+							required="true" type="text"></br>
+					</div>
 					<div class="form-group">
 						<label for="heSoLuong">Hệ Số Lương</label> <input
 							class="form-control" id="heSoLuong" name="heSoLuong"

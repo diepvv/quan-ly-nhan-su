@@ -27,7 +27,11 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 		Iterable<Hopdongnganhan> listFromDb = repo.findAll();
 
 		for (Hopdongnganhan h : listFromDb) {
-			ketqua.add(mapper.map(h, HopDongNganHanDTO.class));
+			HopDongNganHanDTO dto = mapper.map(h, HopDongNganHanDTO.class);
+			dto.setNgayKy(h.getNgayKy());
+			dto.setTuNgay(h.getTuNgay());
+			dto.setDenNgay(h.getDenNgay());
+			ketqua.add(dto);
 		}
 
 		return ketqua;

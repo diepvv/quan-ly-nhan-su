@@ -12,7 +12,7 @@ $(document).ready(function() {
 			      },
 			      {
 				       "aTargets": [ 1 ],
-				       "mData": "maDonVi"
+				       "mData": "donViChucNangDskg_pk"
 			      },
 			      {
 				       "aTargets": [ 2 ],
@@ -40,18 +40,20 @@ $(document).ready(function() {
 			          {
 		                 text: 'THÊM MỚI',
 		                 action: function ( e, dt, node, config ) {
-		                	 var txtMaCanBoKhoanGon = $(maCanBoKhoanGon);
-		                	 var txtMaDonVi=$(maDonVi);
+		                	 var txtPk = $(pk);
+		                	 var txtDonViChucNangDskg_pk=$(donViChucNangDskg_pk);
 		                	 var txtHoTenCanBo = $(hoTenCanBo);
-		                	 var txtSoCMND = $(soCMND);
+		                	 var txtSoDienThoai = $(soDienThoai);
+		                	 var txtSoCmnd = $(soCmnd);
 		                	 var txtDiaChi = $(diaChi);
 		                	 var txtNgayKyHopDong = $(ngayKyHopDong);
 
 
-		                	 txtMaCanBoKhoanGon.val(-1);
-		                	 txtMaDonVi.val("");
+		                	 txtPk.val(-1);
+		                	 txtDonViChucNangDskg_pk.val("");
 		                	 txtHoTenCanBo.val("");
-		                	 txtSoCMND.val("");
+		                	 txtSoDienThoai.val("");
+		                	 txtSoCmnd.val("");
 		                	 txtDiaChi.val("");
 		                	 txtNgayKyHopDong.val("");
 
@@ -71,12 +73,12 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnDel" == id){
 	        var data = table.row($(this).parents('tr')).data();
-	        check = confirm("Bạn có chắc chắn muốn xóa mã ngạch : "
-                    + data['maCanBoKhoanGon'])
-                    var maCanBoKhoanGon = data['maCanBoKhoanGon'];
+	        check = confirm("Bạn có chắc chắn muốn xóa Cán Bộ Khoán Gọn : "
+                    + data['hoTenCanBo'])
+                    var pK = data['pk'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: danhSachKhoanGonController+"/delete/"+maCanBoKhoanGon,  
+	                    url: danhSachKhoanGonController+"/delete/"+pK,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -91,23 +93,25 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
 					var data = table.row($(this).parents('tr')).data();
-                    var maCBKG = data['maCanBoKhoanGon'];
-                    var txtMaCanBoKhoanGon = $(maCanBoKhoanGon);
-               	 	var txtMaDonVi=$(maDonVi);
+                    var pK = data['pk'];
+                    var txtPk = $(pk);
+                    var txtDonViChucNangDskg_pk=$(donViChucNangDskg_pk);
                	 	var txtHoTenCanBo = $(hoTenCanBo);
-               	 	var txtSoCMND = $(soCMND);
+               	 	var txtSoDienThoai = $(soDienThoai);
+               	 	var txtSoCmnd = $(soCmnd);
                	 	var txtDiaChi = $(diaChi);
                	 	var txtNgayKyHopDong = $(ngayKyHopDong);
 
 	            	$.ajax({  
-	                    url: danhSachKhoanGonService+"/getById/"+maCBKG,  
+	                    url: danhSachKhoanGonService+"/getById/"+pK,  
 	                    type: 'GET',  
 	                    success: function (res) {
-	                    	 txtMaCanBoKhoanGon.val(maCBKG);
-		                	 txtTenNgach.val(res.maDonVi);
-		                	 txtMaDonVi.val(res.hoTenCanBo);
-		                	 txtHoTenCanBo.val(res.soCMND);
-		                	 txtSoCMND.val(res.diaChi);
+	                    	 txtPk.val(pK);
+	                    	 txtDonViChucNangDskg_pk.val(res.donViChucNangDskg_pk);
+	                    	 txtHoTenCanBo.val(res.hoTenCanBo);
+	                    	 txtSoDienThoai.val(res.soDienThoai);
+	                    	 txtSoCmnd.val(res.soCmnd);
+	                    	 txtDiaChi.val(res.diaChi);
 		                	 txtNgayKyHopDong.val(res.ngayKyHopDong)
 		                     $('#formDanhSachKhoanGon').modal('show');
 	                    }
@@ -119,22 +123,25 @@ $(document).ready(function() {
     	$("button#btnCapNhap").click(function(e) {
 
     		var endpointUrl = '/danhSachKhoanGonController/add';
-    		var txtMaCanBoKhoanGon = $(maCanBoKhoanGon);
-       	 	var txtMaDonVi=$(maDonVi);
+    		var txtPk = $(pk);
+    		var txtDonViChucNangDskg_pk=$(donViChucNangDskg_pk);
        	 	var txtHoTenCanBo = $(hoTenCanBo);
-       	 	var txtSoCMND = $(soCMND);
+       	 	var txtSoDienThoai = $(soDienThoai);
+       	 	var txtSoCmnd = $(soCmnd);
        	 	var txtDiaChi = $(diaChi);
        	 	var txtNgayKyHopDong = $(ngayKyHopDong);
-        	 /*if(txtMaNgach.val()!= null){
+       	 	
+       	 var json = new Object();
+         json.pk = txtPk.val();
+         json.donViChucNangDskg_pk = txtDonViChucNangDskg_pk.val();
+         json.hoTenCanBo = txtHoTenCanBo.val();
+         json.soDienThoai = txtSoDienThoai.val();
+         json.soCmnd = txtSoCmnd.val();
+         json.diaChi = txtDiaChi.val();
+         json.ngayKyHopDong = txtNgayKyHopDong.val();
+        	if(txtPk.val()!= -1){
              	var endpointUrl = '/danhSachKhoanGonController/update';
-             }*/
-            var json = new Object();
-            json.maCanBoKhoanGon = txtMaCanBoKhoanGon.val();
-            json.maDonVi = txtMaDonVi.val();
-            json.hoTenCanBo = txtHoTenCanBo.val();
-            json.soCMND = txtSoCMND.val();
-            json.diaChi = txtDiaChi.val();
-            json.ngayKyHopDong = txtNgayKyHopDong.val();
+             }
             $.ajax({
                 type : "POST",
                 contentType: "application/json; charset=utf-8",
@@ -150,18 +157,18 @@ $(document).ready(function() {
         });
     	
     	$("button#btnDong").click(function(e) {
-    		var txtMaCanBoKhoanGon = $(maCanBoKhoanGon);
-       	 	var txtMaDonVi=$(maDonVi);
-       	 	var txtHoTenCanBo = $(hoTenCanBo);
-       	 	var txtSoCMND = $(soCMND);
-       	 	var txtDiaChi = $(diaChi);
-       	 	var txtNgayKyHopDong = $(ngayKyHopDong);
-       	 txtMaCanBoKhoanGon.val("");
-    	 txtMaDonVi.val("");
-    	 txtHoTenCanBo.val("");
-    	 txtSoCMND.val("");
-    	 txtDiaChi.val("");
-    	 txtNgayKyHopDong.val("");
+    		 var txtDonViChucNangDskg_pk=$(donViChucNangDskg_pk);
+        	 var txtHoTenCanBo = $(hoTenCanBo);
+        	 var txtSoDienThoai = $(soDienThoai);
+        	 var txtSoCmnd = $(soCmnd);
+        	 var txtDiaChi = $(diaChi);
+        	 var txtNgayKyHopDong = $(ngayKyHopDong);
+        	 txtDonViChucNangDskg_pk.val("");
+        	 txtHoTenCanBo.val("");
+        	 txtSoDienThoai.val("");
+        	 txtSoCmnd.val("");
+        	 txtDiaChi.val("");
+        	 txtNgayKyHopDong.val("");
         }); 
     	
 	} );

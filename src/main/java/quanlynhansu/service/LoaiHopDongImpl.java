@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import quanlynhansu.model.dto.LoaiHopDongDTO;
-import quanlynhansu.model.entity.ILoaiHopDongRepository;
 import quanlynhansu.model.entity.Loaihopdong;
+import quanlynhansu.repository.ILoaiHopDongRepository;
 
 @Component
 public class LoaiHopDongImpl implements ILoaiHopDongService {

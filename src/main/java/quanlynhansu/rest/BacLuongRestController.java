@@ -24,10 +24,10 @@ public class BacLuongRestController {
 		return bacluong.getAll();
 	}
 
-	@GetMapping("/getById/{maBL}")
-	public BacLuongDTO getById(@PathVariable int maBL) throws ParseException,
+	@GetMapping("/getById/{pK}")
+	public BacLuongDTO getById(@PathVariable Integer pK) throws ParseException,
 			SQLException {
-		BacLuongDTO dt = bacluong.getById(maBL);
+		BacLuongDTO dt = bacluong.getById(pK);
 		return dt;
 	}
 }

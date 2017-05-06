@@ -10,10 +10,10 @@
 				<h4 class="modal-title">DANH SÁCH KHOÁN GỌN</h4>
 			</div>
 			<div class="modal-body">
-				<input class="form-control" id="maCanBoKhoanGon" type="hidden">
+				<input class="form-control" id="pk" type="hidden">
 
-				<label for="maDonVi">Đơn vị công tác</label> 
-				<input class="form-control" id="maDonVi" type="text" list="listDonvicongTac"></br>
+				<label for="donViChucNangDskg_pk">Đơn vị công tác</label> 
+				<input class="form-control" id="donViChucNangDskg_pk" type="text" list="listDonvicongTac"></br>
 				<datalist id="listDonvicongTac">
 					<option value="a"></option>
 					<option value="b"></option>
@@ -26,8 +26,8 @@
 				<label for="soDienThoai">Số điện thoại</label> 
 				<input class="form-control" id="soDienThoai" type="text">
 				 
-				<label for="soCMND">CMND</label>
-				<input class="form-control" id="soCMND" type="text">
+				<label for="soCmnd">CMND</label>
+				<input class="form-control" id="soCmnd" type="text">
 				
 				<label for="diaChi">Địa chỉ</label> 
 				<input class="form-control" id="diaChi" type="text">

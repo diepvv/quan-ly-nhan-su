@@ -1,96 +1,65 @@
 package quanlynhansu.service;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
+import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import quanlynhansu.App;
 import quanlynhansu.model.dto.BacLuongDTO;
+import quanlynhansu.model.entity.Bacluong;
+import quanlynhansu.repository.IBacLuongRepository;
 
 @Component
 public class BacLuongServiceImpl implements IBacLuongService {
+	@Autowired
+	private IBacLuongRepository repo;
+
+	@Autowired
+	protected DozerBeanMapper mapper;
+
 	@Override
-	public ArrayList<BacLuongDTO> getAll() throws SQLException {
+	public ArrayList<BacLuongDTO> getAll() {
 		ArrayList<BacLuongDTO> ketqua = new ArrayList<>();
-		// 1
-		Connection connection = App.getConnection();
-		// 2
-		String sql = "SELECT * FROM bacluong";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		// 3 execute
-		ResultSet re = preStatement.executeQuery();
-		while (re.next()) {
-			int maBacLuong = re.getInt("maBacLuong");
-			double heSoLuong = re.getDouble("heSoLuong");
-			BacLuongDTO p = new BacLuongDTO(maBacLuong, heSoLuong);
-			ketqua.add(p);
+
+		Iterable<Bacluong> listFromDb = repo.findAll();
+
+		for (Bacluong d : listFromDb) {
+			ketqua.add(mapper.map(d, BacLuongDTO.class));
 		}
 		return ketqua;
 	}
 
 	@Override
-	public boolean delete(int id) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "DELETE FROM bacluong WHERE maBacLuong=?";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setInt(1, id);
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
-		}
-		return ketqua;
+	public void delete(Integer id) {
+		repo.delete(id);
 	}
 
 	@Override
-	public BacLuongDTO getById(int id) throws SQLException {
-		BacLuongDTO bl = null;
-		Connection connection = App.getConnection();
-		String sql = "Select * from bacluong where maBacLuong ='" + id + "'";
-		PreparedStatement preparedStatement = connection.prepareStatement(sql);
-		ResultSet re = preparedStatement.executeQuery();
-		if (re.next()) {
-			int maBacLuong = re.getInt("maBacLuong");
-			double heSoLuong = re.getDouble("heSoLuong");
-			bl = new BacLuongDTO(maBacLuong, heSoLuong);
-		}
-		return bl;
+	public BacLuongDTO getById(Integer id) {
+		Bacluong entity = repo.findOne(id);
+		return mapper.map(entity, BacLuongDTO.class);
 	}
 
 	@Override
-	public boolean update(BacLuongDTO t) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "UPDATE bacluong SET heSoLuong=? WHERE maBacLuong=?";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setDouble(1, t.getHeSoLuong());
-		preStatement.setInt(2, t.getMaBacLuong());
-
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
-		}
-		return ketqua;
-
+	public BacLuongDTO update(BacLuongDTO t) {
+		addOrUpdate(t);
+		return t;
 	}
 
 	@Override
-	public boolean insert(BacLuongDTO t) throws SQLException {
-		boolean ketqua = false;
-		Connection connection = App.getConnection();
-		String sql = "INSERT INTO bacluong VALUES(?,?)";
-		PreparedStatement preStatement = connection.prepareStatement(sql);
-		preStatement.setString(1, null);
-		preStatement.setDouble(2, t.getHeSoLuong());
+	public BacLuongDTO insert(BacLuongDTO t) {
+		addOrUpdate(t);
+		return t;
+	}
 
-		int check = preStatement.executeUpdate();
-		if (check > 0) {
-			ketqua = true;
+	private Bacluong addOrUpdate(BacLuongDTO dto) {
+		Bacluong entity = new Bacluong();
+
+		if (dto.getPk() != null && dto.getPk() != -1) {
+			entity = repo.findOne(dto.getPk());
 		}
-		return ketqua;
+		mapper.map(dto, entity);
+		return repo.save(entity);
 	}
 }

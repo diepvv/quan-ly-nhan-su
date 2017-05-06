@@ -24,10 +24,10 @@ public class DanhSachKhoanGonRestController {
 		return danhsachkhoangon.getAll();
 	}
 
-	@GetMapping("/getById/{maCBKG}")
-	public DanhSachKhoanGonDTO getById(@PathVariable int maCBKG)
+	@GetMapping("/getById/{pK}")
+	public DanhSachKhoanGonDTO getById(@PathVariable Integer pK)
 			throws ParseException, SQLException {
-		DanhSachKhoanGonDTO ds = danhsachkhoangon.getById(maCBKG);
+		DanhSachKhoanGonDTO ds = danhsachkhoangon.getById(pK);
 		return ds;
 	}
 }

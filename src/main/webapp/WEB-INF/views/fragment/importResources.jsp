@@ -47,6 +47,8 @@
 <script src="<c:url value='/resources/js/vendor/snow.js'/>"></script>
 <script src="<c:url value='/resources/js/vendor/valida.2.1.6.min.js'/>"></script>
 <script src="<c:url value='/resources/js/vendor/validator.min.js'/>"></script>
+<link href="<c:url value='/resources/css/myDataTable.css' />" rel="stylesheet" type="text/css"/>
+<link href="<c:url value='/resources/css/quanlynhansu.css' />" rel="stylesheet" type="text/css"/>
 
 
 

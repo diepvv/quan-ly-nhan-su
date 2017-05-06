@@ -1,18 +1,18 @@
 package quanlynhansu.service;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import quanlynhansu.model.dto.DanhSachKhoanGonDTO;
 
 public interface IDanhSachKhoanGonService {
-	public ArrayList<DanhSachKhoanGonDTO> getAll() throws SQLException;
+	public ArrayList<DanhSachKhoanGonDTO> getAll();
 
-	boolean delete(int id) throws SQLException;
+	void delete(Integer id);
 
-	public DanhSachKhoanGonDTO getById(int id) throws SQLException;
+	public DanhSachKhoanGonDTO getById(Integer id);
 
-	boolean update(DanhSachKhoanGonDTO t) throws SQLException;
+	DanhSachKhoanGonDTO update(DanhSachKhoanGonDTO t);
 
-	boolean insert(DanhSachKhoanGonDTO t) throws SQLException;
+	DanhSachKhoanGonDTO insert(DanhSachKhoanGonDTO t);
+	
 }

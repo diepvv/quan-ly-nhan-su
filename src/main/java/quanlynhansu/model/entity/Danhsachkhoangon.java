@@ -1,34 +1,31 @@
-package quanlynhansu.model.dto;
+package quanlynhansu.model.entity;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
-public class DanhSachKhoanGonDTO implements Serializable {
+import javax.persistence.*;
 
-	private static final long serialVersionUID = 4017633982899062559L;
+@Entity
+@Table(name = "danhsachkhoangon")
+@NamedQuery(name = "Danhsachkhoangon.findAll", query = "SELECT d FROM Danhsachkhoangon d")
+public class Danhsachkhoangon implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
-	private Integer donViChucNangDskg_pk;
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "donViChucNangDskg_pk", foreignKey = @ForeignKey(name = "donViChucNangDskg_pk"))
+	private Donvichucnang donvichucnang;
+
 	private String hoTenCanBo;
 	private String soDienThoai;
 	private String soCmnd;
 	private String diaChi;
+	@Temporal(TemporalType.DATE)
 	private Date ngayKyHopDong;
 
-	public DanhSachKhoanGonDTO() {
-	}
-
-	@Deprecated
-	public DanhSachKhoanGonDTO(Integer pk, Integer donViChucNangDskg_pk,
-			String hoTenCanBo, String soDienThoai, String soCmnd,
-			String diaChi, Date ngayKyHopDong) {
-		super();
-		this.pk = pk;
-		this.donViChucNangDskg_pk = donViChucNangDskg_pk;
-		this.hoTenCanBo = hoTenCanBo;
-		this.soDienThoai = soDienThoai;
-		this.soCmnd = soCmnd;
-		this.diaChi = diaChi;
-		this.ngayKyHopDong = ngayKyHopDong;
+	public Danhsachkhoangon() {
 	}
 
 	public Integer getPk() {
@@ -39,12 +36,12 @@ public class DanhSachKhoanGonDTO implements Serializable {
 		this.pk = pk;
 	}
 
-	public Integer getDonViChucNangDskg_pk() {
-		return donViChucNangDskg_pk;
+	public Donvichucnang getDonvichucnang() {
+		return donvichucnang;
 	}
 
-	public void setDonViChucNangDskg_pk(Integer donViChucNangDskg_pk) {
-		this.donViChucNangDskg_pk = donViChucNangDskg_pk;
+	public void setDonvichucnang(Donvichucnang donvichucnang) {
+		this.donvichucnang = donvichucnang;
 	}
 
 	public String getHoTenCanBo() {
@@ -86,5 +83,4 @@ public class DanhSachKhoanGonDTO implements Serializable {
 	public void setNgayKyHopDong(Date ngayKyHopDong) {
 		this.ngayKyHopDong = ngayKyHopDong;
 	}
-
 }

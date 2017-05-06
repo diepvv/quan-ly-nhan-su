@@ -10,6 +10,7 @@
 <script src="<c:url value='/resources/js/canbo.js' />"></script>
 <script src="<c:url value='/resources/js/danToc.js' />"></script>
 <link href="<c:url value='/resources/css/myDataTable.css' />" rel="stylesheet" type="text/css"/>
+<link href="<c:url value='/resources/css/quanlynhansu.css' />" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <!-- header -->

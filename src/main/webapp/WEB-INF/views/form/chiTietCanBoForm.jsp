@@ -1,23 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<style>
-.modal-dialog1 {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
-}
-
-.modal-content {
-	height: auto;
-	min-height: 100%;
-	border-radius: 0;
-}
-</style>
-<div id="ChiTietCanBoForm" class="modal fade" role="dialog">
-	<div class="modal-dialog1 ">
+<div id="ChiTietCanBoForm" class="modal fade background-white" role="dialog">
+	<div class="full-screen-modal-dialog">
 		<!-- Modal content-->
-		<div class="modal-content ">
+		<div class="full-screen-modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
 				<h1 class="modal-title">CHI TIẾT CÁN BỘ</h1>
@@ -28,13 +14,13 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<a data-toggle="collapse" href="#SoYeuLyLichForm"
+								<a data-toggle="collapse" href="#collapseSoYeuLyLichForm"
 									data-parent="#accordion1"
 									onclick="$(hidTieuChiChiTietCanBo).val('soYeuLyLich')">SƠ
 									YẾU LÝ LỊCH</a>
 							</h4>
 						</div>
-						<div id="SoYeuLyLichForm" class="panel-collapse collapse">
+						<div id="collapseSoYeuLyLichForm" class="panel-collapse collapse">
 							<%@include file="soYeuLyLich.jsp"%>
 						</div>
 					</div>

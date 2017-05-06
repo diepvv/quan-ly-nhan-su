@@ -1,22 +1,21 @@
-package quanlynhansu.model.dto;
+package quanlynhansu.model.entity;
 
 import java.io.Serializable;
 
-public class BacLuongDTO implements Serializable {
-	private static final long serialVersionUID = -6997037396889908918L;
+import javax.persistence.*;
+
+@Entity
+@Table(name = "bacluong")
+@NamedQuery(name = "Bacluong.findAll", query = "SELECT b FROM Bacluong b")
+public class Bacluong implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
 	private Integer maBacLuong;
 	private double heSoLuong;
 
-	public BacLuongDTO() {
-	}
-
-	@Deprecated
-	public BacLuongDTO(Integer pk, Integer maBacLuong, double heSoLuong) {
-		super();
-		this.pk = pk;
-		this.maBacLuong = maBacLuong;
-		this.heSoLuong = heSoLuong;
+	public Bacluong() {
 	}
 
 	public Integer getPk() {
