@@ -12,7 +12,7 @@ $(document).ready(function() {
 			      },
 			      {
 				       "aTargets": [ 1 ],
-				       "mData": "donViChucNangDskg_pk"
+				       "mData": "donViChucNang.tenDonVi"
 			      },
 			      {
 				       "aTargets": [ 2 ],

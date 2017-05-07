@@ -7,6 +7,9 @@ Target Database: quanlynhansu
 Date: 5/6/2017 6:38:50 PM
 */
 
+create database quanlynhansu;
+use quanlynhansu;
+
 SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 -- Table structure for bacluong
