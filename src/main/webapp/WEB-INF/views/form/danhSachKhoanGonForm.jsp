@@ -13,13 +13,13 @@
 				<input class="form-control" id="pk" type="hidden">
 
 				<label for="donViChucNangDskg_pk">Đơn vị công tác</label> 
-				<input class="form-control" id="donViChucNangDskg_pk" type="text" list="listDonvicongTac"></br>
-				<datalist id="listDonvicongTac">
-					<option value="a"></option>
-					<option value="b"></option>
-					<option value="c"></option>
-				</datalist>
-
+				<c:if test="${not empty donViChucNangLists}">
+					<select class = "form-control" id="donViChucNangDskg_pk">
+						<c:forEach var="dto" items="${donViChucNangLists}">
+							<option value="${dto.pk}">${dto.tenDonVi}</option>
+						</c:forEach>
+					</select>
+				</c:if>
 				<label for="hoTenCanBo">Họ tên cán bộ</label> 
 				<input class="form-control" id="hoTenCanBo" type="text">
 				 

@@ -1,6 +1,7 @@
 package quanlynhansu.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,39 +12,50 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import quanlynhansu.model.dto.DanhSachKhoanGonDTO;
+import quanlynhansu.model.dto.DonViChucNangDTO;
 import quanlynhansu.service.IDanhSachKhoanGonService;
+import quanlynhansu.service.IDonViChucNangService;
 
 @Controller
 @RequestMapping("/danhSachKhoanGonController")
 public class DanhSachKhoanGonController {
 	@Autowired
-	private IDanhSachKhoanGonService danhsachkhoangon;
+	private IDanhSachKhoanGonService danhSachKhoanGonService;
+	@Autowired
+	private IDonViChucNangService donViChucNangService; 
 
 	@GetMapping("/show")
-	public String show() {
-		return "danhsachkhoangon";
+	/*
+	 * public String show() { return "danhsachkhoangon"; }
+	 */
+	public ModelAndView getdata() {
+		ArrayList<DonViChucNangDTO> list = donViChucNangService.getAll();
+		ModelAndView model = new ModelAndView("danhsachkhoangon");
+		model.addObject("donViChucNangLists", list);
+		return model;
 	}
 
 	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
 	public String delete(@PathVariable Integer pK, Model model)
 			throws SQLException {
-		danhsachkhoangon.delete(pK);
+		danhSachKhoanGonService.delete(pK);
 		return "danhsachkhoangon";
 	}
 
 	@PostMapping("/update")
 	public String update(@RequestBody DanhSachKhoanGonDTO dskg, Model model)
 			throws SQLException {
-		danhsachkhoangon.update(dskg);
+		danhSachKhoanGonService.update(dskg);
 		return "danhsachkhoangon";
 	}
 
 	@PostMapping("/add")
 	public String insert(@RequestBody DanhSachKhoanGonDTO dskg, Model model)
 			throws SQLException {
-		danhsachkhoangon.insert(dskg);
+		danhSachKhoanGonService.insert(dskg);
 		return "danhsachkhoangon";
 	}
 }
