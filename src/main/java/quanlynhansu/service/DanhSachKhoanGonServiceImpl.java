@@ -4,13 +4,16 @@ import java.util.ArrayList;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import quanlynhansu.model.dto.DanhSachKhoanGonDTO;
+import quanlynhansu.model.dto.DonViChucNangDTO;
 import quanlynhansu.model.entity.Danhsachkhoangon;
 import quanlynhansu.repository.IDanhSachKhoanGonRepository;
 
-@Component
+@Service
+@Transactional(rollbackFor = Throwable.class)
 public class DanhSachKhoanGonServiceImpl implements IDanhSachKhoanGonService {
 	@Autowired
 	private IDanhSachKhoanGonRepository repo;
@@ -24,7 +27,10 @@ public class DanhSachKhoanGonServiceImpl implements IDanhSachKhoanGonService {
 		Iterable<Danhsachkhoangon> listFromDb = repo.findAll();
 
 		for (Danhsachkhoangon d : listFromDb) {
-			ketqua.add(mapper.map(d, DanhSachKhoanGonDTO.class));
+		    DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			DanhSachKhoanGonDTO danhSachKhoanGonDto = mapper.map(d, DanhSachKhoanGonDTO.class);
+			danhSachKhoanGonDto.setDonViChucNang(donViChucNangDto);
+            ketqua.add(danhSachKhoanGonDto);
 		}
 		return ketqua;
 	}
