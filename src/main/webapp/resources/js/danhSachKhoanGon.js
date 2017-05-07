@@ -172,7 +172,11 @@ $(document).ready(function() {
         }); 
     	
 	} );
-	
+/*  datepicker*/
+$.fn.datepicker.defaults.format = "yyyy-mm-dd";
+$('.datepicker').datepicker({
+		 	startDate: '-3d'
+});
 	
 		 
 		

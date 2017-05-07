@@ -1,7 +1,7 @@
 package quanlynhansu.model.dto;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.Date;
 
 public class DanhSachKhoanGonDTO implements Serializable {
 

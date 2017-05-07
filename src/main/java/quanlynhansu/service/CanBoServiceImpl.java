@@ -1,21 +1,67 @@
 package quanlynhansu.service;
 
 import java.util.ArrayList;
-import java.util.List;
 
+import org.dozer.DozerBeanMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import quanlynhansu.model.dto.CanBoDTO;
+import quanlynhansu.model.entity.Canbo;
+import quanlynhansu.repository.ICanBoRepository;
 
 @Component
 public class CanBoServiceImpl implements ICanBoService {
+	@Autowired
+	private ICanBoRepository repo;
 
-	public List<CanBoDTO> createListCB(int count) {
-		List<CanBoDTO> listCB = new ArrayList<CanBoDTO>();
-		for (int i = 0; i < count; i++) {
-			listCB.add(new CanBoDTO(i + 1, "Nguyen Van A", "Bo Mon Co Ban",
-					"Giang Vien BMCB"));
+	@Autowired
+	protected DozerBeanMapper mapper;
+
+	@Override
+	public ArrayList<CanBoDTO> getAll() {
+
+		ArrayList<CanBoDTO> ketqua = new ArrayList<>();
+
+		Iterable<Canbo> listFromDb = repo.findAll();
+
+		for (Canbo h : listFromDb) {
+			ketqua.add(mapper.map(h, CanBoDTO.class));
 		}
-		return listCB;
+		return ketqua;
 	}
+
+	@Override
+	public void delete(Integer id) {
+		repo.delete(Integer.valueOf(id));
+	}
+
+	@Override
+	public CanBoDTO getById(Integer id) {
+		Canbo entity = repo.findOne(Integer.valueOf(id));
+		return mapper.map(entity, CanBoDTO.class);
+	}
+
+	@Override
+	public CanBoDTO update(CanBoDTO t) {
+		addOrUpdate(t);
+		return t;
+	}
+
+	@Override
+	public CanBoDTO insert(CanBoDTO t) {
+		addOrUpdate(t);
+		return t;
+	}
+
+	private Canbo addOrUpdate(CanBoDTO dto) {
+		Canbo entity = new Canbo();
+		if (dto.getPk() != null && dto.getPk() != -1) {
+			entity = repo.findOne(dto.getPk());
+		}
+		mapper.map(dto, entity);
+
+		return repo.save(entity);
+	}
+
 }

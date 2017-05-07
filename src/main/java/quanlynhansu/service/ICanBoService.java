@@ -1,9 +1,17 @@
 package quanlynhansu.service;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import quanlynhansu.model.dto.CanBoDTO;
 
 public interface ICanBoService {
-	List<CanBoDTO> createListCB(int count);
+	public ArrayList<CanBoDTO> getAll();
+
+	void delete(Integer id);
+
+	public CanBoDTO getById(Integer id);
+
+	CanBoDTO update(CanBoDTO t);
+
+	CanBoDTO insert(CanBoDTO t);
 }

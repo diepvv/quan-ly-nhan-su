@@ -24,7 +24,9 @@ public class DanhSachKhoanGonServiceImpl implements IDanhSachKhoanGonService {
 		Iterable<Danhsachkhoangon> listFromDb = repo.findAll();
 
 		for (Danhsachkhoangon d : listFromDb) {
-			ketqua.add(mapper.map(d, DanhSachKhoanGonDTO.class));
+			DanhSachKhoanGonDTO dto = mapper.map(d, DanhSachKhoanGonDTO.class);
+			dto.setNgayKyHopDong(d.getNgayKyHopDong());
+			ketqua.add(dto);
 		}
 		return ketqua;
 	}
