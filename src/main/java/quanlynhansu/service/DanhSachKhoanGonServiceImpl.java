@@ -27,9 +27,12 @@ public class DanhSachKhoanGonServiceImpl implements IDanhSachKhoanGonService {
 		Iterable<Danhsachkhoangon> listFromDb = repo.findAll();
 
 		for (Danhsachkhoangon d : listFromDb) {
-			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
-			DanhSachKhoanGonDTO danhSachKhoanGonDto = mapper.map(d, DanhSachKhoanGonDTO.class);
+			DonViChucNangDTO donViChucNangDto = mapper.map(
+					d.getDonvichucnang(), DonViChucNangDTO.class);
+			DanhSachKhoanGonDTO danhSachKhoanGonDto = mapper.map(d,
+					DanhSachKhoanGonDTO.class);
 			danhSachKhoanGonDto.setDonViChucNang(donViChucNangDto);
+			danhSachKhoanGonDto.setNgayKyHopDong(d.getNgayKyHopDong());
 			ketqua.add(danhSachKhoanGonDto);
 		}
 		return ketqua;
@@ -43,7 +46,9 @@ public class DanhSachKhoanGonServiceImpl implements IDanhSachKhoanGonService {
 	@Override
 	public DanhSachKhoanGonDTO getById(Integer id) {
 		Danhsachkhoangon entity = repo.findOne(id);
-		return mapper.map(entity, DanhSachKhoanGonDTO.class);
+		DanhSachKhoanGonDTO dto = mapper.map(entity, DanhSachKhoanGonDTO.class);
+		dto.setNgayKyHopDong(entity.getNgayKyHopDong());
+		return dto;
 	}
 
 	@Override

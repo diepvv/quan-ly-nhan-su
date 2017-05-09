@@ -45,7 +45,11 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 	@Override
 	public HopDongNganHanDTO getById(int id) {
 		Hopdongnganhan entity = repo.findOne(Integer.valueOf(id));
-		return mapper.map(entity, HopDongNganHanDTO.class);
+		HopDongNganHanDTO dto = mapper.map(entity, HopDongNganHanDTO.class);
+		dto.setNgayKy(entity.getNgayKy());
+		dto.setTuNgay(entity.getTuNgay());
+		dto.setDenNgay(entity.getDenNgay());
+		return dto;
 	}
 
 	@Override

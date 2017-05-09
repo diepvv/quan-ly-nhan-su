@@ -9,14 +9,14 @@
 				<h4 class="modal-title">Chọn Đơn Vị</h4>
 			</div>
 			<div class="modal-body">
-				<label for="txtDonViCT">Đơn vị công tác</label> <input
-					class="form-control" id="txtDonViCT" type="text"
-					list="listDonViCT"></br>
-				<datalist id="listDonViCT">
-					<option value="a"></option>
-					<option value="b"></option>
-					<option value="c"></option>
-				</datalist>
+				<label for="donViChucNangDskg_pk">Đơn vị công tác</label></br>
+				<c:if test="${not empty donViChucNangLists}">
+					<select class = "form-control" id="donViChucNangDskg_pk">
+						<c:forEach var="dto" items="${donViChucNangLists}">
+							<option value="${dto.pk}">${dto.tenDonVi}</option>
+						</c:forEach>
+					</select>
+				</c:if>	
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal"

@@ -87,13 +87,14 @@
 							</h4>
 						</div>
 						<div id="collapseDanToc" class="panel-collapse collapse">
-							<label for="inputdefault">Dân tộc</label> <input
-								class="form-control" id="txtDanToc" type="text"
-								list="listDanToc">
-							<datalist id="listDanToc">
-								<option value="Kinh"></option>
-								<option value="Tày"></option>
-							</datalist>
+							<label for="danTocThongKe_pk">Dân tộc</label></br>
+							<c:if test="${not empty danTocLists}">
+								<select class="form-control" id="danTocThongKe_pk">
+									<c:forEach var="dto" items="${danTocLists}">
+										<option value="${dto.pk}">${dto.tenDanToc}</option>
+									</c:forEach>
+								</select>
+							</c:if>
 						</div>
 					</div>
 
@@ -106,13 +107,14 @@
 							</h4>
 						</div>
 						<div id="collapseTonGiao" class="panel-collapse collapse">
-							<label for="inputdefault">Tôn giáo</label> <input
-								class="form-control" id="txtTonGiao" type="text"
-								list="listTonGiao">
-							<datalist id="listTonGiao">
-								<option value="Phật giáo"></option>
-								<option value="Thiên chúa giáo"></option>
-							</datalist>
+							<label for="tonGiaoThongKe_pk">Tôn giáo</label></br>
+							<c:if test="${not empty tonGiaoLists}">
+								<select class="form-control" id="tonGiaoThongKe_pk">
+									<c:forEach var="dto" items="${tonGiaoLists}">
+										<option value="${dto.pk}">${dto.tenTonGiao}</option>
+									</c:forEach>
+								</select>
+							</c:if>
 						</div>
 					</div>
 
@@ -125,13 +127,14 @@
 							</h4>
 						</div>
 						<div id="collapseChucVu" class="panel-collapse collapse">
-							<label for="inputdefault">Chức vụ</label> <input
-								class="form-control" id="txtChucVu" type="text"
-								list="listChucVu">
-							<datalist id="listChucVu">
-								<option value="Giảng viên BM. Cơ bản"></option>
-								<option value="Giảng viên BM. Công trình"></option>
-							</datalist>
+							<label for="chucVuThongKe_pk">Chức vụ</label></br>
+							<c:if test="${not empty chucVuLists}">
+								<select class="form-control" id="chucVuThongKe_pk">
+									<c:forEach var="dto" items="${chucVuLists}">
+										<option value="${dto.pk}">${dto.tenChucVu}</option>
+									</c:forEach>
+								</select>
+							</c:if> 
 						</div>
 					</div>
 
@@ -206,13 +209,14 @@
 							</h4>
 						</div>
 						<div id="collapseNgachCongChuc" class="panel-collapse collapse">
-							<label for="inputdefault">Mã ngạch</label> <input
-								class="form-control" id="txtNgachCongchuc" type="text"
-								list="listNgachCongChuc">
-							<datalist id="listNgachCongChuc">
-								<option value="Chuyên viên"></option>
-								<option value="Cán sự"></option>
-							</datalist>
+							<label for="ngachCongChucThongKe_pk">Mã ngạch</label></br>
+							<c:if test="${not empty ngachCongChucLists}">
+								<select class="form-control" id="ngachCongChucThongKe_pk">
+									<c:forEach var="dto" items="${ngachCongChucLists}">
+										<option value="${dto.pk}">${dto.maNgach}</option>
+									</c:forEach>
+								</select>
+							</c:if>  
 						</div>
 					</div>
 

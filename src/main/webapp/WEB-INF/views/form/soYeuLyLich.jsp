@@ -5,7 +5,7 @@
 <div class="row">
 	<div class="col-md-3">
 		<label for="donViChucNang_pk">Đơn vị công tác</label> <input
-			class="form-control" id="txtDonViCongTac" type="text"
+			class="form-control" id="donViChucNang_pk" type="text"
 			list="listDonvicongTac"></br>
 		<datalist id="listDonvicongTac">
 			<option value="a"></option>
@@ -15,7 +15,7 @@
 	</div>
 	<div class="col-md-3">
 		<label for="boMon_pk">Bộ môn chuyên môn</label> <input
-			class="form-control" id="txtBoMonChuyenMon" type="text"
+			class="form-control" id="boMon_pk" type="text"
 			list="listBoMonChuyenMon"></br>
 		<datalist id="listBoMonChuyenMon">
 			<option value="a"></option>
@@ -79,7 +79,7 @@
 	</div>
 	<div class="col-md-3">
 		<label for="danToc_pk">Dân tộc</label> <input class="form-control"
-			id="txtDanToc" type="text" list="listDanToc">
+			id="danToc_pk" type="text" list="listDanToc">
 		<datalist id="listDanToc">
 			<option value="a"></option>
 			<option value="b"></option>
@@ -88,7 +88,7 @@
 	</div>
 	<div class="col-md-3">
 		<label for="tonGiao_pk">Tôn giáo</label> <input class="form-control"
-			id="txtTonGiao" type="text" list="listTonGiao">
+			id="tonGiao_pk" type="text" list="listTonGiao">
 		<datalist id="listTonGiao">
 			<option value="a"></option>
 			<option value="b"></option>
@@ -357,7 +357,7 @@
 	</div>
 	<div class="col-md-3">
 		<label for="nhomMau">Nhóm máu</label> <input class="form-control"
-			id="txtNhomMau" type="text" list="listNhomMau">
+			id="nhomMau" type="text" list="listNhomMau">
 		<datalist id="listNhomMau">
 			<option value="A"></option>
 			<option value="B"></option>

@@ -15,9 +15,17 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import quanlynhansu.model.dto.CanBoDTO;
+import quanlynhansu.model.dto.ChucVuDTO;
+import quanlynhansu.model.dto.DanTocDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
+import quanlynhansu.model.dto.NgachCongChucDTO;
+import quanlynhansu.model.dto.TonGiaoDTO;
 import quanlynhansu.service.ICanBoService;
+import quanlynhansu.service.IChucVuService;
+import quanlynhansu.service.IDanTocService;
 import quanlynhansu.service.IDonViChucNangService;
+import quanlynhansu.service.INgachCongChucService;
+import quanlynhansu.service.ITonGiaoService;
 
 @Controller
 @RequestMapping("/canBoController")
@@ -26,12 +34,28 @@ public class CanBoController {
 	private ICanBoService canBoService;
 	@Autowired
 	private IDonViChucNangService donViChucNangService;
+	@Autowired
+	private ITonGiaoService tonGiaoService;
+	@Autowired
+	private IDanTocService danTocService;
+	@Autowired
+	private IChucVuService chucVuService;
+	@Autowired
+	private INgachCongChucService ngachCongChucService;
 
 	@GetMapping("/show")
 	public ModelAndView getdata() {
 		ArrayList<DonViChucNangDTO> list = donViChucNangService.getAll();
+		ArrayList<TonGiaoDTO> tonGiaoLists = tonGiaoService.getAll();
+		ArrayList<DanTocDTO> danTocLists = danTocService.getAll();
+		ArrayList<ChucVuDTO> chucVuLists = chucVuService.getAll();
+		ArrayList<NgachCongChucDTO> ngachCongChucLists = ngachCongChucService.getAll();
 		ModelAndView model = new ModelAndView("canbo");
 		model.addObject("donViChucNangLists", list);
+		model.addObject("tonGiaoLists", tonGiaoLists);
+		model.addObject("danTocLists", danTocLists);
+		model.addObject("chucVuLists", chucVuLists);
+		model.addObject("ngachCongChucLists", ngachCongChucLists);
 		return model;
 	}
 
