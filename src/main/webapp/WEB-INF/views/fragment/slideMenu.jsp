@@ -55,7 +55,7 @@
 										aria-hidden="true"></i>Quản lý quyết định <i class="fa fa-angle-down"
 										aria-hidden="true"> </i></a>
 									<ul class="gn-submenu">
-										<li class="mini_list_agile"><a href="/danhSachQuyetDinhController/show"><i
+										<li class="mini_list_agile"><a href="/quyetDinhController/show"><i
 												class="fa fa-caret-right" aria-hidden="true"></i> Danh sách quyết định</a></li>
 										<li class="mini_list_w3"><a href="/quyetDinhKhenThuongController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i> Quyết định khen thưởng
