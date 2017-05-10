@@ -28,10 +28,12 @@ public class QuyetDinhKyLuatServiceImpl implements IQuyetDinhKyLuatService {
 		Iterable<Quyetdinhkyluat> listFromDb = repo.findAll();
 
 		for (Quyetdinhkyluat d : listFromDb) {
-			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			DonViChucNangDTO donViChucNangDto = mapper.map(
+					d.getDonvichucnang(), DonViChucNangDTO.class);
 			CanBoDTO canBoDto = mapper.map(d.getCanbo(), CanBoDTO.class);
 
-			QuyetDinhKyLuatDTO QuyetDinhKyLuatDTO = mapper.map(d, QuyetDinhKyLuatDTO.class);
+			QuyetDinhKyLuatDTO QuyetDinhKyLuatDTO = mapper.map(d,
+					QuyetDinhKyLuatDTO.class);
 
 			QuyetDinhKyLuatDTO.setDonViChucNang(donViChucNangDto);
 			QuyetDinhKyLuatDTO.setCanBo(canBoDto);
