@@ -7,10 +7,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Danh sach khoan gon</title>
+<title>Danh sach kiem nhiem</title>
 <%@include file="fragment/importResources.jsp"%>
 <%@include file="fragment/importDataTableResources.jsp"%>
-<script src="<c:url value='/resources/js/danhSachKhoanGon.js' />"></script>
+<script src="<c:url value='/resources/js/danhSachKiemNhiem.js' />"></script>
 <link href="<c:url value='/resources/css/myDataTable.css' />"
 	rel="stylesheet" type="text/css" />
 </head>
@@ -19,20 +19,17 @@
 	<%@include file="fragment/header.jsp"%>
 	<!-- /inner_content-->
 	<div class="inner_content">
-
-
 		<!-- datatable start  -->
-		<h1>DANH SÁCH KHOÁN GỌN</h1>
+		<h1>DANH SÁCH KIÊM NHIỆM</h1>
 		<!-- 	<button id="button">btn</button> -->
-		<table id="DanhSachKhoanGonTable" class="display">
-
+		<table id="DanhSachKiemNhiemTable" class="display">
 			<!-- Header Table -->
 			<thead>
 				<tr>
 					<th>Cán bộ</th>
-					<th>Đơn vị</th>
-					<th>Số điện thoại</th>
-					<th>Ngày ký hợp đồng</th>
+					<th>Chức vụ kiêm nhiệm</th>
+					<th>Từ ngày</th>
+					<th>Đến ngày</th>
 					<th>Chi tiết</th>
 					<th>Xóa</th>
 				</tr>
@@ -41,9 +38,9 @@
 			<tfoot>
 				<tr>
 					<th>Cán bộ</th>
-					<th>Đơn vị</th>
-					<th>Số điện thoại</th>
-					<th>Ngày ký hợp đồng</th>
+					<th>Chức vụ kiêm nhiệm</th>
+					<th>Từ ngày</th>
+					<th>Đến ngày</th>
 					<th>Chi tiết</th>
 					<th>Xóa</th>
 				</tr>
@@ -51,9 +48,6 @@
 		</table>
 		<!-- datatable end -->
 	</div>
-	<%@include file="form/danhSachKhoanGonForm.jsp"%>
-	<!-- //inner_content-->
-	<!-- footer -->
-	<%-- <%@include file="fragment/footer.jsp"%> --%>
+	<%@include file="form/danhSachKiemNhiemForm.jsp"%>
 </body>
 </html>
