@@ -53,6 +53,8 @@ public class QuyetDinhKyLuatServiceImpl implements IQuyetDinhKyLuatService {
 		Quyetdinhkyluat entity = repo.findOne(id);
 		QuyetDinhKyLuatDTO dto = mapper.map(entity, QuyetDinhKyLuatDTO.class);
 		dto.setNgayKy(entity.getNgayKy());
+		dto.setTuNgay(entity.getTuNgay());
+		dto.setDenNgay(entity.getDenNgay());
 		return dto;
 	}
 

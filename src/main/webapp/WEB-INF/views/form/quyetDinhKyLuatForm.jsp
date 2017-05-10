@@ -36,7 +36,7 @@
 				<input class="form-control" id="tenQuyetDinh" type="text">
 				 
 				<label for="noiDungQuyetDinh">Nội dung quyết định kỷ luật</label>
-				<textarea class="form-control" id="noiDungQuyetDinh" type="text">
+				<textarea class="form-control" id="noiDungQuyetDinh" type="text"></textarea>
 				
 				<label for="ngayKy">Ngày Ký</label>
 				<div class="input-group date" data-provide="datepicker">

@@ -82,7 +82,7 @@ $(document).ready(function() {
             }
 		});
 	
-		$('#DanhSachKhoanGonTable tbody').on( 'click', 'button', function () {
+		$('#QuyetDinhKyLuatTable tbody').on( 'click', 'button', function () {
 			var id = $(this)[0].id;
 			if("btnDel" == id){
 	        var data = table.row($(this).parents('tr')).data();
@@ -102,7 +102,7 @@ $(document).ready(function() {
 			}
 	    });
 		
-		$('#DanhSachKhoanGonTable tbody').on( 'click', 'button', function () {
+		$('#QuyetDinhKyLuatTable tbody').on( 'click', 'button', function () {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
 					var data = table.row($(this).parents('tr')).data();
