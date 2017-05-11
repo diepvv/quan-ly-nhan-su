@@ -28,9 +28,6 @@ public class DanhSachKhoanGonController {
 	private IDonViChucNangService donViChucNangService; 
 
 	@GetMapping("/show")
-	/*
-	 * public String show() { return "danhsachkhoangon"; }
-	 */
 	public ModelAndView getdata() {
 		ArrayList<DonViChucNangDTO> list = donViChucNangService.getAll();
 		ModelAndView model = new ModelAndView("danhsachkhoangon");
