@@ -1,25 +1,49 @@
-package quanlynhansu.model.dto;
+package quanlynhansu.model.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
-public class LuongDTO implements Serializable {
+import javax.persistence.*;
+
+@Entity
+@Table(name = "quatrinhluong")
+@NamedQuery(name = "Quatrinhluong.findAll", query = "SELECT q FROM Quatrinhluong q")
+public class Quatrinhluong implements Serializable {
 	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
-	private DonViChucNangDTO donViChucNang;
-	private CanBoDTO canBo;
-	private NgachCongChucDTO ngachCongChuc;
-	private BacLuongDTO bacLuong;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "donViChucNangL_pk", foreignKey = @ForeignKey(name = "donViChucNangL_pk"))
+	private Donvichucnang donvichucnang;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "canBoL_pk", foreignKey = @ForeignKey(name = "canBoL_pk"))
+	private Canbo canbo;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "ngachCongChucL_pk", foreignKey = @ForeignKey(name = "ngachCongChucL_pk"))
+	private Ngachcongchuc ngachcongchuc;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "bacLuongL_pk", foreignKey = @ForeignKey(name = "bacLuongL_pk"))
+	private Bacluong bacluong;
+
+	@Temporal(TemporalType.DATE)
 	private Date thoiGianTinhHuong;
 	private Integer phanTranPhuCap;
+	@Temporal(TemporalType.DATE)
 	private Date thoiGianTangLuong;
+	@Temporal(TemporalType.DATE)
 	private Date thoiGianChamLenLuong;
 	private String lyDoChamLenLuong;
+	@Temporal(TemporalType.DATE)
 	private Date thoiGianLenLuongSom;
 	private String lyDoLenLuongSom;
 	private String ghiChu;
 
-	public LuongDTO() {
+	public Quatrinhluong() {
 	}
 
 	public Integer getPk() {
@@ -30,36 +54,36 @@ public class LuongDTO implements Serializable {
 		this.pk = pk;
 	}
 
-	public DonViChucNangDTO getDonViChucNang() {
-		return donViChucNang;
+	public Donvichucnang getDonvichucnang() {
+		return donvichucnang;
 	}
 
-	public void setDonViChucNang(DonViChucNangDTO donViChucNang) {
-		this.donViChucNang = donViChucNang;
+	public void setDonvichucnang(Donvichucnang donvichucnang) {
+		this.donvichucnang = donvichucnang;
 	}
 
-	public CanBoDTO getCanBo() {
-		return canBo;
+	public Canbo getCanbo() {
+		return canbo;
 	}
 
-	public void setCanBo(CanBoDTO canBo) {
-		this.canBo = canBo;
+	public void setCanbo(Canbo canbo) {
+		this.canbo = canbo;
 	}
 
-	public NgachCongChucDTO getNgachCongChuc() {
-		return ngachCongChuc;
+	public Ngachcongchuc getNgachcongchuc() {
+		return ngachcongchuc;
 	}
 
-	public void setNgachCongChuc(NgachCongChucDTO ngachCongChuc) {
-		this.ngachCongChuc = ngachCongChuc;
+	public void setNgachcongchuc(Ngachcongchuc ngachcongchuc) {
+		this.ngachcongchuc = ngachcongchuc;
 	}
 
-	public BacLuongDTO getBacLuong() {
-		return bacLuong;
+	public Bacluong getBacluong() {
+		return bacluong;
 	}
 
-	public void setBacLuong(BacLuongDTO bacLuong) {
-		this.bacLuong = bacLuong;
+	public void setBacluong(Bacluong bacluong) {
+		this.bacluong = bacluong;
 	}
 
 	public Date getThoiGianTinhHuong() {
@@ -125,5 +149,4 @@ public class LuongDTO implements Serializable {
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
 	}
-
 }

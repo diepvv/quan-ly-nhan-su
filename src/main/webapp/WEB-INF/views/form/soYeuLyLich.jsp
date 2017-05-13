@@ -4,14 +4,14 @@
 <input class="form-control" id="pk" type="hidden">
 <div class="row">
 	<div class="col-md-3">
-		<label for="donViChucNang_pk">Đơn vị công tác</label> <input
-			class="form-control" id="donViChucNang_pk" type="text"
-			list="listDonvicongTac"></br>
-		<datalist id="listDonvicongTac">
-			<option value="a"></option>
-			<option value="b"></option>
-			<option value="c"></option>
-		</datalist>
+		<label for="donViChucNang_pk">Đơn vị công tác</label></br>
+		<c:if test="${not empty donViChucNangLists}">
+			<select class="form-control" id="donViChucNang_pk">
+				<c:forEach var="dto" items="${donViChucNangLists}">
+					<option value="${dto.pk}">${dto.tenDonVi}</option>
+				</c:forEach>
+			</select>
+		</c:if>
 	</div>
 	<div class="col-md-3">
 		<label for="boMon_pk">Bộ môn chuyên môn</label> <input
@@ -35,8 +35,8 @@
 
 <div class="row">
 	<div class="col-md-3">
-		<label for="soHieu">Số hiệu cán bộ</label> <input
-			class="form-control" id="soHieu" type="text"></br>
+		<label for="soHieu">Số hiệu cán bộ</label> <input class="form-control"
+			id="soHieu" type="text"></br>
 	</div>
 	<div class="col-md-3">
 		<label for="imageUrl">Ảnh</label>
@@ -46,8 +46,8 @@
 
 <div class="row">
 	<div class="col-md-3">
-		<label for="ten">Tên Cán Bộ</label> <input
-			class="form-control" id="ten" type="text"></br>
+		<label for="ten">Tên Cán Bộ</label> <input class="form-control"
+			id="ten" type="text"></br>
 	</div>
 	<div class="col-md-3">
 		<label for="tenGoiKhac">Tên Gọi Khác</label> <input
@@ -63,8 +63,8 @@
 		</div>
 	</div>
 	<div class="col-md-3">
-		<label for="gioiTinh">Giới tính</label> <input
-			class="form-control" id="gioiTinh" type="text">
+		<label for="gioiTinh">Giới tính</label> <input class="form-control"
+			id="gioiTinh" type="text">
 	</div>
 </div>
 
@@ -78,22 +78,24 @@
 			id="queQuan" type="text">
 	</div>
 	<div class="col-md-3">
-		<label for="danToc_pk">Dân tộc</label> <input class="form-control"
-			id="danToc_pk" type="text" list="listDanToc">
-		<datalist id="listDanToc">
-			<option value="a"></option>
-			<option value="b"></option>
-			<option value="c"></option>
-		</datalist>
+		<label for="danToc_pk">Dân tộc</label></br>
+		<c:if test="${not empty danTocLists}">
+			<select class="form-control" id="danToc_pk">
+				<c:forEach var="dto" items="${danTocLists}">
+					<option value="${dto.pk}">${dto.tenDanToc}</option>
+				</c:forEach>
+			</select>
+		</c:if>
 	</div>
 	<div class="col-md-3">
-		<label for="tonGiao_pk">Tôn giáo</label> <input class="form-control"
-			id="tonGiao_pk" type="text" list="listTonGiao">
-		<datalist id="listTonGiao">
-			<option value="a"></option>
-			<option value="b"></option>
-			<option value="c"></option>
-		</datalist>
+		<label for="tonGiao_pk">Tôn giáo</label></br>
+		<c:if test="${not empty tonGiaoLists}">
+			<select class="form-control" id="tonGiao_pk">
+				<c:forEach var="dto" items="${tonGiaoLists}">
+					<option value="${dto.pk}">${dto.tenTonGiao}</option>
+				</c:forEach>
+			</select>
+		</c:if>
 	</div>
 </div>
 </br>
@@ -117,8 +119,8 @@
 			class="form-control" id="noiCapCmnd" type="text">
 	</div>
 	<div class="col-md-3">
-		<label for="noiDKHoKhauThuongTru">Nơi đăng ký hộ khẩu thường trú</label> <input
-			class="form-control" id="noiDKHoKhauThuongTru" type="text">
+		<label for="noiDKHoKhauThuongTru">Nơi đăng ký hộ khẩu thường
+			trú</label> <input class="form-control" id="noiDKHoKhauThuongTru" type="text">
 	</div>
 </div>
 
@@ -128,8 +130,8 @@
 			class="form-control" id="noiOHienNay" type="text">
 	</div>
 	<div class="col-md-3">
-		<label for="ngheNghiepKhiTuyenDung">Nghề Nghiệp khi tuyển dụng</label> <input
-			class="form-control" id="ngheNghiepKhiTuyenDung" type="text">
+		<label for="ngheNghiepKhiTuyenDung">Nghề Nghiệp khi tuyển dụng</label>
+		<input class="form-control" id="ngheNghiepKhiTuyenDung" type="text">
 	</div>
 	<div class="col-md-3">
 		<label for="coQuanTuyenDung">Cơ quan tuyển dụng</label> <input
@@ -159,18 +161,18 @@
 			type="text">
 	</div>
 	<div class="col-md-3">
-		<label for="chucDanh">Chức Danh</label> <input
-			class="form-control" id="chucDanh" value="Giảng Viên" type="text">
+		<label for="chucDanh">Chức Danh</label> <input class="form-control"
+			id="chucDanh" value="Giảng Viên" type="text">
 	</div>
 	<div class="col-md-3">
-		<label for="ngachCongChuc_pk">Mã ngạch công chức</label> <input
-			class="form-control" id="ngachCongChuc_pk" type="text"
-			list="listMaNgach"></br>
-		<datalist id="listMaNgach">
-			<option value="a"></option>
-			<option value="b"></option>
-			<option value="c"></option>
-		</datalist>
+		<label for="ngachCongChuc_pk">Ngạch công chức</label></br>
+		<c:if test="${not empty ngachCongChucLists}">
+			<select class="form-control" id="ngachCongChuc_pk">
+				<c:forEach var="dto" items="${ngachCongChucLists}">
+					<option value="${dto.pk}">${dto.maNgach}</option>
+				</c:forEach>
+			</select>
+		</c:if>
 	</div>
 </div>
 
@@ -180,9 +182,8 @@
 			class="form-control" id="tenNgach" type="text">
 	</div>
 	<div class="col-md-3">
-		<label for="bacLuong_pk">Bậc lương</label> <input
-			class="form-control" id="bacLuong_pk" type="text"
-			list="listBacLuong">
+		<label for="bacLuong_pk">Bậc lương</label> <input class="form-control"
+			id="bacLuong_pk" type="text" list="listBacLuong">
 		<datalist id="listBacLuong">
 			<option value="a"></option>
 			<option value="b"></option>
@@ -190,8 +191,8 @@
 		</datalist>
 	</div>
 	<div class="col-md-3">
-		<label for="heSoLuong">Hệ Số Lương</label> <input
-			class="form-control" id="heSoLuong" type="text">
+		<label for="heSoLuong">Hệ Số Lương</label> <input class="form-control"
+			id="heSoLuong" type="text">
 	</div>
 	<div class="col-md-3">
 		<label for="ngayHuong">Ngày hưởng</label>
@@ -273,8 +274,8 @@
 
 <div class="row">
 	<div class="col-md-3">
-		<label for="ngayVaoDcsvnDuBi">Ngày vào đảng cộng sản Việt Nam dự
-			bị</label>
+		<label for="ngayVaoDcsvnDuBi">Ngày vào đảng cộng sản Việt Nam
+			dự bị</label>
 		<div class="input-group date" data-provide="datepicker">
 			<input type="text" class="form-control" id="ngayVaoDcsvnDuBi">
 			<div class="input-group-addon">
@@ -283,8 +284,8 @@
 		</div>
 	</div>
 	<div class="col-md-3">
-		<label for="ngayVaoDcsvnChinhThuc">Ngày vào đảng cộng sản Việt Nam
-			chính thức</label>
+		<label for="ngayVaoDcsvnChinhThuc">Ngày vào đảng cộng sản Việt
+			Nam chính thức</label>
 		<div class="input-group date" data-provide="datepicker">
 			<input type="text" class="form-control" id="ngayVaoDcsvnChinhThuc">
 			<div class="input-group-addon">
@@ -293,8 +294,8 @@
 		</div>
 	</div>
 	<div class="col-md-3">
-		<label for="thamGiaToChucCtxh">Tham gia tổ chức chính trị xã hội</label> <input
-			class="form-control" id="thamGiaToChucCtxh" type="text">
+		<label for="thamGiaToChucCtxh">Tham gia tổ chức chính trị xã
+			hội</label> <input class="form-control" id="thamGiaToChucCtxh" type="text">
 	</div>
 	<div class="col-md-3">
 		<label for="ngayNhapNgu">Ngày nhập ngũ</label>
@@ -322,8 +323,8 @@
 			class="form-control" id="quanHamCaoNhat" type="text">
 	</div>
 	<div class="col-md-3">
-		<label for="danhHieuPhongTang">Danh hiệu được phong tặng cao nhất</label> <input
-			class="form-control" id="danhHieuPhongTang" type="text">
+		<label for="danhHieuPhongTang">Danh hiệu được phong tặng cao
+			nhất</label> <input class="form-control" id="danhHieuPhongTang" type="text">
 	</div>
 	<div class="col-md-3">
 		<label for="soTruongCongTac">Số trường công tác giảng dạy</label> <input
@@ -345,8 +346,8 @@
 			class="form-control" id="tinhTrangSucKhoe" type="text">
 	</div>
 	<div class="col-md-3">
-		<label for="chieuCao">Chiều cao</label> <input
-			class="form-control" id="chieuCao" type="text">
+		<label for="chieuCao">Chiều cao</label> <input class="form-control"
+			id="chieuCao" type="text">
 	</div>
 </div>
 
@@ -377,8 +378,8 @@
 
 <div class="row">
 	<div class="col-md-3">
-		<label for="laConGiaDinhChinhSach">Là con gia đình chính sách</label> <input
-			class="form-control" id="laConGiaDinhChinhSach" type="text">
+		<label for="laConGiaDinhChinhSach">Là con gia đình chính sách</label>
+		<input class="form-control" id="laConGiaDinhChinhSach" type="text">
 	</div>
 	<div class="col-md-3">
 		<label for="nhanXet">Nhận xét</label>

@@ -26,6 +26,8 @@
 							class="form-control" id="soNamNangBacLuong"
 							name="soNamNangBacLuong" required="true" type="text"></br>
 					</div>
+					<button type="button" class="btn btn-default" data-dismiss="modal"
+						id="btnDanhSachHeSoLuong">Danh Sách Hệ Số Lương</button>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal"
