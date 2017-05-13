@@ -1,8 +1,24 @@
 package quanlynhansu.model.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 @Table(name = "donvichucnang")
@@ -15,7 +31,21 @@ public class Donvichucnang implements Serializable {
 	private String maDonVi;
 	private String tenDonVi;
 
+	@Fetch(FetchMode.SUBSELECT)
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "donvichucnang_bomon", joinColumns = @JoinColumn(name = "donViChucNang_pk", referencedColumnName = "pk", foreignKey = @ForeignKey(name = "FK_donvichucnang_bomon_donvichucnang")), inverseJoinColumns = @JoinColumn(name = "boMon_pk", referencedColumnName = "pk", foreignKey = @ForeignKey(name = "FK_donvichucnang_bomon_bomon")), uniqueConstraints = { @UniqueConstraint(name = "UK_donvichucnang_bomon", columnNames = {
+			"donViChucNang_pk", "boMon_pk" }) })
+	private Set<Bomon> boMons = new HashSet<>();
+
 	public Donvichucnang() {
+	}
+
+	public Set<Bomon> getBoMons() {
+		return boMons;
+	}
+
+	public void setBoMons(Set<Bomon> boMons) {
+		this.boMons = boMons;
 	}
 
 	public Integer getPk() {
@@ -41,9 +71,4 @@ public class Donvichucnang implements Serializable {
 	public void setTenDonVi(String tenDonVi) {
 		this.tenDonVi = tenDonVi;
 	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
-
 }

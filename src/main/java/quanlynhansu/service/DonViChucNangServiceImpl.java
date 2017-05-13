@@ -1,11 +1,13 @@
 package quanlynhansu.service;
 
 import java.util.ArrayList;
+import java.util.stream.Collectors;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import quanlynhansu.model.dto.BoMonDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
 import quanlynhansu.model.entity.Donvichucnang;
 import quanlynhansu.repository.IDonViChucNangRepository;
@@ -24,7 +26,12 @@ public class DonViChucNangServiceImpl implements IDonViChucNangService {
 		Iterable<Donvichucnang> listFromDb = repo.findAll();
 
 		for (Donvichucnang d : listFromDb) {
-			ketqua.add(mapper.map(d, DonViChucNangDTO.class));
+			DonViChucNangDTO donViChucNangDto = mapper.map(d,
+					DonViChucNangDTO.class);
+			donViChucNangDto.setBoMon(d.getBoMons().stream()
+					.map(entity -> mapper.map(entity, BoMonDTO.class))
+					.collect(Collectors.toSet()));
+			ketqua.add(donViChucNangDto);
 		}
 		return ketqua;
 	}

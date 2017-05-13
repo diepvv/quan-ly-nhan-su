@@ -1,21 +1,17 @@
 package quanlynhansu.model.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DonViChucNangDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Integer pk;
 	private String maDonVi;
 	private String tenDonVi;
+	private Set<BoMonDTO> boMon = new HashSet<>();
 
 	public DonViChucNangDTO() {
-	}
-
-	@Deprecated
-	public DonViChucNangDTO(Integer pk, String maDonVi, String tenDonVi) {
-		this.pk = pk;
-		this.maDonVi = maDonVi;
-		this.tenDonVi = tenDonVi;
 	}
 
 	public Integer getPk() {
@@ -42,8 +38,11 @@ public class DonViChucNangDTO implements Serializable {
 		this.tenDonVi = tenDonVi;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Set<BoMonDTO> getBoMon() {
+		return boMon;
 	}
 
+	public void setBoMon(Set<BoMonDTO> boMon) {
+		this.boMon = boMon;
+	}
 }

@@ -6,7 +6,7 @@
 	<div class="col-md-3">
 		<label for="donViChucNang_pk">Đơn vị công tác</label></br>
 		<c:if test="${not empty donViChucNangLists}">
-			<select class="form-control" id="donViChucNang_pk">
+			<select class="form-control" id="donViChucNang_pk" onchange="changeDonViChucNang()">
 				<c:forEach var="dto" items="${donViChucNangLists}">
 					<option value="${dto.pk}">${dto.tenDonVi}</option>
 				</c:forEach>
@@ -152,8 +152,14 @@
 
 <div class="row">
 	<div class="col-md-3">
-		<label for="chucVu_pk">Chức vụ hiện tại</label> <input
-			class="form-control" id="chucVu_pk" type="text">
+		<label for="chucVu_pk">Chức vụ hiện tại</label></br>
+		<c:if test="${not empty chucVuLists}">
+			<select class="form-control" id="chucVu_pk">
+				<c:forEach var="dto" items="${chucVuLists}">
+					<option value="${dto.pk}">${dto.tenChucVu}</option>
+				</c:forEach>
+			</select>
+		</c:if>
 	</div>
 	<div class="col-md-3">
 		<label for="congViecDuocGiao">Công việc chính được giao</label> <input

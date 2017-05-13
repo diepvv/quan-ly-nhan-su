@@ -7,7 +7,7 @@ public class CanBoDTO implements Serializable {
 	private static final long serialVersionUID = 7660631391091782293L;
 	private Integer pk;
 	private String soHieu;
-	private Integer donViChucNang_pk;
+	private DonViChucNangDTO donViChucNang;
 	private Integer boMon_pk;
 	private String imageUrl;
 	private String ten;
@@ -16,8 +16,8 @@ public class CanBoDTO implements Serializable {
 	private Integer gioiTinh;
 	private String noiSinh;
 	private String queQuan;
-	private Integer danToc_pk;
-	private Integer tonGiao_pk;
+	private DanTocDTO danToc;
+	private TonGiaoDTO tonGiao;
 	private String soCmnd;
 	private Date ngayCapCmnd;
 	private String noiCapCmnd;
@@ -26,10 +26,10 @@ public class CanBoDTO implements Serializable {
 	private String ngheNghiepKhiTuyenDung;
 	private String coQuanTuyenDung;
 	private Date ngayTuyenDung;
-	private Integer chucVu_pk;
+	private ChucVuDTO chucVu;
 	private String congViecDuocGiao;
 	private String chucDanh;
-	private Integer ngachCongChuc_pk;
+	private NgachCongChucDTO ngachCongChuc;
 	private Integer bacLuong_pk;
 	private Date ngayHuong;
 	private double phuCapChucVu;
@@ -68,89 +68,6 @@ public class CanBoDTO implements Serializable {
 	public CanBoDTO() {
 	}
 
-	@Deprecated
-	public CanBoDTO(Integer pk, String soHieu, Integer donViChucNang_pk,
-			Integer boMon_pk, String imageUrl, String ten, String tenGoiKhac,
-			Date ngaySinh, Integer gioiTinh, String noiSinh, String queQuan,
-			Integer danToc_pk, Integer tonGiao_pk, String soCmnd,
-			Date ngayCapCmnd, String noiCapCmnd, String noiDKHoKhauThuongTru,
-			String noiOHienNay, String ngheNghiepKhiTuyenDung,
-			String coQuanTuyenDung, Date ngayTuyenDung, Integer chucVu_pk,
-			String congViecDuocGiao, String chucDanh, Integer ngachCongChuc_pk,
-			Integer bacLuong_pk, Date ngayHuong, double phuCapChucVu,
-			double phuCapKhac, String trinhDoGiaoDucPt,
-			String trinhDoChuyenMon, String hocVi, String hocHam,
-			Date ngayNhanHocVi, Date ngayNhanHocHam, String lyLuanChinhTri,
-			String quanLyNhaNuoc, String ngoaiNgu, String tinHoc,
-			Date ngayVaoDcsvnDuBi, Date ngayVaoDcsvnChinhThuc,
-			String thamGiaToChucCtxh, Date ngayNhapNgu, Date ngayXuatNgu,
-			String quanHamCaoNhat, String danhHieuPhongTang,
-			Integer soTruongCongTac, String khenThuong, String kyLuat,
-			String tinhTrangSucKhoe, double chieuCao, double canNang,
-			String nhomMau, String soBaoHiemXh, String laThuongBinh,
-			String laConGiaDinhChinhSach, String nhanXet, Date ngayVeHuu,
-			Date ngayThoiViec) {
-		this.pk = pk;
-		this.soHieu = soHieu;
-		this.donViChucNang_pk = donViChucNang_pk;
-		this.boMon_pk = boMon_pk;
-		this.imageUrl = imageUrl;
-		this.ten = ten;
-		this.tenGoiKhac = tenGoiKhac;
-		this.ngaySinh = ngaySinh;
-		this.gioiTinh = gioiTinh;
-		this.noiSinh = noiSinh;
-		this.queQuan = queQuan;
-		this.danToc_pk = danToc_pk;
-		this.tonGiao_pk = tonGiao_pk;
-		this.soCmnd = soCmnd;
-		this.ngayCapCmnd = ngayCapCmnd;
-		this.noiCapCmnd = noiCapCmnd;
-		this.noiDKHoKhauThuongTru = noiDKHoKhauThuongTru;
-		this.noiOHienNay = noiOHienNay;
-		this.ngheNghiepKhiTuyenDung = ngheNghiepKhiTuyenDung;
-		this.coQuanTuyenDung = coQuanTuyenDung;
-		this.ngayTuyenDung = ngayTuyenDung;
-		this.chucVu_pk = chucVu_pk;
-		this.congViecDuocGiao = congViecDuocGiao;
-		this.chucDanh = chucDanh;
-		this.ngachCongChuc_pk = ngachCongChuc_pk;
-		this.bacLuong_pk = bacLuong_pk;
-		this.ngayHuong = ngayHuong;
-		this.phuCapChucVu = phuCapChucVu;
-		this.phuCapKhac = phuCapKhac;
-		this.trinhDoGiaoDucPt = trinhDoGiaoDucPt;
-		this.trinhDoChuyenMon = trinhDoChuyenMon;
-		this.hocVi = hocVi;
-		this.hocHam = hocHam;
-		this.ngayNhanHocVi = ngayNhanHocVi;
-		this.ngayNhanHocHam = ngayNhanHocHam;
-		this.lyLuanChinhTri = lyLuanChinhTri;
-		this.quanLyNhaNuoc = quanLyNhaNuoc;
-		this.ngoaiNgu = ngoaiNgu;
-		this.tinHoc = tinHoc;
-		this.ngayVaoDcsvnDuBi = ngayVaoDcsvnDuBi;
-		this.ngayVaoDcsvnChinhThuc = ngayVaoDcsvnChinhThuc;
-		this.thamGiaToChucCtxh = thamGiaToChucCtxh;
-		this.ngayNhapNgu = ngayNhapNgu;
-		this.ngayXuatNgu = ngayXuatNgu;
-		this.quanHamCaoNhat = quanHamCaoNhat;
-		this.danhHieuPhongTang = danhHieuPhongTang;
-		this.soTruongCongTac = soTruongCongTac;
-		this.khenThuong = khenThuong;
-		this.kyLuat = kyLuat;
-		this.tinhTrangSucKhoe = tinhTrangSucKhoe;
-		this.chieuCao = chieuCao;
-		this.canNang = canNang;
-		this.nhomMau = nhomMau;
-		this.soBaoHiemXh = soBaoHiemXh;
-		this.laThuongBinh = laThuongBinh;
-		this.laConGiaDinhChinhSach = laConGiaDinhChinhSach;
-		this.nhanXet = nhanXet;
-		this.ngayVeHuu = ngayVeHuu;
-		this.ngayThoiViec = ngayThoiViec;
-	}
-
 	public Integer getPk() {
 		return pk;
 	}
@@ -167,12 +84,12 @@ public class CanBoDTO implements Serializable {
 		this.soHieu = soHieu;
 	}
 
-	public Integer getDonViChucNang_pk() {
-		return donViChucNang_pk;
+	public DonViChucNangDTO getDonViChucNang() {
+		return donViChucNang;
 	}
 
-	public void setDonViChucNang_pk(Integer donViChucNang_pk) {
-		this.donViChucNang_pk = donViChucNang_pk;
+	public void setDonViChucNang(DonViChucNangDTO donViChucNang) {
+		this.donViChucNang = donViChucNang;
 	}
 
 	public Integer getBoMon_pk() {
@@ -239,20 +156,20 @@ public class CanBoDTO implements Serializable {
 		this.queQuan = queQuan;
 	}
 
-	public Integer getDanToc_pk() {
-		return danToc_pk;
+	public DanTocDTO getDanToc() {
+		return danToc;
 	}
 
-	public void setDanToc_pk(Integer danToc_pk) {
-		this.danToc_pk = danToc_pk;
+	public void setDanToc(DanTocDTO danToc) {
+		this.danToc = danToc;
 	}
 
-	public Integer getTonGiao_pk() {
-		return tonGiao_pk;
+	public TonGiaoDTO getTonGiao() {
+		return tonGiao;
 	}
 
-	public void setTonGiao_pk(Integer tonGiao_pk) {
-		this.tonGiao_pk = tonGiao_pk;
+	public void setTonGiao(TonGiaoDTO tonGiao) {
+		this.tonGiao = tonGiao;
 	}
 
 	public String getSoCmnd() {
@@ -319,12 +236,12 @@ public class CanBoDTO implements Serializable {
 		this.ngayTuyenDung = ngayTuyenDung;
 	}
 
-	public Integer getChucVu_pk() {
-		return chucVu_pk;
+	public ChucVuDTO getChucVu() {
+		return chucVu;
 	}
 
-	public void setChucVu_pk(Integer chucVu_pk) {
-		this.chucVu_pk = chucVu_pk;
+	public void setChucVu(ChucVuDTO chucVu) {
+		this.chucVu = chucVu;
 	}
 
 	public String getCongViecDuocGiao() {
@@ -343,12 +260,12 @@ public class CanBoDTO implements Serializable {
 		this.chucDanh = chucDanh;
 	}
 
-	public Integer getNgachCongChuc_pk() {
-		return ngachCongChuc_pk;
+	public NgachCongChucDTO getNgachCongChuc() {
+		return ngachCongChuc;
 	}
 
-	public void setNgachCongChuc_pk(Integer ngachCongChuc_pk) {
-		this.ngachCongChuc_pk = ngachCongChuc_pk;
+	public void setNgachCongChuc(NgachCongChucDTO ngachCongChuc) {
+		this.ngachCongChuc = ngachCongChuc;
 	}
 
 	public Integer getBacLuong_pk() {
@@ -622,4 +539,5 @@ public class CanBoDTO implements Serializable {
 	public void setNgayThoiViec(Date ngayThoiViec) {
 		this.ngayThoiViec = ngayThoiViec;
 	}
+
 }
