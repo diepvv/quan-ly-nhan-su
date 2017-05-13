@@ -7,13 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import quanlynhansu.model.dto.CanBoDTO;
+import quanlynhansu.model.dto.ChucVuDTO;
+import quanlynhansu.model.dto.DonViChucNangDTO;
 import quanlynhansu.model.entity.Canbo;
+import quanlynhansu.model.entity.Donvichucnang;
 import quanlynhansu.repository.ICanBoRepository;
+import quanlynhansu.repository.IDonViChucNangRepository;
 
 @Component
 public class CanBoServiceImpl implements ICanBoService {
 	@Autowired
 	private ICanBoRepository repo;
+	@Autowired
+	private IDonViChucNangRepository donViChucNangRepo;
 
 	@Autowired
 	protected DozerBeanMapper mapper;
@@ -25,8 +31,13 @@ public class CanBoServiceImpl implements ICanBoService {
 
 		Iterable<Canbo> listFromDb = repo.findAll();
 
-		for (Canbo h : listFromDb) {
-			ketqua.add(mapper.map(h, CanBoDTO.class));
+		for (Canbo d : listFromDb) {
+			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
+			CanBoDTO canBoDto =  mapper.map(d, CanBoDTO.class);
+			canBoDto.setDonViChucNang(donViChucNangDto);
+			canBoDto.setChucVu(chucVuDto);
+			ketqua.add(canBoDto);
 		}
 		return ketqua;
 	}
@@ -60,7 +71,10 @@ public class CanBoServiceImpl implements ICanBoService {
 			entity = repo.findOne(dto.getPk());
 		}
 		mapper.map(dto, entity);
-
+		if(dto.getDonViChucNang()!=null){
+			Donvichucnang donViChucNangEntity = donViChucNangRepo.findOne(dto.getDonViChucNang().getPk());
+			entity.setDonvichucnang(donViChucNangEntity);
+		}
 		return repo.save(entity);
 	}
 

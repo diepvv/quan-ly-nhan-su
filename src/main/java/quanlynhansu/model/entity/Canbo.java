@@ -15,11 +15,11 @@ public class Canbo implements Serializable {
 	private Integer pk;
 	private String soHieu;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "donViChucNang_pk", foreignKey = @ForeignKey(name = "donViChucNang_pk"))
 	private Donvichucnang donvichucnang;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "boMon_pk", foreignKey = @ForeignKey(name = "boMon_pk"))
 	private Bomon bomon;
 	private String imageUrl;

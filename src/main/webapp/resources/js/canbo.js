@@ -16,11 +16,11 @@ $(document).ready(function() {
 				  },
 				  {
 				  "aTargets": [ 2 ],
-				  "mData": "donViChucNang_pk"
+				  "mData": "donViChucNang.tenDonVi"
 				  },
 				  {
 					"aTargets": [ 3 ],
-					"mData": "chucVu_pk"
+					"mData": "chucVu.tenChucVu"
 				   },
 				  {
 			       "targets": -1,
@@ -57,7 +57,7 @@ $(document).ready(function() {
 		                 action: function ( e, dt, node, config ) {
 		                	 var txtPk = $(pk);
 		                	 var txtSoHieu = $( soHieu);
-		                	 var txtDonViChucNang_pk = $( donViChucNang_pk);
+		                	 var txtDonViChucNang_pk = $(donViChucNang_pk);
 		                	 var txtBoMon_pk = $( boMon_pk);
 		                	 var txtImageUrl = $( imageUrl);
 		                	 var txtTen = $( ten);
@@ -403,10 +403,12 @@ $(document).ready(function() {
 	       	 var txtNgayVeHuu = $(ngayVeHuu);
 	       	 var txtNgayThoiViec = $(ngayThoiViec);
 	       	 
+	       	 
 	       	 var json = new Object();
 	         json.pk = txtPk.val();
 	       	 json.soHieu = txtSoHieu.val();
-	       	 json.donViChucNang_pk = txtDonViChucNang_pk.val();
+	       	 json.donViChucNang = new Object();
+	       	 json.donViChucNang.pk = txtDonViChucNang_pk.val();
 	       	 json.boMon_pk = txtBoMon_pk.val();
 	       	 json.imageUrl = txtImageUrl.val();
 	       	 json.ten = txtTen.val();
@@ -491,6 +493,18 @@ $(document).ready(function() {
 		$("button#btnXacNhanQuanLyCanBo").click(function(e) {
 			alert($(hidTieuChiQLCB).val());
 		});
+		
+		
+		changeDonViChucNang = function(){
+			var txtDonViChucNang_pk = $(donViChucNang_pk);
+			//lay pk don vi vua chon, ban mot cau ajax ve database
+			//lay danh sach bo mon tuong ung don vi do(viet mot ham getbyID trong restcontoller, goi ham find one, map ve dto)
+			//do du lieu vua lay vao select bomon, do du lieu tu ajax vao select box
+			// add data from ajax to select box
+			alert(txtDonViChucNang_pk.val());	
+		}
+		
+		
 });
 
 /*  datepicker*/
