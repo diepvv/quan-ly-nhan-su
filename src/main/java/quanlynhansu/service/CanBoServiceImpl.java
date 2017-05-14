@@ -6,12 +6,17 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import quanlynhansu.model.dto.BoMonDTO;
 import quanlynhansu.model.dto.CanBoDTO;
 import quanlynhansu.model.dto.ChucVuDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
+import quanlynhansu.model.entity.Bomon;
 import quanlynhansu.model.entity.Canbo;
+import quanlynhansu.model.entity.Chucvu;
 import quanlynhansu.model.entity.Donvichucnang;
+import quanlynhansu.repository.IBoMonRepository;
 import quanlynhansu.repository.ICanBoRepository;
+import quanlynhansu.repository.IChucVuRepository;
 import quanlynhansu.repository.IDonViChucNangRepository;
 
 @Component
@@ -20,6 +25,12 @@ public class CanBoServiceImpl implements ICanBoService {
 	private ICanBoRepository repo;
 	@Autowired
 	private IDonViChucNangRepository donViChucNangRepo;
+	@Autowired
+	private IBoMonRepository boMonRepository;
+	@Autowired
+	private IChucVuRepository chucVuRepository;
+	@Autowired
+	private IDonViChucNangService donViChucNangService;
 
 	@Autowired
 	protected DozerBeanMapper mapper;
@@ -32,9 +43,10 @@ public class CanBoServiceImpl implements ICanBoService {
 		Iterable<Canbo> listFromDb = repo.findAll();
 
 		for (Canbo d : listFromDb) {
-			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			DonViChucNangDTO donViChucNangDto = mapper.map(
+					d.getDonvichucnang(), DonViChucNangDTO.class);
 			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
-			CanBoDTO canBoDto =  mapper.map(d, CanBoDTO.class);
+			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
 			canBoDto.setDonViChucNang(donViChucNangDto);
 			canBoDto.setChucVu(chucVuDto);
 			ketqua.add(canBoDto);
@@ -50,7 +62,17 @@ public class CanBoServiceImpl implements ICanBoService {
 	@Override
 	public CanBoDTO getById(Integer id) {
 		Canbo entity = repo.findOne(Integer.valueOf(id));
-		return mapper.map(entity, CanBoDTO.class);
+		DonViChucNangDTO donViChucNangDto = mapper.map(
+				entity.getDonvichucnang(), DonViChucNangDTO.class);
+		donViChucNangDto.setBoMon(donViChucNangService
+				.getBoMonByDonViChucNang(donViChucNangDto.getPk()));
+		CanBoDTO canBoDto = mapper.map(entity, CanBoDTO.class);
+		canBoDto.setDonViChucNang(donViChucNangDto);
+		if (entity.getBomon() != null) {
+			BoMonDTO boMonDto = mapper.map(entity.getBomon(), BoMonDTO.class);
+			canBoDto.setBoMon(boMonDto);
+		}
+		return canBoDto;
 	}
 
 	@Override
@@ -71,9 +93,19 @@ public class CanBoServiceImpl implements ICanBoService {
 			entity = repo.findOne(dto.getPk());
 		}
 		mapper.map(dto, entity);
-		if(dto.getDonViChucNang()!=null){
-			Donvichucnang donViChucNangEntity = donViChucNangRepo.findOne(dto.getDonViChucNang().getPk());
+		if (dto.getDonViChucNang() != null) {
+			Donvichucnang donViChucNangEntity = donViChucNangRepo.findOne(dto
+					.getDonViChucNang().getPk());
 			entity.setDonvichucnang(donViChucNangEntity);
+		}
+		if (dto.getBoMon() != null) {
+			Bomon bomonEntity = boMonRepository.findOne(dto.getBoMon().getPk());
+			entity.setBomon(bomonEntity);
+		}
+		if (dto.getChucVu() != null) {
+			Chucvu chucvuEntity = chucVuRepository.findOne(dto.getChucVu()
+					.getPk());
+			entity.setChucvu(chucvuEntity);
 		}
 		return repo.save(entity);
 	}

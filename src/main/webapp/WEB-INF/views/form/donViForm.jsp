@@ -11,7 +11,7 @@
 			<div class="modal-body">
 				<label for="donViChucNangDskg_pk">Đơn vị công tác</label></br>
 				<c:if test="${not empty donViChucNangLists}">
-					<select class = "form-control" id="donViChucNangDskg_pk">
+					<select class="form-control my-select-control-style" id="donViChucNangDskg_pk">
 						<c:forEach var="dto" items="${donViChucNangLists}">
 							<option value="${dto.pk}">${dto.tenDonVi}</option>
 						</c:forEach>

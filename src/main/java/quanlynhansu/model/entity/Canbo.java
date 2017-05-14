@@ -31,11 +31,11 @@ public class Canbo implements Serializable {
 	private String noiSinh;
 	private String queQuan;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "danToc_pk", foreignKey = @ForeignKey(name = "danToc_pk"))
 	private Dantoc dantoc;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "tonGiao_pk", foreignKey = @ForeignKey(name = "tonGiao_pk"))
 	private Tongiao tongiao;
 	private String soCmnd;
@@ -49,17 +49,17 @@ public class Canbo implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date ngayTuyenDung;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "chucVu_pk", foreignKey = @ForeignKey(name = "chucVu_pk"))
 	private Chucvu chucvu;
 	private String congViecDuocGiao;
 	private String chucDanh;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "ngachCongChuc_pk", foreignKey = @ForeignKey(name = "ngachCongChuc_pk"))
 	private Ngachcongchuc ngachcongchuc;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "bacLuong_pk", foreignKey = @ForeignKey(name = "bacLuong_pk"))
 	private Bacluong bacluong;
 	@Temporal(TemporalType.DATE)

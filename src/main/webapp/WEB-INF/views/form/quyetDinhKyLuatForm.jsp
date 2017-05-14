@@ -14,7 +14,7 @@
 
 				<label for="donViChucNangQdkl_pk">Đơn vị</label> 
 				<c:if test="${not empty donViChucNanglists}">
-					<select class = "form-control" id="donViChucNangQdkl_pk">
+					<select class="form-control my-select-control-style" id="donViChucNangQdkl_pk">
 						<c:forEach var="dto" items="${donViChucNanglists}">
 							<option value="${dto.pk}">${dto.tenDonVi}</option>
 						</c:forEach>
@@ -23,7 +23,7 @@
 				
 				<label for="canBoQdkl_pk">Cán bộ</label> 
 				<c:if test="${not empty canBolists}">
-					<select class = "form-control" id="canBoQdkl_pk">
+					<select class="form-control my-select-control-style" id="canBoQdkl_pk">
 						<c:forEach var="dto" items="${canBolists}">
 							<option value="${dto.pk}">${dto.ten}</option>
 						</c:forEach>

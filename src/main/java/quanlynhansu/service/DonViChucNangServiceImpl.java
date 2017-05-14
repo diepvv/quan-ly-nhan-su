@@ -1,6 +1,7 @@
 package quanlynhansu.service;
 
 import java.util.ArrayList;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.dozer.DozerBeanMapper;
@@ -44,7 +45,21 @@ public class DonViChucNangServiceImpl implements IDonViChucNangService {
 	@Override
 	public DonViChucNangDTO getById(Integer id) {
 		Donvichucnang entity = repo.findOne(id);
-		return mapper.map(entity, DonViChucNangDTO.class);
+		DonViChucNangDTO donViChucNangDto = mapper.map(entity,
+				DonViChucNangDTO.class);
+		// lay donvichucnang voi id, va set BoMon voi id do thanh BoMonDTo de su
+		// dung
+		donViChucNangDto.setBoMon(entity.getBoMons().stream()
+				.map(entity1 -> mapper.map(entity1, BoMonDTO.class))
+				.collect(Collectors.toSet()));
+		return donViChucNangDto;
+	}
+
+	@Override
+	public Set<BoMonDTO> getBoMonByDonViChucNang(Integer donViChucNangPk) {
+		return repo.findOne(donViChucNangPk).getBoMons().stream()
+				.map(entity -> mapper.map(entity, BoMonDTO.class))
+				.collect(Collectors.toSet());
 	}
 
 	@Override

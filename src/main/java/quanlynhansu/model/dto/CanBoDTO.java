@@ -4,11 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class CanBoDTO implements Serializable {
-	private static final long serialVersionUID = 7660631391091782293L;
+	public static final long serialVersionUID = 7660631391091782293L;
 	private Integer pk;
 	private String soHieu;
 	private DonViChucNangDTO donViChucNang;
-	private Integer boMon_pk;
+	private BoMonDTO boMon;
 	private String imageUrl;
 	private String ten;
 	private String tenGoiKhac;
@@ -30,7 +30,7 @@ public class CanBoDTO implements Serializable {
 	private String congViecDuocGiao;
 	private String chucDanh;
 	private NgachCongChucDTO ngachCongChuc;
-	private Integer bacLuong_pk;
+	private BacLuongDTO bacLuong;
 	private Date ngayHuong;
 	private double phuCapChucVu;
 	private double phuCapKhac;
@@ -92,12 +92,12 @@ public class CanBoDTO implements Serializable {
 		this.donViChucNang = donViChucNang;
 	}
 
-	public Integer getBoMon_pk() {
-		return boMon_pk;
+	public BoMonDTO getBoMon() {
+		return boMon;
 	}
 
-	public void setBoMon_pk(Integer boMon_pk) {
-		this.boMon_pk = boMon_pk;
+	public void setBoMon(BoMonDTO boMon) {
+		this.boMon = boMon;
 	}
 
 	public String getImageUrl() {
@@ -268,12 +268,12 @@ public class CanBoDTO implements Serializable {
 		this.ngachCongChuc = ngachCongChuc;
 	}
 
-	public Integer getBacLuong_pk() {
-		return bacLuong_pk;
+	public BacLuongDTO getBacLuong() {
+		return bacLuong;
 	}
 
-	public void setBacLuong_pk(Integer bacLuong_pk) {
-		this.bacLuong_pk = bacLuong_pk;
+	public void setBacLuong(BacLuongDTO bacLuong) {
+		this.bacLuong = bacLuong;
 	}
 
 	public Date getNgayHuong() {

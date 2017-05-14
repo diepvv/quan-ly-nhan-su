@@ -261,8 +261,19 @@ $(document).ready(function() {
                     success: function (res) {
                     	 txtPk.val(pK);
                     	 txtSoHieu.val(res.soHieu);
-	                	 txtDonViChucNang_pk.val(res.donViChucNang_pk);
-	                	 txtBoMon_pk.val(res.boMon_pk);
+	                	 txtDonViChucNang_pk.val(res.donViChucNang.pk);
+	                	 if(res.boMon!=null){
+	                		 var toAppend = '';
+	                         $.each(res.donViChucNang.boMon,function(i,o){
+	                        	 if(o.pk==res.boMon.pk){
+	                        		 toAppend += '<option value='+o.pk+' select>'+o.tenBoMon+'</option>';
+	                        	 } else {	                        		 
+	                        		 toAppend += '<option value='+o.pk+'>'+o.tenBoMon+'</option>';
+	                        	 }
+	                        });
+	                         txtBoMon_pk.empty();
+	                         txtBoMon_pk.append(toAppend);
+	                	 }
 	                	 txtImageUrl.val(res.imageUrl);
 	                	 txtTen.val(res.ten);
 	                	 txtTenGoiKhac.val(res.tenGoiKhac);
@@ -409,7 +420,8 @@ $(document).ready(function() {
 	       	 json.soHieu = txtSoHieu.val();
 	       	 json.donViChucNang = new Object();
 	       	 json.donViChucNang.pk = txtDonViChucNang_pk.val();
-	       	 json.boMon_pk = txtBoMon_pk.val();
+	       	 json.boMon = new Object();
+	       	 json.boMon.pk = txtBoMon_pk.val();
 	       	 json.imageUrl = txtImageUrl.val();
 	       	 json.ten = txtTen.val();
 	       	 json.tenGoiKhac = txtTenGoiKhac.val();
@@ -427,7 +439,8 @@ $(document).ready(function() {
 	       	 json.ngheNghiepKhiTuyenDung = txtNgheNghiepKhiTuyenDung.val();
 	       	 json.coQuanTuyenDung = txtCoQuanTuyenDung.val();
 	       	 json.ngayTuyenDung = txtNgayTuyenDung.val();
-	       	 json.chucVu_pk = txtChucVu_pk.val();
+	       	 json.chucVu = new Object();
+	       	 json.chucVu.pk = txtChucVu_pk.val();
 	       	 json.congViecDuocGiao = txtCongViecDuocGiao.val();
 	       	 json.chucDanh = txtChucDanh.val();
 	       	 json.ngachCongChuc_pk = txtNgachCongChuc_pk.val();
@@ -494,14 +507,21 @@ $(document).ready(function() {
 			alert($(hidTieuChiQLCB).val());
 		});
 		
-		
+		//TODO
 		changeDonViChucNang = function(){
-			var txtDonViChucNang_pk = $(donViChucNang_pk);
-			//lay pk don vi vua chon, ban mot cau ajax ve database
-			//lay danh sach bo mon tuong ung don vi do(viet mot ham getbyID trong restcontoller, goi ham find one, map ve dto)
-			//do du lieu vua lay vao select bomon, do du lieu tu ajax vao select box
-			// add data from ajax to select box
-			alert(txtDonViChucNang_pk.val());	
+			var donViChucNangPk = $(donViChucNang_pk).val();
+			 $.ajax({  
+                 url: canBoService+"/getBoMonByDonViChucNang/"+donViChucNangPk,  
+                 type: 'GET',  
+                 success: function (res) {
+                	 var toAppend = '';
+                     $.each(res,function(i,o){
+                    	 toAppend += '<option value='+o.pk+'>'+o.tenBoMon+'</option>';
+                    });
+                   $('#boMon_pk').empty();
+                   $('#boMon_pk').append(toAppend);
+                 }
+			 });
 		}
 		
 		

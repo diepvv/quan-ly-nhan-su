@@ -6,7 +6,8 @@
 	<div class="col-md-3">
 		<label for="donViChucNang_pk">Đơn vị công tác</label></br>
 		<c:if test="${not empty donViChucNangLists}">
-			<select class="form-control" id="donViChucNang_pk" onchange="changeDonViChucNang()">
+			<select class="form-control my-select-control-style" id="donViChucNang_pk"
+				onchange="changeDonViChucNang()">
 				<c:forEach var="dto" items="${donViChucNangLists}">
 					<option value="${dto.pk}">${dto.tenDonVi}</option>
 				</c:forEach>
@@ -14,14 +15,9 @@
 		</c:if>
 	</div>
 	<div class="col-md-3">
-		<label for="boMon_pk">Bộ môn chuyên môn</label> <input
-			class="form-control" id="boMon_pk" type="text"
-			list="listBoMonChuyenMon"></br>
-		<datalist id="listBoMonChuyenMon">
-			<option value="a"></option>
-			<option value="b"></option>
-			<option value="c"></option>
-		</datalist>
+		<label for="boMon_pk">Bộ môn chuyên môn</label> 
+		<select class="form-control my-select-control-style" id="boMon_pk">
+		</select>
 	</div>
 	<div class="col-md-3">
 		<button type="button" class="btn btn-default" data-dismiss="modal"
@@ -80,7 +76,7 @@
 	<div class="col-md-3">
 		<label for="danToc_pk">Dân tộc</label></br>
 		<c:if test="${not empty danTocLists}">
-			<select class="form-control" id="danToc_pk">
+			<select class="form-control my-select-control-style" id="danToc_pk">
 				<c:forEach var="dto" items="${danTocLists}">
 					<option value="${dto.pk}">${dto.tenDanToc}</option>
 				</c:forEach>
@@ -90,7 +86,7 @@
 	<div class="col-md-3">
 		<label for="tonGiao_pk">Tôn giáo</label></br>
 		<c:if test="${not empty tonGiaoLists}">
-			<select class="form-control" id="tonGiao_pk">
+			<select class="form-control my-select-control-style" id="tonGiao_pk">
 				<c:forEach var="dto" items="${tonGiaoLists}">
 					<option value="${dto.pk}">${dto.tenTonGiao}</option>
 				</c:forEach>
@@ -154,7 +150,7 @@
 	<div class="col-md-3">
 		<label for="chucVu_pk">Chức vụ hiện tại</label></br>
 		<c:if test="${not empty chucVuLists}">
-			<select class="form-control" id="chucVu_pk">
+			<select class="form-control my-select-control-style" id="chucVu_pk">
 				<c:forEach var="dto" items="${chucVuLists}">
 					<option value="${dto.pk}">${dto.tenChucVu}</option>
 				</c:forEach>
@@ -173,7 +169,7 @@
 	<div class="col-md-3">
 		<label for="ngachCongChuc_pk">Ngạch công chức</label></br>
 		<c:if test="${not empty ngachCongChucLists}">
-			<select class="form-control" id="ngachCongChuc_pk">
+			<select class="form-control my-select-control-style" id="ngachCongChuc_pk">
 				<c:forEach var="dto" items="${ngachCongChucLists}">
 					<option value="${dto.pk}">${dto.maNgach}</option>
 				</c:forEach>

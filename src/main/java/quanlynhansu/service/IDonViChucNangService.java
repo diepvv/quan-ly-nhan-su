@@ -1,7 +1,9 @@
 package quanlynhansu.service;
 
 import java.util.ArrayList;
+import java.util.Set;
 
+import quanlynhansu.model.dto.BoMonDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
 
 public interface IDonViChucNangService {
@@ -14,4 +16,6 @@ public interface IDonViChucNangService {
 	DonViChucNangDTO update(DonViChucNangDTO t);
 
 	DonViChucNangDTO insert(DonViChucNangDTO t);
+
+	Set<BoMonDTO> getBoMonByDonViChucNang(Integer donViChucNangPk);
 }
