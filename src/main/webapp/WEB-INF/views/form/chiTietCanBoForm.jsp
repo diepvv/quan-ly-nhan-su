@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-<div id="ChiTietCanBoForm" class="modal fade background-white" role="dialog">
+<div id="ChiTietCanBoForm" class="modal fade background-white"
+	role="dialog">
 	<div class="full-screen-modal-dialog">
 		<!-- Modal content-->
 		<div class="full-screen-modal-content">
@@ -184,68 +185,46 @@
 						</div>
 						<div id="collapseKeKhaiTaiSan" class="panel-collapse collapse">
 							<!-- datatable start  -->
-							<h1>DANH SÁCH DÂN TỘC</h1>
+							<h1>DANH SÁCH KÊ KHAI</h1>
 							<!-- 	<button id="button">btn</button> -->
-							<table id="DanTocTable" class="display">
+							<table id="KeKhaiTaiSanTable" class="display">
 
 								<!-- Header Table -->
 								<thead>
 									<tr>
-										<th>Tên Dân Tộc</th>
-										<th>Sửa Dân Tộc</th>
-										<th>Xóa Dân Tộc</th>
+										<th>Cán bộ</th>
+										<th>Ngày kê khai</th>
+										<th>File kê khai tài sản</th>
+										<th>Chi Tiết</th>
+										<th>Xóa</th>
 									</tr>
 								</thead>
 								<!-- Footer Table -->
 								<tfoot>
 									<tr>
-										<th>Tên Dân Tộc</th>
-										<th>Sửa Dân Tộc</th>
-										<th>Xóa Dân Tộc</th>
+										<th>Cán bộ</th>
+										<th>Ngày kê khai</th>
+										<th>File kê khai tài sản</th>
+										<th>Chi Tiết</th>
+										<th>Xóa</th>
 									</tr>
 								</tfoot>
 							</table>
 							<!-- datatable end -->
-							<%@include file="danTocForm.jsp"%>
 						</div>
-					</div>
-
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" href="#collapseLuanChuyenCanBo"
-									data-parent="#accordion1"
-									onclick="$(hidTieuChiChiTietCanBo).val('luanChuyenCanBo')">LUÂN
-									CHUYỂN CÁN BỘ</a>
-							</h4>
-						</div>
-						<div id="collapseLuanChuyenCanBo" class="panel-collapse collapse">
-							<div class="row">
-								<div class="col-md-3">
-									<label for="txtDonViDangCongTac">Đơn vị cán bộ đang công tác</label>
-									<input class="form-control" id="txtDonViDangCongTac" type="text">
-								</div>
-								<div class="col-md-3">
-									<label for="txtDonViChuyen">Đơn vị cán bộ chuyển công tác</label> 
-									<input class="form-control" id="txtDonViChuyen" type="text" list="phanloai">
-									<datalist id="phanloai">
-										<option value="Khối hành chính"></option>
-										<option value="Khối giảng viên"></option>
-									</datalist>
-								</div>
-							</div>
-						</div>
-					</div>
-
+						<%@include file="keKhaiTaiSanForm.jsp"%>
 					</div>
 				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"
-						id="btnXacNhanChiTietCanBo">Xác nhận</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal"
-						id="btnDong">Đóng</button>
-				</div>
+
 			</div>
-
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-default" data-dismiss="modal"
+				id="btnXacNhanChiTietCanBo">Xác nhận</button>
+			<button type="button" class="btn btn-default" data-dismiss="modal"
+				id="btnDong">Đóng</button>
 		</div>
 	</div>
+
+</div>
+</div>

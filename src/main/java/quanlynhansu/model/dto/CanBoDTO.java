@@ -13,9 +13,9 @@ public class CanBoDTO implements Serializable {
 	private String ten;
 	private String tenGoiKhac;
 	private Date ngaySinh;
-	private Integer gioiTinh;
+	private String gioiTinh;
 	private String noiSinh;
-	private String queQuan;
+	private QueQuanDTO queQuan;
 	private DanTocDTO danToc;
 	private TonGiaoDTO tonGiao;
 	private String soCmnd;
@@ -132,11 +132,11 @@ public class CanBoDTO implements Serializable {
 		this.ngaySinh = ngaySinh;
 	}
 
-	public Integer getGioiTinh() {
+	public String getGioiTinh() {
 		return gioiTinh;
 	}
 
-	public void setGioiTinh(Integer gioiTinh) {
+	public void setGioiTinh(String gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 
@@ -148,11 +148,11 @@ public class CanBoDTO implements Serializable {
 		this.noiSinh = noiSinh;
 	}
 
-	public String getQueQuan() {
+	public QueQuanDTO getQueQuan() {
 		return queQuan;
 	}
 
-	public void setQueQuan(String queQuan) {
+	public void setQueQuan(QueQuanDTO queQuan) {
 		this.queQuan = queQuan;
 	}
 

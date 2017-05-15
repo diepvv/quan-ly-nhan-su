@@ -89,7 +89,8 @@
 						<div id="collapseDanToc" class="panel-collapse collapse">
 							<label for="danTocThongKe_pk">Dân tộc</label></br>
 							<c:if test="${not empty danTocLists}">
-								<select class="form-control my-select-control-style" id="danTocThongKe_pk">
+								<select class="form-control my-select-control-style"
+									id="danTocThongKe_pk">
 									<c:forEach var="dto" items="${danTocLists}">
 										<option value="${dto.pk}">${dto.tenDanToc}</option>
 									</c:forEach>
@@ -109,7 +110,8 @@
 						<div id="collapseTonGiao" class="panel-collapse collapse">
 							<label for="tonGiaoThongKe_pk">Tôn giáo</label></br>
 							<c:if test="${not empty tonGiaoLists}">
-								<select class="form-control my-select-control-style" id="tonGiaoThongKe_pk">
+								<select class="form-control my-select-control-style"
+									id="tonGiaoThongKe_pk">
 									<c:forEach var="dto" items="${tonGiaoLists}">
 										<option value="${dto.pk}">${dto.tenTonGiao}</option>
 									</c:forEach>
@@ -129,12 +131,13 @@
 						<div id="collapseChucVu" class="panel-collapse collapse">
 							<label for="chucVuThongKe_pk">Chức vụ</label></br>
 							<c:if test="${not empty chucVuLists}">
-								<select class="form-control my-select-control-style" id="chucVuThongKe_pk">
+								<select class="form-control my-select-control-style"
+									id="chucVuThongKe_pk">
 									<c:forEach var="dto" items="${chucVuLists}">
 										<option value="${dto.pk}">${dto.tenChucVu}</option>
 									</c:forEach>
 								</select>
-							</c:if> 
+							</c:if>
 						</div>
 					</div>
 
@@ -189,13 +192,15 @@
 							</h4>
 						</div>
 						<div id="collapseQueQuan" class="panel-collapse collapse">
-							<label for="inputdefault">Tỉnh hoặc thành phố</label> <input
-								class="form-control" id="txtQueQuan" type="text"
-								list="listQueQuan">
-							<datalist id="listQueQuan">
-								<option value="Hồ Chí Minh"></option>
-								<option value="Hà Nội"></option>
-							</datalist>
+							<label for="queQuanThongKe_pk">Tỉnh hoặc thành phố</label>
+							<c:if test="${not empty queQuanLists}">
+								<select class="form-control my-select-control-style"
+									id="queQuanThongKe_pk">
+									<c:forEach var="dto" items="${queQuanLists}">
+										<option value="${dto.pk}">${dto.tenQueQuan}</option>
+									</c:forEach>
+								</select>
+							</c:if>
 						</div>
 					</div>
 
@@ -211,12 +216,13 @@
 						<div id="collapseNgachCongChuc" class="panel-collapse collapse">
 							<label for="ngachCongChucThongKe_pk">Mã ngạch</label></br>
 							<c:if test="${not empty ngachCongChucLists}">
-								<select class="form-control my-select-control-style" id="ngachCongChucThongKe_pk">
+								<select class="form-control my-select-control-style"
+									id="ngachCongChucThongKe_pk">
 									<c:forEach var="dto" items="${ngachCongChucLists}">
 										<option value="${dto.pk}">${dto.maNgach}</option>
 									</c:forEach>
 								</select>
-							</c:if>  
+							</c:if>
 						</div>
 					</div>
 

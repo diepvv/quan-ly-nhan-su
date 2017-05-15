@@ -7,7 +7,7 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">DANH SÁCH KIÊM NHIỆM</h4>
+				<h4 class="modal-title">DANH SÁCH THÂM NIÊN</h4>
 			</div>
 			<div class="modal-body">
 				<input class="form-control" id="pk" type="hidden">
@@ -37,7 +37,7 @@
 
 				<div class="row">
 					<div class="col-md-6">
-						<label for="mocTinhPhuCapTn">Mốc tính phụ cấp thâm niên</label>
+						<label for="mocTinhPhuCapTn" class="label-style">Mốc tính phụ cấp thâm niên</label>
 						<div class="input-group date" data-provide="datepicker">
 							<input type="text" class="form-control" id="mocTinhPhuCapTn">
 							<div class="input-group-addon">
@@ -63,28 +63,28 @@
 
 				<div class="row">
 					<div class="col-md-6">
-						<label for="vuotKhung">Vượt khung</label> <input
+						<label for="vuotKhung" class="label-style">Vượt khung</label> <input
 							class="form-control" id="vuotKhung" type="text">
 					</div>
 					<div class="col-md-6">
-						<label for="tongHeSoLuong">Tổng hệ số lương</label> <input
+						<label for="tongHeSoLuong" class="label-style">Tổng hệ số lương</label> <input
 							class="form-control" id="tongHeSoLuong" type="text">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-6">
-						<label for="phuCapGiangVien">Phụ cấp GV</label> <input
+						<label for="phuCapGiangVien" class="label-style">Phụ cấp GV</label> <input
 							class="form-control" id="phuCapGiangVien" type="text">
 					</div>
 					<div class="col-md-6">
-						<label for="soThangBiGiamTru">Số tháng bị giảm trừ</label> <input
+						<label for="soThangBiGiamTru" class="label-style">Số tháng bị giảm trừ</label> <input
 							class="form-control" id="soThangBiGiamTru" type="text">
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-md-6">
-						<label for="thoiDiemTangPhuCapTn">Thời điểm tăng PCTN</label>
+						<label for="thoiDiemTangPhuCapTn" class="label-style">Thời điểm tăng PCTN</label>
 						<div class="input-group date" data-provide="datepicker">
 							<input type="text" class="form-control" id="thoiDiemTangPhuCapTn">
 							<div class="input-group-addon">
@@ -95,10 +95,10 @@
 				</div>
 
 				<label for="ghiChuThoiDiemTang">Ghi chú</label>
-				<textarea class="form-control" id="ghiChuThoiDiemTang"></textarea></br>
+				<textarea class="form-control" id="ghiChuThoiDiemTang"></textarea>
 				
 
-				<label>THỜI GIAN KHÔNG TÍNH PHỤ CẤP THÂM NIÊN</label>
+				<label class="label-style">THỜI GIAN KHÔNG TÍNH PHỤ CẤP THÂM NIÊN</label>
 				<div class="row">
 					<div class="col-md-6">
 						<label for="tuNgay">Từ ngày</label>

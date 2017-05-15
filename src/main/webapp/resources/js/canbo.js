@@ -47,25 +47,19 @@ $(document).ready(function() {
 			             },
 			          },
 			          {
-				             text: 'Quản Lý Cán Bộ',
-				             action: function ( e, dt, node, config ) {
-			                     $('#QuanLyCanBoForm').modal('show');
-				             },
-				      },
-			          {
 		                 text: 'Thêm Cán Bộ',
 		                 action: function ( e, dt, node, config ) {
 		                	 var txtPk = $(pk);
-		                	 var txtSoHieu = $( soHieu);
+		                	 var txtSoHieu = $(soHieu);
 		                	 var txtDonViChucNang_pk = $(donViChucNang_pk);
-		                	 var txtBoMon_pk = $( boMon_pk);
-		                	 var txtImageUrl = $( imageUrl);
+		                	 var txtBoMon_pk = $(boMon_pk);
+		                	 var txtImageUrl = $(imageUrl);
 		                	 var txtTen = $( ten);
-		                	 var txtTenGoiKhac = $( tenGoiKhac);
-		                	 var txtNgaySinh = $( ngaySinh);
-		                	 var txtGioiTinh = $( gioiTinh);
+		                	 var txtTenGoiKhac = $(tenGoiKhac);
+		                	 var txtNgaySinh = $(ngaySinh);
+		                	 var txtGioiTinh = $(gioiTinh);
 		                	 var txtNoiSinh = $( noiSinh);
-		                	 var txtQueQuan = $( queQuan);
+		                	 var txtQueQuan = $(queQuan_pk);
 		                	 var txtDanToc_pk = $( danToc_pk);
 		                	 var txtTonGiao_pk = $( tonGiao_pk);
 		                	 var txtSoCmnd = $( soCmnd);
@@ -134,29 +128,29 @@ $(document).ready(function() {
 		                	 txtNoiDKHoKhauThuongTru.val("");
 		                	 txtNoiOHienNay.val("");
 		                	 txtNgheNghiepKhiTuyenDung.val("");
-		                	 txtCoQuanTuyenDung.val("");
+		                	 txtCoQuanTuyenDung.val("Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh");
 		                	 txtNgayTuyenDung.val("");
 		                	 txtChucVu_pk.val("");
-		                	 txtCongViecDuocGiao.val("");
-		                	 txtChucDanh.val("");
+		                	 txtCongViecDuocGiao.val("Giảng dạy");
+		                	 txtChucDanh.val("Giảng viên");
 		                	 txtNgachCongChuc_pk.val("");
 		                	 txtBacLuong_pk.val("");
 		                	 txtNgayHuong.val("");
 		                	 txtPhuCapChucVu.val("");
 		                	 txtPhuCapKhac.val("");
-		                	 txtTrinhDoGiaoDucPt.val("");
+		                	 txtTrinhDoGiaoDucPt.val("12/12");
 		                	 txtTrinhDoChuyenMon.val("");
 		                	 txtHocVi.val("");
 		                	 txtHocHam.val("");
 		                	 txtNgayNhanHocVi.val("");
 		                	 txtNgayNhanHocHam.val("");
-		                	 txtLyLuanChinhTri.val("");
+		                	 txtLyLuanChinhTri.val("Sơ cấp");
 		                	 txtQuanLyNhaNuoc.val("");
-		                	 txtNgoaiNgu.val("");
+		                	 txtNgoaiNgu.val("Anh văn");
 		                	 txtTinHoc.val("");
 		                	 txtNgayVaoDcsvnDuBi.val("");
 		                	 txtNgayVaoDcsvnChinhThuc.val("");
-		                	 txtThamGiaToChucCtxh.val("");
+		                	 txtThamGiaToChucCtxh.val("Đoàn thanh niên Cộng Sản Hồ Chí Minh");
 		                	 txtNgayNhapNgu.val("");
 		                	 txtNgayXuatNgu.val("");
 		                	 txtQuanHamCaoNhat.val("");
@@ -164,7 +158,7 @@ $(document).ready(function() {
 		                	 txtSoTruongCongTac.val("");
 		                	 txtKhenThuong.val("");
 		                	 txtKyLuat.val("");
-		                	 txtTinhTrangSucKhoe.val("");
+		                	 txtTinhTrangSucKhoe.val("Tốt");
 		                	 txtChieuCao.val("");
 		                	 txtCanNang.val("");
 		                	 txtNhomMau.val("");
@@ -206,7 +200,7 @@ $(document).ready(function() {
 	           	 var txtNgaySinh = $(ngaySinh);
 	           	 var txtGioiTinh = $(gioiTinh);
 	           	 var txtNoiSinh = $(noiSinh);
-	           	 var txtQueQuan = $(queQuan);
+	           	 var txtQueQuan = $(queQuan_pk);
 	           	 var txtDanToc_pk = $(danToc_pk);
 	           	 var txtTonGiao_pk = $(tonGiao_pk);
 	           	 var txtSoCmnd = $(soCmnd);
@@ -280,9 +274,9 @@ $(document).ready(function() {
 	                	 txtNgaySinh.val(res.ngaySinh);
 	                	 txtGioiTinh.val(res.gioiTinh);
 	                	 txtNoiSinh.val(res.noiSinh);
-	                	 txtQueQuan.val(res.queQuan);
-	                	 txtDanToc_pk.val(res.danToc_pk);
-	                	 txtTonGiao_pk.val(res.tonGiao_pk);
+	                	 txtQueQuan.val(res.queQuan.pk);
+	                	 txtDanToc_pk.val(res.danToc.pk);
+	                	 txtTonGiao_pk.val(res.tonGiao.pk);
 	                	 txtSoCmnd.val(res.soCmnd);
 	                	 txtNgayCapCmnd.val(res.ngayCapCmnd);
 	                	 txtNoiCapCmnd.val(res.noiCapCmnd);
@@ -291,10 +285,10 @@ $(document).ready(function() {
 	                	 txtNgheNghiepKhiTuyenDung.val(res.ngheNghiepKhiTuyenDung);
 	                	 txtCoQuanTuyenDung.val(res.coQuanTuyenDung);
 	                	 txtNgayTuyenDung.val(res.ngayTuyenDung);
-	                	 txtChucVu_pk.val(res.chucVu_pk);
+	                	 txtChucVu_pk.val(res.chucVu.pk);
 	                	 txtCongViecDuocGiao.val(res.congViecDuocGiao);
 	                	 txtChucDanh.val(res.chucDanh);
-	                	 txtNgachCongChuc_pk.val(res.ngachCongChuc_pk);
+	                	 txtNgachCongChuc_pk.val(res.ngachCongChuc.pk);
 	                	 txtBacLuong_pk.val(res.bacLuong_pk);
 	                	 txtNgayHuong.val(res.ngayHuong);
 	                	 txtPhuCapChucVu.val(res.phuCapChucVu);
@@ -364,7 +358,7 @@ $(document).ready(function() {
 	       	 var txtNgaySinh = $(ngaySinh);
 	       	 var txtGioiTinh = $(gioiTinh);
 	       	 var txtNoiSinh = $(noiSinh);
-	       	 var txtQueQuan = $(queQuan);
+	       	 var txtQueQuan = $(queQuan_pk);
 	       	 var txtDanToc_pk = $(danToc_pk);
 	       	 var txtTonGiao_pk = $(tonGiao_pk);
 	       	 var txtSoCmnd = $(soCmnd);
@@ -428,9 +422,12 @@ $(document).ready(function() {
 	       	 json.ngaySinh = txtNgaySinh.val();
 	       	 json.gioiTinh = txtGioiTinh.val();
 	       	 json.noiSinh = txtNoiSinh.val();
-	       	 json.queQuan = txtQueQuan.val();
-	       	 json.danToc_pk = txtDanToc_pk.val();
-	       	 json.tonGiao_pk = txtTonGiao_pk.val();
+	       	 json.queQuan = new Object();
+	       	 json.queQuan.pk = txtQueQuan.val();
+	       	 json.danToc = new Object();
+	       	 json.danToc.pk = txtDanToc_pk.val();
+	       	 json.tonGiao = new Object();
+	       	 json.tonGiao.pk = txtTonGiao_pk.val();
 	       	 json.soCmnd = txtSoCmnd.val();
 	       	 json.ngayCapCmnd = txtNgayCapCmnd.val();
 	       	 json.noiCapCmnd = txtNoiCapCmnd.val();
@@ -443,7 +440,8 @@ $(document).ready(function() {
 	       	 json.chucVu.pk = txtChucVu_pk.val();
 	       	 json.congViecDuocGiao = txtCongViecDuocGiao.val();
 	       	 json.chucDanh = txtChucDanh.val();
-	       	 json.ngachCongChuc_pk = txtNgachCongChuc_pk.val();
+	       	 json.ngachCongChuc = new Object();
+	       	 json.ngachCongChuc.pk = txtNgachCongChuc_pk.val();
 	       	 json.bacLuong_pk = txtBacLuong_pk.val();
 	       	 json.ngayHuong = txtNgayHuong.val();
 	       	 json.phuCapChucVu = txtPhuCapChucVu.val();

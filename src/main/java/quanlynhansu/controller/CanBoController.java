@@ -19,12 +19,14 @@ import quanlynhansu.model.dto.ChucVuDTO;
 import quanlynhansu.model.dto.DanTocDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
 import quanlynhansu.model.dto.NgachCongChucDTO;
+import quanlynhansu.model.dto.QueQuanDTO;
 import quanlynhansu.model.dto.TonGiaoDTO;
 import quanlynhansu.service.ICanBoService;
 import quanlynhansu.service.IChucVuService;
 import quanlynhansu.service.IDanTocService;
 import quanlynhansu.service.IDonViChucNangService;
 import quanlynhansu.service.INgachCongChucService;
+import quanlynhansu.service.IQueQuanService;
 import quanlynhansu.service.ITonGiaoService;
 
 @Controller
@@ -41,6 +43,8 @@ public class CanBoController {
 	@Autowired
 	private IChucVuService chucVuService;
 	@Autowired
+	private IQueQuanService queQuanService;
+	@Autowired
 	private INgachCongChucService ngachCongChucService;
 
 	@GetMapping("/show")
@@ -50,12 +54,14 @@ public class CanBoController {
 		ArrayList<DanTocDTO> danTocLists = danTocService.getAll();
 		ArrayList<ChucVuDTO> chucVuLists = chucVuService.getAll();
 		ArrayList<NgachCongChucDTO> ngachCongChucLists = ngachCongChucService.getAll();
+		ArrayList<QueQuanDTO> queQuanLists = queQuanService.getAll();
 		ModelAndView model = new ModelAndView("canbo");
 		model.addObject("donViChucNangLists", list);
 		model.addObject("tonGiaoLists", tonGiaoLists);
 		model.addObject("danTocLists", danTocLists);
 		model.addObject("chucVuLists", chucVuLists);
 		model.addObject("ngachCongChucLists", ngachCongChucLists);
+		model.addObject("queQuanLists", queQuanLists);
 		return model;
 	}
 

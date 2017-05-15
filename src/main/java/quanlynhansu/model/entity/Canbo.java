@@ -27,9 +27,11 @@ public class Canbo implements Serializable {
 	private String tenGoiKhac;
 	@Temporal(TemporalType.DATE)
 	private Date ngaySinh;
-	private Integer gioiTinh;
+	private String gioiTinh;
 	private String noiSinh;
-	private String queQuan;
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "queQuan_pk", foreignKey = @ForeignKey(name = "queQuan_pk"))
+	private Quequan quequan;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "danToc_pk", foreignKey = @ForeignKey(name = "danToc_pk"))
@@ -172,11 +174,11 @@ public class Canbo implements Serializable {
 		this.ngaySinh = ngaySinh;
 	}
 
-	public Integer getGioiTinh() {
+	public String getGioiTinh() {
 		return gioiTinh;
 	}
 
-	public void setGioiTinh(Integer gioiTinh) {
+	public void setGioiTinh(String gioiTinh) {
 		this.gioiTinh = gioiTinh;
 	}
 
@@ -188,12 +190,12 @@ public class Canbo implements Serializable {
 		this.noiSinh = noiSinh;
 	}
 
-	public String getQueQuan() {
-		return queQuan;
+	public Quequan getQuequan() {
+		return quequan;
 	}
 
-	public void setQueQuan(String queQuan) {
-		this.queQuan = queQuan;
+	public void setQuequan(Quequan quequan) {
+		this.quequan = quequan;
 	}
 
 	public Dantoc getDantoc() {
