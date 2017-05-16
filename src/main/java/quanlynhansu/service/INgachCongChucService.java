@@ -1,7 +1,9 @@
 package quanlynhansu.service;
 
 import java.util.ArrayList;
+import java.util.Set;
 
+import quanlynhansu.model.dto.BacLuongDTO;
 import quanlynhansu.model.dto.NgachCongChucDTO;
 
 public interface INgachCongChucService {
@@ -14,4 +16,6 @@ public interface INgachCongChucService {
 	NgachCongChucDTO update(NgachCongChucDTO t);
 
 	NgachCongChucDTO insert(NgachCongChucDTO t);
+
+	Set<BacLuongDTO> getBacLuongByNgachCongChuc(Integer ngachCongChucPk);
 }

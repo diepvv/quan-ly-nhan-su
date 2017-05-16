@@ -6,6 +6,7 @@ import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import quanlynhansu.model.dto.BacLuongDTO;
 import quanlynhansu.model.dto.BoMonDTO;
 import quanlynhansu.model.dto.CanBoDTO;
 import quanlynhansu.model.dto.ChucVuDTO;
@@ -14,6 +15,7 @@ import quanlynhansu.model.dto.DonViChucNangDTO;
 import quanlynhansu.model.dto.NgachCongChucDTO;
 import quanlynhansu.model.dto.QueQuanDTO;
 import quanlynhansu.model.dto.TonGiaoDTO;
+import quanlynhansu.model.entity.Bacluong;
 import quanlynhansu.model.entity.Bomon;
 import quanlynhansu.model.entity.Canbo;
 import quanlynhansu.model.entity.Chucvu;
@@ -22,6 +24,7 @@ import quanlynhansu.model.entity.Donvichucnang;
 import quanlynhansu.model.entity.Ngachcongchuc;
 import quanlynhansu.model.entity.Quequan;
 import quanlynhansu.model.entity.Tongiao;
+import quanlynhansu.repository.IBacLuongRepository;
 import quanlynhansu.repository.IBoMonRepository;
 import quanlynhansu.repository.ICanBoRepository;
 import quanlynhansu.repository.IChucVuRepository;
@@ -40,6 +43,8 @@ public class CanBoServiceImpl implements ICanBoService {
 	@Autowired
 	private IBoMonRepository boMonRepository;
 	@Autowired
+	private IBacLuongRepository bacLuongRepository;
+	@Autowired
 	private IChucVuRepository chucVuRepository;
 	@Autowired
 	private IDanTocRepository danTocRepository;
@@ -48,9 +53,11 @@ public class CanBoServiceImpl implements ICanBoService {
 	@Autowired
 	private INgachCongChucRepository ngachCongChucRepository;
 	@Autowired
-	private IQueQuanRepository queQuanRepository; 
+	private IQueQuanRepository queQuanRepository;
 	@Autowired
 	private IDonViChucNangService donViChucNangService;
+	@Autowired
+	private INgachCongChucService ngachCongChucService;
 
 	@Autowired
 	protected DozerBeanMapper mapper;
@@ -63,7 +70,8 @@ public class CanBoServiceImpl implements ICanBoService {
 		Iterable<Canbo> listFromDb = repo.findAll();
 
 		for (Canbo d : listFromDb) {
-			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			DonViChucNangDTO donViChucNangDto = mapper.map(
+					d.getDonvichucnang(), DonViChucNangDTO.class);
 			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
 			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
 			canBoDto.setDonViChucNang(donViChucNangDto);
@@ -81,14 +89,21 @@ public class CanBoServiceImpl implements ICanBoService {
 	@Override
 	public CanBoDTO getById(Integer id) {
 		Canbo entity = repo.findOne(Integer.valueOf(id));
-		DonViChucNangDTO donViChucNangDto = mapper.map(entity.getDonvichucnang(), DonViChucNangDTO.class);
-		donViChucNangDto.setBoMon(donViChucNangService.getBoMonByDonViChucNang(donViChucNangDto.getPk()));
+		DonViChucNangDTO donViChucNangDto = mapper.map(
+				entity.getDonvichucnang(), DonViChucNangDTO.class);
+		donViChucNangDto.setBoMon(donViChucNangService
+				.getBoMonByDonViChucNang(donViChucNangDto.getPk()));
 		DanTocDTO danTocDto = mapper.map(entity.getDantoc(), DanTocDTO.class);
-		TonGiaoDTO tonGiaoDto = mapper.map(entity.getTongiao(), TonGiaoDTO.class);
+		TonGiaoDTO tonGiaoDto = mapper.map(entity.getTongiao(),
+				TonGiaoDTO.class);
 		ChucVuDTO chucVuDto = mapper.map(entity.getChucvu(), ChucVuDTO.class);
-		NgachCongChucDTO ngachCongChucDto = mapper.map(entity.getNgachcongchuc(), NgachCongChucDTO.class);
-		QueQuanDTO queQuanDto = mapper.map(entity.getQuequan(), QueQuanDTO.class);
-		
+		NgachCongChucDTO ngachCongChucDto = mapper.map(
+				entity.getNgachcongchuc(), NgachCongChucDTO.class);
+		ngachCongChucDto.setBacLuong(ngachCongChucService
+				.getBacLuongByNgachCongChuc(ngachCongChucDto.getPk()));
+		QueQuanDTO queQuanDto = mapper.map(entity.getQuequan(),
+				QueQuanDTO.class);
+
 		CanBoDTO canBoDto = mapper.map(entity, CanBoDTO.class);
 		canBoDto.setDonViChucNang(donViChucNangDto);
 		canBoDto.setDanToc(danTocDto);
@@ -111,6 +126,11 @@ public class CanBoServiceImpl implements ICanBoService {
 		if (entity.getBomon() != null) {
 			BoMonDTO boMonDto = mapper.map(entity.getBomon(), BoMonDTO.class);
 			canBoDto.setBoMon(boMonDto);
+		}
+		if (entity.getBacluong() != null) {
+			BacLuongDTO bacLuongDto = mapper.map(entity.getBacluong(),
+					BacLuongDTO.class);
+			canBoDto.setBacLuong(bacLuongDto);
 		}
 		return canBoDto;
 	}
@@ -147,21 +167,30 @@ public class CanBoServiceImpl implements ICanBoService {
 					.getPk());
 			entity.setChucvu(chucvuEntity);
 		}
-		if(dto.getDanToc() !=null){
-			Dantoc dantocEntity = danTocRepository.findOne(dto.getDanToc().getPk());
+		if (dto.getDanToc() != null) {
+			Dantoc dantocEntity = danTocRepository.findOne(dto.getDanToc()
+					.getPk());
 			entity.setDantoc(dantocEntity);
 		}
-		if(dto.getTonGiao() != null){
-			Tongiao tongiaoEntity = tonGiaoRepository.findOne(dto.getTonGiao().getPk());
+		if (dto.getTonGiao() != null) {
+			Tongiao tongiaoEntity = tonGiaoRepository.findOne(dto.getTonGiao()
+					.getPk());
 			entity.setTongiao(tongiaoEntity);
 		}
-		if(dto.getNgachCongChuc() != null){
-			Ngachcongchuc ngachcongchucEntity = ngachCongChucRepository.findOne(dto.getNgachCongChuc().getPk());
+		if (dto.getNgachCongChuc() != null) {
+			Ngachcongchuc ngachcongchucEntity = ngachCongChucRepository
+					.findOne(dto.getNgachCongChuc().getPk());
 			entity.setNgachcongchuc(ngachcongchucEntity);
 		}
-		if(dto.getQueQuan() != null){
-			Quequan quequanEntity = queQuanRepository.findOne(dto.getQueQuan().getPk());
+		if (dto.getQueQuan() != null) {
+			Quequan quequanEntity = queQuanRepository.findOne(dto.getQueQuan()
+					.getPk());
 			entity.setQuequan(quequanEntity);
+		}
+		if (dto.getBacLuong() != null) {
+			Bacluong bacluongEntity = bacLuongRepository.findOne(dto
+					.getBacLuong().getPk());
+			entity.setBacluong(bacluongEntity);
 		}
 		return repo.save(entity);
 	}

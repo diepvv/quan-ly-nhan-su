@@ -186,7 +186,7 @@
 			<label for="ngachCongChuc_pk">Ngạch công chức</label></br>
 			<c:if test="${not empty ngachCongChucLists}">
 				<select class="form-control my-select-control-style"
-					id="ngachCongChuc_pk">
+					id="ngachCongChuc_pk" onchange="changeNgachCongChuc()">
 					<c:forEach var="dto" items="${ngachCongChucLists}">
 						<option value="${dto.pk}">${dto.maNgach}</option>
 					</c:forEach>
@@ -201,14 +201,9 @@
 				viên chức</label> <input class="form-control" id="tenNgach" type="text">
 		</div>
 		<div class="col-md-3">
-			<label for="bacLuong_pk" class="label-style">Bậc lương</label> <input
-				class="form-control" id="bacLuong_pk" type="text"
-				list="listBacLuong">
-			<datalist id="listBacLuong">
-				<option value="a"></option>
-				<option value="b"></option>
-				<option value="c"></option>
-			</datalist>
+			<label for="bacLuong_pk" class="label-style">Bậc lương</label> <select
+				class="form-control my-select-control-style" id="bacLuong_pk">
+			</select>
 		</div>
 		<div class="col-md-3">
 			<label for="heSoLuong" class="label-style">Hệ Số Lương</label> <input

@@ -7,16 +7,9 @@ public class BacLuongDTO implements Serializable {
 	private Integer pk;
 	private Integer maBacLuong;
 	private double heSoLuong;
+	private double phuCapVuotKhung;
 
 	public BacLuongDTO() {
-	}
-
-	@Deprecated
-	public BacLuongDTO(Integer pk, Integer maBacLuong, double heSoLuong) {
-		super();
-		this.pk = pk;
-		this.maBacLuong = maBacLuong;
-		this.heSoLuong = heSoLuong;
 	}
 
 	public Integer getPk() {
@@ -41,6 +34,14 @@ public class BacLuongDTO implements Serializable {
 
 	public void setHeSoLuong(double heSoLuong) {
 		this.heSoLuong = heSoLuong;
+	}
+
+	public double getPhuCapVuotKhung() {
+		return phuCapVuotKhung;
+	}
+
+	public void setPhuCapVuotKhung(double phuCapVuotKhung) {
+		this.phuCapVuotKhung = phuCapVuotKhung;
 	}
 
 }

@@ -14,6 +14,7 @@ public class Bacluong implements Serializable {
 	private Integer pk;
 	private Integer maBacLuong;
 	private double heSoLuong;
+	private double phuCapVuotKhung;
 
 	public Bacluong() {
 	}
@@ -40,6 +41,14 @@ public class Bacluong implements Serializable {
 
 	public void setHeSoLuong(double heSoLuong) {
 		this.heSoLuong = heSoLuong;
+	}
+
+	public double getPhuCapVuotKhung() {
+		return phuCapVuotKhung;
+	}
+
+	public void setPhuCapVuotKhung(double phuCapVuotKhung) {
+		this.phuCapVuotKhung = phuCapVuotKhung;
 	}
 
 }

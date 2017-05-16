@@ -1,11 +1,14 @@
 package quanlynhansu.service;
 
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import quanlynhansu.model.dto.BacLuongDTO;
 import quanlynhansu.model.dto.NgachCongChucDTO;
 import quanlynhansu.model.entity.Ngachcongchuc;
 import quanlynhansu.repository.INgachCongChucRepository;
@@ -27,6 +30,13 @@ public class NgachCongChucServiceImpl implements INgachCongChucService {
 			ketqua.add(mapper.map(d, NgachCongChucDTO.class));
 		}
 		return ketqua;
+	}
+
+	@Override
+	public Set<BacLuongDTO> getBacLuongByNgachCongChuc(Integer ngachCongChucPk) {
+		return repo.findOne(ngachCongChucPk).getBacLuongs().stream()
+				.map(entity -> mapper.map(entity, BacLuongDTO.class))
+				.collect(Collectors.toSet());
 	}
 
 	@Override

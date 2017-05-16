@@ -1,6 +1,8 @@
 package quanlynhansu.model.dto;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class NgachCongChucDTO implements Serializable {
 	private static final long serialVersionUID = -3444123799992239424L;
@@ -8,6 +10,7 @@ public class NgachCongChucDTO implements Serializable {
 	private String maNgach;
 	private String tenNgach;
 	private Integer soNamNangBacLuong;
+	private Set<BacLuongDTO> bacLuong = new HashSet<>();
 
 	public NgachCongChucDTO() {
 	}
@@ -52,8 +55,12 @@ public class NgachCongChucDTO implements Serializable {
 		this.soNamNangBacLuong = soNamNangBacLuong;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public Set<BacLuongDTO> getBacLuong() {
+		return bacLuong;
+	}
+
+	public void setBacLuong(Set<BacLuongDTO> bacLuong) {
+		this.bacLuong = bacLuong;
 	}
 
 }

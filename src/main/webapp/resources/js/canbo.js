@@ -260,7 +260,7 @@ $(document).ready(function() {
 	                		 var toAppend = '';
 	                         $.each(res.donViChucNang.boMon,function(i,o){
 	                        	 if(o.pk==res.boMon.pk){
-	                        		 toAppend += '<option value='+o.pk+' select>'+o.tenBoMon+'</option>';
+	                        		 toAppend += '<option value='+o.pk+' selected>'+o.tenBoMon+'</option>';
 	                        	 } else {	                        		 
 	                        		 toAppend += '<option value='+o.pk+'>'+o.tenBoMon+'</option>';
 	                        	 }
@@ -289,7 +289,18 @@ $(document).ready(function() {
 	                	 txtCongViecDuocGiao.val(res.congViecDuocGiao);
 	                	 txtChucDanh.val(res.chucDanh);
 	                	 txtNgachCongChuc_pk.val(res.ngachCongChuc.pk);
-	                	 txtBacLuong_pk.val(res.bacLuong_pk);
+	                	 if(res.bacLuong!=null){
+	                		 var toAppend = '';
+	                         $.each(res.ngachCongChuc.bacLuong,function(i,o){
+	                        	 if(o.pk==res.bacLuong.pk){
+	                        		 toAppend += '<option value='+o.pk+' selected>'+o.maBacLuong+'</option>';
+	                        	 } else {	                        		 
+	                        		 toAppend += '<option value='+o.pk+'>'+o.maBacLuong+'</option>';
+	                        	 }
+	                        });
+	                         txtBacLuong_pk.empty();
+	                         txtBacLuong_pk.append(toAppend);
+	                	 }
 	                	 txtNgayHuong.val(res.ngayHuong);
 	                	 txtPhuCapChucVu.val(res.phuCapChucVu);
 	                	 txtPhuCapKhac.val(res.phuCapKhac);
@@ -442,7 +453,8 @@ $(document).ready(function() {
 	       	 json.chucDanh = txtChucDanh.val();
 	       	 json.ngachCongChuc = new Object();
 	       	 json.ngachCongChuc.pk = txtNgachCongChuc_pk.val();
-	       	 json.bacLuong_pk = txtBacLuong_pk.val();
+	       	 json.bacLuong = new Object();
+	       	 json.bacLuong.pk = txtBacLuong_pk.val();
 	       	 json.ngayHuong = txtNgayHuong.val();
 	       	 json.phuCapChucVu = txtPhuCapChucVu.val();
 	       	 json.phuCapChucVu = txtPhuCapKhac.val();
@@ -519,6 +531,22 @@ $(document).ready(function() {
                    $('#boMon_pk').empty();
                    $('#boMon_pk').append(toAppend);
                  }
+			 });
+		}
+		
+		changeNgachCongChuc = function(){
+			var ngachCongChucPk = $(ngachCongChuc_pk).val();
+			 $.ajax({  
+                url: canBoService+"/getBacLuongByNgachCongChuc/"+ngachCongChucPk,  
+                type: 'GET',  
+                success: function (res) {
+               	 var toAppend = '';
+                    $.each(res,function(i,o){
+                   	 toAppend += '<option value='+o.pk+'>'+o.maBacLuong+'</option>';
+                   });
+                  $('#bacLuong_pk').empty();
+                  $('#bacLuong_pk').append(toAppend);
+                }
 			 });
 		}
 		

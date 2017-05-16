@@ -92,9 +92,6 @@
 										<li class="mini_list_agile error"><a href="/donViChucNangController/show">
 												<i class="fa fa-caret-right" aria-hidden="true"></i> Đơn vị chức năng
 										</a></li>
-										<li class="mini_list_agile error"><a href="/bacLuongController/show">
-												<i class="fa fa-caret-right" aria-hidden="true"></i> Bậc lương
-										</a></li>
 
 									</ul></li>
 								<li><a href="#"> <i class="fa fa-suitcase"
