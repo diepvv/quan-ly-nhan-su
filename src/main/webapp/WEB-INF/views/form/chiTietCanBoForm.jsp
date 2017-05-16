@@ -7,19 +7,21 @@
 		<div class="full-screen-modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h1 class="modal-title">CHI TIẾT CÁN BỘ</h1>
+				<center>
+					<h4 class="modal-title">CHI TIẾT CÁN BỘ</h4>
+				</center>
 			</div>
 			<div class="modal-body">
 				<div class="panel-group" id="accordion1">
 					<input id="hidTieuChiChiTietCanBo" type="hidden">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">
+							<h1 class="panel-title">
 								<a data-toggle="collapse" href="#collapseSoYeuLyLichForm"
 									data-parent="#accordion1"
 									onclick="$(hidTieuChiChiTietCanBo).val('soYeuLyLich')">SƠ
 									YẾU LÝ LỊCH</a>
-							</h4>
+							</h1>
 						</div>
 						<div id="collapseSoYeuLyLichForm" class="panel-collapse collapse">
 							<%@include file="soYeuLyLich.jsp"%>
@@ -28,12 +30,12 @@
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">
+							<h1 class="panel-title">
 								<a data-toggle="collapse" href="#collapseQuanHeGiaDinh"
 									data-parent="#accordion1"
 									onclick="$(hidTieuChiChiTietCanBo).val('quanHeGiaDinh')">QUAN
 									HỆ GIA ĐÌNH</a>
-							</h4>
+							</h1>
 						</div>
 						<div id="collapseQuanHeGiaDinh" class="panel-collapse collapse">
 							<label for="inputdefault">Phân loại</label> <input
@@ -49,12 +51,12 @@
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">
+							<h1 class="panel-title">
 								<a data-toggle="collapse" href="#collapseQuaTrinhCongTac"
 									data-parent="#accordion1"
 									onclick="$(hidTieuChiChiTietCanBo).val('quaTrinhCongTac')">QUÁ
 									TRÌNH CÔNG TÁC</a>
-							</h4>
+							</h1>
 						</div>
 						<div id="collapseQuaTrinhCongTac" class="panel-collapse collapse">
 							<label for="inputdefault">Phân loại</label> <input
@@ -70,12 +72,12 @@
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">
+							<h1 class="panel-title">
 								<a data-toggle="collapse" href="#collapseQuaTrinhDaoTao"
 									data-parent="#accordion1"
 									onclick="$(hidTieuChiChiTietCanBo).val('quaTrinhDaoTao')">QUÁ
 									TRÌNH ĐÀO TẠO</a>
-							</h4>
+							</h1>
 						</div>
 						<div id="collapseQuaTrinhDaoTao" class="panel-collapse collapse">
 							<label for="inputdefault">Phân loại</label> <input
@@ -91,12 +93,12 @@
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">
+							<h1 class="panel-title">
 								<a data-toggle="collapse" href="#collapseDanhSachHopDong"
 									data-parent="#accordion1"
 									onclick="$(hidTieuChiChiTietCanBo).val('danhSachHopDong')">DANH
 									SÁCH HỢP ĐỒNG</a>
-							</h4>
+							</h1>
 						</div>
 						<div id="collapseDanhSachHopDong" class="panel-collapse collapse">
 							<label for="inputdefault">Phân loại</label> <input
@@ -112,12 +114,12 @@
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">
+							<h1 class="panel-title">
 								<a data-toggle="collapse" href="#collapseDanhSachQuyetDinh"
 									data-parent="#accordion1"
 									onclick="$(hidTieuChiChiTietCanBo).val('danhSachQuyetDinh')">DANH
 									SÁCH QUYẾT ĐỊNH</a>
-							</h4>
+							</h1>
 						</div>
 						<div id="collapseDanhSachQuyetDinh"
 							class="panel-collapse collapse">
@@ -134,12 +136,12 @@
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">
+							<h1 class="panel-title">
 								<a data-toggle="collapse" href="#collapseQuaTrinhLuong"
 									data-parent="#accordion1"
 									onclick="$(hidTieuChiChiTietCanBo).val('quaTrinhLuong')">QUÁ
 									TRÌNH LƯƠNG</a>
-							</h4>
+							</h1>
 						</div>
 						<div id="collapseQuaTrinhLuong" class="panel-collapse collapse">
 							<label for="inputdefault">Phân loại</label> <input
@@ -155,12 +157,12 @@
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">
+							<h1 class="panel-title">
 								<a data-toggle="collapse" href="#collapseChucVuKiemNhiem"
 									data-parent="#accordion1"
 									onclick="$(hidTieuChiChiTietCanBo).val('chucVuKiemNhiem')">CHỨC
 									VỤ KIÊM NHIỆM</a>
-							</h4>
+							</h1>
 						</div>
 						<div id="collapseChucVuKiemNhiem" class="panel-collapse collapse">
 							<label for="inputdefault">Phân loại</label> <input
@@ -176,12 +178,12 @@
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h4 class="panel-title">
+							<h1 class="panel-title">
 								<a data-toggle="collapse" href="#collapseKeKhaiTaiSan"
 									data-parent="#accordion1"
 									onclick="$(hidTieuChiChiTietCanBo).val('keKhaiTaiSan')">KÊ
 									KHAI TÀI SẢN</a>
-							</h4>
+							</h1>
 						</div>
 						<div id="collapseKeKhaiTaiSan" class="panel-collapse collapse">
 							<!-- datatable start  -->

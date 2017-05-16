@@ -6,7 +6,9 @@
 		<div class="full-screen-modal-content">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal">&times;</button>
-				<h1 class="modal-title">THEM CAN BO</h1>
+				<center>
+					<h4 class="modal-title">THÊM CÁN BỘ</h4>
+				</center>
 			</div>
 			<div class="modal-body">
 				<div class="panel-group">
