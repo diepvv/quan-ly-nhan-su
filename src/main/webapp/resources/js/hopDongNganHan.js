@@ -123,7 +123,7 @@ $(document).ready(function() {
 	    });
 		
 		//twitter bootstrap btnCapNhap
-    	$("button#btnCapNhap").click(function(e) {
+    	$("#btnCapNhap").click(function(e) {
 
     		var endpointUrl = '/hopDongNganHanController/add';
     		//$(tenhopdong) là giá trị sau khi lấy ở database nên gắn vào form khi click nút Sửa
@@ -133,6 +133,12 @@ $(document).ready(function() {
             var txtNgayKy = $(dpNgayKy);
             var txtTuNgay = $(dpTuNgay);
             var txtDenNgay = $(dpDenNgay);
+            
+            var txtTenHopDong = $.trim($('#tenhopdong').val());
+            if(txtTenHopDong == ''){
+            	alert('Tên hợp đồng không được để Trống! ok Men');
+                return false;
+            }
             
             var json = new Object();
          	//truyen du lieu thanh chuoi Json gui xuong database

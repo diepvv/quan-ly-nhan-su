@@ -6,15 +6,18 @@
 	<input class="form-control" id="pk" type="hidden">
 	<div class="row">
 		<div class="col-md-3">
-			<label for="donViChucNang_pk">Đơn vị công tác</label></br>
-			<c:if test="${not empty donViChucNangLists}">
-				<select class="form-control my-select-control-style"
-					id="donViChucNang_pk" onchange="changeDonViChucNang()">
-					<c:forEach var="dto" items="${donViChucNangLists}">
-						<option required="true" value="${dto.pk}">${dto.tenDonVi}</option>
-					</c:forEach>
-				</select>
-			</c:if>
+			<div class="form-group">
+				<label for="donViChucNang_pk">Đơn vị công tác</label></br>
+				<c:if test="${not empty donViChucNangLists}">
+					<select class="form-control my-select-control-style"
+						id="donViChucNang_pk" onchange="changeDonViChucNang()"
+						required="true" >
+						<c:forEach var="dto" items="${donViChucNangLists}">
+							<option required="true" value="${dto.pk}">${dto.tenDonVi}</option>
+						</c:forEach>
+					</select>
+				</c:if>
+			</div>
 		</div>
 		<div class="col-md-3">
 			<label for="boMon_pk">Bộ môn chuyên môn</label> <select

@@ -32,8 +32,7 @@ public class CanBoRestController {
 	}
 
 	@GetMapping("/getBoMonByDonViChucNang/{donViChucNangPk}")
-	public Set<BoMonDTO> getBoMonByDonViChucNang(
-			@PathVariable Integer donViChucNangPk) {
+	public Set<BoMonDTO> getBoMonByDonViChucNang(@PathVariable Integer donViChucNangPk) {
 		return donViChucNangService.getBoMonByDonViChucNang(donViChucNangPk);
 	}
 
@@ -44,8 +43,7 @@ public class CanBoRestController {
 	}
 
 	@GetMapping("/getBacLuongByNgachCongChuc/{ngachCongChucPk}")
-	public Set<BacLuongDTO> getBacLuongByNgachCongChuc(
-			@PathVariable Integer ngachCongChucPk) {
+	public Set<BacLuongDTO> getBacLuongByNgachCongChuc(@PathVariable Integer ngachCongChucPk) {
 		return ngachCongChucService.getBacLuongByNgachCongChuc(ngachCongChucPk);
 	}
 }

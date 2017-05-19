@@ -58,17 +58,13 @@ public class CanBoServiceImpl implements ICanBoService {
 	private IDonViChucNangService donViChucNangService;
 	@Autowired
 	private INgachCongChucService ngachCongChucService;
-
 	@Autowired
 	protected DozerBeanMapper mapper;
 
 	@Override
 	public ArrayList<CanBoDTO> getAll() {
-
 		ArrayList<CanBoDTO> ketqua = new ArrayList<>();
-
 		Iterable<Canbo> listFromDb = repo.findAll();
-
 		for (Canbo d : listFromDb) {
 			DonViChucNangDTO donViChucNangDto = mapper.map(
 					d.getDonvichucnang(), DonViChucNangDTO.class);
@@ -89,20 +85,14 @@ public class CanBoServiceImpl implements ICanBoService {
 	@Override
 	public CanBoDTO getById(Integer id) {
 		Canbo entity = repo.findOne(Integer.valueOf(id));
-		DonViChucNangDTO donViChucNangDto = mapper.map(
-				entity.getDonvichucnang(), DonViChucNangDTO.class);
-		donViChucNangDto.setBoMon(donViChucNangService
-				.getBoMonByDonViChucNang(donViChucNangDto.getPk()));
+		DonViChucNangDTO donViChucNangDto = mapper.map(entity.getDonvichucnang(), DonViChucNangDTO.class);
+		donViChucNangDto.setBoMon(donViChucNangService.getBoMonByDonViChucNang(donViChucNangDto.getPk()));
 		DanTocDTO danTocDto = mapper.map(entity.getDantoc(), DanTocDTO.class);
-		TonGiaoDTO tonGiaoDto = mapper.map(entity.getTongiao(),
-				TonGiaoDTO.class);
+		TonGiaoDTO tonGiaoDto = mapper.map(entity.getTongiao(),TonGiaoDTO.class);
 		ChucVuDTO chucVuDto = mapper.map(entity.getChucvu(), ChucVuDTO.class);
-		NgachCongChucDTO ngachCongChucDto = mapper.map(
-				entity.getNgachcongchuc(), NgachCongChucDTO.class);
-		ngachCongChucDto.setBacLuong(ngachCongChucService
-				.getBacLuongByNgachCongChuc(ngachCongChucDto.getPk()));
-		QueQuanDTO queQuanDto = mapper.map(entity.getQuequan(),
-				QueQuanDTO.class);
+		NgachCongChucDTO ngachCongChucDto = mapper.map(entity.getNgachcongchuc(), NgachCongChucDTO.class);
+		ngachCongChucDto.setBacLuong(ngachCongChucService.getBacLuongByNgachCongChuc(ngachCongChucDto.getPk()));
+		QueQuanDTO queQuanDto = mapper.map(entity.getQuequan(),QueQuanDTO.class);
 
 		CanBoDTO canBoDto = mapper.map(entity, CanBoDTO.class);
 		canBoDto.setDonViChucNang(donViChucNangDto);
@@ -154,8 +144,7 @@ public class CanBoServiceImpl implements ICanBoService {
 		}
 		mapper.map(dto, entity);
 		if (dto.getDonViChucNang() != null) {
-			Donvichucnang donViChucNangEntity = donViChucNangRepo.findOne(dto
-					.getDonViChucNang().getPk());
+			Donvichucnang donViChucNangEntity = donViChucNangRepo.findOne(dto.getDonViChucNang().getPk());
 			entity.setDonvichucnang(donViChucNangEntity);
 		}
 		if (dto.getBoMon() != null) {
@@ -163,33 +152,27 @@ public class CanBoServiceImpl implements ICanBoService {
 			entity.setBomon(bomonEntity);
 		}
 		if (dto.getChucVu() != null) {
-			Chucvu chucvuEntity = chucVuRepository.findOne(dto.getChucVu()
-					.getPk());
+			Chucvu chucvuEntity = chucVuRepository.findOne(dto.getChucVu().getPk());
 			entity.setChucvu(chucvuEntity);
 		}
 		if (dto.getDanToc() != null) {
-			Dantoc dantocEntity = danTocRepository.findOne(dto.getDanToc()
-					.getPk());
+			Dantoc dantocEntity = danTocRepository.findOne(dto.getDanToc().getPk());
 			entity.setDantoc(dantocEntity);
 		}
 		if (dto.getTonGiao() != null) {
-			Tongiao tongiaoEntity = tonGiaoRepository.findOne(dto.getTonGiao()
-					.getPk());
+			Tongiao tongiaoEntity = tonGiaoRepository.findOne(dto.getTonGiao().getPk());
 			entity.setTongiao(tongiaoEntity);
 		}
 		if (dto.getNgachCongChuc() != null) {
-			Ngachcongchuc ngachcongchucEntity = ngachCongChucRepository
-					.findOne(dto.getNgachCongChuc().getPk());
+			Ngachcongchuc ngachcongchucEntity = ngachCongChucRepository.findOne(dto.getNgachCongChuc().getPk());
 			entity.setNgachcongchuc(ngachcongchucEntity);
 		}
 		if (dto.getQueQuan() != null) {
-			Quequan quequanEntity = queQuanRepository.findOne(dto.getQueQuan()
-					.getPk());
+			Quequan quequanEntity = queQuanRepository.findOne(dto.getQueQuan().getPk());
 			entity.setQuequan(quequanEntity);
 		}
 		if (dto.getBacLuong() != null) {
-			Bacluong bacluongEntity = bacLuongRepository.findOne(dto
-					.getBacLuong().getPk());
+			Bacluong bacluongEntity = bacLuongRepository.findOne(dto.getBacLuong().getPk());
 			entity.setBacluong(bacluongEntity);
 		}
 		return repo.save(entity);

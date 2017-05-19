@@ -89,75 +89,7 @@
 				<div class="cir_agile_info "></div>
 			</div>
 			<!-- /w3ls_agile_circle_progress-->
-
-			<!-- /weather_w3_agile_info-->
-			<div class="weather_w3_agile_info agile_info_shadow">
-				<div class="weather_w3_inner_info">
-					<div class="over_lay_agile">
-						<h3 class="w3_inner_tittle">Dự Báo Thời Tiết</h3>
-						<ul>
-							<li>
-								<figure class="icons">
-									<canvas id="partly-cloudy-day" width="60" height="60"></canvas>
-								</figure>
-								<h3>25 °C</h3>
-								<div class="clearfix"></div>
-							</li>
-							<li>
-								<figure class="icons">
-									<canvas id="clear-day" width="60" height="60"></canvas>
-								</figure>
-								<div class="weather-text">
-									<h4>THỨ 2</h4>
-									<h5>27 °C</h5>
-								</div>
-								<div class="clearfix"></div>
-							</li>
-							<li>
-								<figure class="icons">
-									<canvas id="snow" width="60" height="60"></canvas>
-								</figure>
-								<div class="weather-text">
-									<h4>THỨ 3</h4>
-									<h5>13 °C</h5>
-								</div>
-								<div class="clearfix"></div>
-							</li>
-							<li>
-								<figure class="icons">
-									<canvas id="partly-cloudy-night" width="60" height="60"></canvas>
-								</figure>
-								<div class="weather-text">
-									<h4>THỨ 4</h4>
-									<h5>18 °C</h5>
-								</div>
-								<div class="clearfix"></div>
-							</li>
-							<li>
-								<figure class="icons">
-									<canvas id="cloudy" width="60" height="60"></canvas>
-								</figure>
-								<div class="weather-text">
-									<h4>THỨ 5</h4>
-									<h5>15 °C</h5>
-								</div>
-								<div class="clearfix"></div>
-							</li>
-							<li>
-								<figure class="icons">
-									<canvas id="fog" width="60" height="60"></canvas>
-								</figure>
-								<div class="weather-text">
-									<h4>THỨ 6</h4>
-									<h5>11 °C</h5>
-								</div>
-								<div class="clearfix"></div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<!-- //weather_w3_agile_info-->
+			
 		</div>
 		<!-- //inner_content_w3_agile_info-->
 	</div>

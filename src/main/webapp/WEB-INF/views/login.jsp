@@ -18,7 +18,7 @@
 					<h2>ĐĂNG NHẬP HỆ THỐNG</h2>
 					<div class="login-form">
 						<form action="#" method="post">
-							<input type="email" name="email" placeholder="E-mail" required="">
+							<input type="text" name="user" placeholder="Tên đăng nhập" required="">
 							<input type="password" name="password" placeholder="Mật khẩu"
 								required="">
 							<div class="tp">
