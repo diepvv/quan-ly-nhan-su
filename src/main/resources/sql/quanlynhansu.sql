@@ -4,7 +4,7 @@ Source Host: localhost
 Source Database: quanlynhansu
 Target Host: localhost
 Target Database: quanlynhansu
-Date: 5/16/2017 1:38:47 AM
+Date: 5/20/2017 5:41:04 PM
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -16,9 +16,10 @@ CREATE TABLE `bacluong` (
   `pk` int(11) NOT NULL AUTO_INCREMENT,
   `maBacLuong` int(11) DEFAULT NULL,
   `heSoLuong` binary(11) DEFAULT NULL,
+  `phuCapVuotKhung` binary(11) DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for bomon
@@ -113,7 +114,7 @@ CREATE TABLE `canbo` (
   CONSTRAINT `donViChucNang_pk` FOREIGN KEY (`donViChucNang_pk`) REFERENCES `donvichucnang` (`pk`) ON UPDATE CASCADE,
   CONSTRAINT `ngachCongChuc_pk` FOREIGN KEY (`ngachCongChuc_pk`) REFERENCES `ngachcongchuc` (`pk`) ON UPDATE CASCADE,
   CONSTRAINT `tonGiao_pk` FOREIGN KEY (`tonGiao_pk`) REFERENCES `tongiao` (`pk`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=61 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for chucvu
@@ -202,7 +203,7 @@ CREATE TABLE `dantoc` (
   `tenDanToc` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=74 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for donvichucnang
@@ -278,7 +279,7 @@ CREATE TABLE `hopdongnganhan` (
   `denNgay` date DEFAULT NULL,
   `version` int(11) DEFAULT NULL,
   PRIMARY KEY (`pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for kekhaitaisan
@@ -329,8 +330,22 @@ CREATE TABLE `ngachcongchuc` (
   `maNgach` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `tenNgach` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `soNamNangBacLuong` int(11) DEFAULT NULL,
+  `VERSION` int(11) NOT NULL,
   PRIMARY KEY (`pk`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- ----------------------------
+-- Table structure for ngachcongchuc_bacluong
+-- ----------------------------
+DROP TABLE IF EXISTS `ngachcongchuc_bacluong`;
+CREATE TABLE `ngachcongchuc_bacluong` (
+  `ngachCongChuc_pk` int(11) NOT NULL,
+  `bacLuong_pk` int(11) NOT NULL,
+  PRIMARY KEY (`ngachCongChuc_pk`,`bacLuong_pk`),
+  UNIQUE KEY `UK_6utgedkxxhb8atyt8l2k4yktq` (`bacLuong_pk`),
+  CONSTRAINT `FK_ngachcongchuc_bacluong_bacluong` FOREIGN KEY (`bacLuong_pk`) REFERENCES `bacluong` (`pk`),
+  CONSTRAINT `FK_ngachcongchuc_bacluong_ngachcongchuc` FOREIGN KEY (`ngachCongChuc_pk`) REFERENCES `ngachcongchuc` (`pk`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- ----------------------------
 -- Table structure for quanhegiadinh
@@ -521,17 +536,26 @@ CREATE TABLE `tongiao` (
 -- ----------------------------
 -- Records 
 -- ----------------------------
-INSERT INTO `bacluong` VALUES ('1', '1', '2.3', null);
-INSERT INTO `bacluong` VALUES ('2', '2', '3', null);
-INSERT INTO `bacluong` VALUES ('3', '3', '2', null);
-INSERT INTO `bacluong` VALUES ('4', '4', '3', null);
-INSERT INTO `bacluong` VALUES ('5', '5', '3', null);
-INSERT INTO `bacluong` VALUES ('6', '6', '4', null);
-INSERT INTO `bacluong` VALUES ('7', '7', '4', null);
-INSERT INTO `bacluong` VALUES ('8', '8', '5', null);
-INSERT INTO `bacluong` VALUES ('9', '9', '5', null);
-INSERT INTO `bacluong` VALUES ('10', '10', '6.5', null);
-INSERT INTO `bacluong` VALUES ('11', '11', '6', null);
+INSERT INTO `bacluong` VALUES ('1', '1', '2.34', '0.0', null);
+INSERT INTO `bacluong` VALUES ('2', '2', '2.67', '0.0', null);
+INSERT INTO `bacluong` VALUES ('3', '3', '3.0', '0.0', null);
+INSERT INTO `bacluong` VALUES ('4', '4', '3.33', '0.0', null);
+INSERT INTO `bacluong` VALUES ('5', '5', '3.66', '0.0', null);
+INSERT INTO `bacluong` VALUES ('6', '6', '3.99', '0.0', null);
+INSERT INTO `bacluong` VALUES ('7', '7', '4.32', '0.0', null);
+INSERT INTO `bacluong` VALUES ('8', '8', '4.65', '0.0', null);
+INSERT INTO `bacluong` VALUES ('9', '9', '4.98', '0.0', null);
+INSERT INTO `bacluong` VALUES ('10', '10', '4.98', '0.05', null);
+INSERT INTO `bacluong` VALUES ('11', '11', '4.98', '0.06', null);
+INSERT INTO `bacluong` VALUES ('12', '12', '4.98', '0.07', null);
+INSERT INTO `bacluong` VALUES ('13', '13', '4.98', '0.08', null);
+INSERT INTO `bacluong` VALUES ('14', '14', '4.98', '0.09', null);
+INSERT INTO `bacluong` VALUES ('15', '15', '4.98', '0.1', null);
+INSERT INTO `bacluong` VALUES ('16', '16', '4.98', '0.11', null);
+INSERT INTO `bacluong` VALUES ('17', '17', '4.98', '0.12', null);
+INSERT INTO `bacluong` VALUES ('18', '18', '4.98', '0.13', null);
+INSERT INTO `bacluong` VALUES ('19', '19', '4.98', '0.14', null);
+INSERT INTO `bacluong` VALUES ('20', '20', '4.98', '0.15', null);
 INSERT INTO `bomon` VALUES ('1', 'Vật lý', null);
 INSERT INTO `bomon` VALUES ('2', 'Toán Giải tích', null);
 INSERT INTO `bomon` VALUES ('3', 'Đường lối CM của Đảng CSVN', null);
@@ -550,16 +574,17 @@ INSERT INTO `bomon` VALUES ('15', 'Mạng máy tính', null);
 INSERT INTO `bomon` VALUES ('16', 'Công nghệ phần mềm', null);
 INSERT INTO `bomon` VALUES ('17', 'Kỹ thuật điện tử', null);
 INSERT INTO `bomon` VALUES ('18', 'Kỹ thuật viễn thông', null);
-INSERT INTO `canbo` VALUES ('1', 'CB012', '41', '2', null, 'Nguyen Van A', null, null, null, null, '1', '4', '1', null, null, null, null, null, null, null, null, '3', null, null, '1', null, null, '2.3', '2.5', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '1.71', '56.5', null, null, null, null, null, null, null, null);
-INSERT INTO `canbo` VALUES ('2', 'CB011', '41', '1', '', 'Hoang Thi C', '', null, null, '', '5', '3', '2', '', null, '', '', '', '', '', null, '4', '', '', '2', null, null, '0.0', '0.0', '', '', '', '', null, null, '', '', '', '', null, null, '', null, null, '', '', null, '', '', '', '1.68', '60.0', '', '', '', '', '', null, null, null);
-INSERT INTO `canbo` VALUES ('28', 'CB345', '41', '4', '', 'Vũ Văn Điệp', '', null, null, '', '4', '3', '3', '', null, '', '', '', '', '', null, '2', '', '', '3', null, null, '0.0', '0.0', '', '', '', '', null, null, '', '', '', '', null, null, '', null, null, '', '', null, '', '', '', '1.71', '65.0', '', '', '', '', '', null, null, null);
-INSERT INTO `canbo` VALUES ('35', 'cb2', '41', '3', '', 'test', '', null, null, '', '7', '1', '6', '', null, '', '', '', '', '', null, '5', '', '', '4', null, null, '0.0', '0.0', '', '', '', '', null, null, '', '', '', '', null, null, '', null, null, '', '', null, '', '', '', '0.0', '0.0', '', '', '', '', '', null, null, null);
-INSERT INTO `canbo` VALUES ('36', 'cb5', '41', '2', '', 'nguyen van b', 'abbc', '2017-05-23', null, 'ho chi minh', '5', '2', '2', '', null, '', '', '', '', '', null, '2', '', '', '5', null, null, '0.0', '0.0', '', '', 'dai hoc', '', '2017-05-10', null, '', '', 'anh van b', '', '2017-05-11', '2017-05-17', 'doan thanh nien hcm', '2017-05-08', '2017-05-05', '', '', null, '', '', '', '1.71', '46.0', '', '11221424', '', '', '', null, null, null);
-INSERT INTO `canbo` VALUES ('38', 'cbgh4', '41', '4', '', 'nong van teo', 'no name', '2017-05-31', null, 'hà tĩnh', '34', '2', '2', '122134223', '2017-05-24', 'CA Hồ Chí Minh', '', 'bình thạnh', 'kỹ sư', 'Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh', null, '2', 'Giảng dạy', 'Giảng viên', '6', null, null, '0.0', '0.0', '12/12', 'kỹ sư', 'thạc sĩ', 'thượng sĩ', '2017-05-29', '2017-05-22', 'Sơ cấp', 'kế toán vă thư', 'Anh văn', 'Tin học A', '2017-05-18', '2017-05-25', 'Đoàn thanh niên Cộng Sản Hồ Chí Minh', '2017-05-25', '2017-05-26', 'Thượng sĩ', 'Tiến sĩ', '2', 'Bằng khen thành phố', 'không', 'Tốt', '1.72', '67.0', 'B', '12342345', 'Hạng 5/5', 'Hộ nghèo', 'Lý luận đạo đức tốt', '2017-06-02', '2017-05-18', null);
-INSERT INTO `canbo` VALUES ('51', 'BA982', '42', '10', '', 'Nguyễn Văn Hùng', '', null, '0', '', '45', '2', '2', '', null, '', '', '', '', 'Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh', null, '7', 'Giảng dạy', 'Giảng viên', '7', null, null, '0.0', '0.0', '12/12', '', '', '', null, null, 'Sơ cấp', '', 'Anh văn', '', null, null, 'Đoàn thanh niên Cộng Sản Hồ Chí Minh', null, null, '', '', null, '', '', 'Tốt', '0.0', '0.0', null, '', '', '', '', null, null, null);
-INSERT INTO `canbo` VALUES ('52', 'AH063', '42', '13', '', 'Lê Kiều Trinh', '', null, '1', '', '32', '3', '2', '13223232', '2017-05-11', '', '', '', '', 'Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh', null, '2', 'Giảng dạy', 'Giảng viên', '4', null, null, '0.0', '0.0', '12/12', '', '', '', null, null, 'Sơ cấp', '', 'Anh văn', '', null, null, 'Đoàn thanh niên Cộng Sản Hồ Chí Minh', null, null, '', '', null, '', '', 'Tốt', '0.0', '0.0', 'AB', '', '', '', '', null, null, null);
-INSERT INTO `canbo` VALUES ('53', 'CB932', '44', '16', '', 'Trần Hạnh Nhi', 'Nhi', '2017-05-23', '0', 'Lục Nam-Hà Tĩnh', '2', '4', '6', '122179867', '2015-05-12', 'C.A Hà Tĩnh', 'Phước Sơn', 'Hồ Chí Minh', 'Giảng viên Trường ĐH Tài Chính MakerTinh', 'Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh', '2017-05-15', '8', 'Giảng dạy', 'Giảng viên', '8', null, '2017-05-15', '0.0', '0.0', '12/12', 'Đại học', 'abc', 'abcdf', '2017-05-18', '2017-05-17', 'Sơ cấp', 'nha nuoc', 'Anh văn', 'Tin A', '2017-05-23', '2017-06-02', 'Đoàn thanh niên Cộng Sản Hồ Chí Minh', '2017-05-30', '2017-05-17', 'Trung úy', 'Bằng khen thành đoàn', '2', 'Bằng khen thành phố', 'không', 'Tốt', '1.6', '56.0', 'B', 'BH545423432', '', 'Con hộ cận nghèo', 'Quá trình công tác tốt', null, null, null);
-INSERT INTO `canbo` VALUES ('54', 'BC4', '44', '17', '', 'Dương Anh Đức', '', null, '0', '', '15', '2', '1', '', '2017-05-31', '', '', '', '', 'Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh', null, '6', 'Giảng dạy', 'Giảng viên', '8', null, null, '0.0', '0.0', '12/12', '', '', '', null, null, 'Sơ cấp', '', 'Anh văn', '', null, null, 'Đoàn thanh niên Cộng Sản Hồ Chí Minh', null, null, '', '', null, '', '', 'Tốt', '0.0', '0.0', 'AB', '', '', '', '', null, null, null);
+INSERT INTO `canbo` VALUES ('1', 'CB012', '41', '2', null, 'Nguyen Van A', null, null, null, null, '1', '4', '1', null, null, null, null, null, null, null, null, '3', null, null, '59', '1', null, '2.3', '2.5', null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, '1.71', '56.5', null, null, null, null, null, null, null, null);
+INSERT INTO `canbo` VALUES ('2', 'CB011', '41', '1', '', 'Hoang Thi C', '', null, null, '', '5', '3', '2', '', null, '', '', '', '', '', null, '4', '', '', '59', '2', null, '0.0', '0.0', '', '', '', '', null, null, '', '', '', '', null, null, '', null, null, '', '', null, '', '', '', '1.68', '60.0', '', '', '', '', '', null, null, null);
+INSERT INTO `canbo` VALUES ('28', 'CB345', '41', '4', '', 'Vũ Văn Điệp', '', null, null, '', '4', '3', '3', '', null, '', '', '', '', '', null, '2', '', '', '59', '3', null, '0.0', '0.0', '', '', '', '', null, null, '', '', '', '', null, null, '', null, null, '', '', null, '', '', '', '1.71', '65.0', '', '', '', '', '', null, null, null);
+INSERT INTO `canbo` VALUES ('35', 'cb2', '41', '3', '', 'test', '', null, null, '', '7', '1', '6', '', null, '', '', '', '', '', null, '5', '', '', '59', '3', null, '0.0', '0.0', '', '', '', '', null, null, '', '', '', '', null, null, '', null, null, '', '', null, '', '', '', '0.0', '0.0', '', '', '', '', '', null, null, null);
+INSERT INTO `canbo` VALUES ('36', 'cb5', '41', '2', '', 'nguyen van b', 'abbc', '2017-05-23', null, 'ho chi minh', '5', '2', '2', '', null, '', '', '', '', '', null, '2', '', '', '59', '3', null, '0.0', '0.0', '', '', 'dai hoc', '', '2017-05-10', null, '', '', 'anh van b', '', '2017-05-11', '2017-05-17', 'doan thanh nien hcm', '2017-05-08', '2017-05-05', '', '', null, '', '', '', '1.71', '46.0', '', '11221424', '', '', '', null, null, null);
+INSERT INTO `canbo` VALUES ('38', 'cbgh4', '41', '4', '', 'nong van teo', 'no name', '2017-05-31', null, 'hà tĩnh', '34', '2', '2', '122134223', '2017-05-24', 'CA Hồ Chí Minh', '', 'bình thạnh', 'kỹ sư', 'Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh', null, '2', 'Giảng dạy', 'Giảng viên', '59', '1', null, '0.0', '0.0', '12/12', 'kỹ sư', 'thạc sĩ', 'thượng sĩ', '2017-05-29', '2017-05-22', 'Sơ cấp', 'kế toán vă thư', 'Anh văn', 'Tin học A', '2017-05-18', '2017-05-25', 'Đoàn thanh niên Cộng Sản Hồ Chí Minh', '2017-05-25', '2017-05-26', 'Thượng sĩ', 'Tiến sĩ', '2', 'Bằng khen thành phố', 'không', 'Tốt', '1.72', '67.0', 'B', '12342345', 'Hạng 5/5', 'Hộ nghèo', 'Lý luận đạo đức tốt', '2017-06-02', '2017-05-18', null);
+INSERT INTO `canbo` VALUES ('51', 'BA982', '42', '10', '', 'Nguyễn Văn Hùng', '', null, '0', '', '45', '2', '2', '', null, '', '', '', '', 'Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh', null, '7', 'Giảng dạy', 'Giảng viên', '59', '1', null, '0.0', '0.0', '12/12', '', '', '', null, null, 'Sơ cấp', '', 'Anh văn', '', null, null, 'Đoàn thanh niên Cộng Sản Hồ Chí Minh', null, null, '', '', null, '', '', 'Tốt', '0.0', '0.0', null, '', '', '', '', null, null, null);
+INSERT INTO `canbo` VALUES ('52', 'AH063', '42', '13', '', 'Lê Kiều Trinh', '', null, '1', '', '32', '3', '2', '13223232', '2017-05-11', '', '', '', '', 'Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh', null, '2', 'Giảng dạy', 'Giảng viên', '59', '1', null, '0.0', '0.0', '12/12', '', '', '', null, null, 'Sơ cấp', '', 'Anh văn', '', null, null, 'Đoàn thanh niên Cộng Sản Hồ Chí Minh', null, null, '', '', null, '', '', 'Tốt', '0.0', '0.0', 'AB', '', '', '', '', null, null, null);
+INSERT INTO `canbo` VALUES ('53', 'CB932', '44', '16', '', 'Trần Hạnh Nhi', 'Nhi', '2017-05-23', '0', 'Lục Nam-Hà Tĩnh', '2', '4', '6', '122179867', '2015-05-12', 'C.A Hà Tĩnh', 'Phước Sơn', 'Hồ Chí Minh', 'Giảng viên Trường ĐH Tài Chính MakerTinh', 'Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh', '2017-05-15', '8', 'Giảng dạy', 'Giảng viên', '59', '1', '2017-05-15', '0.0', '0.0', '12/12', 'Đại học', 'abc', 'abcdf', '2017-05-18', '2017-05-17', 'Sơ cấp', 'nha nuoc', 'Anh văn', 'Tin A', '2017-05-23', '2017-06-02', 'Đoàn thanh niên Cộng Sản Hồ Chí Minh', '2017-05-30', '2017-05-17', 'Trung úy', 'Bằng khen thành đoàn', '2', 'Bằng khen thành phố', 'không', 'Tốt', '1.6', '56.0', 'B', 'BH545423432', '', 'Con hộ cận nghèo', 'Quá trình công tác tốt', null, null, null);
+INSERT INTO `canbo` VALUES ('54', 'BC4', '44', '17', '', 'Dương Anh Đức', '', null, '0', '', '15', '2', '1', '', '2017-05-31', '', '', '', '', 'Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh', null, '6', 'Giảng dạy', 'Giảng viên', '59', '1', null, '0.0', '0.0', '12/12', '', '', '', null, null, 'Sơ cấp', '', 'Anh văn', '', null, null, 'Đoàn thanh niên Cộng Sản Hồ Chí Minh', null, null, '', '', null, '', '', 'Tốt', '0.0', '0.0', 'AB', '', '', '', '', null, null, null);
+INSERT INTO `canbo` VALUES ('60', 'CB09', '42', '11', '', 'Bùi Thị Thuyên', '', null, '1', '', '5', '3', '1', '', null, '', '', '', '', 'Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh', null, '10', 'Giảng dạy', 'Giảng viên', '59', '1', null, '0.0', '0.0', '12/12', '', '', '', null, '2017-05-10', 'Sơ cấp', '', 'Anh văn', '', null, null, 'Đoàn thanh niên Cộng Sản Hồ Chí Minh', null, null, '', '', null, '', '', 'Tốt', '1.6', '0.0', null, '', '', '', '', null, null, null);
 INSERT INTO `chucvu` VALUES ('1', 'Giảng viên BM. Cầu hầm', null);
 INSERT INTO `chucvu` VALUES ('2', 'Giảng viên BM. Cơ khí ô tô', null);
 INSERT INTO `chucvu` VALUES ('3', 'Giảng viên BM. Cơ bản', null);
@@ -624,15 +649,14 @@ INSERT INTO `donvichucnang_bomon` VALUES ('44', '15');
 INSERT INTO `donvichucnang_bomon` VALUES ('44', '16');
 INSERT INTO `donvichucnang_bomon` VALUES ('44', '17');
 INSERT INTO `donvichucnang_bomon` VALUES ('44', '18');
-INSERT INTO `hibernate_sequence` VALUES ('55');
+INSERT INTO `hibernate_sequence` VALUES ('74');
 INSERT INTO `hopdongcanbo` VALUES ('1', '19', '1', '2002/TCHC 2015', 'Hợp đồng thử việc', 'Cố vấn thanh tra', '4', '2017-05-12', '2017-05-12', '2017-05-26', 'Hợp đồng thử việc 2 tháng', '', null);
 INSERT INTO `hopdongcanbo` VALUES ('2', '18', '28', '86/TCCB 2008', 'Hợp đồng lao động', 'Trưởng ban thư viện', '6', '2017-05-26', '2017-05-27', '2017-06-10', 'Hợp đồng 12 tháng', null, null);
 INSERT INTO `hopdongnganhan` VALUES ('7', 'Tuyển dụng lao động', 'Nguyễn Văn A', '2017-04-10', '2017-04-10', '2017-04-20', null);
 INSERT INTO `hopdongnganhan` VALUES ('14', 'Tuyển dụng bảo vệ', 'Nguyễn Văn Tí', '2017-04-09', '2017-04-13', '2017-04-20', null);
 INSERT INTO `hopdongnganhan` VALUES ('17', 'Tuyển dụng nhân sự', 'Không Như Ngọc', '2017-04-14', '2017-04-15', '2017-04-29', null);
 INSERT INTO `hopdongnganhan` VALUES ('18', 'Sửa Cửa Kính C2', 'Trần Thị Bình B', '2017-04-26', '2017-04-26', '2017-04-30', null);
-INSERT INTO `hopdongnganhan` VALUES ('26', 'abc', 'asaaa', '2017-05-30', '2017-06-02', '2017-06-10', null);
-INSERT INTO `hopdongnganhan` VALUES ('37', 'a', 'b', null, null, null, null);
+INSERT INTO `hopdongnganhan` VALUES ('69', 'abc', 'def', '2017-05-26', '2017-05-20', '2017-05-06', null);
 INSERT INTO `kekhaitaisan` VALUES ('1', '15', '28', '2017-05-18', null, null);
 INSERT INTO `kekhaitaisan` VALUES ('2', '13', '1', '2017-05-06', '', null);
 INSERT INTO `loaihopdong` VALUES ('1', 'Hợp đồng làm việc không xác định thời hạn', null);
@@ -654,15 +678,40 @@ INSERT INTO `loaiquyetdinh` VALUES ('9', 'Cửu đi học NCS nước ngoài(Gia
 INSERT INTO `loaiquyetdinh` VALUES ('10', 'Cử đi học thạc sĩ nước ngoài', null);
 INSERT INTO `loaiquyetdinh` VALUES ('11', 'Nâng bậc lương', null);
 INSERT INTO `loaiquyetdinh` VALUES ('12', 'Nâng lương trước thời hạn', null);
-INSERT INTO `ngachcongchuc` VALUES ('1', '01002', 'Chuyên viên chính trị', '3');
-INSERT INTO `ngachcongchuc` VALUES ('2', '01003', 'Chuyên viên', '2');
-INSERT INTO `ngachcongchuc` VALUES ('3', '01004', 'Cán sự', '2');
-INSERT INTO `ngachcongchuc` VALUES ('4', '01006', 'Nhân viên đánh máy', '2');
-INSERT INTO `ngachcongchuc` VALUES ('5', '01007', 'Nhân viên kỹ thuật', '2');
-INSERT INTO `ngachcongchuc` VALUES ('6', '01009', 'Nhân viên tạp vụ', '2');
-INSERT INTO `ngachcongchuc` VALUES ('7', '01010', 'Nhân viên lái xe', '2');
-INSERT INTO `ngachcongchuc` VALUES ('8', '01011', 'Bảo vệ tuần tra', '3');
-INSERT INTO `ngachcongchuc` VALUES ('9', '06031', 'Kế toán viên', '3');
+INSERT INTO `ngachcongchuc` VALUES ('1', '01002', 'Chuyên viên chính trị', '3', '0');
+INSERT INTO `ngachcongchuc` VALUES ('2', '01003', 'Chuyên viên', '2', '0');
+INSERT INTO `ngachcongchuc` VALUES ('3', '01004', 'Cán sự', '2', '0');
+INSERT INTO `ngachcongchuc` VALUES ('4', '01006', 'Nhân viên đánh máy', '2', '0');
+INSERT INTO `ngachcongchuc` VALUES ('5', '01007', 'Nhân viên kỹ thuật', '2', '0');
+INSERT INTO `ngachcongchuc` VALUES ('6', '01009', 'Nhân viên tạp vụ', '2', '0');
+INSERT INTO `ngachcongchuc` VALUES ('7', '01010', 'Nhân viên lái xe', '2', '0');
+INSERT INTO `ngachcongchuc` VALUES ('8', '01011', 'Bảo vệ tuần tra', '3', '0');
+INSERT INTO `ngachcongchuc` VALUES ('9', '06031', 'Kế toán viên', '3', '0');
+INSERT INTO `ngachcongchuc` VALUES ('55', '16119', 'Y sĩ', '2', '0');
+INSERT INTO `ngachcongchuc` VALUES ('56', '17170', 'Thư Viện viên', '3', '0');
+INSERT INTO `ngachcongchuc` VALUES ('57', 'A0', 'Viên Chức A0', '3', '0');
+INSERT INTO `ngachcongchuc` VALUES ('58', 'V.07.01.02', 'Giảng viên chính', '3', '0');
+INSERT INTO `ngachcongchuc` VALUES ('59', 'V.07.01.03', 'Giảng viên', '3', '0');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '1');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '2');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '3');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '4');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '5');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '6');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '7');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '8');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '9');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '10');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '11');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '12');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '13');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '14');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '15');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '16');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '17');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '18');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '19');
+INSERT INTO `ngachcongchuc_bacluong` VALUES ('59', '20');
 INSERT INTO `quequan` VALUES ('1', 'An Giang');
 INSERT INTO `quequan` VALUES ('2', 'Bà Rịa - Vũng Tàu');
 INSERT INTO `quequan` VALUES ('3', 'Bạc Liêu');
