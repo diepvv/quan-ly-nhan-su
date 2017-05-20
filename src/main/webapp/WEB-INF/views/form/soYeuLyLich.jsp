@@ -11,7 +11,7 @@
 				<c:if test="${not empty donViChucNangLists}">
 					<select class="form-control my-select-control-style"
 						id="donViChucNang_pk" onchange="changeDonViChucNang()"
-						required="true" >
+						required="true">
 						<c:forEach var="dto" items="${donViChucNangLists}">
 							<option required="true" value="${dto.pk}">${dto.tenDonVi}</option>
 						</c:forEach>
@@ -25,8 +25,8 @@
 			</select>
 		</div>
 		<div class="col-md-3">
-			<button type="button" class="btn btn-default" data-dismiss="modal"
-				id="btnCapNhapSoYeuLyLich">Lưu</button>
+			<input type="submit" name="sub-1" value="LƯU" class="btn btn-primary"
+				id="btnCapNhapSoYeuLyLich">
 		</div>
 		<div class="col-md-3">
 			<button type="button" class="btn btn-default" data-dismiss="modal"
@@ -68,12 +68,14 @@
 			</div>
 		</div>
 		<div class="col-md-3">
-			<label for="gioiTinh" class="label-style">Giới tính</label> <select
-				class="form-control my-select-control-style" id="gioiTinh"
-				required="true">
-				<option value="0">Nam</option>
-				<option value="1">Nữ</option>
-			</select>
+			<div class="form-group">
+				<label for="gioiTinh" class="label-style">Giới tính</label> <select
+					class="form-control my-select-control-style" id="gioiTinh"
+					required="true">
+					<option value="0">Nam</option>
+					<option value="1">Nữ</option>
+				</select>
+			</div>
 		</div>
 	</div>
 
@@ -83,34 +85,42 @@
 				id="noiSinh" type="text">
 		</div>
 		<div class="col-md-3">
-			<label for="queQuan_pk">Quê quán</label>
-			<c:if test="${not empty queQuanLists}">
-				<select class="form-control my-select-control-style" id="queQuan_pk">
-					<c:forEach var="dto" items="${queQuanLists}">
-						<option value="${dto.pk}">${dto.tenQueQuan}</option>
-					</c:forEach>
-				</select>
-			</c:if>
+			<div class="form-group">
+				<label for="queQuan_pk">Quê quán</label>
+				<c:if test="${not empty queQuanLists}">
+					<select class="form-control my-select-control-style"
+						id="queQuan_pk" required="true">
+						<c:forEach var="dto" items="${queQuanLists}">
+							<option value="${dto.pk}">${dto.tenQueQuan}</option>
+						</c:forEach>
+					</select>
+				</c:if>
+			</div>
 		</div>
 		<div class="col-md-3">
-			<label for="danToc_pk">Dân tộc</label></br>
-			<c:if test="${not empty danTocLists}">
-				<select class="form-control my-select-control-style" id="danToc_pk">
-					<c:forEach var="dto" items="${danTocLists}">
-						<option value="${dto.pk}">${dto.tenDanToc}</option>
-					</c:forEach>
-				</select>
-			</c:if>
+			<div class="form-group">
+				<label for="danToc_pk">Dân tộc</label></br>
+				<c:if test="${not empty danTocLists}">
+					<select class="form-control my-select-control-style" id="danToc_pk" required="true">
+						<c:forEach var="dto" items="${danTocLists}">
+							<option value="${dto.pk}">${dto.tenDanToc}</option>
+						</c:forEach>
+					</select>
+				</c:if>
+			</div>
 		</div>
 		<div class="col-md-3">
-			<label for="tonGiao_pk">Tôn giáo</label></br>
-			<c:if test="${not empty tonGiaoLists}">
-				<select class="form-control my-select-control-style" id="tonGiao_pk">
-					<c:forEach var="dto" items="${tonGiaoLists}">
-						<option value="${dto.pk}">${dto.tenTonGiao}</option>
-					</c:forEach>
-				</select>
-			</c:if>
+			<div class="form-group">
+				<label for="tonGiao_pk">Tôn giáo</label></br>
+				<c:if test="${not empty tonGiaoLists}">
+					<select class="form-control my-select-control-style"
+						id="tonGiao_pk" required="true">
+						<c:forEach var="dto" items="${tonGiaoLists}">
+							<option value="${dto.pk}">${dto.tenTonGiao}</option>
+						</c:forEach>
+					</select>
+				</c:if>
+			</div>
 		</div>
 	</div>
 	</br>

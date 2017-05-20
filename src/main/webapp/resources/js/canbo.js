@@ -37,9 +37,24 @@ $(document).ready(function() {
 			scrollCollapse: true,
 			dom: 'Blfrtip',
 			buttons: [
-			          'excel',
-			          'pdf',
-			          'print',
+			          {
+			        	 extend: 'excel',
+			        	 exportOptions: {
+	                          columns: [0, 1, 2, 3]
+	                     },
+			          },
+			          {
+				         extend: 'pdf',
+				         exportOptions: {
+		                      columns: [0, 1, 2, 3]
+		                 },
+				      },
+				      {
+					     extend: 'print',
+					     exportOptions: {
+			                  columns: [0, 1, 2, 3]
+			             },
+					  },
 			          {
 			             text: 'Chọn Theo Đơn Vị',
 			             action: function ( e, dt, node, config ) {
@@ -357,7 +372,7 @@ $(document).ready(function() {
 	            }
 			}
 	    });
-		$("button#btnCapNhapSoYeuLyLich").click(function(e) {
+		$("#btnCapNhapSoYeuLyLich").click(function(e) {
 			 var endpointUrl = '/canBoController/add';
 			 var txtPk = $(pk);
 	       	 var txtSoHieu = $(soHieu);
@@ -419,7 +434,21 @@ $(document).ready(function() {
 	       	 var txtNgayVeHuu = $(ngayVeHuu);
 	       	 var txtNgayThoiViec = $(ngayThoiViec);
 	       	 
-	       	 
+	       	 var txtDonViChucNang_pk = $.trim($('#donViChucNang_pk').val());
+             if(txtDonViChucNang_pk == ''){
+            	alert('Đơn vị không được để trống!');
+                return false;
+             }
+             var txtSoHieu = $.trim($('#soHieu').val());
+             if(txtSoHieu == ''){
+            	alert('Số hiệu cán bộ không được để trống!');
+                return false;
+             }
+	         var txtTen = $.trim($('#ten').val());
+             if(txtTen == ''){
+            	alert('Tên cán bộ không được để trống!');
+                return false;
+             }
 	       	 var json = new Object();
 	         json.pk = txtPk.val();
 	       	 json.soHieu = txtSoHieu.val();

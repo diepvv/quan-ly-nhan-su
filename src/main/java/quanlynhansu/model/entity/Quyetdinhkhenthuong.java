@@ -29,6 +29,9 @@ public class Quyetdinhkhenthuong implements Serializable {
 	private Date ngayKy;
 	private String nguoiKy;
 	private String fileKy;
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 
 	public Quyetdinhkhenthuong() {
 	}
@@ -104,4 +107,13 @@ public class Quyetdinhkhenthuong implements Serializable {
 	public void setFileKy(String fileKy) {
 		this.fileKy = fileKy;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 }

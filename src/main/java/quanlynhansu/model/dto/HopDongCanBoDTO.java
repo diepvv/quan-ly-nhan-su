@@ -17,6 +17,7 @@ public class HopDongCanBoDTO implements Serializable {
 	private Date denNgay;
 	private String trichYeuNoiDung;
 	private String fileHD;
+	private Integer version = 0;
 
 	public HopDongCanBoDTO() {
 	}
@@ -115,6 +116,14 @@ public class HopDongCanBoDTO implements Serializable {
 
 	public void setFileHD(String fileHD) {
 		this.fileHD = fileHD;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

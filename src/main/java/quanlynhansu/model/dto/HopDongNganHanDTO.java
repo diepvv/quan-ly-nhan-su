@@ -11,6 +11,7 @@ public class HopDongNganHanDTO implements Serializable {
 	private Date ngayKy;
 	private Date tuNgay;
 	private Date denNgay;
+	private Integer version = 0;
 
 	public HopDongNganHanDTO() {
 	}
@@ -75,6 +76,14 @@ public class HopDongNganHanDTO implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

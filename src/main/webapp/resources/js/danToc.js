@@ -84,13 +84,15 @@ $(document).ready(function() {
 	    });
 		
 		//twitter bootstrap btnCapNhap
-    	$("button#btnCapNhap").click(function(e) {
-
+    	$("#btnCapNhap").click(function(e) {
     		var endpointUrl = '/danTocController/add';
-    		 var txtPk = $(pk);
-        	 var txtTenDanToc=$(tenDanToc);
-           
-            
+    		var txtPk = $(pk);
+        	var txtTenDanToc=$(tenDanToc);
+        	var txtTenDanToc = $.trim($('#tenDanToc').val());
+            if(txtTenDanToc == ''){
+            	alert('Tên dân tộc không được để trống!');
+                return false;
+            }
             var json = new Object();
             json.pk = txtPk.val();
             json.tenDanToc = txtTenDanToc.val();

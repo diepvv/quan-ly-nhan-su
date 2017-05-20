@@ -9,6 +9,7 @@ public class DonViChucNangDTO implements Serializable {
 	private Integer pk;
 	private String maDonVi;
 	private String tenDonVi;
+	private Integer version = 0;
 	private Set<BoMonDTO> boMon = new HashSet<>();
 
 	public DonViChucNangDTO() {
@@ -36,6 +37,14 @@ public class DonViChucNangDTO implements Serializable {
 
 	public void setTenDonVi(String tenDonVi) {
 		this.tenDonVi = tenDonVi;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 	public Set<BoMonDTO> getBoMon() {

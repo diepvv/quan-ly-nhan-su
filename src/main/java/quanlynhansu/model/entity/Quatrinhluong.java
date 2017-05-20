@@ -42,6 +42,9 @@ public class Quatrinhluong implements Serializable {
 	private Date thoiGianLenLuongSom;
 	private String lyDoLenLuongSom;
 	private String ghiChu;
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 
 	public Quatrinhluong() {
 	}
@@ -149,4 +152,13 @@ public class Quatrinhluong implements Serializable {
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 }

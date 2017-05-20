@@ -13,6 +13,9 @@ public class Tongiao implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
 	private String tenTonGiao;
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 
 	public Tongiao() {
 	}
@@ -31,6 +34,14 @@ public class Tongiao implements Serializable {
 
 	public void setTenTonGiao(String tenTonGiao) {
 		this.tenTonGiao = tenTonGiao;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

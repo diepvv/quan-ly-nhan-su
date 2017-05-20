@@ -6,6 +6,7 @@ public class ChucVuDTO implements Serializable {
 	private static final long serialVersionUID = 2354478821226203760L;
 	private Integer pk;
 	private String tenChucVu;
+	private Integer version = 0;
 
 	public ChucVuDTO() {
 	}
@@ -30,4 +31,13 @@ public class ChucVuDTO implements Serializable {
 	public void setTenChucVu(String tenChucVu) {
 		this.tenChucVu = tenChucVu;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 }

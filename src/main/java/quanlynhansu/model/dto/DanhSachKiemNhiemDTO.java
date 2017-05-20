@@ -11,6 +11,7 @@ public class DanhSachKiemNhiemDTO implements Serializable {
 	private String chucVuKiemNhiem;
 	private Date tuNgay;
 	private Date denNgay;
+	private Integer version = 0;
 
 	public DanhSachKiemNhiemDTO() {
 	}
@@ -61,6 +62,14 @@ public class DanhSachKiemNhiemDTO implements Serializable {
 
 	public void setDenNgay(Date denNgay) {
 		this.denNgay = denNgay;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

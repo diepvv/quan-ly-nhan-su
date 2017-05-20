@@ -24,6 +24,9 @@ public class Danhsachkhoangon implements Serializable {
 	private String diaChi;
 	@Temporal(TemporalType.DATE)
 	private Date ngayKyHopDong;
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 
 	public Danhsachkhoangon() {
 	}
@@ -83,4 +86,13 @@ public class Danhsachkhoangon implements Serializable {
 	public void setNgayKyHopDong(Date ngayKyHopDong) {
 		this.ngayKyHopDong = ngayKyHopDong;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 }

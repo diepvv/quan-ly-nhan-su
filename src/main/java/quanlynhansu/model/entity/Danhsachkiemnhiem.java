@@ -26,6 +26,9 @@ public class Danhsachkiemnhiem implements Serializable {
 	private Date tuNgay;
 	@Temporal(TemporalType.DATE)
 	private Date denNgay;
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 
 	public Danhsachkiemnhiem() {
 	}
@@ -76,6 +79,14 @@ public class Danhsachkiemnhiem implements Serializable {
 
 	public void setDenNgay(Date denNgay) {
 		this.denNgay = denNgay;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

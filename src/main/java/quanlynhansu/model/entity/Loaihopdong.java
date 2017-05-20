@@ -13,6 +13,9 @@ public class Loaihopdong implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
 	private String tenLoaiHopDong;
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 
 	public Loaihopdong() {
 	}
@@ -31,6 +34,14 @@ public class Loaihopdong implements Serializable {
 
 	public void setTenLoaiHopDong(String tenLoaiHopDong) {
 		this.tenLoaiHopDong = tenLoaiHopDong;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

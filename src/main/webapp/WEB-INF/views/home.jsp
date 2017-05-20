@@ -77,7 +77,6 @@
 						<div class="main-example">
 							<div class="clock"></div>
 							<div class="message"></div>
-
 						</div>
 					</div>
 				</div>

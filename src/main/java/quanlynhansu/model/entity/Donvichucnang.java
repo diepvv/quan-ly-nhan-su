@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ForeignKey;
@@ -16,6 +17,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
 
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
@@ -30,7 +32,9 @@ public class Donvichucnang implements Serializable {
 	private Integer pk;
 	private String maDonVi;
 	private String tenDonVi;
-
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 	@Fetch(FetchMode.SUBSELECT)
 	@OneToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "donvichucnang_bomon", 
@@ -73,4 +77,13 @@ public class Donvichucnang implements Serializable {
 	public void setTenDonVi(String tenDonVi) {
 		this.tenDonVi = tenDonVi;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+	
 }

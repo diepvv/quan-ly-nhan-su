@@ -20,6 +20,7 @@ public class DanhSachThamNienDTO implements Serializable {
 	private Date tuNgay;
 	private Date denNgay;
 	private String ghiChuKhongPhuCapTn;
+	private Integer version = 0;
 
 	public DanhSachThamNienDTO() {
 	}
@@ -143,4 +144,13 @@ public class DanhSachThamNienDTO implements Serializable {
 	public void setGhiChuKhongPhuCapTn(String ghiChuKhongPhuCapTn) {
 		this.ghiChuKhongPhuCapTn = ghiChuKhongPhuCapTn;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 }

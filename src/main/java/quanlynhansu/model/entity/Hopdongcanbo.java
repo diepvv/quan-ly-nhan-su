@@ -33,6 +33,9 @@ public class Hopdongcanbo implements Serializable {
 	private Date denNgay;
 	private String trichYeuNoiDung;
 	private String fileHD;
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 
 	public Hopdongcanbo() {
 	}
@@ -132,4 +135,13 @@ public class Hopdongcanbo implements Serializable {
 	public void setFileHD(String fileHD) {
 		this.fileHD = fileHD;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 }

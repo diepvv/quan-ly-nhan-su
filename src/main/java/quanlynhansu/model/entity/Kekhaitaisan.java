@@ -22,7 +22,9 @@ public class Kekhaitaisan implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date ngayKeKhai;
 	private String fileKeKhai;
-
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 	public Kekhaitaisan() {
 	}
 
@@ -65,4 +67,13 @@ public class Kekhaitaisan implements Serializable {
 	public void setFileKeKhai(String fileKeKhai) {
 		this.fileKeKhai = fileKeKhai;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+	
 }

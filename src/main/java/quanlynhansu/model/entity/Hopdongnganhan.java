@@ -32,6 +32,9 @@ public class Hopdongnganhan implements Serializable {
 
 	@Temporal(TemporalType.DATE)
 	private Date tuNgay;
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 
 	public Hopdongnganhan() {
 	}
@@ -82,6 +85,14 @@ public class Hopdongnganhan implements Serializable {
 
 	public void setTuNgay(Date tuNgay) {
 		this.tuNgay = tuNgay;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

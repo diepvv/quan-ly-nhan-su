@@ -64,6 +64,7 @@ public class CanBoDTO implements Serializable {
 	private String nhanXet;
 	private Date ngayVeHuu;
 	private Date ngayThoiViec;
+	private Integer version = 0;
 
 	public CanBoDTO() {
 	}
@@ -538,6 +539,14 @@ public class CanBoDTO implements Serializable {
 
 	public void setNgayThoiViec(Date ngayThoiViec) {
 		this.ngayThoiViec = ngayThoiViec;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

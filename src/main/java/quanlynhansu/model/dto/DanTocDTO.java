@@ -6,6 +6,7 @@ public class DanTocDTO implements Serializable {
 	private static final long serialVersionUID = -159413676766566667L;
 	private Integer pk;
 	private String tenDanToc;
+	private Integer version = 0;
 
 	public DanTocDTO() {
 	}
@@ -34,6 +35,14 @@ public class DanTocDTO implements Serializable {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

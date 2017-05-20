@@ -37,6 +37,9 @@ public class Danhsachthamnien implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date denNgay;
 	private String ghiChuKhongPhuCapTn;
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 
 	public Danhsachthamnien() {
 	}
@@ -160,4 +163,13 @@ public class Danhsachthamnien implements Serializable {
 	public void setGhiChuKhongPhuCapTn(String ghiChuKhongPhuCapTn) {
 		this.ghiChuKhongPhuCapTn = ghiChuKhongPhuCapTn;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 }

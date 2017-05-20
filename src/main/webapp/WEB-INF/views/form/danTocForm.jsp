@@ -19,8 +19,8 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"
-						id="btnCapNhap">Cập Nhập</button>
+					<input type="submit" name="sub-1" value="Cập Nhập"
+						class="btn btn-primary" id="btnCapNhap">
 					<button type="button" class="btn btn-default" data-dismiss="modal"
 						id="btnDong">Đóng</button>
 				</div>

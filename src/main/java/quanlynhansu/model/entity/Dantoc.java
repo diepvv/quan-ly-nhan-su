@@ -14,6 +14,9 @@ public class Dantoc implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
 	private String tenDanToc;
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 
 	public Dantoc() {
 	}
@@ -32,6 +35,14 @@ public class Dantoc implements Serializable {
 
 	public void setTenDanToc(String tenDanToc) {
 		this.tenDanToc = tenDanToc;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

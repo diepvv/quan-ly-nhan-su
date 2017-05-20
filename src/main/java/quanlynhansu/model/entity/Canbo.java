@@ -106,6 +106,9 @@ public class Canbo implements Serializable {
 	private Date ngayVeHuu;
 	@Temporal(TemporalType.DATE)
 	private Date ngayThoiViec;
+	@Version
+	@Column(name = "VERSION", nullable = false)
+	private Integer version = 0;
 
 	public Canbo() {
 	}
@@ -580,6 +583,14 @@ public class Canbo implements Serializable {
 
 	public void setNgayThoiViec(Date ngayThoiViec) {
 		this.ngayThoiViec = ngayThoiViec;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }
