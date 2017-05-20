@@ -12,6 +12,7 @@
 				</div>
 				<div class="modal-body">
 					<input class="form-control" id="pk" type="hidden">
+					<input class="form-control" id="version" type="hidden">
 					<div class="form-group">
 						<label for="tenLoaiHopDong">Tên Loại Hợp Đồng</label> <input
 							class="form-control" id="tenLoaiHopDong" name="tenLoaiHopDong"
@@ -19,7 +20,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"
+					<button type=button class="btn btn-default" data-dismiss="modal"
 						id="btnCapNhap">Cập Nhập</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal"
 						id="btnDong">Đóng</button>

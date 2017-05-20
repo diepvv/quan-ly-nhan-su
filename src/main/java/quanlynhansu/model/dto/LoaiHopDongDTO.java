@@ -6,6 +6,7 @@ public class LoaiHopDongDTO implements Serializable {
 	private static final long serialVersionUID = -763988430173346533L;
 	private Integer pk;
 	private String tenLoaiHopDong;
+	private Integer version = 0;
 
 	public LoaiHopDongDTO() {
 	}
@@ -30,4 +31,13 @@ public class LoaiHopDongDTO implements Serializable {
 	public void setTenLoaiHopDong(String tenLoaiHopDong) {
 		this.tenLoaiHopDong = tenLoaiHopDong;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 }

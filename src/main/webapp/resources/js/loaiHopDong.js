@@ -30,8 +30,10 @@ $(document).ready(function() {
 		                 action: function ( e, dt, node, config ) {
 		                	 var txtPk = $(pk);
 		                	 var txtTenLoaiHopDong=$(tenLoaiHopDong);
+		                	 var txtVersion = $(version);
 		                	 txtPk.val(-1);
 		                	 txtTenLoaiHopDong.val("");
+		                	 txtVersion.val("");
 		                     
 		                     $('#formLoaiHopDong').modal('show');
 		                 },
@@ -70,6 +72,7 @@ $(document).ready(function() {
 					var data = table.row($(this).parents('tr')).data();
                     var pK = data['pk'];
 					var txtPk = $(pk);
+					var txtVersion = $(version);
                 	var txtTenLoaiHopDong=$(tenLoaiHopDong);
 	            	$.ajax({  
 	                    url: loaiHopDongService+"/getById/"+pK,  
@@ -77,6 +80,7 @@ $(document).ready(function() {
 	                    success: function (res) {
 	                    	 txtPk.val(pK);
 		                	 txtTenLoaiHopDong.val(res.tenLoaiHopDong);
+		                	 txtVersion.val(res.version);
 		                     $('#formLoaiHopDong').modal('show');
 	                    }
 	                });
@@ -85,30 +89,32 @@ $(document).ready(function() {
 		
 		//twitter bootstrap btnCapNhap
     	$("button#btnCapNhap").click(function(e) {
-
     		var endpointUrl = '/loaiHopDongController/add';
-    		 var txtPk = $(pk);
-        	 var txtTenLoaiHopDong=$(tenLoaiHopDong);
-           
+    		var txtPk = $(pk);
+        	var txtTenLoaiHopDong=$(tenLoaiHopDong);
+			var txtVersion = $(version);
             
             var json = new Object();
             json.pk = txtPk.val();
             json.tenLoaiHopDong = txtTenLoaiHopDong.val();
+            json.version = txtVersion.val();
             if(txtPk.val() != -1){
             	var endpointUrl = '/loaiHopDongController/update';
             }
-            $.ajax({
-                type : "POST",
-                contentType: "application/json; charset=utf-8",
-                data : JSON.stringify(json),
-                url : endpointUrl,
-                success : function(msg) {
-                     table.ajax.reload();
-                },
-                error : function() {
-                      alert("Cập nhập không thành công");
-                }
-            });
+            	$.ajax({
+                    type : "POST",
+                    contentType: "application/json; charset=utf-8",
+                    data : JSON.stringify(json),
+                    url : endpointUrl,
+                    success : function(msg) {
+                         table.ajax.reload();
+                    },
+                    error: function (data, textStatus, xhr) {
+                        alert(data.responseText);
+                    }
+                });
+           
+            
         });
     	
     	$("button#btnDong").click(function(e) {

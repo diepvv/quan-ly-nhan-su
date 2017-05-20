@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Component;
 
 import quanlynhansu.model.dto.LoaiHopDongDTO;
@@ -57,7 +58,10 @@ public class LoaiHopDongImpl implements ILoaiHopDongService {
 		Loaihopdong entity = new Loaihopdong();
 
 		if (dto.getPk() != null && dto.getPk().intValue() != -1) {
-			entity = repo.findOne(dto.getPk());
+			entity = repo.findOneByPkAndVersion(dto.getPk(), dto.getVersion());
+			if (entity == null) {
+				throw new OptimisticLockingFailureException("Concurrent update error");
+			}
 		}
 		mapper.map(dto, entity);
 		return repo.save(entity);
