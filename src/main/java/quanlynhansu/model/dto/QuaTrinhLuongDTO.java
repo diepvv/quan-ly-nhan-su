@@ -18,6 +18,7 @@ public class QuaTrinhLuongDTO implements Serializable {
 	private Date thoiGianLenLuongSom;
 	private String lyDoLenLuongSom;
 	private String ghiChu;
+	private Integer version = 0;
 
 	public QuaTrinhLuongDTO() {
 	}
@@ -124,6 +125,14 @@ public class QuaTrinhLuongDTO implements Serializable {
 
 	public void setGhiChu(String ghiChu) {
 		this.ghiChu = ghiChu;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

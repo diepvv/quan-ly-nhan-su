@@ -10,6 +10,8 @@ public class NgachCongChucDTO implements Serializable {
 	private String maNgach;
 	private String tenNgach;
 	private Integer soNamNangBacLuong;
+	private Integer version = 0;
+
 	private Set<BacLuongDTO> bacLuong = new HashSet<>();
 
 	public NgachCongChucDTO() {
@@ -61,6 +63,14 @@ public class NgachCongChucDTO implements Serializable {
 
 	public void setBacLuong(Set<BacLuongDTO> bacLuong) {
 		this.bacLuong = bacLuong;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

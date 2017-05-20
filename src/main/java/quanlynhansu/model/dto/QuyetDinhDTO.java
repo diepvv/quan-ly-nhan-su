@@ -17,6 +17,7 @@ public class QuyetDinhDTO implements Serializable {
 	private Date denNgay;
 	private String nguoiKy;
 	private String fileKy;
+	private Integer version = 0;
 
 	public QuyetDinhDTO() {
 	}
@@ -116,4 +117,13 @@ public class QuyetDinhDTO implements Serializable {
 	public void setFileKy(String fileKy) {
 		this.fileKy = fileKy;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 }

@@ -6,6 +6,7 @@ public class TonGiaoDTO implements Serializable {
 	private static final long serialVersionUID = -1300578656885073505L;
 	private Integer pk;
 	private String tenTonGiao;
+	private Integer version = 0;
 
 	public TonGiaoDTO() {
 	}
@@ -31,6 +32,14 @@ public class TonGiaoDTO implements Serializable {
 
 	public void setTenTonGiao(String tenTonGiao) {
 		this.tenTonGiao = tenTonGiao;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

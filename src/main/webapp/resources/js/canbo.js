@@ -65,6 +65,7 @@ $(document).ready(function() {
 		                 text: 'Thêm Cán Bộ',
 		                 action: function ( e, dt, node, config ) {
 		                	 var txtPk = $(pk);
+		                	 var txtVersion = $(version);
 		                	 var txtSoHieu = $(soHieu);
 		                	 var txtDonViChucNang_pk = $(donViChucNang_pk);
 		                	 var txtBoMon_pk = $(boMon_pk);
@@ -125,6 +126,7 @@ $(document).ready(function() {
 		                	 var txtNgayThoiViec = $( ngayThoiViec);
 		                	 
 		                	 txtPk.val(-1);
+		                	 txtVersion.val("");
 		                	 txtSoHieu.val("");
 		                	 txtDonViChucNang_pk.val("");
 		                	 txtBoMon_pk.val("");
@@ -206,6 +208,7 @@ $(document).ready(function() {
 		         var data = table.row($(this).parents('tr')).data();
 		         var pK = data['pk'];
 		         var txtPk = $(pk);
+		         var txtVersion = $(version);
 	           	 var txtSoHieu = $(soHieu);
 	           	 var txtDonViChucNang_pk = $(donViChucNang_pk);
 	           	 var txtBoMon_pk = $(boMon_pk);
@@ -269,6 +272,7 @@ $(document).ready(function() {
                     type: 'GET',  
                     success: function (res) {
                     	 txtPk.val(pK);
+                    	 txtVersion.val(res.version);
                     	 txtSoHieu.val(res.soHieu);
 	                	 txtDonViChucNang_pk.val(res.donViChucNang.pk);
 	                	 if(res.boMon!=null){
@@ -433,22 +437,15 @@ $(document).ready(function() {
 	       	 var txtNhanXet = $(nhanXet);
 	       	 var txtNgayVeHuu = $(ngayVeHuu);
 	       	 var txtNgayThoiViec = $(ngayThoiViec);
+	       	 var txtVersion = $(version);
 	       	 
-	       	 var txtDonViChucNang_pk = $.trim($('#donViChucNang_pk').val());
-             if(txtDonViChucNang_pk == ''){
-            	alert('Đơn vị không được để trống!');
-                return false;
-             }
-             var txtSoHieu = $.trim($('#soHieu').val());
-             if(txtSoHieu == ''){
-            	alert('Số hiệu cán bộ không được để trống!');
-                return false;
-             }
-	         var txtTen = $.trim($('#ten').val());
-             if(txtTen == ''){
-            	alert('Tên cán bộ không được để trống!');
-                return false;
-             }
+	       	 var x = document.forms["formTest"]["soCmnd"].value;
+	         if (isNaN(x)) 
+	         {
+	           alert("Số chứng minh nhân dân chỉ được nhập số");
+	           return false;
+	         }
+	       	 
 	       	 var json = new Object();
 	         json.pk = txtPk.val();
 	       	 json.soHieu = txtSoHieu.val();
@@ -517,21 +514,25 @@ $(document).ready(function() {
 	       	 json.nhanXet = txtNhanXet.val();
 	       	 json.ngayVeHuu = txtNgayVeHuu.val();
 	       	 json.ngayThoiViec = txtNgayThoiViec.val();
+	       	 json.version = txtVersion.val();
 	       	 if(txtPk.val() != -1){
             	var endpointUrl = '/canBoController/update';
              }
-             $.ajax({
-                type : "POST",
-                contentType: "application/json; charset=utf-8",
-                data : JSON.stringify(json),
-                url : endpointUrl,
-                success : function(msg) {
-                     table.ajax.reload();
-                },
-                error : function() {
-                      alert("Cập nhập không thành công");
-                }
-             });
+	       	 if($("#formTest").valid()){
+	       		$.ajax({
+	                type : "POST",
+	                contentType: "application/json; charset=utf-8",
+	                data : JSON.stringify(json),
+	                url : endpointUrl,
+	                success : function(msg) {
+	                     table.ajax.reload();
+	                },
+	                error : function() {
+	                      alert("Cập nhập không thành công");
+	                }
+	             });
+	       	 }
+             
 		});
 		
 		$("button#btnXacNhan").click(function(e) {
@@ -578,6 +579,8 @@ $(document).ready(function() {
                 }
 			 });
 		}
+		
+		
 		
 		
 });

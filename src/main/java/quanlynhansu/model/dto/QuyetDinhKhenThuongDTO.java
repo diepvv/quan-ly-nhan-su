@@ -14,6 +14,7 @@ public class QuyetDinhKhenThuongDTO implements Serializable {
 	private Date ngayKy;
 	private String nguoiKy;
 	private String fileKy;
+	private Integer version = 0;
 
 	public QuyetDinhKhenThuongDTO() {
 	}
@@ -89,4 +90,13 @@ public class QuyetDinhKhenThuongDTO implements Serializable {
 	public void setFileKy(String fileKy) {
 		this.fileKy = fileKy;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 }

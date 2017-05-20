@@ -6,6 +6,7 @@ public class LoaiQuyetDinhDTO implements Serializable {
 	private static final long serialVersionUID = -6209458097983841791L;
 	private Integer pk;
 	private String tenLoaiQuyetDinh;
+	private Integer version = 0;
 
 	public LoaiQuyetDinhDTO() {
 	}
@@ -31,6 +32,14 @@ public class LoaiQuyetDinhDTO implements Serializable {
 
 	public void setTenLoaiQuyetDinh(String tenLoaiQuyetDinh) {
 		this.tenLoaiQuyetDinh = tenLoaiQuyetDinh;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
 	}
 
 }

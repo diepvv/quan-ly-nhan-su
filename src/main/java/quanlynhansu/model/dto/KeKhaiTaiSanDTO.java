@@ -10,6 +10,7 @@ public class KeKhaiTaiSanDTO implements Serializable {
 	private CanBoDTO canBo;
 	private Date ngayKeKhai;
 	private String fileKeKhai;
+	private Integer version = 0;
 
 	public KeKhaiTaiSanDTO() {
 	}
@@ -53,4 +54,13 @@ public class KeKhaiTaiSanDTO implements Serializable {
 	public void setFileKeKhai(String fileKeKhai) {
 		this.fileKeKhai = fileKeKhai;
 	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
+
 }

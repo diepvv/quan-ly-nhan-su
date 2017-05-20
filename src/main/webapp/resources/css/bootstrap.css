@@ -1292,6 +1292,7 @@ h6,
   font-size: 12px;
 }
 p {
+	display: none;
   margin: 0 0 10px;
 }
 .lead {
@@ -2781,7 +2782,7 @@ select[multiple].form-group-lg .form-control {
   top: 0;
   right: 0;
   z-index: 2;
-  display: block;
+  display: none;
   width: 34px;
   height: 34px;
   line-height: 34px;
