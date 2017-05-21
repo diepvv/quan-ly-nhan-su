@@ -58,7 +58,6 @@ $(document).ready(function() {
 	                    url: loaiHopDongController+"/delete/"+pK,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
-	                    	alert("Xóa Thành Công");
 	                    	table.ajax.reload();	                    }  
 	                });
 	            }
@@ -87,6 +86,7 @@ $(document).ready(function() {
 			}	
 	    });
 		
+		
 		//twitter bootstrap btnCapNhap
     	$("button#btnCapNhap").click(function(e) {
     		var endpointUrl = '/loaiHopDongController/add';
@@ -99,30 +99,40 @@ $(document).ready(function() {
             json.tenLoaiHopDong = txtTenLoaiHopDong.val();
             json.version = txtVersion.val();
             if(txtPk.val() != -1){
-            	 endpointUrl = '/loaiHopDongController/update';
+            	endpointUrl = '/loaiHopDongController/update';
             }
+            var invalidFields = $("#formTest").find(":invalid");
+            if(invalidFields.length == 0){
             	$.ajax({
-                    type : "POST",
-                    contentType: "application/json; charset=utf-8",
-                    data : JSON.stringify(json),
-                    url : endpointUrl,
-                    success : function(msg) {
-                         table.ajax.reload();
-                    },
-                    error: function (data, textStatus, xhr) {
-                        alert(data.responseText);
-                    }
-                });
-           
-            
+            		type : "POST",
+            		contentType: "application/json; charset=utf-8",
+            		data : JSON.stringify(json),
+            		url : endpointUrl,
+            		success : function(msg) {
+            			// close modal dialog
+            			$('#formLoaiHopDong').modal('toggle');
+            			table.ajax.reload();
+            		},
+            		error: function (data, textStatus, xhr) {
+            			alert(data.responseText);
+            		}
+            	});
+            } else {
+            	$("#formTest").submit();
+            }
         });
     	
     	$("button#btnDong").click(function(e) {
     		var txtTenLoaiHopDong=$(tenLoaiHopDong);
          	txtTenLoaiHopDong.val("");
-        }); 
+        });
     	
-	} );
+    	$("#formLoaiHopDong").on('hidden.bs.modal', function () {
+            $("#formTest").find('.has-error').removeClass("has-error");
+            $("#formTest").find('.has-feedback').removeClass("has-feedback");
+        });
+    	
+	});
 	
 	
 		 

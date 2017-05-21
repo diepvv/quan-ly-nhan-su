@@ -188,7 +188,7 @@ $(document).ready(function() {
 		                	 txtNhanXet.val("");
 		                	 txtNgayVeHuu.val("");
 		                	 txtNgayThoiViec.val("");
-		                     $('#CAPNHAPCANBO').modal('show');
+		                     $('#themCanBoForm').modal('show');
 		                 },
 		              },
 		              {
@@ -379,168 +379,7 @@ $(document).ready(function() {
 	            }
 			}
 	    });
-		luuCanBo = function(){
-			 var endpointUrl = '/canBoController/add';
-			 var txtPk = $(pk);
-	       	 var txtSoHieu = $(soHieu);
-	       	 var txtDonViChucNang_pk = $(donViChucNang_pk);
-	       	 var txtBoMon_pk = $(boMon_pk);
-	       	 var txtImageUrl = $(imageUrl);
-	       	 var txtTen = $(ten);
-	       	 var txtTenGoiKhac = $(tenGoiKhac);
-	       	 var txtNgaySinh = $(ngaySinh);
-	       	 var txtGioiTinh = $(gioiTinh);
-	       	 var txtNoiSinh = $(noiSinh);
-	       	 var txtQueQuan = $(queQuan_pk);
-	       	 var txtDanToc_pk = $(danToc_pk);
-	       	 var txtTonGiao_pk = $(tonGiao_pk);
-	       	 var txtSoCmnd = $(soCmnd);
-	       	 var txtNgayCapCmnd = $(ngayCapCmnd);
-	       	 var txtNoiCapCmnd = $(noiCapCmnd);
-	       	 var txtNoiDKHoKhauThuongTru = $(noiDKHoKhauThuongTru);
-	       	 var txtNoiOHienNay = $(noiOHienNay);
-	       	 var txtNgheNghiepKhiTuyenDung = $(ngheNghiepKhiTuyenDung);
-	       	 var txtCoQuanTuyenDung = $(coQuanTuyenDung);
-	       	 var txtNgayTuyenDung = $(ngayTuyenDung);
-	       	 var txtChucVu_pk = $(chucVu_pk);
-	       	 var txtCongViecDuocGiao = $(congViecDuocGiao);
-	       	 var txtChucDanh = $(chucDanh);
-	       	 var txtNgachCongChuc_pk = $(ngachCongChuc_pk);
-	       	 var txtBacLuong_pk = $(bacLuong_pk);
-	       	 var txtNgayHuong = $(ngayHuong);
-	       	 var txtPhuCapChucVu = $(phuCapChucVu);
-	       	 var txtPhuCapKhac = $(phuCapKhac);
-	       	 var txtTrinhDoGiaoDucPt = $(trinhDoGiaoDucPt);
-	       	 var txtTrinhDoChuyenMon = $(trinhDoChuyenMon);
-	       	 var txtHocVi = $( hocVi);
-	       	 var txtHocHam = $(hocHam);
-	       	 var txtNgayNhanHocVi = $(ngayNhanHocVi);
-	       	 var txtNgayNhanHocHam = $(ngayNhanHocHam);
-	       	 var txtLyLuanChinhTri = $(lyLuanChinhTri);
-	       	 var txtQuanLyNhaNuoc = $(quanLyNhaNuoc);
-	       	 var txtNgoaiNgu = $(ngoaiNgu);
-	       	 var txtTinHoc = $(tinHoc);
-	       	 var txtNgayVaoDcsvnDuBi = $(ngayVaoDcsvnDuBi);
-	       	 var txtNgayVaoDcsvnChinhThuc = $(ngayVaoDcsvnChinhThuc);
-	       	 var txtThamGiaToChucCtxh = $(thamGiaToChucCtxh);
-	       	 var txtNgayNhapNgu = $(ngayNhapNgu);
-	       	 var txtNgayXuatNgu = $(ngayXuatNgu);
-	       	 var txtQuanHamCaoNhat = $(quanHamCaoNhat);
-	       	 var txtDanhHieuPhongTang = $(danhHieuPhongTang);
-	       	 var txtSoTruongCongTac = $(soTruongCongTac);
-	       	 var txtKhenThuong = $(khenThuong);
-	       	 var txtKyLuat = $(kyLuat);
-	       	 var txtTinhTrangSucKhoe = $(tinhTrangSucKhoe);
-	       	 var txtChieuCao = $(chieuCao);
-	       	 var txtCanNang = $(canNang);
-	       	 var txtNhomMau = $(nhomMau);
-	       	 var txtSoBaoHiemXh = $(soBaoHiemXh);
-	       	 var txtLaThuongBinh = $(laThuongBinh);
-	       	 var txtLaConGiaDinhChinhSach = $(laConGiaDinhChinhSach);
-	       	 var txtNhanXet = $(nhanXet);
-	       	 var txtNgayVeHuu = $(ngayVeHuu);
-	       	 var txtNgayThoiViec = $(ngayThoiViec);
-	       	 var txtVersion = $(version);
-	       	 
-	       	 var x = document.forms["formTest"]["soCmnd"].value;
-	         if (isNaN(x)) 
-	         {
-	           alert("Số chứng minh nhân dân chỉ được nhập số");
-	           return false;
-	         }
-	       	 
-	       	 var json = new Object();
-	         json.pk = txtPk.val();
-	       	 json.soHieu = txtSoHieu.val();
-	       	 json.donViChucNang = new Object();
-	       	 json.donViChucNang.pk = txtDonViChucNang_pk.val();
-	       	 json.boMon = new Object();
-	       	 json.boMon.pk = txtBoMon_pk.val();
-	       	 json.imageUrl = txtImageUrl.val();
-	       	 json.ten = txtTen.val();
-	       	 json.tenGoiKhac = txtTenGoiKhac.val();
-	       	 json.ngaySinh = txtNgaySinh.val();
-	       	 json.gioiTinh = txtGioiTinh.val();
-	       	 json.noiSinh = txtNoiSinh.val();
-	       	 json.queQuan = new Object();
-	       	 json.queQuan.pk = txtQueQuan.val();
-	       	 json.danToc = new Object();
-	       	 json.danToc.pk = txtDanToc_pk.val();
-	       	 json.tonGiao = new Object();
-	       	 json.tonGiao.pk = txtTonGiao_pk.val();
-	       	 json.soCmnd = txtSoCmnd.val();
-	       	 json.ngayCapCmnd = txtNgayCapCmnd.val();
-	       	 json.noiCapCmnd = txtNoiCapCmnd.val();
-	       	 json.noiDKHoKhauThuongTru = txtNoiDKHoKhauThuongTru.val();
-	       	 json.noiOHienNay = txtNoiOHienNay.val();
-	       	 json.ngheNghiepKhiTuyenDung = txtNgheNghiepKhiTuyenDung.val();
-	       	 json.coQuanTuyenDung = txtCoQuanTuyenDung.val();
-	       	 json.ngayTuyenDung = txtNgayTuyenDung.val();
-	       	 json.chucVu = new Object();
-	       	 json.chucVu.pk = txtChucVu_pk.val();
-	       	 json.congViecDuocGiao = txtCongViecDuocGiao.val();
-	       	 json.chucDanh = txtChucDanh.val();
-	       	 json.ngachCongChuc = new Object();
-	       	 json.ngachCongChuc.pk = txtNgachCongChuc_pk.val();
-	       	 json.bacLuong = new Object();
-	       	 json.bacLuong.pk = txtBacLuong_pk.val();
-	       	 json.ngayHuong = txtNgayHuong.val();
-	       	 json.phuCapChucVu = txtPhuCapChucVu.val();
-	       	 json.phuCapChucVu = txtPhuCapKhac.val();
-	       	 json.trinhDoGiaoDucPt = txtTrinhDoGiaoDucPt.val();
-	       	 json.trinhDoChuyenMon = txtTrinhDoChuyenMon.val();
-	       	 json.hocVi = txtHocVi.val();
-	       	 json.hocHam = txtHocHam.val();
-	       	 json.ngayNhanHocVi = txtNgayNhanHocVi.val();
-	       	 json.ngayNhanHocHam = txtNgayNhanHocHam.val();
-	       	 json.lyLuanChinhTri = txtLyLuanChinhTri.val();
-	       	 json.quanLyNhaNuoc = txtQuanLyNhaNuoc.val();
-	       	 json.ngoaiNgu = txtNgoaiNgu.val();
-	       	 json.tinHoc = txtTinHoc.val();
-	       	 json.ngayVaoDcsvnDuBi = txtNgayVaoDcsvnDuBi.val();
-	       	 json.ngayVaoDcsvnChinhThuc = txtNgayVaoDcsvnChinhThuc.val();
-	       	 json.thamGiaToChucCtxh = txtThamGiaToChucCtxh.val();
-	       	 json.ngayNhapNgu = txtNgayNhapNgu.val();
-	       	 json.ngayXuatNgu = txtNgayXuatNgu.val();
-	       	 json.quanHamCaoNhat = txtQuanHamCaoNhat.val();
-	       	 json.danhHieuPhongTang = txtDanhHieuPhongTang.val();
-	       	 json.soTruongCongTac = txtSoTruongCongTac.val();
-	       	 json.khenThuong = txtKhenThuong.val();
-	       	 json.kyLuat = txtKyLuat.val();
-	       	 json.tinhTrangSucKhoe = txtTinhTrangSucKhoe.val();
-	       	 json.chieuCao = txtChieuCao.val();
-	       	 json.canNang = txtCanNang.val();
-	       	 json.nhomMau = txtNhomMau.val();
-	       	 json.soBaoHiemXh = txtSoBaoHiemXh.val();
-	       	 json.laThuongBinh = txtLaThuongBinh.val();
-	       	 json.laConGiaDinhChinhSach = txtLaConGiaDinhChinhSach.val();
-	       	 json.nhanXet = txtNhanXet.val();
-	       	 json.ngayVeHuu = txtNgayVeHuu.val();
-	       	 json.ngayThoiViec = txtNgayThoiViec.val();
-	       	 json.version = txtVersion.val();
-	       	 if(txtPk.val() != -1){
-           	    endpointUrl = '/canBoController/update';
-             }
-	       	 
-	       	var invalidFields = $('#formTest').find(":invalid");
-	       	if(invalidFields.length==0){
-	       		$.ajax({
-	                type : "POST",
-	                contentType: "application/json; charset=utf-8",
-	                data : JSON.stringify(json),
-	                url : endpointUrl,
-	                success : function(msg) {
-	                     //table.ajax.reload();
-	                },
-	                error : function() {
-	                      alert("Cập nhập không thành công");
-	                }
-	             });
-	       	}else{
-	       		alert("invalid")
-	       	}
-	       		
-		}
+		
 		$("button#btnCapNhapSoYeuLyLich").click(function(e) {
 			 var endpointUrl = '/canBoController/add';
 			 var txtPk = $(pk);
@@ -681,27 +520,43 @@ $(document).ready(function() {
 	       	 json.ngayThoiViec = txtNgayThoiViec.val();
 	       	 json.version = txtVersion.val();
 	       	 if(txtPk.val() != -1){
-            	var endpointUrl = '/canBoController/update';
+            	 endpointUrl = '/canBoController/update';
              }
 	       	 
-	       	 /*if($("#formTest").valid()){
-	       		$.ajax({
-	                type : "POST",
-	                contentType: "application/json; charset=utf-8",
-	                data : JSON.stringify(json),
-	                url : endpointUrl,
-	                success : function(msg) {
-	                     table.ajax.reload();
-	                },
-	                error : function() {
-	                      alert("Cập nhập không thành công");
-	                }
-	             });
-	       	 }*/
-             
+	       	 var invalidFields = $("#formTest").find(":invalid");
+             if(invalidFields.length == 0){
+       		 $.ajax({
+                type : "POST",
+                contentType: "application/json; charset=utf-8",
+                data : JSON.stringify(json),
+                url : endpointUrl,
+                success : function(msg) {
+                	// close modal dialog
+        			 $('#themCanBoForm').modal('toggle');
+        			// $('#ChiTietCanBoForm').modal('toggle');
+                     table.ajax.reload();
+                },
+                error: function (data, textStatus, xhr) {
+        			alert(data.responseText);
+        		}
+             });
+            }else {
+            	$("#formTest").submit();
+            }
+            
 		});
 		
-		$("button#btnXacNhan").click(function(e) {
+		$("#themCanBoForm").on('hidden.bs.modal', function () {
+            $("#formTest").find('.has-error').removeClass("has-error");
+            $("#formTest").find('.has-feedback').removeClass("has-feedback");
+        });
+		
+		$("#ChiTietCanBoForm").on('hidden.bs.modal', function () {
+            $("#formTest").find('.has-error').removeClass("has-error");
+            $("#formTest").find('.has-feedback').removeClass("has-feedback");
+        });
+		
+		$("button#btnXacNhanThongKe").click(function(e) {
 			thongKeUrl = "/" + $(hidTieuChi).val() + "/5";
 			alert(thongKeUrl);
 			table.sAjaxSource = thongKeUrl;
@@ -712,9 +567,6 @@ $(document).ready(function() {
 			alert($(hidTieuChiChiTietCanBo).val());
 		});
 		
-		$("button#btnXacNhanQuanLyCanBo").click(function(e) {
-			alert($(hidTieuChiQLCB).val());
-		});
 		
 		//TODO
 		changeDonViChucNang = function(){
@@ -748,9 +600,6 @@ $(document).ready(function() {
                 }
 			 });
 		}
-		
-		
-		
 		
 });
 

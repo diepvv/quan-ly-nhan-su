@@ -232,7 +232,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="btnXacNhan">Xác nhận</button>
+					id="btnXacNhanThongKe">Xác nhận</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal"
 					id="btnDong">Đóng</button>
 			</div>

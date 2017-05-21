@@ -48,11 +48,10 @@
 
 	<!-- datatable end -->
 		</div>
-		<%@include file="form/canBoForm.jsp"%>
+		<%@include file="form/donViForm.jsp"%>
+		<%@include file="form/themCanBoForm.jsp"%>
 		<%@include file="form/chiTietCanBoForm.jsp"%>
 		<%@include file="form/thongKeForm.jsp"%>
-		<%@include file="form/donViForm.jsp"%>
-		<%@include file="form/quanLyCanBoForm.jsp"%>
 		<!-- footer -->
 	<%@include file="fragment/footer.jsp"%>
 </body>

@@ -3,8 +3,9 @@
 <form id="formTest" method="post" action="#" class="valida"
 	autocomplete="off" novalidate="novalidate">
 
-	<input class="form-control" id="pk" type="hidden"> <input
-		class="form-control" id="version" type="hidden">
+	<input class="form-control" id="pk" type="hidden"> 
+	<input class="form-control" id="version" type="hidden">
+	
 	<div class="row">
 		<div class="col-md-3">
 			<div class="form-group">
@@ -20,18 +21,17 @@
 				</c:if>
 			</div>
 		</div>
+		
 		<div class="col-md-3">
-			<label for="boMon_pk">Bộ môn chuyên môn</label> <select
-				class="form-control my-select-control-style" id="boMon_pk">
-			</select>
+			<label for="boMon_pk">Bộ môn chuyên môn</label> 
+			<select class="form-control my-select-control-style" id="boMon_pk"></select>
 		</div>
 		<div class="col-md-3">
-			<input type="submit" value="Lưu" class="btn btn-default" 
-				id="btnCapNhapSoYeuLyLich" onclick="luuCanBo();"/>
+			<button type=button class="btn btn-default"	id="btnCapNhapSoYeuLyLich">Lưu</button>
 		</div>
 		<div class="col-md-3">
 			<button type="button" class="btn btn-default" data-dismiss="modal"
-				id="btnXuatThongTin">Xuất thông tin cán bộ</button>
+				id="btnXuatThongTinCanBo">Xuất thông tin cán bộ</button>
 		</div>
 	</div>
 
@@ -70,9 +70,8 @@
 		</div>
 		<div class="col-md-3">
 			<div class="form-group">
-				<label for="gioiTinh" class="label-style">Giới tính</label> <select
-					class="form-control my-select-control-style" id="gioiTinh"
-					required="true">
+				<label for="gioiTinh" class="label-style">Giới tính</label> 
+				<select class="form-control my-select-control-style" id="gioiTinh" required="true">
 					<option value="0">Nam</option>
 					<option value="1">Nữ</option>
 				</select>
@@ -181,7 +180,7 @@
 		<div class="col-md-3">
 			<label for="chucVu_pk">Chức vụ hiện tại</label></br>
 			<c:if test="${not empty chucVuLists}">
-				<select class="form-control my-select-control-style" id="chucVu_pk">
+				<select class="form-control my-select-control-style" id="chucVu_pk" required="true">
 					<c:forEach var="dto" items="${chucVuLists}">
 						<option value="${dto.pk}">${dto.tenChucVu}</option>
 					</c:forEach>
@@ -194,14 +193,14 @@
 				type="text">
 		</div>
 		<div class="col-md-3">
-			<label for="chucDanh">Chức Danh</label> <input class="form-control"
-				id="chucDanh" value="Giảng Viên" type="text">
+			<label for="chucDanh">Chức Danh</label> 
+			<input class="form-control" id="chucDanh" value="Giảng Viên" type="text">
 		</div>
 		<div class="col-md-3">
 			<label for="ngachCongChuc_pk">Ngạch công chức</label></br>
 			<c:if test="${not empty ngachCongChucLists}">
-				<select class="form-control my-select-control-style"
-					id="ngachCongChuc_pk" onchange="changeNgachCongChuc()">
+				<select class="form-control my-select-control-style" id="ngachCongChuc_pk" 
+						onchange="changeNgachCongChuc()" required="true">
 					<c:forEach var="dto" items="${ngachCongChucLists}">
 						<option value="${dto.pk}">${dto.maNgach}</option>
 					</c:forEach>
@@ -216,9 +215,8 @@
 				viên chức</label> <input class="form-control" id="tenNgach" type="text">
 		</div>
 		<div class="col-md-3">
-			<label for="bacLuong_pk" class="label-style">Bậc lương</label> <select
-				class="form-control my-select-control-style" id="bacLuong_pk">
-			</select>
+			<label for="bacLuong_pk" class="label-style">Bậc lương</label> 
+			<select class="form-control my-select-control-style" id="bacLuong_pk" required="true"></select>
 		</div>
 		<div class="col-md-3">
 			<label for="heSoLuong" class="label-style">Hệ Số Lương</label> <input

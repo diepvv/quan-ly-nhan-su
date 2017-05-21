@@ -15,22 +15,22 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ControllerAdvice
-public class ExceptionHandlingController {
+public class ExceptionHandlingConfig {
 	private static final Logger LOGGER = org.slf4j.LoggerFactory
-			.getLogger(ExceptionHandlingController.class);
+			.getLogger(ExceptionHandlingConfig.class);
 
 	private static ObjectMapper objectMapper;
 
 	@Autowired
 	public void setObjectMapper(ObjectMapper objectMapper) {
-		ExceptionHandlingController.objectMapper = objectMapper;
+		ExceptionHandlingConfig.objectMapper = objectMapper;
 	}
 
 	@ExceptionHandler(OptimisticLockingFailureException.class)
 	public ResponseEntity<?> handleConcurrentUpdate(Exception exception) {
 		return log(ResponseEntity.status(HttpStatus.PRECONDITION_FAILED),
 				exception)
-				.body(errorFor("Bạn đang cố gắn sửa một dữ liệu cái mà vừa được tùy chỉnh bởi một admin khác, load lại trang nếu bạn tiếp tục muốn sửa dữ liệu này."));
+				.body(errorFor("You are trying to update a resource that has been modified by another user!"));
 	}
 
 	@ExceptionHandler(ConstraintViolationException.class)
