@@ -3,8 +3,8 @@
 <form id="formTest" method="post" action="#" class="valida"
 	autocomplete="off" novalidate="novalidate">
 
-	<input class="form-control" id="pk" type="hidden">
-	<input class="form-control" id="version" type="hidden">
+	<input class="form-control" id="pk" type="hidden"> <input
+		class="form-control" id="version" type="hidden">
 	<div class="row">
 		<div class="col-md-3">
 			<div class="form-group">
@@ -26,8 +26,8 @@
 			</select>
 		</div>
 		<div class="col-md-3">
-			<input type="submit" name="sub-1" value="LƯU" class="btn btn-primary"
-				id="btnCapNhapSoYeuLyLich">
+			<input type="submit" value="Lưu" class="btn btn-default" 
+				id="btnCapNhapSoYeuLyLich" onclick="luuCanBo();"/>
 		</div>
 		<div class="col-md-3">
 			<button type="button" class="btn btn-default" data-dismiss="modal"
@@ -102,7 +102,8 @@
 			<div class="form-group">
 				<label for="danToc_pk">Dân tộc</label></br>
 				<c:if test="${not empty danTocLists}">
-					<select class="form-control my-select-control-style" id="danToc_pk" required="true">
+					<select class="form-control my-select-control-style" id="danToc_pk"
+						required="true">
 						<c:forEach var="dto" items="${danTocLists}">
 							<option value="${dto.pk}">${dto.tenDanToc}</option>
 						</c:forEach>

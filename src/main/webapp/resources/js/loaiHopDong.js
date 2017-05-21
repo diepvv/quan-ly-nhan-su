@@ -99,7 +99,7 @@ $(document).ready(function() {
             json.tenLoaiHopDong = txtTenLoaiHopDong.val();
             json.version = txtVersion.val();
             if(txtPk.val() != -1){
-            	var endpointUrl = '/loaiHopDongController/update';
+            	 endpointUrl = '/loaiHopDongController/update';
             }
             	$.ajax({
                     type : "POST",
