@@ -20,8 +20,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type=button class="btn btn-default" data-dismiss="modal"
-						id="btnCapNhap">Cập Nhập</button>
+					<button type=button class="btn btn-default"	id="btnCapNhap">Cập Nhập</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal"
 						id="btnDong">Đóng</button>
 				</div>
