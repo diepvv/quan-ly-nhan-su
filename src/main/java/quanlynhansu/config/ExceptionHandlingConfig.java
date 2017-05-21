@@ -15,15 +15,15 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 @ControllerAdvice
-public class ExceptionHandlingController {
+public class ExceptionHandlingConfig {
 	private static final Logger LOGGER = org.slf4j.LoggerFactory
-			.getLogger(ExceptionHandlingController.class);
+			.getLogger(ExceptionHandlingConfig.class);
 
 	private static ObjectMapper objectMapper;
 
 	@Autowired
 	public void setObjectMapper(ObjectMapper objectMapper) {
-		ExceptionHandlingController.objectMapper = objectMapper;
+		ExceptionHandlingConfig.objectMapper = objectMapper;
 	}
 
 	@ExceptionHandler(OptimisticLockingFailureException.class)
