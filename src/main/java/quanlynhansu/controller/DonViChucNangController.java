@@ -27,22 +27,19 @@ public class DonViChucNangController {
 	}
 
 	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Integer pK, Model model)
-			throws SQLException {
+	public String delete(@PathVariable Integer pK, Model model) throws SQLException {
 		donvichucnang.delete(pK);
 		return "donvichucnang";
 	}
 
 	@PostMapping("/update")
-	public String update(@RequestBody DonViChucNangDTO dv, Model model)
-			throws SQLException {
+	public String update(@RequestBody DonViChucNangDTO dv, Model model) throws SQLException {
 		donvichucnang.update(dv);
 		return "donvichucnang";
 	}
 
 	@PostMapping("/add")
-	public String insert(@RequestBody DonViChucNangDTO dvcn, Model model)
-			throws SQLException {
+	public String insert(@RequestBody DonViChucNangDTO dvcn, Model model) throws SQLException {
 		donvichucnang.insert(dvcn);
 		return "donvichucnang";
 	}

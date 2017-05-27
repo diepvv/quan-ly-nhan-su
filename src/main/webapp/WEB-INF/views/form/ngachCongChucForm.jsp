@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <div id="formNgachCongChuc" class="modal fade" role="dialog">
-	<form id="formTest" method="post" action="#" class="valida"
-		autocomplete="off" novalidate="novalidate">
+	<form id="formTest" method="post" action="#" class="valida" autocomplete="off" novalidate="novalidate">
 		<div class="modal-dialog">
 			<!-- Modal content-->
 			<div class="modal-content">
@@ -13,27 +11,21 @@
 				<div class="modal-body">
 					<input class="form-control" id="pk" type="hidden">
 					<div class="form-group">
-						<label for="maNgach">Mã Ngạch</label> <input class="form-control"
-							id="maNgach" name="maNgach" required="true" type="text"></br>
+						<label for="maNgach">Mã Ngạch</label> 
+						<input class="form-control" id="maNgach" name="maNgach" required="true" type="text">
 					</div>
 					<div class="form-group">
-						<label for="tenNgach">Tên Ngạch</label> <input
-							class="form-control" id="tenNgach" name="tenNgach"
-							required="true" type="text"></br>
+						<label for="tenNgach">Tên Ngạch</label> 
+						<input class="form-control" id="tenNgach" name="tenNgach" required="true" type="text">
 					</div>
 					<div class="form-group">
-						<label for="soNamNangBacLuong">Số Năm Nâng Bậc Lương</label> <input
-							class="form-control" id="soNamNangBacLuong"
-							name="soNamNangBacLuong" required="true" type="text"></br>
+						<label for="soNamNangBacLuong">Số Năm Nâng Bậc Lương</label> 
+						<input class="form-control" id="soNamNangBacLuong" name="soNamNangBacLuong" required="true" type="text">
 					</div>
-					<button type="button" class="btn btn-default" data-dismiss="modal"
-						id="btnDanhSachHeSoLuong">Danh Sách Hệ Số Lương</button>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"
-						id="btnCapNhap">Cập Nhập</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal"
-						id="btnDong">Đóng</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCapNhap">Cập Nhập</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="btnDong">Đóng</button>
 				</div>
 			</div>
 		</div>

@@ -1,9 +1,7 @@
 $(document).ready(function() {
 		var canBoService = "/canBoService";
 		var canBoController = "/canBoController";
-		
 		var thongKeUrl="/getAll";
-	
 		var table = $('#canBoTable').DataTable({
 			"sAjaxSource" : "/canBoService" + thongKeUrl,
 			"sAjaxDataProp" : "",
@@ -24,7 +22,7 @@ $(document).ready(function() {
 				  {
 					"aTargets": [ 3 ],
 					"mData": "chucVu.tenChucVu"
-				   },
+				  },
 				  {
 			       "targets": -1,
 			       "data": null,
@@ -39,8 +37,7 @@ $(document).ready(function() {
 			scrollY : "600px",
 			scrollCollapse: true,
 			dom: 'Blfrtip',
-			buttons: [
-			          {
+			buttons: [{
 			        	 extend: 'excel',
 			        	 exportOptions: {
 	                          columns: [0, 1, 2, 3]
@@ -202,8 +199,36 @@ $(document).ready(function() {
 		    select: true,
 		    "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Vietnamese.json"
+            },
+            initComplete: function () {
+                this.api().columns().every( function () {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                        .appendTo( $(column.footer()).empty() )
+                        .on( 'change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+     
+                            column
+                                .search( val ? '^'+val+'$' : '', true, false )
+                                .draw();
+                        } );
+     
+                    column.data().unique().sort().each( function ( d, j ) {
+                        select.append( '<option value="'+d+'">'+d+'</option>' )
+                    } );
+                } );
             }
 		});
+		
+		$("button#btnXacNhanThongKe").click(function(e) {
+			thongKeUrl = "/" + $(hidTieuChi).val() + "/5";
+			alert(thongKeUrl);
+			//table.sAjaxSource = "/canBoService" + thongKeUrl;
+			//table.ajax.reload();
+		});
+		
 	
 		$('#canBoTable tbody').on( 'click', 'button', function () {
 			var id = $(this)[0].id;
@@ -556,12 +581,7 @@ $(document).ready(function() {
             $("#formTest").find('.has-feedback').removeClass("has-feedback");
         });
 		
-		$("button#btnXacNhanThongKe").click(function(e) {
-			thongKeUrl = "/" + $(hidTieuChi).val() + "/5";
-			alert(thongKeUrl);
-			table.sAjaxSource = thongKeUrl;
-//			table.ajax.reload();
-		});
+		
 		
 		$("button#btnXacNhanChiTietCanBo").click(function(e) {
 			alert($(hidTieuChiChiTietCanBo).val());
@@ -586,7 +606,7 @@ $(document).ready(function() {
 		}
 		
 		changeNgachCongChuc = function(){
-			var ngachCongChucPk = $(ngachCongChuc_pk).val();
+			 var ngachCongChucPk = $(ngachCongChuc_pk).val();
 			 $.ajax({  
                 url: canBoService+"/getBacLuongByNgachCongChuc/"+ngachCongChucPk,  
                 type: 'GET',  

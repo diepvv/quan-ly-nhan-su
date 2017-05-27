@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <div id="themCanBoForm" class="modal fade background-white" role="dialog">
 	<div class="full-screen-modal-dialog">
 		<!-- Modal content-->

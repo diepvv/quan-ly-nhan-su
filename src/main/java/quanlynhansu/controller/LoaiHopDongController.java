@@ -27,22 +27,19 @@ public class LoaiHopDongController {
 	}
 
 	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Integer pK, Model model)
-			throws SQLException {
+	public String delete(@PathVariable Integer pK, Model model) throws SQLException {
 		loaihopdong.delete(pK);
 		return "loaihopdong";
 	}
 
 	@PostMapping("/update")
-	public String update(@RequestBody LoaiHopDongDTO lhd, Model model)
-			throws SQLException {
+	public String update(@RequestBody LoaiHopDongDTO lhd, Model model) throws SQLException {
 		loaihopdong.update(lhd);
 		return "loaihopdong";
 	}
 
 	@PostMapping("/add")
-	public String insert(@RequestBody LoaiHopDongDTO lhd, Model model)
-			throws SQLException {
+	public String insert(@RequestBody LoaiHopDongDTO lhd, Model model) throws SQLException {
 		loaihopdong.insert(lhd);
 		return "loaihopdong";
 	}

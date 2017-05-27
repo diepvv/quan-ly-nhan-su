@@ -33,8 +33,7 @@ public class QuyetDinhKhenThuongController {
 
 	@GetMapping("/show")
 	public ModelAndView getdata() {
-		ArrayList<DonViChucNangDTO> donViChucNanglists = donViChucNangService
-				.getAll();
+		ArrayList<DonViChucNangDTO> donViChucNanglists = donViChucNangService.getAll();
 		ArrayList<CanBoDTO> canBolists = canBoService.getAll();
 		ModelAndView model = new ModelAndView("quyetdinhkhenthuong");
 		model.addObject("donViChucNanglists", donViChucNanglists);
@@ -43,22 +42,19 @@ public class QuyetDinhKhenThuongController {
 	}
 
 	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Integer pK, Model model)
-			throws SQLException {
+	public String delete(@PathVariable Integer pK, Model model) throws SQLException {
 		quyetDinhKhenThuongService.delete(pK);
 		return "quyetdinhkhenthuong";
 	}
 
 	@PostMapping("/update")
-	public String update(@RequestBody QuyetDinhKhenThuongDTO qdkt, Model model)
-			throws SQLException {
+	public String update(@RequestBody QuyetDinhKhenThuongDTO qdkt, Model model) throws SQLException {
 		quyetDinhKhenThuongService.update(qdkt);
 		return "quyetdinhkhenthuong";
 	}
 
 	@PostMapping("/add")
-	public String insert(@RequestBody QuyetDinhKhenThuongDTO qdkt, Model model)
-			throws SQLException {
+	public String insert(@RequestBody QuyetDinhKhenThuongDTO qdkt, Model model) throws SQLException {
 		quyetDinhKhenThuongService.insert(qdkt);
 		return "quyetdinhkhenthuong";
 	}

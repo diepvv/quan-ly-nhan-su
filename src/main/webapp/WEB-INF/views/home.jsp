@@ -7,7 +7,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>home</title>
 <%@include file="fragment/importResources.jsp"%>
-
 </head>
 <body>
 	<!-- banner -->
@@ -124,7 +123,6 @@
 	<script src="<c:url value='/resources/js/vendor/flipclock.js'/>"></script>
 	<script type="text/javascript">
 		var clock;
-
 		$(document).ready(function() {
 
 			clock = $('.clock').FlipClock({

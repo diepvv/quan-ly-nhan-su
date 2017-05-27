@@ -17,10 +17,8 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h1 class="panel-title">
-								<a data-toggle="collapse" href="#collapseSoYeuLyLichForm"
-									data-parent="#accordion1"
-									onclick="$(hidTieuChiChiTietCanBo).val('soYeuLyLich')">SƠ
-									YẾU LÝ LỊCH</a>
+								<a data-toggle="collapse" href="#collapseSoYeuLyLichForm" data-parent="#accordion1"
+								   onclick="$(hidTieuChiChiTietCanBo).val('soYeuLyLich')">SƠ YẾU LÝ LỊCH</a>
 							</h1>
 						</div>
 						<div id="collapseSoYeuLyLichForm" class="panel-collapse collapse">
@@ -31,16 +29,13 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h1 class="panel-title">
-								<a data-toggle="collapse" href="#collapseQuanHeGiaDinh"
-									data-parent="#accordion1"
-									onclick="$(hidTieuChiChiTietCanBo).val('quanHeGiaDinh')">QUAN
-									HỆ GIA ĐÌNH</a>
+								<a data-toggle="collapse" href="#collapseQuanHeGiaDinh" data-parent="#accordion1"
+								   onclick="$(hidTieuChiChiTietCanBo).val('quanHeGiaDinh')">QUAN HỆ GIA ĐÌNH</a>
 							</h1>
 						</div>
 						<div id="collapseQuanHeGiaDinh" class="panel-collapse collapse">
-							<label for="inputdefault">Phân loại</label> <input
-								class="form-control" id="txtPhanLoai" type="text"
-								list="phanloai">
+							<label for="inputdefault">Phân loại</label> 
+							<input class="form-control" id="txtPhanLoai" type="text" list="phanloai">
 							<datalist id="phanloai">
 								<option value="Khối hành chính"></option>
 								<option value="Khối giảng viên"></option>

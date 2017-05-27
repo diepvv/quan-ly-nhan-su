@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <div id="DonViForm" class="modal fade" role="dialog">
 	<div class="modal-dialog modal-sm">
 		<!-- Modal content-->
@@ -9,7 +8,7 @@
 				<h4 class="modal-title">Chọn Đơn Vị</h4>
 			</div>
 			<div class="modal-body">
-				<label for="donViChucNangDskg_pk">Đơn vị công tác</label></br>
+				<label for="donViChucNangDskg_pk">Đơn vị công tác</label>
 				<c:if test="${not empty donViChucNangLists}">
 					<select class="form-control my-select-control-style" id="donViChucNangDskg_pk">
 						<c:forEach var="dto" items="${donViChucNangLists}">
@@ -19,12 +18,9 @@
 				</c:if>	
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="btnXacNhanDonViCongTac">Xác nhận</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="btnDong">Đóng</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="btnXacNhanDonViCongTac">Xác nhận</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="btnDong">Đóng</button>
 			</div>
 		</div>
-
 	</div>
 </div>

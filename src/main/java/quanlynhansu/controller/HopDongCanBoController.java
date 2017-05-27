@@ -37,11 +37,9 @@ public class HopDongCanBoController {
 
 	@GetMapping("/show")
 	public ModelAndView getdata() {
-		ArrayList<DonViChucNangDTO> donViChucNangLists = donViChucNangService
-				.getAll();
+		ArrayList<DonViChucNangDTO> donViChucNangLists = donViChucNangService.getAll();
 		ArrayList<CanBoDTO> canBoLists = canBoService.getAll();
-		ArrayList<LoaiHopDongDTO> loaiHopDongLists = loaiHopDongService
-				.getAll();
+		ArrayList<LoaiHopDongDTO> loaiHopDongLists = loaiHopDongService.getAll();
 		ModelAndView model = new ModelAndView("hopdongcanbo");
 		model.addObject("donViChucNangLists", donViChucNangLists);
 		model.addObject("canBoLists", canBoLists);
@@ -50,24 +48,20 @@ public class HopDongCanBoController {
 	}
 
 	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Integer pK, Model model)
-			throws SQLException {
+	public String delete(@PathVariable Integer pK, Model model) throws SQLException {
 		hopDongCanBoService.delete(pK);
 		return "hopdongcanbo";
 	}
 
 	@PostMapping("/update")
-	public String update(@RequestBody HopDongCanBoDTO hd, Model model)
-			throws SQLException {
+	public String update(@RequestBody HopDongCanBoDTO hd, Model model) throws SQLException {
 		hopDongCanBoService.update(hd);
 		return "hopdongcanbo";
 	}
 
 	@PostMapping("/add")
-	public String insert(@RequestBody HopDongCanBoDTO hd, Model model)
-			throws SQLException {
+	public String insert(@RequestBody HopDongCanBoDTO hd, Model model) throws SQLException {
 		hopDongCanBoService.insert(hd);
 		return "hopdongcanbo";
 	}
-
 }
