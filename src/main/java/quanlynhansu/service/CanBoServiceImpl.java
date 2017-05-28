@@ -1,6 +1,8 @@
 package quanlynhansu.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -78,7 +80,12 @@ public class CanBoServiceImpl implements ICanBoService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Integer id, Integer version) {
+		Canbo entity = new Canbo();
+		entity = repo.findOneByPkAndVersion(id, version);
+		if (entity == null) {
+				throw new OptimisticLockingFailureException("Concurrent update error");
+		}
 		repo.delete(Integer.valueOf(id));
 	}
 
@@ -138,7 +145,7 @@ public class CanBoServiceImpl implements ICanBoService {
 
 	private Canbo addOrUpdate(CanBoDTO dto) {
 		Canbo entity = new Canbo();
-		if (dto.getPk() != null && dto.getPk() != -1) {
+		if (dto.getPk() != null && dto.getPk().intValue() != -1) {
 			entity = repo.findOneByPkAndVersion(dto.getPk(), dto.getVersion());
 			if (entity == null) {
 				throw new OptimisticLockingFailureException("Concurrent update error");
@@ -178,6 +185,21 @@ public class CanBoServiceImpl implements ICanBoService {
 			entity.setBacluong(bacluongEntity);
 		}
 		return repo.save(entity);
+	}
+	@Override
+	public Set<CanBoDTO> getByGioiTinh(String cbGioiTinhs){
+		Set<CanBoDTO> ketqua = new HashSet<>();
+		Set<Canbo> entities  = new HashSet<>();
+		entities = repo.findByGioiTinh(cbGioiTinhs);
+		for (Canbo d : entities) {
+			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
+			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
+			canBoDto.setDonViChucNang(donViChucNangDto);
+			canBoDto.setChucVu(chucVuDto);
+			ketqua.add(canBoDto);
+		}
+		return ketqua;
 	}
 
 }

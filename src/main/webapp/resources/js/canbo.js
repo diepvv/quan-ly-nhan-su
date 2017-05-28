@@ -8,30 +8,30 @@ $(document).ready(function() {
 			"order" : [ [ 0, "asc" ] ],
 			"aoColumnDefs": [ 
 			      {
-			      "aTargets": [ 0 ],
-			      "mData": "soHieu"
+				      "aTargets": [ 0 ],
+				      "mData": "soHieu"
 			      },
 			      {
-				  "aTargets": [ 1 ],
-				  "mData": "ten"
+					  "aTargets": [ 1 ],
+					  "mData": "ten"
 				  },
 				  {
-				  "aTargets": [ 2 ],
-				  "mData": "donViChucNang.tenDonVi"
+					  "aTargets": [ 2 ],
+					  "mData": "donViChucNang.tenDonVi"
 				  },
 				  {
-					"aTargets": [ 3 ],
-					"mData": "chucVu.tenChucVu"
+					  "aTargets": [ 3 ],
+					  "mData": "chucVu.tenChucVu"
 				  },
 				  {
-			       "targets": -1,
-			       "data": null,
-			       "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal' id='btnDel'>Xóa</button>"
+				      "targets": -1,
+				      "data": null,
+				      "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal' id='btnDel'>Xóa</button>"
 			      },
 			      {
-				   "targets": -2,
-				   "data": null,
-				   "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal'  id='btnChiTiet'>Chi Tiết</button>"
+					  "targets": -2,
+					  "data": null,
+					  "defaultContent": "<button type='button' class='btn btn-info btn-lg' data-toggle='modal'  id='btnChiTiet'>Chi Tiết</button>"
 				  },
 			],
 			scrollY : "600px",
@@ -223,10 +223,39 @@ $(document).ready(function() {
 		});
 		
 		$("button#btnXacNhanThongKe").click(function(e) {
-			thongKeUrl = "/" + $(hidTieuChi).val() + "/5";
+			thongKeUrl = "";
+			if($(hidTieuChi).val() == "canBo"){
+				var cbPhanLoaiCanBos = $(cbPhanLoaiCanBo).val();
+				thongKeUrl = canBoService + "/getAll";
+			}else if($(hidTieuChi).val() == "gioiTinh"){
+				var cbGioiTinhs = $(cbGioiTinh).val();
+				thongKeUrl = canBoService + "/getByGioiTinh/" + cbGioiTinhs;
+			}else if($(hidTieuChi).val() == "danToc"){
+				var cbDanTocs = $(cbDanToc).val();
+				thongKeUrl = canBoService + "/getByDanToc/" + cbDanTocs;
+			}else if($(hidTieuChi).val() == "tonGiao"){
+				var cbTonGiaos = $(cbTonGiao).val();
+				thongKeUrl = canBoService + "/getByTonGiao/" + cbTonGiaos;
+			}else if($(hidTieuChi).val() == "chucVu"){
+				var cbChucVus = $(cbChucVu).val();
+				thongKeUrl = canBoService + "/getByChucVu/" + cbChucVus;
+			}else if($(hidTieuChi).val() == "chucDanh"){
+				var chucDanh = $(txtChucDanh).val();
+				thongKeUrl = canBoService + "/getByChucDanh/" + chucDanh;
+			}else if($(hidTieuChi).val() == "boMonChuyenMon"){
+				var cbDonViChucNangs = $(cbDonViChucNang).val();
+				var cbBoMons = $(cbBoMon).val();
+				thongKeUrl = canBoService + "/getByBoMon/" + cbDonViChucNangs;
+			}else if($(hidTieuChi).val() == "queQuan"){
+				var cbQueQuans = $(cbQueQuan).val();
+				thongKeUrl = canBoService + "/getByQueQuan/" + cbQueQuans;
+			}else if($(hidTieuChi).val() == "ngachCongChuc"){
+				var cbNgachCongChucs = $(cbNgachCongChuc).val();
+				thongKeUrl = canBoService + "/getByNgachCongChuc/" + cbNgachCongChucs;
+			}
 			alert(thongKeUrl);
-			//table.sAjaxSource = "/canBoService" + thongKeUrl;
-			//table.ajax.reload();
+			table.ajax.url(thongKeUrl);
+			table.ajax.reload();
 		});
 		
 	
@@ -393,13 +422,18 @@ $(document).ready(function() {
 		        var data = table.row($(this).parents('tr')).data();
 		        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : " + data['ten'])
 		        var pK = data['pk'];
+		        var version = data['version'];
 		        if(check==true){
 	            	$.ajax({  
-	                    url: canBoController+"/delete/"+pK,  
+	                    url: canBoController+"/delete/"+pK+"?version="+version,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
-	                    	table.ajax.reload();	                    }  
+	                    	table.ajax.reload();
+	                    },
+	                    error: function (data, textStatus, xhr) {
+	            			alert(data.responseText);
+	            		}  
 	                });
 	            }
 			}
@@ -557,9 +591,9 @@ $(document).ready(function() {
                 url : endpointUrl,
                 success : function(msg) {
                 	// close modal dialog
-        			 $('#themCanBoForm').modal('toggle');
-        			// $('#ChiTietCanBoForm').modal('toggle');
-                     table.ajax.reload();
+        			//$('#themCanBoForm').modal('toggle');
+        			$('#ChiTietCanBoForm').modal('toggle');
+                    table.ajax.reload();
                 },
                 error: function (data, textStatus, xhr) {
         			alert(data.responseText);
@@ -601,6 +635,22 @@ $(document).ready(function() {
                     });
                    $('#boMon_pk').empty();
                    $('#boMon_pk').append(toAppend);
+                 }
+			 });
+		}
+		
+		changeDonViChucNangThongKe = function(){
+			var donViChucNangPk = $(cbDonViChucNang).val();
+			 $.ajax({  
+                 url: canBoService+"/getBoMonByDonViChucNang/"+donViChucNangPk,  
+                 type: 'GET',  
+                 success: function (res) {
+                	 var toAppend = '';
+                     $.each(res,function(i,o){
+                    	 toAppend += '<option value='+o.pk+'>'+o.tenBoMon+'</option>';
+                    });
+                   $('#cbBoMon').empty();
+                   $('#cbBoMon').append(toAppend);
                  }
 			 });
 		}

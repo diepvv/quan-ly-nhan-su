@@ -46,4 +46,9 @@ public class CanBoRestController {
 	public Set<BacLuongDTO> getBacLuongByNgachCongChuc(@PathVariable Integer ngachCongChucPk) {
 		return ngachCongChucService.getBacLuongByNgachCongChuc(ngachCongChucPk);
 	}
+	
+	@GetMapping("/getByGioiTinh/{cbGioiTinhs}")
+	public Set<CanBoDTO> getByGioiTinh(@PathVariable String cbGioiTinhs) {
+		return canbo.getByGioiTinh(cbGioiTinhs);
+	}
 }

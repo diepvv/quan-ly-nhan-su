@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import quanlynhansu.model.dto.CanBoDTO;
@@ -53,7 +54,8 @@ public class CanBoController {
 		ArrayList<TonGiaoDTO> tonGiaoLists = tonGiaoService.getAll();
 		ArrayList<DanTocDTO> danTocLists = danTocService.getAll();
 		ArrayList<ChucVuDTO> chucVuLists = chucVuService.getAll();
-		ArrayList<NgachCongChucDTO> ngachCongChucLists = ngachCongChucService.getAll();
+		ArrayList<NgachCongChucDTO> ngachCongChucLists = ngachCongChucService
+				.getAll();
 		ArrayList<QueQuanDTO> queQuanLists = queQuanService.getAll();
 		ModelAndView model = new ModelAndView("canbo");
 		model.addObject("donViChucNangLists", list);
@@ -66,19 +68,23 @@ public class CanBoController {
 	}
 
 	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Integer pK, Model model) throws SQLException {
-		canBoService.delete(pK);
+	public String delete(
+			@PathVariable(value = "pK") Integer pK,
+			@RequestParam(value = "version") Integer version) {
+		canBoService.delete(pK, version);
 		return "canbo";
 	}
 
 	@PostMapping("/update")
-	public String update(@RequestBody CanBoDTO dskg, Model model) throws SQLException {
+	public String update(@RequestBody CanBoDTO dskg, Model model)
+			throws SQLException {
 		canBoService.update(dskg);
 		return "canbo";
 	}
 
 	@PostMapping("/add")
-	public String insert(@RequestBody CanBoDTO dskg, Model model) throws SQLException {
+	public String insert(@RequestBody CanBoDTO dskg, Model model)
+			throws SQLException {
 		canBoService.insert(dskg);
 		return "canbo";
 	}

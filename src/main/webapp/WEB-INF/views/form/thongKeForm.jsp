@@ -12,16 +12,6 @@
 			<div class="modal-body">
 				<div class="panel-group" id="accordion">
 					<input id="hidTieuChi" type="hidden">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" href="#collapseCBDangCongTac" data-parent="#accordion"
-								   onclick="$(hidTieuChi).val('canBoDangCongTac')">Cán bộ đang công tác</a>
-							</h4>
-						</div>
-						<div id="collapseCBDangCongTac" class="panel-collapse collapse">
-						</div>
-					</div>
 
 					<div class="panel panel-default">
 						<div class="panel-heading">
@@ -31,12 +21,11 @@
 							</h4>
 						</div>
 						<div id="collapseCanBo" class="panel-collapse collapse">
-							<label for="inputdefault">Phân loại</label> 
-							<input class="form-control" id="txtPhanLoai" type="text" list="phanloai">
-							<datalist id="phanloai">
-								<option value="Khối hành chính"></option>
-								<option value="Khối giảng viên"></option>
-							</datalist>
+							<label for="cbPhanLoaiCanBo">Phân loại</label>
+							<select class="form-control my-select-control-style" id="cbPhanLoaiCanBo" >
+								<option value="0">Khối hành chính</option>
+								<option value="1">Khối giảng viên</option>
+							</select> 
 						</div>
 					</div>
 
@@ -48,10 +37,10 @@
 							</h4>
 						</div>
 						<div id="collapseDoTuoi" class="panel-collapse collapse">
-							<label for="inputdefault">Độ tuổi từ</label> 
+							<label for="txtDoTuoiTu">Độ tuổi từ</label> 
 							<input class="form-control" id="txtDoTuoiTu" type="text"> 
-							<label for="inputdefault">Đến độ tuổi</label> 
-							<input class="form-control" id="txtĐenotuoi" type="text">
+							<label for="txtĐenDotuoi">Đến độ tuổi</label> 
+							<input class="form-control" id="txtĐenDotuoi" type="text">
 						</div>
 					</div>
 
@@ -63,12 +52,11 @@
 							</h4>
 						</div>
 						<div id="collapseGioiTinh" class="panel-collapse collapse">
-							<label for="inputdefault">Giới tính</label> 
-							<input class="form-control" id="txtKhenThuong" type="text" list="listGioitinh">
-							<datalist id="listGioitinh">
-								<option value="Nam"></option>
-								<option value="Nu"></option>
-							</datalist>
+							<label for="cbGioiTinh">Giới tính</label>
+							<select class="form-control my-select-control-style" id="cbGioiTinh">
+								<option value="0">Nam</option>
+								<option value="1">Nữ</option>
+							</select> 
 						</div>
 					</div>
 
@@ -80,9 +68,9 @@
 							</h4>
 						</div>
 						<div id="collapseDanToc" class="panel-collapse collapse">
-							<label for="danTocThongKe_pk">Dân tộc</label>
+							<label for="cbDanToc">Dân tộc</label>
 							<c:if test="${not empty danTocLists}">
-								<select class="form-control my-select-control-style" id="danTocThongKe_pk">
+								<select class="form-control my-select-control-style" id="cbDanToc">
 									<c:forEach var="dto" items="${danTocLists}">
 										<option value="${dto.pk}">${dto.tenDanToc}</option>
 									</c:forEach>
@@ -99,9 +87,9 @@
 							</h4>
 						</div>
 						<div id="collapseTonGiao" class="panel-collapse collapse">
-							<label for="tonGiaoThongKe_pk">Tôn giáo</label>
+							<label for="cbTonGiao">Tôn giáo</label>
 							<c:if test="${not empty tonGiaoLists}">
-								<select class="form-control my-select-control-style" id="tonGiaoThongKe_pk">
+								<select class="form-control my-select-control-style" id="cbTonGiao">
 									<c:forEach var="dto" items="${tonGiaoLists}">
 										<option value="${dto.pk}">${dto.tenTonGiao}</option>
 									</c:forEach>
@@ -118,9 +106,9 @@
 							</h4>
 						</div>
 						<div id="collapseChucVu" class="panel-collapse collapse">
-							<label for="chucVuThongKe_pk">Chức vụ</label>
+							<label for="cbChucVu">Chức vụ</label>
 							<c:if test="${not empty chucVuLists}">
-								<select class="form-control my-select-control-style" id="chucVuThongKe_pk">
+								<select class="form-control my-select-control-style" id="cbChucVu">
 									<c:forEach var="dto" items="${chucVuLists}">
 										<option value="${dto.pk}">${dto.tenChucVu}</option>
 									</c:forEach>
@@ -137,7 +125,7 @@
 							</h4>
 						</div>
 						<div id="collapseChucDanh" class="panel-collapse collapse">
-							<label for="inputdefault">Chức danh</label> 
+							<label for="txtChucDanh">Chức danh</label> 
 							<input class="form-control" id="txtChucDanh" type="text">
 						</div>
 					</div>
@@ -150,19 +138,18 @@
 							</h4>
 						</div>
 						<div id="collapseBoMonChuyenMon" class="panel-collapse collapse">
-							<label for="inputdefault">Đơn vị</label> 
-							<input class="form-control" id="txtDonVi" type="text" list="listDonVi">
-							<datalist id="listDonVi">
-								<option value="Ban giám đốc"></option>
-								<option value="Ban thanh tra"></option>
-							</datalist>
+							<label for="cbDonViChucNang">Đơn vị công tác</label>
+							<c:if test="${not empty donViChucNangLists}">
+								<select class="form-control my-select-control-style" id="cbDonViChucNang" 
+										onchange="changeDonViChucNangThongKe()">
+									<c:forEach var="dto" items="${donViChucNangLists}">
+										<option required="true" value="${dto.pk}">${dto.tenDonVi}</option>
+									</c:forEach>
+								</select>
+							</c:if>
 
-							<label for="inputdefault">Bộ môn chuyên môn</label> 
-							<input class="form-control" id="txtBoMonChuyenMon" type="text" list="listBoMonChuyenMon">
-							<datalist id="listBoMonChuyenMon">
-								<option value="Giải tích"></option>
-								<option value="Đại số tuyến tính"></option>
-							</datalist>
+							<label for="cbBoMon">Bộ môn chuyên môn</label> 
+							<select class="form-control my-select-control-style" id="cbBoMon"></select>
 
 						</div>
 					</div>
@@ -175,9 +162,9 @@
 							</h4>
 						</div>
 						<div id="collapseQueQuan" class="panel-collapse collapse">
-							<label for="queQuanThongKe_pk">Tỉnh hoặc thành phố</label>
+							<label for="cbQueQuan">Tỉnh hoặc thành phố</label>
 							<c:if test="${not empty queQuanLists}">
-								<select class="form-control my-select-control-style" id="queQuanThongKe_pk">
+								<select class="form-control my-select-control-style" id="cbQueQuan">
 									<c:forEach var="dto" items="${queQuanLists}">
 										<option value="${dto.pk}">${dto.tenQueQuan}</option>
 									</c:forEach>
@@ -194,9 +181,9 @@
 							</h4>
 						</div>
 						<div id="collapseNgachCongChuc" class="panel-collapse collapse">
-							<label for="ngachCongChucThongKe_pk">Mã ngạch</label>
+							<label for="cbNgachCongChuc">Mã ngạch</label>
 							<c:if test="${not empty ngachCongChucLists}">
-								<select class="form-control my-select-control-style" id="ngachCongChucThongKe_pk">
+								<select class="form-control my-select-control-style" id="cbNgachCongChuc">
 									<c:forEach var="dto" items="${ngachCongChucLists}">
 										<option value="${dto.pk}">${dto.maNgach}</option>
 									</c:forEach>
