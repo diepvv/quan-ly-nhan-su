@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <div id="formQuyetDinh" class="modal fade" role="dialog">
 	<div class="modal-dialog ">
 		<!-- Modal content-->
@@ -30,10 +29,8 @@
 				</c:if>
 				<label for="soQuyetDinh">Số quyết định</label> 
 				<input class="form-control" id="soQuyetDinh" type="text">
-				 
 				<label for="tenQuyetDinh">Tên quyết định</label> 
 				<input class="form-control" id="tenQuyetDinh" type="text">
-				
 				<label for="loaiQuyetDinhQd_pk">Loại quyết định</label> 
 				<c:if test="${not empty loaiQuyetDinhlists}">
 					<select class="form-control my-select-control-style" id="loaiQuyetDinhQd_pk">
@@ -73,12 +70,9 @@
 			</div>
 			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="btnCapNhap">Cập Nhập</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="btnDong">Đóng</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCapNhap">Cập Nhập</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="btnDong">Đóng</button>
 			</div>
 		</div>
-
 	</div>
 </div>

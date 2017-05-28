@@ -15,11 +15,11 @@ public class Canbo implements Serializable {
 	private Integer pk;
 	private String soHieu;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "donViChucNang_pk", foreignKey = @ForeignKey(name = "donViChucNang_pk"))
 	private Donvichucnang donvichucnang;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "boMon_pk", foreignKey = @ForeignKey(name = "boMon_pk"))
 	private Bomon bomon;
 	private String imageUrl;
@@ -29,15 +29,15 @@ public class Canbo implements Serializable {
 	private Date ngaySinh;
 	private String gioiTinh;
 	private String noiSinh;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "queQuan_pk", foreignKey = @ForeignKey(name = "queQuan_pk"))
 	private Quequan quequan;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "danToc_pk", foreignKey = @ForeignKey(name = "danToc_pk"))
 	private Dantoc dantoc;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "tonGiao_pk", foreignKey = @ForeignKey(name = "tonGiao_pk"))
 	private Tongiao tongiao;
 	private String soCmnd;
@@ -51,17 +51,17 @@ public class Canbo implements Serializable {
 	@Temporal(TemporalType.DATE)
 	private Date ngayTuyenDung;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "chucVu_pk", foreignKey = @ForeignKey(name = "chucVu_pk"))
 	private Chucvu chucvu;
 	private String congViecDuocGiao;
 	private String chucDanh;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "ngachCongChuc_pk", foreignKey = @ForeignKey(name = "ngachCongChuc_pk"))
 	private Ngachcongchuc ngachcongchuc;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "bacLuong_pk", foreignKey = @ForeignKey(name = "bacLuong_pk"))
 	private Bacluong bacluong;
 	@Temporal(TemporalType.DATE)

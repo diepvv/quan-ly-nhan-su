@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import quanlynhansu.model.entity.Danhsachkhoangon;
 
 @Repository
-public interface IDanhSachKhoanGonRepository extends
-		CrudRepository<Danhsachkhoangon, Integer> {
-
+public interface IDanhSachKhoanGonRepository extends CrudRepository<Danhsachkhoangon, Integer> {
+	
 }

@@ -1,8 +1,9 @@
 $(document).ready(function() {
 		var canBoService = "/canBoService";
 		var canBoController = "/canBoController";
+		var thongKeUrl="/getAll";
 		var table = $('#canBoTable').DataTable({
-			"sAjaxSource" : "/canBoService/getAll",
+			"sAjaxSource" : "/canBoService" + thongKeUrl,
 			"sAjaxDataProp" : "",
 			"order" : [ [ 0, "asc" ] ],
 			"aoColumnDefs": [ 
@@ -21,7 +22,7 @@ $(document).ready(function() {
 				  {
 					"aTargets": [ 3 ],
 					"mData": "chucVu.tenChucVu"
-				   },
+				  },
 				  {
 			       "targets": -1,
 			       "data": null,
@@ -36,8 +37,7 @@ $(document).ready(function() {
 			scrollY : "600px",
 			scrollCollapse: true,
 			dom: 'Blfrtip',
-			buttons: [
-			          {
+			buttons: [{
 			        	 extend: 'excel',
 			        	 exportOptions: {
 	                          columns: [0, 1, 2, 3]
@@ -185,7 +185,7 @@ $(document).ready(function() {
 		                	 txtNhanXet.val("");
 		                	 txtNgayVeHuu.val("");
 		                	 txtNgayThoiViec.val("");
-		                     $('#CAPNHAPCANBO').modal('show');
+		                     $('#themCanBoForm').modal('show');
 		                 },
 		              },
 		              {
@@ -199,8 +199,36 @@ $(document).ready(function() {
 		    select: true,
 		    "language": {
                 "url": "//cdn.datatables.net/plug-ins/1.10.13/i18n/Vietnamese.json"
+            },
+            initComplete: function () {
+                this.api().columns().every( function () {
+                    var column = this;
+                    var select = $('<select><option value=""></option></select>')
+                        .appendTo( $(column.footer()).empty() )
+                        .on( 'change', function () {
+                            var val = $.fn.dataTable.util.escapeRegex(
+                                $(this).val()
+                            );
+     
+                            column
+                                .search( val ? '^'+val+'$' : '', true, false )
+                                .draw();
+                        } );
+     
+                    column.data().unique().sort().each( function ( d, j ) {
+                        select.append( '<option value="'+d+'">'+d+'</option>' )
+                    } );
+                } );
             }
 		});
+		
+		$("button#btnXacNhanThongKe").click(function(e) {
+			thongKeUrl = "/" + $(hidTieuChi).val() + "/5";
+			alert(thongKeUrl);
+			//table.sAjaxSource = "/canBoService" + thongKeUrl;
+			//table.ajax.reload();
+		});
+		
 	
 		$('#canBoTable tbody').on( 'click', 'button', function () {
 			var id = $(this)[0].id;
@@ -376,7 +404,8 @@ $(document).ready(function() {
 	            }
 			}
 	    });
-		$("#btnCapNhapSoYeuLyLich").click(function(e) {
+		
+		$("button#btnCapNhapSoYeuLyLich").click(function(e) {
 			 var endpointUrl = '/canBoController/add';
 			 var txtPk = $(pk);
 	       	 var txtSoHieu = $(soHieu);
@@ -516,36 +545,48 @@ $(document).ready(function() {
 	       	 json.ngayThoiViec = txtNgayThoiViec.val();
 	       	 json.version = txtVersion.val();
 	       	 if(txtPk.val() != -1){
-            	var endpointUrl = '/canBoController/update';
+            	 endpointUrl = '/canBoController/update';
              }
-	       	 if($("#formTest").valid()){
-	       		$.ajax({
-	                type : "POST",
-	                contentType: "application/json; charset=utf-8",
-	                data : JSON.stringify(json),
-	                url : endpointUrl,
-	                success : function(msg) {
-	                     table.ajax.reload();
-	                },
-	                error : function() {
-	                      alert("Cập nhập không thành công");
-	                }
-	             });
-	       	 }
-             
+	       	 
+	       	 var invalidFields = $("#formTest").find(":invalid");
+             if(invalidFields.length == 0){
+       		 $.ajax({
+                type : "POST",
+                contentType: "application/json; charset=utf-8",
+                data : JSON.stringify(json),
+                url : endpointUrl,
+                success : function(msg) {
+                	// close modal dialog
+        			 $('#themCanBoForm').modal('toggle');
+        			// $('#ChiTietCanBoForm').modal('toggle');
+                     table.ajax.reload();
+                },
+                error: function (data, textStatus, xhr) {
+        			alert(data.responseText);
+        		}
+             });
+            }else {
+            	$("#formTest").submit();
+            }
+            
 		});
 		
-		$("button#btnXacNhan").click(function(e) {
-			alert($(hidTieuChi).val());
-		});
+		$("#themCanBoForm").on('hidden.bs.modal', function () {
+            $("#formTest").find('.has-error').removeClass("has-error");
+            $("#formTest").find('.has-feedback').removeClass("has-feedback");
+        });
+		
+		$("#ChiTietCanBoForm").on('hidden.bs.modal', function () {
+            $("#formTest").find('.has-error').removeClass("has-error");
+            $("#formTest").find('.has-feedback').removeClass("has-feedback");
+        });
+		
+		
 		
 		$("button#btnXacNhanChiTietCanBo").click(function(e) {
 			alert($(hidTieuChiChiTietCanBo).val());
 		});
 		
-		$("button#btnXacNhanQuanLyCanBo").click(function(e) {
-			alert($(hidTieuChiQLCB).val());
-		});
 		
 		//TODO
 		changeDonViChucNang = function(){
@@ -565,7 +606,7 @@ $(document).ready(function() {
 		}
 		
 		changeNgachCongChuc = function(){
-			var ngachCongChucPk = $(ngachCongChuc_pk).val();
+			 var ngachCongChucPk = $(ngachCongChuc_pk).val();
 			 $.ajax({  
                 url: canBoService+"/getBacLuongByNgachCongChuc/"+ngachCongChucPk,  
                 type: 'GET',  
@@ -579,9 +620,6 @@ $(document).ready(function() {
                 }
 			 });
 		}
-		
-		
-		
 		
 });
 

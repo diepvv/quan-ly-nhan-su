@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <div id="formDanhSachThamNien" class="modal fade" role="dialog">
 	<div class="modal-dialog">
 
@@ -48,38 +47,36 @@
 					</div>
 				</div>
 
-
-
 				<div class="row">
 					<div class="col-md-6">
-						<label for="bacLuongDstn_pk">Hệ số lương</label> <input
-							class="form-control" id="bacLuongDstn_pk" type="text">
+						<label for="bacLuongDstn_pk">Hệ số lương</label> 
+						<input class="form-control" id="bacLuongDstn_pk" type="text">
 					</div>
 					<div class="col-md-6">
-						<label for="phuCapChucVu">Phụ cấp chức vụ</label> <input
-							class="form-control" id="phuCapChucVu" type="text">
+						<label for="phuCapChucVu">Phụ cấp chức vụ</label> 
+						<input class="form-control" id="phuCapChucVu" type="text">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-6">
-						<label for="vuotKhung" class="label-style">Vượt khung</label> <input
-							class="form-control" id="vuotKhung" type="text">
+						<label for="vuotKhung" class="label-style">Vượt khung</label> 
+						<input class="form-control" id="vuotKhung" type="text">
 					</div>
 					<div class="col-md-6">
-						<label for="tongHeSoLuong" class="label-style">Tổng hệ số lương</label> <input
-							class="form-control" id="tongHeSoLuong" type="text">
+						<label for="tongHeSoLuong" class="label-style">Tổng hệ số lương</label> 
+						<input class="form-control" id="tongHeSoLuong" type="text">
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col-md-6">
-						<label for="phuCapGiangVien" class="label-style">Phụ cấp GV</label> <input
-							class="form-control" id="phuCapGiangVien" type="text">
+						<label for="phuCapGiangVien" class="label-style">Phụ cấp GV</label> 
+						<input class="form-control" id="phuCapGiangVien" type="text">
 					</div>
 					<div class="col-md-6">
-						<label for="soThangBiGiamTru" class="label-style">Số tháng bị giảm trừ</label> <input
-							class="form-control" id="soThangBiGiamTru" type="text">
+						<label for="soThangBiGiamTru" class="label-style">Số tháng bị giảm trừ</label> 
+						<input class="form-control" id="soThangBiGiamTru" type="text">
 					</div>
 				</div>
 				<div class="row">
@@ -96,7 +93,6 @@
 
 				<label for="ghiChuThoiDiemTang">Ghi chú</label>
 				<textarea class="form-control" id="ghiChuThoiDiemTang"></textarea>
-				
 
 				<label class="label-style">THỜI GIAN KHÔNG TÍNH PHỤ CẤP THÂM NIÊN</label>
 				<div class="row">
@@ -121,14 +117,11 @@
 				</div>
 				<label for="ghiChuKhongPhuCapTn">Ghi chú</label>
 				<textarea class="form-control" id="ghiChuKhongPhuCapTn"></textarea>
-
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="btnCapNhap">Cập Nhập</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="btnDong">Đóng</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCapNhap">Cập Nhập</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="btnDong">Đóng</button>
 			</div>
 		</div>
 

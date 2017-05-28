@@ -30,7 +30,7 @@ public class ExceptionHandlingConfig {
 	public ResponseEntity<?> handleConcurrentUpdate(Exception exception) {
 		return log(ResponseEntity.status(HttpStatus.PRECONDITION_FAILED),
 				exception)
-				.body(errorFor("Bạn đang cố gắn sửa một dữ liệu cái mà vừa được tùy chỉnh bởi một admin khác, load lại trang nếu bạn tiếp tục muốn sửa dữ liệu này."));
+				.body(errorFor("You are trying to update a resource that has been modified by another user!"));
 	}
 
 	@ExceptionHandler(ConstraintViolationException.class)

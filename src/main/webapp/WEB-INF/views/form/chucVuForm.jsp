@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <div id="formChucVu" class="modal fade" role="dialog">
-	<form id="formTest" method="post" action="#" class="valida"
-		autocomplete="off" novalidate="novalidate">
+	<form id="formTest" method="post" action="#" class="valida" autocomplete="off" novalidate="novalidate">
 		<div class="modal-dialog">
 			<!-- Modal content-->
 			<div class="modal-content">
@@ -18,10 +16,8 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal"
-						id="btnCapNhap">Cập Nhập</button>
-					<button type="button" class="btn btn-default" data-dismiss="modal"
-						id="btnDong">Đóng</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCapNhap">Cập Nhập</button>
+					<button type="button" class="btn btn-default" data-dismiss="modal" id="btnDong">Đóng</button>
 				</div>
 			</div>
 		</div>

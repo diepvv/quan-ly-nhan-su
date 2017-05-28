@@ -48,22 +48,19 @@ public class QuyetDinhController {
 	}
 
 	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Integer pK, Model model)
-			throws SQLException {
+	public String delete(@PathVariable Integer pK, Model model) throws SQLException {
 		quyetDinhService.delete(pK);
 		return "quyetdinh";
 	}
 
 	@PostMapping("/update")
-	public String update(@RequestBody QuyetDinhDTO qd, Model model)
-			throws SQLException {
+	public String update(@RequestBody QuyetDinhDTO qd, Model model) throws SQLException {
 		quyetDinhService.update(qd);
 		return "quyetdinh";
 	}
 
 	@PostMapping("/add")
-	public String insert(@RequestBody QuyetDinhDTO qd, Model model)
-			throws SQLException {
+	public String insert(@RequestBody QuyetDinhDTO qd, Model model) throws SQLException {
 		quyetDinhService.insert(qd);
 		return "quyetdinh";
 	}

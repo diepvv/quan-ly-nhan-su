@@ -1,8 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <div id="formQuyetDinhKhenThuong" class="modal fade" role="dialog">
 	<div class="modal-dialog ">
-
 		<!-- Modal content-->
 		<div class="modal-content">
 			<div class="modal-header">
@@ -52,14 +50,10 @@
 				<input class="form-control" id="fileKy" type="text">
 				
 			</div>
-			
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="btnCapNhap">Cập Nhập</button>
-				<button type="button" class="btn btn-default" data-dismiss="modal"
-					id="btnDong">Đóng</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCapNhap">Cập Nhập</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal" id="btnDong">Đóng</button>
 			</div>
 		</div>
-
 	</div>
 </div>

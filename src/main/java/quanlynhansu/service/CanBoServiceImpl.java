@@ -67,8 +67,7 @@ public class CanBoServiceImpl implements ICanBoService {
 		ArrayList<CanBoDTO> ketqua = new ArrayList<>();
 		Iterable<Canbo> listFromDb = repo.findAll();
 		for (Canbo d : listFromDb) {
-			DonViChucNangDTO donViChucNangDto = mapper.map(
-					d.getDonvichucnang(), DonViChucNangDTO.class);
+			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
 			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
 			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
 			canBoDto.setDonViChucNang(donViChucNangDto);
@@ -119,8 +118,7 @@ public class CanBoServiceImpl implements ICanBoService {
 			canBoDto.setBoMon(boMonDto);
 		}
 		if (entity.getBacluong() != null) {
-			BacLuongDTO bacLuongDto = mapper.map(entity.getBacluong(),
-					BacLuongDTO.class);
+			BacLuongDTO bacLuongDto = mapper.map(entity.getBacluong(), BacLuongDTO.class);
 			canBoDto.setBacLuong(bacLuongDto);
 		}
 		return canBoDto;

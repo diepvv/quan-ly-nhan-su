@@ -20,24 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        
-        http
-        .authorizeRequests()
-            .antMatchers("/resources/**").permitAll()
-            .anyRequest().authenticated()
-            .and()
-        .formLogin()
-            .loginPage("/loginController")
-            .loginProcessingUrl("/perform_login")
-            .defaultSuccessUrl("/canBoController/show")
-            .failureUrl("/error.jsp")
-            .permitAll()
-            .and()
-        .logout()
-            .logoutSuccessUrl("/loginController")
-            .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-            .deleteCookies("JSESSIONID")
-            .permitAll();
-        ;
+        http.authorizeRequests().anyRequest().permitAll();
+        http.csrf().disable();
     }
 }
