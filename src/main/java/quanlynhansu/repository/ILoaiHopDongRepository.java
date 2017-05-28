@@ -8,10 +8,7 @@ import org.springframework.stereotype.Repository;
 import quanlynhansu.model.entity.Loaihopdong;
 
 @Repository
-public interface ILoaiHopDongRepository extends
-		CrudRepository<Loaihopdong, Integer> {
+public interface ILoaiHopDongRepository extends CrudRepository<Loaihopdong, Integer> {
 	@Query("SELECT lhd from Loaihopdong lhd where lhd.pk=:pk and lhd.version=:version")
-	Loaihopdong findOneByPkAndVersion(@Param("pk") Integer pk,
-			@Param("version") Integer version);
-
+	Loaihopdong findOneByPkAndVersion(@Param("pk") Integer pk, @Param("version") Integer version);
 }

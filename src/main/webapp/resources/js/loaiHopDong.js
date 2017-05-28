@@ -34,7 +34,6 @@ $(document).ready(function() {
 		                	 txtPk.val(-1);
 		                	 txtTenLoaiHopDong.val("");
 		                	 txtVersion.val("");
-		                     
 		                     $('#formLoaiHopDong').modal('show');
 		                 },
 		              }
@@ -49,10 +48,9 @@ $(document).ready(function() {
 		$('#LoaiHopDongTable tbody').on( 'click', 'button', function () {
 			var id = $(this)[0].id;
 			if("btnDel" == id){
-	        var data = table.row($(this).parents('tr')).data();
-	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
-                    + data['tenLoaiHopDong'])
-                    var pK = data['pk'];
+		        var data = table.row($(this).parents('tr')).data();
+		        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : " + data['tenLoaiHopDong'])
+	            var pK = data['pk'];
 	            if(check==true){
 	            	$.ajax({  
 	                    url: loaiHopDongController+"/delete/"+pK,  
@@ -61,28 +59,27 @@ $(document).ready(function() {
 	                    	table.ajax.reload();	                    }  
 	                });
 	            }
-                    
 			}
 	    });
 		
 		$('#LoaiHopDongTable tbody').on( 'click', 'button', function () {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
-					var data = table.row($(this).parents('tr')).data();
-                    var pK = data['pk'];
-					var txtPk = $(pk);
-					var txtVersion = $(version);
-                	var txtTenLoaiHopDong=$(tenLoaiHopDong);
-	            	$.ajax({  
-	                    url: loaiHopDongService+"/getById/"+pK,  
-	                    type: 'GET',  
-	                    success: function (res) {
-	                    	 txtPk.val(pK);
-		                	 txtTenLoaiHopDong.val(res.tenLoaiHopDong);
-		                	 txtVersion.val(res.version);
-		                     $('#formLoaiHopDong').modal('show');
-	                    }
-	                });
+				var data = table.row($(this).parents('tr')).data();
+                var pK = data['pk'];
+				var txtPk = $(pk);
+				var txtVersion = $(version);
+            	var txtTenLoaiHopDong=$(tenLoaiHopDong);
+            	$.ajax({  
+                    url: loaiHopDongService+"/getById/"+pK,  
+                    type: 'GET',  
+                    success: function (res) {
+                    	 txtPk.val(pK);
+	                	 txtTenLoaiHopDong.val(res.tenLoaiHopDong);
+	                	 txtVersion.val(res.version);
+	                     $('#formLoaiHopDong').modal('show');
+                    }
+                });
 			}	
 	    });
 		
@@ -132,9 +129,4 @@ $(document).ready(function() {
             $("#formTest").find('.has-feedback').removeClass("has-feedback");
         });
     	
-	});
-	
-	
-		 
-		
-		 
+	}); 

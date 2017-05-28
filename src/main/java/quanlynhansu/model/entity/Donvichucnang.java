@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -37,11 +38,13 @@ public class Donvichucnang implements Serializable {
 	private Integer version = 0;
 	@Fetch(FetchMode.SUBSELECT)
 	@OneToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "donvichucnang_bomon", 
-			   joinColumns = @JoinColumn(name = "donViChucNang_pk", referencedColumnName = "pk", foreignKey = @ForeignKey(name = "FK_donvichucnang_bomon_donvichucnang")), 
-			   inverseJoinColumns = @JoinColumn(name = "boMon_pk", referencedColumnName = "pk", foreignKey = @ForeignKey(name = "FK_donvichucnang_bomon_bomon")), 
-			   uniqueConstraints = { @UniqueConstraint(name = "UK_donvichucnang_bomon", columnNames = {"donViChucNang_pk", "boMon_pk" }) })
+	@JoinTable(name = "donvichucnang_bomon", joinColumns = @JoinColumn(name = "donViChucNang_pk", referencedColumnName = "pk", foreignKey = @ForeignKey(name = "FK_donvichucnang_bomon_donvichucnang")), inverseJoinColumns = @JoinColumn(name = "boMon_pk", referencedColumnName = "pk", foreignKey = @ForeignKey(name = "FK_donvichucnang_bomon_bomon")), uniqueConstraints = { @UniqueConstraint(name = "UK_donvichucnang_bomon", columnNames = {
+			"donViChucNang_pk", "boMon_pk" }) })
 	private Set<Bomon> boMons = new HashSet<>();
+
+	@Fetch(FetchMode.SUBSELECT)
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "donvichucnang", cascade = CascadeType.ALL, orphanRemoval = true)
+	private Set<Canbo> canBos = new HashSet<>();
 
 	public Donvichucnang() {
 	}
@@ -85,5 +88,5 @@ public class Donvichucnang implements Serializable {
 	public void setVersion(Integer version) {
 		this.version = version;
 	}
-	
+
 }
