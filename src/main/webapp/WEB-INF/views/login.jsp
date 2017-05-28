@@ -17,10 +17,10 @@
 				<div class="signin-form profile">
 					<h2>ĐĂNG NHẬP HỆ THỐNG</h2>
 					<div class="login-form">
-						<form action="#" method="post">
-							<input type="text" name="user" placeholder="Tên đăng nhập" required="">
-							<input type="password" name="password" placeholder="Mật khẩu"
-								required="">
+						<form action="/perform_login" name="f" method="post">
+							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+							<input type="text" name="username" id=username"" placeholder="Tên đăng nhập" required>
+							<input type="password" name="password" id="password" placeholder="Mật khẩu" required>
 							<div class="tp">
 								<input type="submit" value="Đăng Nhập">
 							</div>
