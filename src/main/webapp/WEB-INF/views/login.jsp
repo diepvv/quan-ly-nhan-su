@@ -15,6 +15,10 @@
 			<div class="registration">
 				<div class="signin-form profile">
 					<h2>ĐĂNG NHẬP HỆ THỐNG</h2>
+					<c:if test="${not isFail}">
+						Dang nhap sai
+					</c:if>
+					
 					<div class="login-form">
 						<form action="/perform_login" name="f" method="post">
 							<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
