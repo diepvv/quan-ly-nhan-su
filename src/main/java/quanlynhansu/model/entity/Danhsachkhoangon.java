@@ -14,7 +14,7 @@ public class Danhsachkhoangon implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "donViChucNangDskg_pk", foreignKey = @ForeignKey(name = "donViChucNangDskg_pk"))
 	private Donvichucnang donvichucnang;
 
