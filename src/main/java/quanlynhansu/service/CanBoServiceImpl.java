@@ -186,11 +186,140 @@ public class CanBoServiceImpl implements ICanBoService {
 		}
 		return repo.save(entity);
 	}
+	
 	@Override
 	public Set<CanBoDTO> getByGioiTinh(String cbGioiTinhs){
 		Set<CanBoDTO> ketqua = new HashSet<>();
 		Set<Canbo> entities  = new HashSet<>();
 		entities = repo.findByGioiTinh(cbGioiTinhs);
+		for (Canbo d : entities) {
+			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
+			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
+			canBoDto.setDonViChucNang(donViChucNangDto);
+			canBoDto.setChucVu(chucVuDto);
+			ketqua.add(canBoDto);
+		}
+		return ketqua;
+	}
+	
+	@Override
+	public Set<CanBoDTO> getByDanToc(Integer cbDanTocs){
+		Set<CanBoDTO> ketqua = new HashSet<>();
+		Set<Canbo> entities  = new HashSet<>();
+		entities = repo.findByDanToc(cbDanTocs);
+		for (Canbo d : entities) {
+			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
+			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
+			canBoDto.setDonViChucNang(donViChucNangDto);
+			canBoDto.setChucVu(chucVuDto);
+			ketqua.add(canBoDto);
+		}
+		return ketqua;
+	}
+	
+	@Override
+	public Set<CanBoDTO> getByTonGiao(Integer cbTonGiaos){
+		Set<CanBoDTO> ketqua = new HashSet<>();
+		Set<Canbo> entities  = new HashSet<>();
+		entities = repo.findByTonGiao(cbTonGiaos);
+		for (Canbo d : entities) {
+			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
+			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
+			canBoDto.setDonViChucNang(donViChucNangDto);
+			canBoDto.setChucVu(chucVuDto);
+			ketqua.add(canBoDto);
+		}
+		return ketqua;
+	}
+	
+	@Override
+	public Set<CanBoDTO> getByChucVu(Integer cbChucVus){
+		Set<CanBoDTO> ketqua = new HashSet<>();
+		Set<Canbo> entities  = new HashSet<>();
+		entities = repo.findByChucVu(cbChucVus);
+		for (Canbo d : entities) {
+			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
+			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
+			canBoDto.setDonViChucNang(donViChucNangDto);
+			canBoDto.setChucVu(chucVuDto);
+			ketqua.add(canBoDto);
+		}
+		return ketqua;
+	}
+	
+	@Override
+	public Set<CanBoDTO> getByChucDanh(String chucDanh){
+		Set<CanBoDTO> ketqua = new HashSet<>();
+		Set<Canbo> entities  = new HashSet<>();
+		entities = repo.findByChucDanh(chucDanh);
+		for (Canbo d : entities) {
+			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
+			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
+			canBoDto.setDonViChucNang(donViChucNangDto);
+			canBoDto.setChucVu(chucVuDto);
+			ketqua.add(canBoDto);
+		}
+		return ketqua;
+	}
+	
+	@Override
+	public Set<CanBoDTO> getByDonViBoMon(Integer cbDonViChucNangs, Integer cbBoMons){
+		Set<CanBoDTO> ketqua = new HashSet<>();
+		Set<Canbo> entities  = new HashSet<>();
+		entities = repo.findByDonViBoMon(cbDonViChucNangs, cbBoMons);
+		for (Canbo d : entities) {
+			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
+			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
+			canBoDto.setDonViChucNang(donViChucNangDto);
+			canBoDto.setChucVu(chucVuDto);
+			ketqua.add(canBoDto);
+		}
+		return ketqua;
+	}
+	
+	@Override
+	public Set<CanBoDTO> getByQueQuan(Integer cbQueQuans){
+		Set<CanBoDTO> ketqua = new HashSet<>();
+		Set<Canbo> entities  = new HashSet<>();
+		entities = repo.findByQueQuan(cbQueQuans);
+		for (Canbo d : entities) {
+			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
+			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
+			canBoDto.setDonViChucNang(donViChucNangDto);
+			canBoDto.setChucVu(chucVuDto);
+			ketqua.add(canBoDto);
+		}
+		return ketqua;
+	}
+	
+	@Override
+	public Set<CanBoDTO> getByNgachCongChuc(Integer cbNgachCongChucs){
+		Set<CanBoDTO> ketqua = new HashSet<>();
+		Set<Canbo> entities  = new HashSet<>();
+		entities = repo.findByNgachCongChuc(cbNgachCongChucs);
+		for (Canbo d : entities) {
+			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
+			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
+			canBoDto.setDonViChucNang(donViChucNangDto);
+			canBoDto.setChucVu(chucVuDto);
+			ketqua.add(canBoDto);
+		}
+		return ketqua;
+	}
+	
+	@Override
+	public Set<CanBoDTO> getByDonViChucNang(Integer txtDonViChucNangs){
+		Set<CanBoDTO> ketqua = new HashSet<>();
+		Set<Canbo> entities  = new HashSet<>();
+		entities = repo.findByDonViChucNang(txtDonViChucNangs);
 		for (Canbo d : entities) {
 			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
 			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);

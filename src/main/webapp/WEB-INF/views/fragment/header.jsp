@@ -8,8 +8,7 @@
 	<%@include file="slideMenu.jsp"%>
 
 	<li class="second logo"><h1>
-			<a href="/"><i class="fa fa-graduation-cap" aria-hidden="true"></i>TRANG
-				CHỦ </a>
+			<a href="/"><i class="fa fa-graduation-cap" aria-hidden="true"></i>TRANG CHỦ </a>
 		</h1></li>
 	<li class="second admin-pic">
 		<ul class="top_dp_agile">
@@ -23,10 +22,7 @@
 			</a>
 				<ul class="dropdown-menu drp-mnu">
 					<li><a href="#"><i class="fa fa-cog"></i> Xin chào AD</a></li>
-					<li><a href="/addAdminController"><i class="fa fa-user"></i>
-							Thêm admin</a></li>
-					<li><a href="/logout"><i class="fa fa-sign-out"></i>
-							Đăng xuất</a></li>
+					<li><a href="/logout"><i class="fa fa-sign-out"></i>Đăng xuất</a></li>
 				</ul></li>
 
 		</ul>
@@ -34,8 +30,7 @@
 
 	<li class="second logo">
 		<h1>
-			<a href=""><i class="fa fa-graduation-cap" aria-hidden="true"></i>QUẢN
-				LÝ NHÂN SỰ TRƯỜNG ĐẠI HỌC </a>
+			<a href=""><i class="fa fa-graduation-cap" aria-hidden="true"></i>QUẢN LÝ NHÂN SỰ</a>
 		</h1>
 	</li>
 	<li class="second full-screen">
@@ -45,11 +40,8 @@
 			</button>
 		</section>
 	</li>
-
-
 	</ul>
 	<!-- //nav -->
-
 </div>
 <div class="clearfix"></div>
 <!-- //w3_agileits_top_nav-->

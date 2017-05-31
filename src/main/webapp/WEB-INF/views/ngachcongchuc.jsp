@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Ngach Cong Chuc</title>
+<title>Ngạch công chức</title>
 <%@include file="fragment/importResources.jsp"%>
 <%@include file="fragment/importDataTableResources.jsp"%>
 <script src="<c:url value='/resources/js/ngachCongChuc.js' />"></script>

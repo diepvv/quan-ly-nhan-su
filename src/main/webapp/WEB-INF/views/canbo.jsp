@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>DANH SACH CAN BO</title>
+<title>Danh sách cán bộ</title>
 <%@include file="fragment/importResources.jsp"%>
 <%@include file="fragment/importDataTableResources.jsp"%>
 <script src="<c:url value='/resources/js/canbo.js' />"></script>

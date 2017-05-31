@@ -105,7 +105,7 @@
 		</div>
 		<div class="col-md-3">
 			<div class="form-group">
-				<label for="tonGiao_pk">Tôn giáo</label></br>
+				<label for="tonGiao_pk">Tôn giáo</label>
 				<c:if test="${not empty tonGiaoLists}">
 					<select class="form-control my-select-control-style" id="tonGiao_pk" required="true">
 						<c:forEach var="dto" items="${tonGiaoLists}">
@@ -169,7 +169,7 @@
 	<div class="row">
 		<div class="col-md-3">
 			<div class="form-group">
-				<label for="chucVu_pk">Chức vụ hiện tại</label></br>
+				<label for="chucVu_pk">Chức vụ hiện tại</label>
 				<c:if test="${not empty chucVuLists}">
 					<select class="form-control my-select-control-style" id="chucVu_pk" required="true">
 						<c:forEach var="dto" items="${chucVuLists}">

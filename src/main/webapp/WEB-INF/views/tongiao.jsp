@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Ton Giao</title>
+<title>Tôn giáo</title>
 <%@include file="fragment/importResources.jsp"%>
 <%@include file="fragment/importDataTableResources.jsp"%>
 <script src="<c:url value='/resources/js/tonGiao.js' />"></script>

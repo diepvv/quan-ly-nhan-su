@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Quyet Dinh Khen Thuong</title>
+<title>Quyết định khen thưởng</title>
 <%@include file="fragment/importResources.jsp"%>
 <%@include file="fragment/importDataTableResources.jsp"%>
 <script src="<c:url value='/resources/js/quyetDinhKhenThuong.js' />"></script>

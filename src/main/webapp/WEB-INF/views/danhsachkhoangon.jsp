@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Danh sach khoan gon</title>
+<title>Danh sách khoán gọn</title>
 <%@include file="fragment/importResources.jsp"%>
 <%@include file="fragment/importDataTableResources.jsp"%>
 <script src="<c:url value='/resources/js/danhSachKhoanGon.js' />"></script>

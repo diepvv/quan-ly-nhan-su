@@ -32,6 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/loginController?result=false")
                 .permitAll()
                 .and()
+                .csrf().disable()
             .logout()
                 .logoutSuccessUrl("/loginController")
                 .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))

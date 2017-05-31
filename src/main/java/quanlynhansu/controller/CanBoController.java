@@ -68,24 +68,20 @@ public class CanBoController {
 	}
 
 	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
-	public String delete(
-			@PathVariable(value = "pK") Integer pK,
-			@RequestParam(value = "version") Integer version) {
+	public String delete(@PathVariable(value = "pK") Integer pK, @RequestParam(value = "version") Integer version) {
 		canBoService.delete(pK, version);
 		return "canbo";
 	}
 
 	@PostMapping("/update")
-	public String update(@RequestBody CanBoDTO dskg, Model model)
-			throws SQLException {
-		canBoService.update(dskg);
+	public String update(@RequestBody CanBoDTO dscb, Model model) throws SQLException {
+		canBoService.update(dscb);
 		return "canbo";
 	}
 
 	@PostMapping("/add")
-	public String insert(@RequestBody CanBoDTO dskg, Model model)
-			throws SQLException {
-		canBoService.insert(dskg);
+	public String insert(@RequestBody CanBoDTO dscb, Model model) throws SQLException {
+		canBoService.insert(dscb);
 		return "canbo";
 	}
 }

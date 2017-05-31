@@ -64,127 +64,127 @@ $(document).ready(function() {
 			          {
 		                 text: 'Thêm Cán Bộ',
 		                 action: function ( e, dt, node, config ) {
-		                	 var txtPk = $(pk);
-		                	 var txtVersion = $(version);
-		                	 var txtSoHieu = $(soHieu);
-		                	 var txtDonViChucNang_pk = $(donViChucNang_pk);
-		                	 var txtBoMon_pk = $(boMon_pk);
-		                	 var txtImageUrl = $(imageUrl);
-		                	 var txtTen = $( ten);
-		                	 var txtTenGoiKhac = $(tenGoiKhac);
-		                	 var txtNgaySinh = $(ngaySinh);
-		                	 var txtGioiTinh = $(gioiTinh);
-		                	 var txtNoiSinh = $( noiSinh);
-		                	 var txtQueQuan = $(queQuan_pk);
-		                	 var txtDanToc_pk = $( danToc_pk);
-		                	 var txtTonGiao_pk = $( tonGiao_pk);
-		                	 var txtSoCmnd = $( soCmnd);
-		                	 var txtNgayCapCmnd = $( ngayCapCmnd);
-		                	 var txtNoiCapCmnd = $( noiCapCmnd);
-		                	 var txtNoiDKHoKhauThuongTru = $( noiDKHoKhauThuongTru);
-		                	 var txtNoiOHienNay = $( noiOHienNay);
-		                	 var txtNgheNghiepKhiTuyenDung = $( ngheNghiepKhiTuyenDung);
-		                	 var txtCoQuanTuyenDung = $( coQuanTuyenDung);
-		                	 var txtNgayTuyenDung = $(ngayTuyenDung);
-		                	 var txtChucVu_pk = $(chucVu_pk);
-		                	 var txtCongViecDuocGiao = $( congViecDuocGiao);
-		                	 var txtChucDanh = $(chucDanh);
-		                	 var txtNgachCongChuc_pk = $( ngachCongChuc_pk);
-		                	 var txtBacLuong_pk = $( bacLuong_pk);
-		                	 var txtNgayHuong = $(ngayHuong);
-		                	 var txtPhuCapChucVu = $( phuCapChucVu);
-		                	 var txtPhuCapKhac = $( phuCapKhac);
-		                	 var txtTrinhDoGiaoDucPt = $(trinhDoGiaoDucPt);
-		                	 var txtTrinhDoChuyenMon = $(trinhDoChuyenMon);
-		                	 var txtHocVi = $( hocVi);
-		                	 var txtHocHam = $(hocHam);
-		                	 var txtNgayNhanHocVi = $(ngayNhanHocVi);
-		                	 var txtNgayNhanHocHam = $(ngayNhanHocHam);
-		                	 var txtLyLuanChinhTri = $(lyLuanChinhTri);
-		                	 var txtQuanLyNhaNuoc = $( quanLyNhaNuoc);
-		                	 var txtNgoaiNgu = $( ngoaiNgu);
-		                	 var txtTinHoc = $( tinHoc);
-		                	 var txtNgayVaoDcsvnDuBi = $(ngayVaoDcsvnDuBi);
-		                	 var txtNgayVaoDcsvnChinhThuc = $(ngayVaoDcsvnChinhThuc);
-		                	 var txtThamGiaToChucCtxh = $(thamGiaToChucCtxh);
-		                	 var txtNgayNhapNgu = $(ngayNhapNgu);
-		                	 var txtNgayXuatNgu = $(ngayXuatNgu);
-		                	 var txtQuanHamCaoNhat = $(quanHamCaoNhat);
-		                	 var txtDanhHieuPhongTang = $( danhHieuPhongTang);
-		                	 var txtSoTruongCongTac = $(soTruongCongTac);
-		                	 var txtKhenThuong = $(khenThuong);
-		                	 var txtKyLuat = $(kyLuat);
-		                	 var txtTinhTrangSucKhoe = $(tinhTrangSucKhoe);
-		                	 var txtChieuCao = $(chieuCao);
-		                	 var txtCanNang = $( canNang);
-		                	 var txtNhomMau = $(nhomMau);
-		                	 var txtSoBaoHiemXh = $(soBaoHiemXh);
-		                	 var txtLaThuongBinh = $( laThuongBinh);
-		                	 var txtLaConGiaDinhChinhSach = $( laConGiaDinhChinhSach);
-		                	 var txtNhanXet = $( nhanXet);
-		                	 var txtNgayVeHuu = $( ngayVeHuu);
-		                	 var txtNgayThoiViec = $( ngayThoiViec);
+		                	 var txtPkAdd = $(pkAdd);
+		                	 var txtVersionAdd = $(versionAdd);
+		                	 var txtSoHieuAdd = $(soHieuAdd);
+		                	 var txtDonViChucNang_pkAdd = $(donViChucNang_pkAdd);
+		                	 var txtBoMon_pkAdd = $(boMon_pkAdd);
+		                	 var txtImageUrlAdd = $(imageUrlAdd);
+		                	 var txtTenAdd = $( tenAdd);
+		                	 var txtTenGoiKhacAdd = $(tenGoiKhacAdd);
+		                	 var txtNgaySinhAdd = $(ngaySinhAdd);
+		                	 var txtGioiTinhAdd = $(gioiTinhAdd);
+		                	 var txtNoiSinhAdd = $( noiSinhAdd);
+		                	 var txtQueQuanAdd = $(queQuan_pkAdd);
+		                	 var txtDanToc_pkAdd = $( danToc_pkAdd);
+		                	 var txtTonGiao_pkAdd = $( tonGiao_pkAdd);
+		                	 var txtSoCmndAdd = $( soCmndAdd);
+		                	 var txtNgayCapCmndAdd = $( ngayCapCmndAdd);
+		                	 var txtNoiCapCmndAdd = $( noiCapCmndAdd);
+		                	 var txtNoiDKHoKhauThuongTruAdd = $( noiDKHoKhauThuongTruAdd);
+		                	 var txtNoiOHienNayAdd = $( noiOHienNayAdd);
+		                	 var txtNgheNghiepKhiTuyenDungAdd = $( ngheNghiepKhiTuyenDungAdd);
+		                	 var txtCoQuanTuyenDungAdd = $( coQuanTuyenDungAdd);
+		                	 var txtNgayTuyenDungAdd = $(ngayTuyenDungAdd);
+		                	 var txtChucVu_pkAdd = $(chucVu_pkAdd);
+		                	 var txtCongViecDuocGiaoAdd = $( congViecDuocGiaoAdd);
+		                	 var txtChucDanhAdd = $(chucDanhAdd);
+		                	 var txtNgachCongChuc_pkAdd = $( ngachCongChuc_pkAdd);
+		                	 var txtBacLuong_pkAdd = $( bacLuong_pkAdd);
+		                	 var txtNgayHuongAdd = $(ngayHuongAdd);
+		                	 var txtPhuCapChucVuAdd = $( phuCapChucVuAdd);
+		                	 var txtPhuCapKhacAdd = $( phuCapKhacAdd);
+		                	 var txtTrinhDoGiaoDucPtAdd = $(trinhDoGiaoDucPtAdd);
+		                	 var txtTrinhDoChuyenMonAdd = $(trinhDoChuyenMonAdd);
+		                	 var txtHocViAdd = $( hocViAdd);
+		                	 var txtHocHamAdd = $(hocHamAdd);
+		                	 var txtNgayNhanHocViAdd = $(ngayNhanHocViAdd);
+		                	 var txtNgayNhanHocHamAdd = $(ngayNhanHocHamAdd);
+		                	 var txtLyLuanChinhTriAdd = $(lyLuanChinhTriAdd);
+		                	 var txtQuanLyNhaNuocAdd = $( quanLyNhaNuocAdd);
+		                	 var txtNgoaiNguAdd = $( ngoaiNguAdd);
+		                	 var txtTinHocAdd = $( tinHocAdd);
+		                	 var txtNgayVaoDcsvnDuBiAdd = $(ngayVaoDcsvnDuBiAdd);
+		                	 var txtNgayVaoDcsvnChinhThucAdd = $(ngayVaoDcsvnChinhThucAdd);
+		                	 var txtThamGiaToChucCtxhAdd = $(thamGiaToChucCtxhAdd);
+		                	 var txtNgayNhapNguAdd = $(ngayNhapNguAdd);
+		                	 var txtNgayXuatNguAdd = $(ngayXuatNguAdd);
+		                	 var txtQuanHamCaoNhatAdd = $(quanHamCaoNhatAdd);
+		                	 var txtDanhHieuPhongTangAdd = $( danhHieuPhongTangAdd);
+		                	 var txtSoTruongCongTacAdd = $(soTruongCongTacAdd);
+		                	 var txtKhenThuongAdd = $(khenThuongAdd);
+		                	 var txtKyLuatAdd = $(kyLuatAdd);
+		                	 var txtTinhTrangSucKhoeAdd = $(tinhTrangSucKhoeAdd);
+		                	 var txtChieuCaoAdd = $(chieuCaoAdd);
+		                	 var txtCanNangAdd = $( canNangAdd);
+		                	 var txtNhomMauAdd = $(nhomMauAdd);
+		                	 var txtSoBaoHiemXhAdd = $(soBaoHiemXhAdd);
+		                	 var txtLaThuongBinhAdd = $( laThuongBinhAdd);
+		                	 var txtLaConGiaDinhChinhSachAdd = $( laConGiaDinhChinhSachAdd);
+		                	 var txtNhanXetAdd = $( nhanXetAdd);
+		                	 var txtNgayVeHuuAdd = $( ngayVeHuuAdd);
+		                	 var txtNgayThoiViecAdd = $( ngayThoiViecAdd);
 		                	 
-		                	 txtPk.val(-1);
-		                	 txtVersion.val("");
-		                	 txtSoHieu.val("");
-		                	 txtDonViChucNang_pk.val("");
-		                	 txtBoMon_pk.val("");
-		                	 txtImageUrl.val("");
-		                	 txtTen.val("");
-		                	 txtTenGoiKhac.val("");
-		                	 txtNgaySinh.val("");
-		                	 txtGioiTinh.val("");
-		                	 txtNoiSinh.val("");
-		                	 txtQueQuan.val("");
-		                	 txtDanToc_pk.val("");
-		                	 txtTonGiao_pk.val("");
-		                	 txtSoCmnd.val("");
-		                	 txtNgayCapCmnd.val("");
-		                	 txtNoiCapCmnd.val("");
-		                	 txtNoiDKHoKhauThuongTru.val("");
-		                	 txtNoiOHienNay.val("");
-		                	 txtNgheNghiepKhiTuyenDung.val("");
-		                	 txtCoQuanTuyenDung.val("Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh");
-		                	 txtNgayTuyenDung.val("");
-		                	 txtChucVu_pk.val("");
-		                	 txtCongViecDuocGiao.val("Giảng dạy");
-		                	 txtChucDanh.val("Giảng viên");
-		                	 txtNgachCongChuc_pk.val("");
-		                	 txtBacLuong_pk.val("");
-		                	 txtNgayHuong.val("");
-		                	 txtPhuCapChucVu.val("");
-		                	 txtPhuCapKhac.val("");
-		                	 txtTrinhDoGiaoDucPt.val("12/12");
-		                	 txtTrinhDoChuyenMon.val("");
-		                	 txtHocVi.val("");
-		                	 txtHocHam.val("");
-		                	 txtNgayNhanHocVi.val("");
-		                	 txtNgayNhanHocHam.val("");
-		                	 txtLyLuanChinhTri.val("Sơ cấp");
-		                	 txtQuanLyNhaNuoc.val("");
-		                	 txtNgoaiNgu.val("Anh văn");
-		                	 txtTinHoc.val("");
-		                	 txtNgayVaoDcsvnDuBi.val("");
-		                	 txtNgayVaoDcsvnChinhThuc.val("");
-		                	 txtThamGiaToChucCtxh.val("Đoàn thanh niên Cộng Sản Hồ Chí Minh");
-		                	 txtNgayNhapNgu.val("");
-		                	 txtNgayXuatNgu.val("");
-		                	 txtQuanHamCaoNhat.val("");
-		                	 txtDanhHieuPhongTang.val("");
-		                	 txtSoTruongCongTac.val("");
-		                	 txtKhenThuong.val("");
-		                	 txtKyLuat.val("");
-		                	 txtTinhTrangSucKhoe.val("Tốt");
-		                	 txtChieuCao.val("");
-		                	 txtCanNang.val("");
-		                	 txtNhomMau.val("");
-		                	 txtSoBaoHiemXh.val("");
-		                	 txtLaThuongBinh.val("");
-		                	 txtLaConGiaDinhChinhSach.val("");
-		                	 txtNhanXet.val("");
-		                	 txtNgayVeHuu.val("");
-		                	 txtNgayThoiViec.val("");
+		                	 txtPkAdd.val(-1);
+		                	 txtVersionAdd.val("");
+		                	 txtSoHieuAdd.val("");
+		                	 txtDonViChucNang_pkAdd.val("");
+		                	 txtBoMon_pkAdd.val("");
+		                	 txtImageUrlAdd.val("");
+		                	 txtTenAdd.val("");
+		                	 txtTenGoiKhacAdd.val("");
+		                	 txtNgaySinhAdd.val("");
+		                	 txtGioiTinhAdd.val("");
+		                	 txtNoiSinhAdd.val("");
+		                	 txtQueQuanAdd.val("");
+		                	 txtDanToc_pkAdd.val("");
+		                	 txtTonGiao_pkAdd.val("");
+		                	 txtSoCmndAdd.val("");
+		                	 txtNgayCapCmndAdd.val("");
+		                	 txtNoiCapCmndAdd.val("");
+		                	 txtNoiDKHoKhauThuongTruAdd.val("");
+		                	 txtNoiOHienNayAdd.val("");
+		                	 txtNgheNghiepKhiTuyenDungAdd.val("");
+		                	 txtCoQuanTuyenDungAdd.val("Trường đại học giao thông vận tải phân hiệu TP Hồ Chí Minh");
+		                	 txtNgayTuyenDungAdd.val("");
+		                	 txtChucVu_pkAdd.val("");
+		                	 txtCongViecDuocGiaoAdd.val("Giảng dạy");
+		                	 txtChucDanhAdd.val("Giảng viên");
+		                	 txtNgachCongChuc_pkAdd.val("");
+		                	 txtBacLuong_pkAdd.val("");
+		                	 txtNgayHuongAdd.val("");
+		                	 txtPhuCapChucVuAdd.val("");
+		                	 txtPhuCapKhacAdd.val("");
+		                	 txtTrinhDoGiaoDucPtAdd.val("12/12");
+		                	 txtTrinhDoChuyenMonAdd.val("");
+		                	 txtHocViAdd.val("");
+		                	 txtHocHamAdd.val("");
+		                	 txtNgayNhanHocViAdd.val("");
+		                	 txtNgayNhanHocHamAdd.val("");
+		                	 txtLyLuanChinhTriAdd.val("Sơ cấp");
+		                	 txtQuanLyNhaNuocAdd.val("");
+		                	 txtNgoaiNguAdd.val("Anh văn");
+		                	 txtTinHocAdd.val("");
+		                	 txtNgayVaoDcsvnDuBiAdd.val("");
+		                	 txtNgayVaoDcsvnChinhThucAdd.val("");
+		                	 txtThamGiaToChucCtxhAdd.val("Đoàn thanh niên Cộng Sản Hồ Chí Minh");
+		                	 txtNgayNhapNguAdd.val("");
+		                	 txtNgayXuatNguAdd.val("");
+		                	 txtQuanHamCaoNhatAdd.val("");
+		                	 txtDanhHieuPhongTangAdd.val("");
+		                	 txtSoTruongCongTacAdd.val("");
+		                	 txtKhenThuongAdd.val("");
+		                	 txtKyLuatAdd.val("");
+		                	 txtTinhTrangSucKhoeAdd.val("Tốt");
+		                	 txtChieuCaoAdd.val("");
+		                	 txtCanNangAdd.val("");
+		                	 txtNhomMauAdd.val("");
+		                	 txtSoBaoHiemXhAdd.val("");
+		                	 txtLaThuongBinhAdd.val("");
+		                	 txtLaConGiaDinhChinhSachAdd.val("");
+		                	 txtNhanXetAdd.val("");
+		                	 txtNgayVeHuuAdd.val("");
+		                	 txtNgayThoiViecAdd.val("");
 		                     $('#themCanBoForm').modal('show');
 		                 },
 		              },
@@ -245,7 +245,7 @@ $(document).ready(function() {
 			}else if($(hidTieuChi).val() == "boMonChuyenMon"){
 				var cbDonViChucNangs = $(cbDonViChucNang).val();
 				var cbBoMons = $(cbBoMon).val();
-				thongKeUrl = canBoService + "/getByBoMon/" + cbDonViChucNangs;
+				thongKeUrl = canBoService + "/getByBoMon/"+cbDonViChucNangs+"?boMon="+cbBoMons;
 			}else if($(hidTieuChi).val() == "queQuan"){
 				var cbQueQuans = $(cbQueQuan).val();
 				thongKeUrl = canBoService + "/getByQueQuan/" + cbQueQuans;
@@ -253,7 +253,13 @@ $(document).ready(function() {
 				var cbNgachCongChucs = $(cbNgachCongChuc).val();
 				thongKeUrl = canBoService + "/getByNgachCongChuc/" + cbNgachCongChucs;
 			}
-			alert(thongKeUrl);
+			table.ajax.url(thongKeUrl);
+			table.ajax.reload();
+		});
+		
+		$("button#btnXacNhanDonViCongTac").click(function(e) {
+			var txtDonViChucNangs = $(txtThongKeDonViChucNang).val();
+			thongKeUrl = canBoService + "/getByDonViChucNang/" + txtDonViChucNangs;
 			table.ajax.url(thongKeUrl);
 			table.ajax.reload();
 		});
@@ -440,7 +446,7 @@ $(document).ready(function() {
 	    });
 		
 		$("button#btnCapNhapSoYeuLyLich").click(function(e) {
-			 var endpointUrl = '/canBoController/add';
+			 var endpointUrl = '/canBoController/update';
 			 var txtPk = $(pk);
 	       	 var txtSoHieu = $(soHieu);
 	       	 var txtDonViChucNang_pk = $(donViChucNang_pk);
@@ -578,9 +584,6 @@ $(document).ready(function() {
 	       	 json.ngayVeHuu = txtNgayVeHuu.val();
 	       	 json.ngayThoiViec = txtNgayThoiViec.val();
 	       	 json.version = txtVersion.val();
-	       	 if(txtPk.val() != -1){
-            	 endpointUrl = '/canBoController/update';
-             }
 	       	 
 	       	 var invalidFields = $("#formTest").find(":invalid");
              if(invalidFields.length == 0){
@@ -592,6 +595,7 @@ $(document).ready(function() {
                 success : function(msg) {
                 	// close modal dialog
         			//$('#themCanBoForm').modal('toggle');
+                	alert("Sửa thành công");
         			$('#ChiTietCanBoForm').modal('toggle');
                     table.ajax.reload();
                 },
@@ -602,12 +606,173 @@ $(document).ready(function() {
             }else {
             	$("#formTest").submit();
             }
-            
+		});
+		
+		$("button#btnThemCanBo").click(function(e) {
+			 var endpointUrl = '/canBoController/add';
+			 var txtPkAdd = $(pkAdd);
+        	 var txtSoHieuAdd = $(soHieuAdd);
+        	 var txtDonViChucNang_pkAdd = $(donViChucNang_pkAdd);
+        	 var txtBoMon_pkAdd = $(boMon_pkAdd);
+        	 var txtImageUrlAdd = $(imageUrlAdd);
+        	 var txtTenAdd = $( tenAdd);
+        	 var txtTenGoiKhacAdd = $(tenGoiKhacAdd);
+        	 var txtNgaySinhAdd = $(ngaySinhAdd);
+        	 var txtGioiTinhAdd = $(gioiTinhAdd);
+        	 var txtNoiSinhAdd = $( noiSinhAdd);
+        	 var txtQueQuanAdd = $(queQuan_pkAdd);
+        	 var txtDanToc_pkAdd = $( danToc_pkAdd);
+        	 var txtTonGiao_pkAdd = $( tonGiao_pkAdd);
+        	 var txtSoCmndAdd = $( soCmndAdd);
+        	 var txtNgayCapCmndAdd = $( ngayCapCmndAdd);
+        	 var txtNoiCapCmndAdd = $( noiCapCmndAdd);
+        	 var txtNoiDKHoKhauThuongTruAdd = $( noiDKHoKhauThuongTruAdd);
+        	 var txtNoiOHienNayAdd = $( noiOHienNayAdd);
+        	 var txtNgheNghiepKhiTuyenDungAdd = $( ngheNghiepKhiTuyenDungAdd);
+        	 var txtCoQuanTuyenDungAdd = $( coQuanTuyenDungAdd);
+        	 var txtNgayTuyenDungAdd = $(ngayTuyenDungAdd);
+        	 var txtChucVu_pkAdd = $(chucVu_pkAdd);
+        	 var txtCongViecDuocGiaoAdd = $( congViecDuocGiaoAdd);
+        	 var txtChucDanhAdd = $(chucDanhAdd);
+        	 var txtNgachCongChuc_pkAdd = $( ngachCongChuc_pkAdd);
+        	 var txtBacLuong_pkAdd = $( bacLuong_pkAdd);
+        	 var txtNgayHuongAdd = $(ngayHuongAdd);
+        	 var txtPhuCapChucVuAdd = $( phuCapChucVuAdd);
+        	 var txtPhuCapKhacAdd = $( phuCapKhacAdd);
+        	 var txtTrinhDoGiaoDucPtAdd = $(trinhDoGiaoDucPtAdd);
+        	 var txtTrinhDoChuyenMonAdd = $(trinhDoChuyenMonAdd);
+        	 var txtHocViAdd = $( hocViAdd);
+        	 var txtHocHamAdd = $(hocHamAdd);
+        	 var txtNgayNhanHocViAdd = $(ngayNhanHocViAdd);
+        	 var txtNgayNhanHocHamAdd = $(ngayNhanHocHamAdd);
+        	 var txtLyLuanChinhTriAdd = $(lyLuanChinhTriAdd);
+        	 var txtQuanLyNhaNuocAdd = $( quanLyNhaNuocAdd);
+        	 var txtNgoaiNguAdd = $( ngoaiNguAdd);
+        	 var txtTinHocAdd = $( tinHocAdd);
+        	 var txtNgayVaoDcsvnDuBiAdd = $(ngayVaoDcsvnDuBiAdd);
+        	 var txtNgayVaoDcsvnChinhThucAdd = $(ngayVaoDcsvnChinhThucAdd);
+        	 var txtThamGiaToChucCtxhAdd = $(thamGiaToChucCtxhAdd);
+        	 var txtNgayNhapNguAdd = $(ngayNhapNguAdd);
+        	 var txtNgayXuatNguAdd = $(ngayXuatNguAdd);
+        	 var txtQuanHamCaoNhatAdd = $(quanHamCaoNhatAdd);
+        	 var txtDanhHieuPhongTangAdd = $( danhHieuPhongTangAdd);
+        	 var txtSoTruongCongTacAdd = $(soTruongCongTacAdd);
+        	 var txtKhenThuongAdd = $(khenThuongAdd);
+        	 var txtKyLuatAdd = $(kyLuatAdd);
+        	 var txtTinhTrangSucKhoeAdd = $(tinhTrangSucKhoeAdd);
+        	 var txtChieuCaoAdd = $(chieuCaoAdd);
+        	 var txtCanNangAdd = $( canNangAdd);
+        	 var txtNhomMauAdd = $(nhomMauAdd);
+        	 var txtSoBaoHiemXhAdd = $(soBaoHiemXhAdd);
+        	 var txtLaThuongBinhAdd = $( laThuongBinhAdd);
+        	 var txtLaConGiaDinhChinhSachAdd = $( laConGiaDinhChinhSachAdd);
+        	 var txtNhanXetAdd = $( nhanXetAdd);
+        	 var txtNgayVeHuuAdd = $( ngayVeHuuAdd);
+        	 var txtNgayThoiViecAdd = $( ngayThoiViecAdd);
+        	 var txtVersionAdd = $(versionAdd);
+	       	 
+	       	 var x = document.forms["formThemCanBo"]["soCmndAdd"].value;
+	         if (isNaN(x)) 
+	         {
+	           alert("Số chứng minh nhân dân chỉ được nhập số");
+	           return false;
+	         }
+	       	 
+	       	 var json = new Object();
+	         json.pk = txtPkAdd.val();
+	       	 json.soHieu = txtSoHieuAdd.val();
+	       	 json.donViChucNang = new Object();
+	       	 json.donViChucNang.pk = txtDonViChucNang_pkAdd.val();
+	       	 json.boMon = new Object();
+	       	 json.boMon.pk = txtBoMon_pkAdd.val();
+	       	 json.imageUrl = txtImageUrlAdd.val();
+	       	 json.ten = txtTenAdd.val();
+	       	 json.tenGoiKhac = txtTenGoiKhacAdd.val();
+	       	 json.ngaySinh = txtNgaySinhAdd.val();
+	       	 json.gioiTinh = txtGioiTinhAdd.val();
+	       	 json.noiSinh = txtNoiSinhAdd.val();
+	       	 json.queQuan = new Object();
+	       	 json.queQuan.pk = txtQueQuanAdd.val();
+	       	 json.danToc = new Object();
+	       	 json.danToc.pk = txtDanToc_pkAdd.val();
+	       	 json.tonGiao = new Object();
+	       	 json.tonGiao.pk = txtTonGiao_pkAdd.val();
+	       	 json.soCmnd = txtSoCmndAdd.val();
+	       	 json.ngayCapCmnd = txtNgayCapCmndAdd.val();
+	       	 json.noiCapCmnd = txtNoiCapCmndAdd.val();
+	       	 json.noiDKHoKhauThuongTru = txtNoiDKHoKhauThuongTruAdd.val();
+	       	 json.noiOHienNay = txtNoiOHienNayAdd.val();
+	       	 json.ngheNghiepKhiTuyenDung = txtNgheNghiepKhiTuyenDungAdd.val();
+	       	 json.coQuanTuyenDung = txtCoQuanTuyenDungAdd.val();
+	       	 json.ngayTuyenDung = txtNgayTuyenDungAdd.val();
+	       	 json.chucVu = new Object();
+	       	 json.chucVu.pk = txtChucVu_pkAdd.val();
+	       	 json.congViecDuocGiao = txtCongViecDuocGiaoAdd.val();
+	       	 json.chucDanh = txtChucDanhAdd.val();
+	       	 json.ngachCongChuc = new Object();
+	       	 json.ngachCongChuc.pk = txtNgachCongChuc_pkAdd.val();
+	       	 json.bacLuong = new Object();
+	       	 json.bacLuong.pk = txtBacLuong_pkAdd.val();
+	       	 json.ngayHuong = txtNgayHuongAdd.val();
+	       	 json.phuCapChucVu = txtPhuCapChucVuAdd.val();
+	       	 json.phuCapChucVu = txtPhuCapKhacAdd.val();
+	       	 json.trinhDoGiaoDucPt = txtTrinhDoGiaoDucPtAdd.val();
+	       	 json.trinhDoChuyenMon = txtTrinhDoChuyenMonAdd.val();
+	       	 json.hocVi = txtHocViAdd.val();
+	       	 json.hocHam = txtHocHamAdd.val();
+	       	 json.ngayNhanHocVi = txtNgayNhanHocViAdd.val();
+	       	 json.ngayNhanHocHam = txtNgayNhanHocHamAdd.val();
+	       	 json.lyLuanChinhTri = txtLyLuanChinhTriAdd.val();
+	       	 json.quanLyNhaNuoc = txtQuanLyNhaNuocAdd.val();
+	       	 json.ngoaiNgu = txtNgoaiNguAdd.val();
+	       	 json.tinHoc = txtTinHocAdd.val();
+	       	 json.ngayVaoDcsvnDuBi = txtNgayVaoDcsvnDuBiAdd.val();
+	       	 json.ngayVaoDcsvnChinhThuc = txtNgayVaoDcsvnChinhThucAdd.val();
+	       	 json.thamGiaToChucCtxh = txtThamGiaToChucCtxhAdd.val();
+	       	 json.ngayNhapNgu = txtNgayNhapNguAdd.val();
+	       	 json.ngayXuatNgu = txtNgayXuatNguAdd.val();
+	       	 json.quanHamCaoNhat = txtQuanHamCaoNhatAdd.val();
+	       	 json.danhHieuPhongTang = txtDanhHieuPhongTangAdd.val();
+	       	 json.soTruongCongTac = txtSoTruongCongTacAdd.val();
+	       	 json.khenThuong = txtKhenThuongAdd.val();
+	       	 json.kyLuat = txtKyLuatAdd.val();
+	       	 json.tinhTrangSucKhoe = txtTinhTrangSucKhoeAdd.val();
+	       	 json.chieuCao = txtChieuCaoAdd.val();
+	       	 json.canNang = txtCanNangAdd.val();
+	       	 json.nhomMau = txtNhomMauAdd.val();
+	       	 json.soBaoHiemXh = txtSoBaoHiemXhAdd.val();
+	       	 json.laThuongBinh = txtLaThuongBinhAdd.val();
+	       	 json.laConGiaDinhChinhSach = txtLaConGiaDinhChinhSachAdd.val();
+	       	 json.nhanXet = txtNhanXetAdd.val();
+	       	 json.ngayVeHuu = txtNgayVeHuuAdd.val();
+	       	 json.ngayThoiViec = txtNgayThoiViecAdd.val();
+	       	 json.version = txtVersionAdd.val();
+	       	 
+	       	 var invalidFields = $("#formThemCanBo").find(":invalid");
+             if(invalidFields.length == 0){
+      		 $.ajax({
+               type : "POST",
+               contentType: "application/json; charset=utf-8",
+               data : JSON.stringify(json),
+               url : endpointUrl,
+               success : function(msg) {
+               	// close modal dialog
+               	alert("Thêm thành công");
+               	$('#themCanBoForm').modal('toggle');
+                table.ajax.reload();
+               },
+               error: function (data, textStatus, xhr) {
+       			alert(data.responseText);
+       		}
+            });
+           }else {
+           	$("#formThemCanBo").submit();
+           }
 		});
 		
 		$("#themCanBoForm").on('hidden.bs.modal', function () {
-            $("#formTest").find('.has-error').removeClass("has-error");
-            $("#formTest").find('.has-feedback').removeClass("has-feedback");
+            $("#formThemCanBo").find('.has-error').removeClass("has-error");
+            $("#forformThemCanBomTest").find('.has-feedback').removeClass("has-feedback");
         });
 		
 		$("#ChiTietCanBoForm").on('hidden.bs.modal', function () {
@@ -615,12 +780,9 @@ $(document).ready(function() {
             $("#formTest").find('.has-feedback').removeClass("has-feedback");
         });
 		
-		
-		
 		$("button#btnXacNhanChiTietCanBo").click(function(e) {
 			alert($(hidTieuChiChiTietCanBo).val());
 		});
-		
 		
 		//TODO
 		changeDonViChucNang = function(){
@@ -635,6 +797,22 @@ $(document).ready(function() {
                     });
                    $('#boMon_pk').empty();
                    $('#boMon_pk').append(toAppend);
+                 }
+			 });
+		}
+		
+		changeDonViChucNangAdd = function(){
+			var donViChucNangPk = $(donViChucNang_pkAdd).val();
+			 $.ajax({  
+                 url: canBoService+"/getBoMonByDonViChucNang/"+donViChucNangPk,  
+                 type: 'GET',  
+                 success: function (res) {
+                	 var toAppend = '';
+                     $.each(res,function(i,o){
+                    	 toAppend += '<option value='+o.pk+'>'+o.tenBoMon+'</option>';
+                    });
+                   $('#boMon_pkAdd').empty();
+                   $('#boMon_pkAdd').append(toAppend);
                  }
 			 });
 		}
@@ -668,6 +846,22 @@ $(document).ready(function() {
                   $('#bacLuong_pk').empty();
                   $('#bacLuong_pk').append(toAppend);
                 }
+			 });
+		}
+		
+		changeNgachCongChucAdd = function(){
+			 var ngachCongChucPk = $(ngachCongChuc_pkAdd).val();
+			 $.ajax({  
+               url: canBoService+"/getBacLuongByNgachCongChuc/"+ngachCongChucPk,  
+               type: 'GET',  
+               success: function (res) {
+              	 var toAppend = '';
+                   $.each(res,function(i,o){
+                  	 toAppend += '<option value='+o.pk+'>'+o.maBacLuong+'</option>';
+                  });
+                 $('#bacLuong_pkAdd').empty();
+                 $('#bacLuong_pkAdd').append(toAppend);
+               }
 			 });
 		}
 		

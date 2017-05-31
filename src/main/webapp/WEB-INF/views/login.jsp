@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>login</title>
+<title>Đăng Nhập</title>
 <%@include file="fragment/importResources.jsp"%>
 </head>
 <body>
@@ -14,9 +14,9 @@
 		<div class="over_lay_agile_pages_w3ls">
 			<div class="registration">
 				<div class="signin-form profile">
-					<h2>ĐĂNG NHẬP HỆ THỐNG</h2>
+					<h2>PHẦN MỀM QUẢN LÝ NHÂN SỰ</h2>
 					<c:if test="${not isFail}">
-						Dang nhap sai
+						Đăng nhập sai
 					</c:if>
 					
 					<div class="login-form">

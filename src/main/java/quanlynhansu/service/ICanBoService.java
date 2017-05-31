@@ -17,4 +17,20 @@ public interface ICanBoService {
 	CanBoDTO insert(CanBoDTO t);
 
 	Set<CanBoDTO> getByGioiTinh(String cbGioiTinhs);
+
+	Set<CanBoDTO> getByDanToc(Integer cbDanTocs);
+	
+	Set<CanBoDTO> getByTonGiao(Integer cbTonGiaos);
+	
+	Set<CanBoDTO> getByChucVu(Integer cbChucVus);
+	
+	Set<CanBoDTO> getByChucDanh(String chucDanh);
+	
+	Set<CanBoDTO> getByDonViBoMon(Integer cbDonViChucNangs, Integer cbBoMons);
+	
+	Set<CanBoDTO> getByQueQuan(Integer cbQueQuans);
+	
+	Set<CanBoDTO> getByNgachCongChuc(Integer cbNgachCongChucs);
+	
+	Set<CanBoDTO> getByDonViChucNang(Integer txtDonViChucNangs);
 }
