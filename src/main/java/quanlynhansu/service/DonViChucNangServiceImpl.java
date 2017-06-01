@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import quanlynhansu.model.dto.BoMonDTO;
+import quanlynhansu.model.dto.CanBoDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
 import quanlynhansu.model.entity.Donvichucnang;
 import quanlynhansu.repository.IDonViChucNangRepository;
@@ -59,6 +60,13 @@ public class DonViChucNangServiceImpl implements IDonViChucNangService {
 	public Set<BoMonDTO> getBoMonByDonViChucNang(Integer donViChucNangPk) {
 		return repo.findOne(donViChucNangPk).getBoMons().stream()
 				.map(entity -> mapper.map(entity, BoMonDTO.class))
+				.collect(Collectors.toSet());
+	}
+	
+	@Override
+	public Set<CanBoDTO> getCanBoByDonViChucNang(Integer donViChucNangPk) {
+		return repo.findOne(donViChucNangPk).getCanBos().stream()
+				.map(entity -> mapper.map(entity, CanBoDTO.class))
 				.collect(Collectors.toSet());
 	}
 

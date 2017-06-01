@@ -89,4 +89,12 @@ public class Donvichucnang implements Serializable {
 		this.version = version;
 	}
 
+	public Set<Canbo> getCanBos() {
+		return canBos;
+	}
+
+	public void setCanBos(Set<Canbo> canBos) {
+		this.canBos = canBos;
+	}
+
 }

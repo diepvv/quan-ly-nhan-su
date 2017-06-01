@@ -11,8 +11,8 @@
 					<h4 class="modal-title">DANH SÁCH KHOÁN GỌN</h4>
 				</div>
 				<div class="modal-body">
-					<input class="form-control" id="pk" type="hidden"> <input
-						class="form-control" id="version" type="hidden">
+					<input class="form-control" id="pk" type="hidden"> 
+					<input class="form-control" id="version" type="hidden">
 					<div class="form-group">
 						<label for="donViChucNangDskg_pk">Đơn vị công tác</label>
 						<c:if test="${not empty donViChucNangLists}">

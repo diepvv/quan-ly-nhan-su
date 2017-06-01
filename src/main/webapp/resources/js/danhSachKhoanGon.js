@@ -116,7 +116,7 @@ $(document).ready(function() {
 	                    	 txtSoDienThoai.val(res.soDienThoai);
 	                    	 txtSoCmnd.val(res.soCmnd);
 	                    	 txtDiaChi.val(res.diaChi);
-		                	 txtNgayKyHopDong.val(res.ngayKyHopDong)
+		                	 txtNgayKyHopDong.val(res.ngayKyHopDong);
 		                	 txtVersion.val(res.version);
 		                     $('#formDanhSachKhoanGon').modal('show');
 	                    }

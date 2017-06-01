@@ -11,6 +11,15 @@ public class DonViChucNangDTO implements Serializable {
 	private String tenDonVi;
 	private Integer version = 0;
 	private Set<BoMonDTO> boMon = new HashSet<>();
+	private Set<CanBoDTO> canBo = new HashSet<>();
+
+	public Set<CanBoDTO> getCanBo() {
+		return canBo;
+	}
+
+	public void setCanBo(Set<CanBoDTO> canBo) {
+		this.canBo = canBo;
+	}
 
 	public DonViChucNangDTO() {
 	}

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import quanlynhansu.model.dto.BoMonDTO;
+import quanlynhansu.model.dto.CanBoDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
 
 public interface IDonViChucNangService {
@@ -18,4 +19,6 @@ public interface IDonViChucNangService {
 	DonViChucNangDTO insert(DonViChucNangDTO t);
 
 	Set<BoMonDTO> getBoMonByDonViChucNang(Integer donViChucNangPk);
+
+	Set<CanBoDTO> getCanBoByDonViChucNang(Integer donViChucNangPk);
 }
