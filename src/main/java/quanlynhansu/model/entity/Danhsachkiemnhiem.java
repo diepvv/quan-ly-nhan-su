@@ -14,11 +14,11 @@ public class Danhsachkiemnhiem implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "donViChucNangDskn_pk", foreignKey = @ForeignKey(name = "donViChucNangDskn_pk"))
 	private Donvichucnang donvichucnang;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "canBoDskn_pk", foreignKey = @ForeignKey(name = "canBoDskn_pk"))
 	private Canbo canbo;
 	private String chucVuKiemNhiem;

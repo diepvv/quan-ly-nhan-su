@@ -7,7 +7,7 @@ import quanlynhansu.model.dto.DanhSachKiemNhiemDTO;
 public interface IDanhSachKiemNhiemService {
 	public ArrayList<DanhSachKiemNhiemDTO> getAll();
 
-	void delete(Integer id);
+	void delete(Integer id, Integer version);
 
 	public DanhSachKiemNhiemDTO getById(Integer id);
 

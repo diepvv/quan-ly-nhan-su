@@ -12,12 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import quanlynhansu.model.dto.CanBoDTO;
 import quanlynhansu.model.dto.DanhSachKiemNhiemDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
-import quanlynhansu.service.ICanBoService;
 import quanlynhansu.service.IDanhSachKiemNhiemService;
 import quanlynhansu.service.IDonViChucNangService;
 
@@ -28,24 +27,19 @@ public class DanhSachKiemNhiemController {
 	private IDanhSachKiemNhiemService danhSachKiemNhiemService;
 	@Autowired
 	private IDonViChucNangService donViChucNangService;
-	@Autowired
-	private ICanBoService canBoService;
-	
 
 	@GetMapping("/show")
 	public ModelAndView getdata() {
 		ArrayList<DonViChucNangDTO> list = donViChucNangService.getAll();
-		ArrayList<CanBoDTO> canBolists = canBoService.getAll();
 		ModelAndView model = new ModelAndView("danhsachkiemnhiem");
 		model.addObject("donViChucNangLists", list);
-		model.addObject("canBolists", canBolists);
 		return model;
 	}
 
 	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Integer pK, Model model)
-			throws SQLException {
-		danhSachKiemNhiemService.delete(pK);
+	public String delete(@PathVariable(value = "pK") Integer pK,
+			@RequestParam(value = "version") Integer version) {
+		danhSachKiemNhiemService.delete(pK, version);
 		return "danhsachkiemnhiem";
 	}
 
