@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import quanlynhansu.model.dto.BacLuongDTO;
 import quanlynhansu.model.dto.BoMonDTO;
 import quanlynhansu.model.dto.CanBoDTO;
+import quanlynhansu.model.dto.NgachCongChucDTO;
 import quanlynhansu.service.ICanBoService;
 import quanlynhansu.service.IDonViChucNangService;
 import quanlynhansu.service.INgachCongChucService;
@@ -44,10 +45,10 @@ public class CanBoRestController {
 		return dt;
 	}
 
-	@GetMapping("/getBacLuongByNgachCongChuc/{ngachCongChucPk}")
-	public Set<BacLuongDTO> getBacLuongByNgachCongChuc(
+	@GetMapping("/getNgachCongChucById/{ngachCongChucPk}")
+	public NgachCongChucDTO getNgachCongChucById(
 			@PathVariable Integer ngachCongChucPk) {
-		return ngachCongChucService.getBacLuongByNgachCongChuc(ngachCongChucPk);
+		return ngachCongChucService.getNgachCongChucById(ngachCongChucPk);
 	}
 
 	@GetMapping("/getByGioiTinh/{cbGioiTinhs}")

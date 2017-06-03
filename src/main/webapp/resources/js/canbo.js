@@ -835,10 +835,12 @@ $(document).ready(function() {
 		
 		changeNgachCongChuc = function(){
 			 var ngachCongChucPk = $(ngachCongChuc_pk).val();
+			 
 			 $.ajax({  
-                url: canBoService+"/getBacLuongByNgachCongChuc/"+ngachCongChucPk,  
+                url: canBoService+"/getNgachCongChucById/"+ngachCongChucPk,  
                 type: 'GET',  
                 success: function (res) {
+                	
                	 var toAppend = '';
                     $.each(res,function(i,o){
                    	 toAppend += '<option value='+o.pk+'>'+o.maBacLuong+'</option>';
@@ -852,7 +854,7 @@ $(document).ready(function() {
 		changeNgachCongChucAdd = function(){
 			 var ngachCongChucPk = $(ngachCongChuc_pkAdd).val();
 			 $.ajax({  
-               url: canBoService+"/getBacLuongByNgachCongChuc/"+ngachCongChucPk,  
+               url: canBoService+"/getNgachCongChucById/"+ngachCongChucPk,  
                type: 'GET',  
                success: function (res) {
               	 var toAppend = '';
@@ -861,6 +863,7 @@ $(document).ready(function() {
                   });
                  $('#bacLuong_pkAdd').empty();
                  $('#bacLuong_pkAdd').append(toAppend);
+                 $('#tenNgachAdd').val(res.tenNgach);
                }
 			 });
 		}

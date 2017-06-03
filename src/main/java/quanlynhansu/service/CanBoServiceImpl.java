@@ -98,7 +98,7 @@ public class CanBoServiceImpl implements ICanBoService {
 		TonGiaoDTO tonGiaoDto = mapper.map(entity.getTongiao(),TonGiaoDTO.class);
 		ChucVuDTO chucVuDto = mapper.map(entity.getChucvu(), ChucVuDTO.class);
 		NgachCongChucDTO ngachCongChucDto = mapper.map(entity.getNgachcongchuc(), NgachCongChucDTO.class);
-		ngachCongChucDto.setBacLuong(ngachCongChucService.getBacLuongByNgachCongChuc(ngachCongChucDto.getPk()));
+		ngachCongChucDto.setBacLuong(ngachCongChucService.getNgachCongChucById(ngachCongChucDto.getPk()).getBacLuong());
 		QueQuanDTO queQuanDto = mapper.map(entity.getQuequan(),QueQuanDTO.class);
 
 		CanBoDTO canBoDto = mapper.map(entity, CanBoDTO.class);

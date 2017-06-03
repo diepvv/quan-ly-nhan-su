@@ -1,6 +1,7 @@
 package quanlynhansu.service;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -33,10 +34,15 @@ public class NgachCongChucServiceImpl implements INgachCongChucService {
 	}
 
 	@Override
-	public Set<BacLuongDTO> getBacLuongByNgachCongChuc(Integer ngachCongChucPk) {
-		return repo.findOne(ngachCongChucPk).getBacLuongs().stream()
+	public NgachCongChucDTO getNgachCongChucById(Integer ngachCongChucPk) {
+		Ngachcongchuc ngachCongChucEntity = repo.findOne(ngachCongChucPk);
+		NgachCongChucDTO ngachCongChucDto = mapper.map(ngachCongChucEntity, NgachCongChucDTO.class);
+		Set<BacLuongDTO> bacLuongDto = new HashSet<BacLuongDTO>();
+		bacLuongDto = ngachCongChucEntity.getBacLuongs().stream()
 				.map(entity -> mapper.map(entity, BacLuongDTO.class))
 				.collect(Collectors.toSet());
+		ngachCongChucDto.setBacLuong(bacLuongDto);
+		return ngachCongChucDto;
 	}
 
 	@Override
