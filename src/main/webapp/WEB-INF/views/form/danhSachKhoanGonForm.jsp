@@ -43,8 +43,7 @@
 					<div class="form-group">
 						<label for="ngayKyHopDong">Ngày Cấp</label>
 						<div class="input-group date" data-provide="datepicker">
-							<input type="text" class="form-control" id="ngayKyHopDong"
-								required="true">
+							<input type="text" class="form-control" id="ngayKyHopDong">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-th"></span>
 							</div>

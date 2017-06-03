@@ -8,11 +8,9 @@ import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import quanlynhansu.model.dto.BoMonDTO;
 import quanlynhansu.model.dto.CanBoDTO;
 import quanlynhansu.model.dto.DanhSachKiemNhiemDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
-import quanlynhansu.model.entity.Bomon;
 import quanlynhansu.model.entity.Canbo;
 import quanlynhansu.model.entity.Danhsachkiemnhiem;
 import quanlynhansu.model.entity.Donvichucnang;
