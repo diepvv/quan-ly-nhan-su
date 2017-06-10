@@ -7,7 +7,7 @@ import quanlynhansu.model.dto.HopDongCanBoDTO;
 public interface IHopDongCanBoService {
 	ArrayList<HopDongCanBoDTO> getAll();
 
-	void delete(Integer id);
+	void delete(Integer id, Integer version);
 
 	HopDongCanBoDTO getById(Integer id);
 

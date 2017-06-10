@@ -13,16 +13,16 @@ public class Hopdongcanbo implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "donViChucNangHdcb_pk", foreignKey = @ForeignKey(name = "donViChucNangHdcb_pk"))
 	private Donvichucnang donvichucnang;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "canBoHdcn_pk", foreignKey = @ForeignKey(name = "canBoHdcn_pk"))
 	private Canbo canbo;
 	private String maHopDong;
 	private String tenHopDong;
 	private String chucVu;
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "loaiHopDongHdcb_pk", foreignKey = @ForeignKey(name = "loaiHopDongHdcb_pk"))
 	private Loaihopdong loaihopdong;
 	@Temporal(TemporalType.DATE)

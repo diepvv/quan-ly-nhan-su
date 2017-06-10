@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,8 +12,14 @@ import quanlynhansu.model.dto.CanBoDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
 import quanlynhansu.model.dto.HopDongCanBoDTO;
 import quanlynhansu.model.dto.LoaiHopDongDTO;
+import quanlynhansu.model.entity.Canbo;
+import quanlynhansu.model.entity.Donvichucnang;
 import quanlynhansu.model.entity.Hopdongcanbo;
+import quanlynhansu.model.entity.Loaihopdong;
+import quanlynhansu.repository.ICanBoRepository;
+import quanlynhansu.repository.IDonViChucNangRepository;
 import quanlynhansu.repository.IHopDongCanBoRepository;
+import quanlynhansu.repository.ILoaiHopDongRepository;
 
 @Service
 @Transactional(rollbackFor = Throwable.class)
@@ -21,6 +28,14 @@ public class HopDongCanBoServiceImpl implements IHopDongCanBoService {
 	private IHopDongCanBoRepository repo;
 	@Autowired
 	protected DozerBeanMapper mapper;
+	@Autowired
+	private IDonViChucNangService donViChucNangService;
+	@Autowired
+	private IDonViChucNangRepository donViChucNangRepo;
+	@Autowired
+	private ICanBoRepository canBoRepo;
+	@Autowired
+	private ILoaiHopDongRepository loaiHopDongRepo;
 
 	@Override
 	public ArrayList<HopDongCanBoDTO> getAll() {
@@ -44,18 +59,33 @@ public class HopDongCanBoServiceImpl implements IHopDongCanBoService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Integer id, Integer version) {
+		Hopdongcanbo entity = new Hopdongcanbo();
+		entity = repo.findOneByPkAndVersion(id, version);
+		if(entity == null){
+			throw new OptimisticLockingFailureException("Concurrent update error");
+		}
 		repo.delete(id);
 	}
 
 	@Override
 	public HopDongCanBoDTO getById(Integer id) {
 		Hopdongcanbo entity = repo.findOne(id);
-		HopDongCanBoDTO dto = mapper.map(entity, HopDongCanBoDTO.class);
-		dto.setNgayKy(entity.getNgayKy());
-		dto.setTuNgay(entity.getTuNgay());
-		dto.setDenNgay(entity.getDenNgay());
-		return dto;
+		DonViChucNangDTO donViChucNangDto = mapper.map(entity.getDonvichucnang(), DonViChucNangDTO.class);
+		donViChucNangDto.setCanBo(donViChucNangService.getCanBoByDonViChucNang(donViChucNangDto.getPk()));
+		LoaiHopDongDTO loaiHopDongDto = mapper.map(entity.getLoaihopdong(), LoaiHopDongDTO.class);
+		
+		HopDongCanBoDTO hopDongCanBoDto = mapper.map(entity, HopDongCanBoDTO.class);
+		hopDongCanBoDto.setDonViChucNang(donViChucNangDto);
+		hopDongCanBoDto.setLoaiHopDong(loaiHopDongDto);
+		hopDongCanBoDto.setNgayKy(entity.getNgayKy());
+		hopDongCanBoDto.setTuNgay(entity.getTuNgay());
+		hopDongCanBoDto.setDenNgay(entity.getDenNgay());
+		if (entity.getCanbo() != null) {
+			CanBoDTO canDto = mapper.map(entity.getCanbo(), CanBoDTO.class);
+			hopDongCanBoDto.setCanBo(canDto);
+		}
+		return hopDongCanBoDto;
 	}
 
 	@Override
@@ -72,10 +102,26 @@ public class HopDongCanBoServiceImpl implements IHopDongCanBoService {
 
 	private Hopdongcanbo addOrUpdate(HopDongCanBoDTO dto) {
 		Hopdongcanbo entity = new Hopdongcanbo();
+		
 		if (dto.getPk() != null && dto.getPk().intValue() != -1) {
-			entity = repo.findOne(dto.getPk());
+			entity = repo.findOneByPkAndVersion(dto.getPk(), dto.getVersion());
+			if (entity == null) {
+				throw new OptimisticLockingFailureException("Concurrent update error");
+			}
 		}
 		mapper.map(dto, entity);
+		if (dto.getDonViChucNang() != null) {
+			Donvichucnang donViChucNangEntity = donViChucNangRepo.findOne(dto.getDonViChucNang().getPk());
+			entity.setDonvichucnang(donViChucNangEntity);
+		}
+		if (dto.getCanBo() != null) {
+			Canbo canBoEntity = canBoRepo.findOne(dto.getCanBo().getPk());
+			entity.setCanbo(canBoEntity);
+		}
+		if(dto.getLoaiHopDong() != null){
+			Loaihopdong loaiHopDongEntity = loaiHopDongRepo.findOne(dto.getLoaiHopDong().getPk());
+			entity.setLoaihopdong(loaiHopDongEntity);
+		}
 		return repo.save(entity);
 	}
 }
