@@ -53,13 +53,14 @@ $(document).ready(function() {
 		                     var txtNgayKy=$(dpNgayKy);
 		                     var txtTuNgay=$(dpTuNgay);
 		                     var txtDenNgay=$(dpDenNgay);
-		                     	 txtPk.val(-1);
-		                     	 txtTenHopDong.val("");
-	                         	 txtTenNhanVien.val("");
-	                         	 txtNgayKy.val("");
-	                         	 txtTuNgay.val("");
-	                         	 txtDenNgay.val("");
-		                     
+		                     var txtVerSion = $(version);
+	                     	 txtPk.val(-1);
+	                     	 txtTenHopDong.val("");
+                         	 txtTenNhanVien.val("");
+                         	 txtNgayKy.val("");
+                         	 txtTuNgay.val("");
+                         	 txtDenNgay.val("");
+                         	 txtVerSion.val("");
 		                     $('#formHDNganHan').modal('show');
 		                 },
 		              }
@@ -75,9 +76,8 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnDel" == id){
 	        var data = table.row($(this).parents('tr')).data();
-	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
-                    + data['tenNhanVien'])
-                    var Pk = data['pk'];
+	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : " + data['tenNhanVien'])
+                var Pk = data['pk'];
 	            if(check==true){
 	            	$.ajax({  
 	                    url: hopDongNganHanController+"/delete/"+Pk,  

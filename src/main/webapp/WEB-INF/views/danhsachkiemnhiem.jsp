@@ -49,5 +49,6 @@
 		<!-- datatable end -->
 	</div>
 	<%@include file="form/danhSachKiemNhiemForm.jsp"%>
+	<%@include file="fragment/footer.jsp"%>
 </body>
 </html>

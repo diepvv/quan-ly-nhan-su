@@ -24,7 +24,7 @@
 					</div>
 					<div class="form-group">
 						<label for="canBoDskn_pk">Cán bộ</label>
-							<select class="form-control my-select-control-style" id="canBoDskn_pk" required="true"></select>
+						<select class="form-control my-select-control-style" id="canBoDskn_pk" required="true"></select>
 					</div>	
 					<div class="form-group">
 						<label for="chucVuKiemNhiem">Chức vụ kiêm nhiệm</label> 

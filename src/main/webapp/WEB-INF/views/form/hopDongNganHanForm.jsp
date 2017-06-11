@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <div id="formHDNganHan" class="modal fade" role="dialog">
-	<form id="formTest" method="post" action="#" class="valida"
-		autocomplete="off" novalidate="novalidate">
+	<form id="formTest" method="post" action="#" class="valida" autocomplete="off" novalidate="novalidate">
 		<div class="modal-dialog">
 			<!-- Modal content-->
 			<div class="modal-content">
@@ -11,6 +10,7 @@
 				</div>
 				<div class="modal-body">
 					<input class="form-control" id="pk" type="hidden">
+					<input class="form-control" id="version" type="hidden">
 					<div class="form-group">
 						<label for="tenhopdong">Tên hợp đồng</label> 
 						<input class="form-control" id="tenhopdong" name="tenhopdong" required="true" type="text"></br>
