@@ -59,6 +59,7 @@ $(document).ready(function() {
 		                	 var txtTuNgay = $(tuNgay);
 		                	 var txtDenNgay = $(denNgay);
 		                	 var txtFileKy = $(fileKy);
+		                	 var txtVersion = $(version);
 
 		                	 txtPk.val(-1);
 		                	 txtDonViChucNangQdkl_pk.val("");
@@ -71,6 +72,7 @@ $(document).ready(function() {
 		                	 txtTuNgay.val("");
 		                	 txtDenNgay.val("");
 		                	 txtFileKy.val("");
+		                	 txtVersion.val("");
 		                     $('#formQuyetDinhKyLuat').modal('show');
 		                 },
 		              }
@@ -86,16 +88,17 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnDel" == id){
 	        var data = table.row($(this).parents('tr')).data();
-	        check = confirm("Bạn có chắc chắn muốn xóa quyết định kỷ luật : "
-                    + data['soQuyetDinh'])
-                    var pK = data['pk'];
+	        check = confirm("Bạn có chắc chắn muốn xóa quyết định kỷ luật : " + data['soQuyetDinh'])
+                var pK = data['pk'];
+	        	var version = data['version'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: quyetDinhKyLuatController+"/delete/"+pK,  
+	                    url: quyetDinhKyLuatController+"/delete/"+pK+"?version="+version,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
-	                    	table.ajax.reload();	                    }  
+	                    	table.ajax.reload();	              
+	                    }  
 	                });
 	            }
                     
@@ -118,14 +121,26 @@ $(document).ready(function() {
 	               	var txtTuNgay = $(tuNgay);
 	               	var txtDenNgay = $(denNgay);
 	               	var txtFileKy = $(fileKy);
+	               	var txtVersion = $(version);
 
 	            	$.ajax({  
 	                    url: quyetDinhKyLuatService+"/getById/"+pK,  
 	                    type: 'GET',  
 	                    success: function (res) {
 	                    	 txtPk.val(pK);
-	                    	 txtDonViChucNangQdkl_pk.val(res.donViChucNangQdkl_pk);
-		                	 txtCanBoQdkl_pk.val(res.canBoQdkl_pk);
+	                    	 txtDonViChucNangQdkl_pk.val(res.donViChucNang.pk);
+	                    	 if(res.canBo!=null){
+		                		 var toAppend = '';
+		                         $.each(res.donViChucNang.canBo,function(i,o){
+		                        	 if(o.pk==res.canBo.pk){
+		                        		 toAppend += '<option value='+o.pk+' selected>'+o.ten+'</option>';
+		                        	 } else {	                        		 
+		                        		 toAppend += '<option value='+o.pk+'>'+o.ten+'</option>';
+		                        	 }
+		                        });
+		                         txtCanBoQdkl_pk.empty();
+		                         txtCanBoQdkl_pk.append(toAppend);
+		                	 }
 		                	 txtSoQuyetDinh.val(res.soQuyetDinh);
 		                	 txtTenQuyetDinh.val(res.tenQuyetDinh);
 		                	 txtNoiDungQuyetDinh.val(res.noiDungQuyetDinh);
@@ -134,6 +149,7 @@ $(document).ready(function() {
 		                	 txtTuNgay.val(res.tuNgay);
 		                	 txtDenNgay.val(res.denNgay);
 		                	 txtFileKy.val(res.fileKy);
+		                	 txtVersion.val(res.version);
 		                     $('#formQuyetDinhKyLuat').modal('show');
 	                    }
 	                });
@@ -155,11 +171,14 @@ $(document).ready(function() {
        	 var txtTuNgay = $(tuNgay);
        	 var txtDenNgay = $(denNgay);
        	 var txtFileKy = $(fileKy);
+         var txtVersion = $(version);
        	 	
        	 var json = new Object();
          json.pk = txtPk.val();
-         json.donViChucNangQdkl_pk = txtDonViChucNangQdkl_pk.val();
-         json.canBoQdkl_pk = txtCanBoQdkl_pk.val();
+         json.donViChucNang = new Object();
+         json.donViChucNang.pk = txtDonViChucNangQdkl_pk.val();
+         json.canBo = new Object();
+         json.canBo.pk = txtCanBoQdkl_pk.val();
          json.soQuyetDinh = txtSoQuyetDinh.val();
          json.tenQuyetDinh = txtTenQuyetDinh.val();
          json.noiDungQuyetDinh = txtNoiDungQuyetDinh.val();
@@ -168,22 +187,30 @@ $(document).ready(function() {
          json.tuNgay = txtTuNgay.val();
          json.denNgay = txtDenNgay.val();
          json.fileKy = txtFileKy.val();
+         json.version = txtVersion.val();
 
         	if(txtPk.val()!= -1){
              	var endpointUrl = '/quyetDinhKyLuatController/update';
-             }
-            $.ajax({
-                type : "POST",
-                contentType: "application/json; charset=utf-8",
-                data : JSON.stringify(json),
-                url : endpointUrl,
-                success : function(msg) {
-                     table.ajax.reload();
-                },
-                error : function() {
-                      alert("Cập nhập không thành công");
-                }
-            });
+            }
+        	var invalidFields = $("#formTest").find(":invalid");
+            if(invalidFields.length == 0){
+	            $.ajax({
+	                type : "POST",
+	                contentType: "application/json; charset=utf-8",
+	                data : JSON.stringify(json),
+	                url : endpointUrl,
+	                success : function(msg) {
+	                	alert("Thành Công");
+	        			$('#formQuyetDinhKyLuat').modal('toggle');
+	                    table.ajax.reload();
+	                },
+	                error: function (data, textStatus, xhr) {
+	        			alert(data.responseText);
+	        		}
+	            });
+            }else {
+             	$("#formTest").submit();
+            }   
         });
     	
     	$("button#btnDong").click(function(e) {
@@ -209,7 +236,28 @@ $(document).ready(function() {
 	       	 txtFileKy.val("");
         }); 
     	
-	} );
+    	$("#formQuyetDinhKyLuat").on('hidden.bs.modal', function () {
+            $("#formTest").find('.has-error').removeClass("has-error");
+            $("#formTest").find('.has-feedback').removeClass("has-feedback");
+        });
+    	
+    	changeDonViChucNang = function(){
+			var donViChucNangPk = $(donViChucNangQdkl_pk).val();
+			 $.ajax({  
+                 url: quyetDinhKyLuatService+"/getCanBoByDonViChucNang/"+donViChucNangPk,  
+                 type: 'GET',  
+                 success: function (res) {
+                	 var toAppend = '';
+                     $.each(res,function(i,o){
+                    	 toAppend += '<option value='+o.pk+'>'+o.ten+'</option>';
+                    });
+                   $('#canBoQdkl_pk').empty();
+                   $('#canBoQdkl_pk').append(toAppend);
+                 }
+			 });
+    	}
+    	
+} );
 /*  datepicker*/
 $.fn.datepicker.defaults.format = "yyyy-mm-dd";
 $('.datepicker').datepicker({

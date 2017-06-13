@@ -4,13 +4,18 @@ import java.util.ArrayList;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import quanlynhansu.model.dto.CanBoDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
 import quanlynhansu.model.dto.QuyetDinhKyLuatDTO;
+import quanlynhansu.model.entity.Canbo;
+import quanlynhansu.model.entity.Donvichucnang;
 import quanlynhansu.model.entity.Quyetdinhkyluat;
+import quanlynhansu.repository.ICanBoRepository;
+import quanlynhansu.repository.IDonViChucNangRepository;
 import quanlynhansu.repository.IQuyetDinhKyLuatRepository;
 
 @Service
@@ -20,6 +25,12 @@ public class QuyetDinhKyLuatServiceImpl implements IQuyetDinhKyLuatService {
 	private IQuyetDinhKyLuatRepository repo;
 	@Autowired
 	protected DozerBeanMapper mapper;
+	@Autowired
+	private IDonViChucNangService donViChucNangService;
+	@Autowired
+	private IDonViChucNangRepository donViChucNangRepo;
+	@Autowired
+	private ICanBoRepository canBoRepo;
 
 	@Override
 	public ArrayList<QuyetDinhKyLuatDTO> getAll() {
@@ -46,17 +57,32 @@ public class QuyetDinhKyLuatServiceImpl implements IQuyetDinhKyLuatService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Integer id, Integer version) {
+		Quyetdinhkyluat entity = new Quyetdinhkyluat();
+		entity = repo.findOneByPkAndVersion(id, version);
+		if (entity == null) {
+			throw new OptimisticLockingFailureException(
+					"Concurrent update error");
+		}
 		repo.delete(id);
 	}
 
 	@Override
 	public QuyetDinhKyLuatDTO getById(Integer id) {
 		Quyetdinhkyluat entity = repo.findOne(id);
+		DonViChucNangDTO donViChucNangDto = mapper.map(
+				entity.getDonvichucnang(), DonViChucNangDTO.class);
+		donViChucNangDto.setCanBo(donViChucNangService
+				.getCanBoByDonViChucNang(donViChucNangDto.getPk()));
 		QuyetDinhKyLuatDTO dto = mapper.map(entity, QuyetDinhKyLuatDTO.class);
+		dto.setDonViChucNang(donViChucNangDto);
 		dto.setNgayKy(entity.getNgayKy());
 		dto.setTuNgay(entity.getTuNgay());
 		dto.setDenNgay(entity.getDenNgay());
+		if (entity.getCanbo() != null) {
+			CanBoDTO canDto = mapper.map(entity.getCanbo(), CanBoDTO.class);
+			dto.setCanBo(canDto);
+		}
 		return dto;
 	}
 
@@ -76,9 +102,20 @@ public class QuyetDinhKyLuatServiceImpl implements IQuyetDinhKyLuatService {
 		Quyetdinhkyluat entity = new Quyetdinhkyluat();
 
 		if (dto.getPk() != null && dto.getPk().intValue() != -1) {
-			entity = repo.findOne(dto.getPk());
+			entity = repo.findOneByPkAndVersion(dto.getPk(), dto.getVersion());
+			if (entity == null) {
+				throw new OptimisticLockingFailureException("Concurrent update error");
+			}
 		}
 		mapper.map(dto, entity);
+		if (dto.getDonViChucNang() != null) {
+			Donvichucnang donViChucNangEntity = donViChucNangRepo.findOne(dto.getDonViChucNang().getPk());
+			entity.setDonvichucnang(donViChucNangEntity);
+		}
+		if (dto.getCanBo() != null) {
+			Canbo canBoEntity = canBoRepo.findOne(dto.getCanBo().getPk());
+			entity.setCanbo(canBoEntity);
+		}
 		return repo.save(entity);
 	}
 }

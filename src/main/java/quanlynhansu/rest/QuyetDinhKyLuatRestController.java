@@ -1,8 +1,7 @@
 package quanlynhansu.rest;
 
-import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import quanlynhansu.model.dto.CanBoDTO;
 import quanlynhansu.model.dto.QuyetDinhKyLuatDTO;
+import quanlynhansu.service.IDonViChucNangService;
 import quanlynhansu.service.IQuyetDinhKyLuatService;
 
 @RestController
@@ -18,16 +19,22 @@ import quanlynhansu.service.IQuyetDinhKyLuatService;
 public class QuyetDinhKyLuatRestController {
 	@Autowired
 	private IQuyetDinhKyLuatService quyetdinhkyluat;
+	@Autowired
+	private IDonViChucNangService donViChucNangService;
 
 	@GetMapping("/getAll")
-	public List<QuyetDinhKyLuatDTO> getAll() throws SQLException {
+	public List<QuyetDinhKyLuatDTO> getAll() {
 		return quyetdinhkyluat.getAll();
 	}
 
 	@GetMapping("/getById/{pK}")
-	public QuyetDinhKyLuatDTO getById(@PathVariable Integer pK)
-			throws ParseException, SQLException {
+	public QuyetDinhKyLuatDTO getById(@PathVariable Integer pK){
 		QuyetDinhKyLuatDTO ds = quyetdinhkyluat.getById(pK);
 		return ds;
+	}
+	
+	@GetMapping("/getCanBoByDonViChucNang/{donViChucNangPk}")
+	public Set<CanBoDTO> getCanBoByDonViChucNang(@PathVariable Integer donViChucNangPk) {
+		return donViChucNangService.getCanBoByDonViChucNang(donViChucNangPk);
 	}
 }
