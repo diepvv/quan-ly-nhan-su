@@ -15,11 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import quanlynhansu.model.dto.CanBoDTO;
 import quanlynhansu.model.dto.DonViChucNangDTO;
 import quanlynhansu.model.dto.LoaiQuyetDinhDTO;
 import quanlynhansu.model.dto.QuyetDinhDTO;
-import quanlynhansu.service.ICanBoService;
 import quanlynhansu.service.IDonViChucNangService;
 import quanlynhansu.service.ILoaiQuyetDinhService;
 import quanlynhansu.service.IQuyetDinhService;
