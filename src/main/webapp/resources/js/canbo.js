@@ -90,7 +90,9 @@ $(document).ready(function() {
 		                	 var txtCongViecDuocGiaoAdd = $( congViecDuocGiaoAdd);
 		                	 var txtChucDanhAdd = $(chucDanhAdd);
 		                	 var txtNgachCongChuc_pkAdd = $( ngachCongChuc_pkAdd);
+		                	 var txtTenNgachAdd = $(tenNgachAdd);
 		                	 var txtBacLuong_pkAdd = $( bacLuong_pkAdd);
+		                	 var txtHeSoLuongAdd = $(heSoLuongAdd);
 		                	 var txtNgayHuongAdd = $(ngayHuongAdd);
 		                	 var txtPhuCapChucVuAdd = $( phuCapChucVuAdd);
 		                	 var txtPhuCapKhacAdd = $( phuCapKhacAdd);
@@ -151,7 +153,9 @@ $(document).ready(function() {
 		                	 txtCongViecDuocGiaoAdd.val("Giảng dạy");
 		                	 txtChucDanhAdd.val("Giảng viên");
 		                	 txtNgachCongChuc_pkAdd.val("");
+		                	 txtTenNgachAdd.val("");
 		                	 txtBacLuong_pkAdd.val("");
+		                	 txtHeSoLuongAdd.val("");
 		                	 txtNgayHuongAdd.val("");
 		                	 txtPhuCapChucVuAdd.val("");
 		                	 txtPhuCapKhacAdd.val("");
@@ -296,7 +300,9 @@ $(document).ready(function() {
 	           	 var txtCongViecDuocGiao = $( congViecDuocGiao);
 	           	 var txtChucDanh = $(chucDanh);
 	           	 var txtNgachCongChuc_pk = $(ngachCongChuc_pk);
+	           	 var txtTenNgach = $(tenNgach);
 	           	 var txtBacLuong_pk = $( bacLuong_pk);
+	           	 var txtHeSoLuong = $(heSoLuong);
 	           	 var txtNgayHuong = $(ngayHuong);
 	           	 var txtPhuCapChucVu = $(phuCapChucVu);
 	           	 var txtPhuCapKhac = $(phuCapKhac);
@@ -371,6 +377,7 @@ $(document).ready(function() {
 	                	 txtCongViecDuocGiao.val(res.congViecDuocGiao);
 	                	 txtChucDanh.val(res.chucDanh);
 	                	 txtNgachCongChuc_pk.val(res.ngachCongChuc.pk);
+	                	 txtTenNgach.val(res.ngachCongChuc.tenNgach);
 	                	 if(res.bacLuong!=null){
 	                		 var toAppend = '';
 	                         $.each(res.ngachCongChuc.bacLuong,function(i,o){
@@ -383,6 +390,7 @@ $(document).ready(function() {
 	                         txtBacLuong_pk.empty();
 	                         txtBacLuong_pk.append(toAppend);
 	                	 }
+	                	 txtHeSoLuong.val(res.ngachCongChuc.bacLuong.heSoLuong);
 	                	 txtNgayHuong.val(res.ngayHuong);
 	                	 txtPhuCapChucVu.val(res.phuCapChucVu);
 	                	 txtPhuCapKhac.val(res.phuCapKhac);
@@ -842,11 +850,12 @@ $(document).ready(function() {
                 success: function (res) {
                 	
                	 var toAppend = '';
-                    $.each(res,function(i,o){
+                    $.each(res.bacLuong,function(i,o){
                    	 toAppend += '<option value='+o.pk+'>'+o.maBacLuong+'</option>';
                    });
                   $('#bacLuong_pk').empty();
                   $('#bacLuong_pk').append(toAppend);
+                  $('#tenNgach').val(res.tenNgach);
                 }
 			 });
 		}
@@ -858,13 +867,35 @@ $(document).ready(function() {
                type: 'GET',  
                success: function (res) {
               	 var toAppend = '';
-                   $.each(res,function(i,o){
+                   $.each(res.bacLuong,function(i,o){
                   	 toAppend += '<option value='+o.pk+'>'+o.maBacLuong+'</option>';
                   });
                  $('#bacLuong_pkAdd').empty();
                  $('#bacLuong_pkAdd').append(toAppend);
                  $('#tenNgachAdd').val(res.tenNgach);
                }
+			 });
+		}
+		
+		changeBacLuongAdd = function(){
+			 var bacLuongPk = $(bacLuong_pkAdd).val();
+			 $.ajax({  
+              url: canBoService+"/getHeSoLuongById/"+bacLuongPk,  
+              type: 'GET',  
+              success: function (res) {
+                $('#heSoLuongAdd').val(res.heSoLuong);
+              }
+			 });
+		}
+		
+		changeBacLuong = function(){
+			 var bacLuongPk = $(bacLuong_pk).val();
+			 $.ajax({  
+             url: canBoService+"/getHeSoLuongById/"+bacLuongPk,  
+             type: 'GET',  
+             success: function (res) {
+               $('#heSoLuong').val(res.heSoLuong);
+             }
 			 });
 		}
 		

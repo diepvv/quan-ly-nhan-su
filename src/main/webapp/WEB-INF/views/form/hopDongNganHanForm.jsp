@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<div id="formHDNganHan" class="modal fade" role="dialog">
+<div id="formHopDongNganHan" class="modal fade" role="dialog">
 	<form id="formTest" method="post" action="#" class="valida" autocomplete="off" novalidate="novalidate">
 		<div class="modal-dialog">
 			<!-- Modal content-->
@@ -42,7 +42,7 @@
 					</div>
 				</div>
 				<div class="modal-footer">
-					<input type="submit" name="sub-1" value="Cập Nhập" class="btn btn-primary" id="btnCapNhap"> 
+					<button type="button" class="btn btn-default" id="btnCapNhap">Cập Nhập</button> 
 					<input type="reset" name="res-1" id="res-1" value="Làm mới" class="btn btn-danger">
 					<button type="button" class="btn btn-default" data-dismiss="modal" id="btnDong">Đóng</button>
 				</div>

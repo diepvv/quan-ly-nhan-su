@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Component;
 
 import quanlynhansu.model.dto.HopDongNganHanDTO;
@@ -38,12 +39,18 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 	}
 
 	@Override
-	public void delete(int id) {
-		repo.delete(Integer.valueOf(id));
+	public void delete(Integer id, Integer version) {
+		Hopdongnganhan entity = new Hopdongnganhan();
+		entity = repo.findOneByPkAndVersion(id, version);
+		if (entity == null) {
+			throw new OptimisticLockingFailureException(
+					"Concurrent update error");
+		}
+		repo.delete(id);
 	}
 
 	@Override
-	public HopDongNganHanDTO getById(int id) {
+	public HopDongNganHanDTO getById(Integer id) {
 		Hopdongnganhan entity = repo.findOne(Integer.valueOf(id));
 		HopDongNganHanDTO dto = mapper.map(entity, HopDongNganHanDTO.class);
 		dto.setNgayKy(entity.getNgayKy());
@@ -67,11 +74,13 @@ public class HopDongNganHanServiceImpl implements IHopDongNganHanService {
 	private Hopdongnganhan addOrUpdate(HopDongNganHanDTO dto) {
 		Hopdongnganhan entity = new Hopdongnganhan();
 		if (dto.getPk() != null && dto.getPk().intValue() != -1) {
-			entity = repo.findOne(Integer.valueOf(dto.getPk()));
+			entity = repo.findOneByPkAndVersion(dto.getPk(), dto.getVersion());
+			if (entity == null) {
+				throw new OptimisticLockingFailureException(
+						"Concurrent update error");
+			}
 		}
-
 		mapper.map(dto, entity);
-
 		return repo.save(entity);
 	}
 }

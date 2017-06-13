@@ -14,6 +14,7 @@ import quanlynhansu.model.dto.BacLuongDTO;
 import quanlynhansu.model.dto.BoMonDTO;
 import quanlynhansu.model.dto.CanBoDTO;
 import quanlynhansu.model.dto.NgachCongChucDTO;
+import quanlynhansu.service.IBacLuongService;
 import quanlynhansu.service.ICanBoService;
 import quanlynhansu.service.IDonViChucNangService;
 import quanlynhansu.service.INgachCongChucService;
@@ -27,6 +28,8 @@ public class CanBoRestController {
 	private INgachCongChucService ngachCongChucService;
 	@Autowired
 	private ICanBoService canbo;
+	@Autowired
+	private IBacLuongService bacLuongService;
 
 	@GetMapping("/getAll")
 	public List<CanBoDTO> getAll() {
@@ -49,6 +52,12 @@ public class CanBoRestController {
 	public NgachCongChucDTO getNgachCongChucById(
 			@PathVariable Integer ngachCongChucPk) {
 		return ngachCongChucService.getNgachCongChucById(ngachCongChucPk);
+	}
+	
+	@GetMapping("/getHeSoLuongById/{bacLuongPk}")
+	public BacLuongDTO getHeSoLuongById(
+			@PathVariable Integer bacLuongPk) {
+		return bacLuongService.getHeSoLuongById(bacLuongPk);
 	}
 
 	@GetMapping("/getByGioiTinh/{cbGioiTinhs}")

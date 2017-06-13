@@ -16,37 +16,6 @@
 					<div class="panel panel-default">
 						<div class="panel-heading">
 							<h4 class="panel-title">
-								<a data-toggle="collapse" href="#collapseCanBo" data-parent="#accordion" 
-								   onclick="$(hidTieuChi).val('canBo')">Cán bộ</a>
-							</h4>
-						</div>
-						<div id="collapseCanBo" class="panel-collapse collapse">
-							<label for="cbPhanLoaiCanBo">Phân loại</label>
-							<select class="form-control my-select-control-style" id="cbPhanLoaiCanBo" >
-								<option value="0">Khối hành chính</option>
-								<option value="1">Khối giảng viên</option>
-							</select> 
-						</div>
-					</div>
-
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
-								<a data-toggle="collapse" href="#collapseDoTuoi" data-parent="#accordion" 
-								   onclick="$(hidTieuChi).val('doTuoi')">Theo độ tuổi</a>
-							</h4>
-						</div>
-						<div id="collapseDoTuoi" class="panel-collapse collapse">
-							<label for="txtDoTuoiTu">Độ tuổi từ</label> 
-							<input class="form-control" id="txtDoTuoiTu" type="text"> 
-							<label for="txtĐenDotuoi">Đến độ tuổi</label> 
-							<input class="form-control" id="txtĐenDotuoi" type="text">
-						</div>
-					</div>
-
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h4 class="panel-title">
 								<a data-toggle="collapse" href="#collapseGioiTinh" data-parent="#accordion"
 								   onclick="$(hidTieuChi).val('gioiTinh')">Theo giới tính</a>
 							</h4>

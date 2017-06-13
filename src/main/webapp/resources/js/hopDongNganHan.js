@@ -61,7 +61,7 @@ $(document).ready(function() {
                          	 txtTuNgay.val("");
                          	 txtDenNgay.val("");
                          	 txtVerSion.val("");
-		                     $('#formHDNganHan').modal('show');
+		                     $('#formHopDongNganHan').modal('show');
 		                 },
 		              }
 			          ],
@@ -75,12 +75,13 @@ $(document).ready(function() {
 		$('#HopDongNganHanTable tbody').on( 'click', 'button', function () {
 			var id = $(this)[0].id;
 			if("btnDel" == id){
-	        var data = table.row($(this).parents('tr')).data();
-	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : " + data['tenNhanVien'])
-                var Pk = data['pk'];
-	            if(check==true){
+		        var data = table.row($(this).parents('tr')).data();
+		        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : " + data['tenNhanVien'])
+	            var pK = data['pk'];
+		        var version = data['version'];    
+	        	if(check==true){
 	            	$.ajax({  
-	                    url: hopDongNganHanController+"/delete/"+Pk,  
+	                    url: hopDongNganHanController+"/delete/"+pK+"?version="+version,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -95,28 +96,26 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnUpdate" == id){
 					var data = table.row($(this).parents('tr')).data();
-                    var Pk = data['pk'];
-                    //$(tenhopdong) giá trị ban đầu : Rỗng
+                    var pK = data['pk'];
                     var txtPk = $(pk);
                     var txtTenHopDong=$(tenhopdong);
                     var txtTenNhanVien=$(tennhanvien);
                     var txtNgayKy=$(dpNgayKy);
                     var txtTuNgay=$(dpTuNgay);
                     var txtDenNgay=$(dpDenNgay);
+                    var txtVersion = $(version);
 	            	$.ajax({  
-	                    url: hopDongNganHanService+"/getById/"+Pk,  
+	                    url: hopDongNganHanService+"/getById/"+pK,  
 	                    type: 'GET',  
 	                    success: function (res) {
-	                    	//alert(res.tenNhanVien);
-	                    	//tenhopdong: id cua the input, res.tenHopDong : lay tu chuoi json dc get tu co do du lieu
-	                    	//lay thong tin tu co so du lieu gan nen form
-	                    	txtPk.val(Pk);
+	                    	txtPk.val(pK);
 	                    	txtTenHopDong.val(res.tenHopDong);
 	                    	txtTenNhanVien.val(res.tenNhanVien);
 	                    	txtNgayKy.val(res.ngayKy);
 	                    	txtTuNgay.val(res.tuNgay);
 	                    	txtDenNgay.val(res.denNgay);
-		                    $('#formHDNganHan').modal('show');
+	                    	txtVersion.val(res.version);
+		                    $('#formHopDongNganHan').modal('show');
 	                    }
 	                });
 			}	
@@ -126,43 +125,44 @@ $(document).ready(function() {
     	$("#btnCapNhap").click(function(e) {
 
     		var endpointUrl = '/hopDongNganHanController/add';
-    		//$(tenhopdong) là giá trị sau khi lấy ở database nên gắn vào form khi click nút Sửa
     		var txtPk = $(pk);
     		var txtTenHopDong = $(tenhopdong);
             var txtTenNhanVien = $(tennhanvien);
             var txtNgayKy = $(dpNgayKy);
             var txtTuNgay = $(dpTuNgay);
             var txtDenNgay = $(dpDenNgay);
-            
-            var txtTenHopDong = $.trim($('#tenhopdong').val());
-            if(txtTenHopDong == ''){
-            	alert('Tên hợp đồng không được để Trống! ok Men');
-                return false;
-            }
+            var txtVersion = $(version);
             
             var json = new Object();
-         	//truyen du lieu thanh chuoi Json gui xuong database
             json.pk = txtPk.val();
             json.tenHopDong = txtTenHopDong.val();
             json.tenNhanVien = txtTenNhanVien.val();
             json.ngayKy = txtNgayKy.val();
             json.tuNgay= txtTuNgay.val();
             json.denNgay = txtDenNgay.val();
+            json.version = txtVersion.val();
             if(txtPk.val() != -1){
             	var endpointUrl = '/hopDongNganHanController/update';
             }
-            $.ajax({
-                type : "POST",
-                contentType: "application/json; charset=utf-8",
-                data : JSON.stringify(json),
-                url : endpointUrl,
-                success : function(msg) {
-                     table.ajax.reload();
-                },
-                error : function() {
-                      alert("Cập nhập không thành công");
-                }
-            });
+            var invalidFields = $("#formTest").find(":invalid");
+            if(invalidFields.length == 0){
+	            $.ajax({
+	                type : "POST",
+	                contentType: "application/json; charset=utf-8",
+	                data : JSON.stringify(json),
+	                url : endpointUrl,
+	                success : function(msg) {
+	                	alert("Thành Công");
+	        			$('#formHopDongNganHan').modal('toggle');
+	                    table.ajax.reload();
+	                },
+	                error: function (data, textStatus, xhr) {
+	        			alert(data.responseText);
+	        		}
+	            });
+            }else {
+             	$("#formTest").submit();
+            }       
         });
     	
     	$("button#btnDong").click(function(e) {
@@ -173,14 +173,15 @@ $(document).ready(function() {
          	txtDenNgay.val("");
         }); 
     	
-	} );
-	
-	/*  datepicker*/
-	$.fn.datepicker.defaults.format = "yyyy-mm-dd";
-		$('.datepicker').datepicker({
-			 	startDate: '-3d'
-	});
-		
-		 
-		
-		 
+    	$("#formHopDongNganHan").on('hidden.bs.modal', function () {
+            $("#formTest").find('.has-error').removeClass("has-error");
+            $("#formTest").find('.has-feedback').removeClass("has-feedback");
+        });
+    	
+} );
+
+/*  datepicker*/
+$.fn.datepicker.defaults.format = "yyyy-mm-dd";
+	$('.datepicker').datepicker({
+		 	startDate: '-3d'
+});	 

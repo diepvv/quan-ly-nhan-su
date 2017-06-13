@@ -22,24 +22,14 @@
 			<select class="form-control my-select-control-style" id="boMon_pk"></select>
 		</div>
 		<div class="col-md-3">
-			<button type=button class="btn btn-default"	id="btnCapNhapSoYeuLyLich">Lưu</button>
-		</div>
-		<div class="col-md-3">
-			<button type="button" class="btn btn-default" data-dismiss="modal" 
-					id="btnXuatThongTinCanBo">Xuất thông tin cán bộ</button>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-3">
 			<div class="form-group">
-				<label for="soHieu" class="label-style">Số hiệu cán bộ</label> 
-				<input class="form-control" id="soHieu" type="text" required="true">
+				<label for="soHieu" >Số hiệu cán bộ</label> 
+				<input class="form-control my-select-control-style" id="soHieu" type="text" required="true">
 			</div>
 		</div>
 		<div class="col-md-3">
-			<label for="imageUrl" class="label-style">Ảnh</label>
-			<textarea class="form-control" id="imageUrl"></textarea>
+			<!--  <label for="imageUrl" class="label-style">Ảnh</label>-->
+			<input class="form-control" id="imageUrl" type = "hidden">
 		</div>
 	</div>
 
@@ -205,17 +195,17 @@
 	<div class="row">
 		<div class="col-md-3">
 			<label for="tenNgach" class="label-style">Tên ngạch công chức viên chức</label> 
-			<input class="form-control" id="tenNgach" type="text">
+			<input class="form-control" id="tenNgach" type="text" readonly="readonly">
 		</div>
 		<div class="col-md-3">
 			<div class="form-group">
 				<label for="bacLuong_pk" class="label-style">Bậc lương</label> 
-				<select class="form-control my-select-control-style" id="bacLuong_pk" required="true"></select>
+				<select class="form-control my-select-control-style" id="bacLuong_pk" required="true" onchange="changeBacLuong()"></select>
 			</div>
 		</div>
 		<div class="col-md-3">
 			<label for="heSoLuong" class="label-style">Hệ Số Lương</label> 
-			<input class="form-control" id="heSoLuong" type="text">
+			<input class="form-control" id="heSoLuong" type="text" readonly="readonly">
 		</div>
 		<div class="col-md-3">
 			<label for="ngayHuong" class="label-style">Ngày hưởng</label>
@@ -405,13 +395,6 @@
 			<label for="nhanXet" class="label-style">Nhận xét</label>
 			<textarea class="form-control" id="nhanXet"></textarea>
 		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-md-3">
-			<label for="inputdefault" class="label-style">Thôi việc</label> 
-			<input type="checkbox" value=""></label>
-		</div>
 		<div class="col-md-3">
 			<label for="ngayThoiViec" class="label-style">Ngày thôi việc</label>
 			<div class="input-group date" data-provide="datepicker">
@@ -422,10 +405,6 @@
 			</div>
 		</div>
 		<div class="col-md-3">
-			<label for="inputdefault" class="label-style">Về Hưu</label> 
-			<input type="checkbox" value=""></label>
-		</div>
-		<div class="col-md-3">
 			<label for="ngayVeHuu" class="label-style">Ngày về hưu</label>
 			<div class="input-group date" data-provide="datepicker">
 				<input type="text" class="form-control" id="ngayVeHuu">
@@ -434,6 +413,7 @@
 				</div>
 			</div>
 		</div>
+		
 	</div>
 
 </form>

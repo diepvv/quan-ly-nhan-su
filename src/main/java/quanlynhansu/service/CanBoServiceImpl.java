@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.OptimisticLockingFailureException;
@@ -269,18 +270,22 @@ public class CanBoServiceImpl implements ICanBoService {
 	
 	@Override
 	public Set<CanBoDTO> getByDonViBoMon(Integer cbDonViChucNangs, Integer cbBoMons){
-		Set<CanBoDTO> ketqua = new HashSet<>();
-		Set<Canbo> entities  = new HashSet<>();
-		entities = repo.findByDonViBoMon(cbDonViChucNangs, cbBoMons);
-		for (Canbo d : entities) {
-			DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
-			ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
-			CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
-			canBoDto.setDonViChucNang(donViChucNangDto);
-			canBoDto.setChucVu(chucVuDto);
-			ketqua.add(canBoDto);
+		if (cbBoMons == null) {
+			return null;
+		}else{
+			Set<CanBoDTO> ketqua = new HashSet<>();
+			Set<Canbo> entities  = new HashSet<>();
+			entities = repo.findByDonViBoMon(cbDonViChucNangs, cbBoMons);
+			for (Canbo d : entities) {
+				DonViChucNangDTO donViChucNangDto = mapper.map(d.getDonvichucnang(), DonViChucNangDTO.class);
+				ChucVuDTO chucVuDto = mapper.map(d.getChucvu(), ChucVuDTO.class);
+				CanBoDTO canBoDto = mapper.map(d, CanBoDTO.class);
+				canBoDto.setDonViChucNang(donViChucNangDto);
+				canBoDto.setChucVu(chucVuDto);
+				ketqua.add(canBoDto);
+			}
+			return ketqua;
 		}
-		return ketqua;
 	}
 	
 	@Override

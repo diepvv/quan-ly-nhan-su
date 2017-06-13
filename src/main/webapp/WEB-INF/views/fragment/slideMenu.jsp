@@ -25,9 +25,9 @@
 										<li class="mini_list_w3"><a href="/danhSachKiemNhiemController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i>  Danh sách kiêm nhiệm
 										</a></li>
-										<li class="mini_list_w3"><a href="/danhSachThamNienController/show"> <i
+										<!-- <li class="mini_list_w3"><a href="/danhSachThamNienController/show"> <i
 												class="fa fa-caret-right" aria-hidden="true"></i>  Danh sách thâm niên
-										</a></li>
+										</a></li> -->
 									</ul></li>
 								<li><a href="#"> <i class="fa fa-file-text-o"
 										aria-hidden="true"></i>Quản lý hợp đồng <i class="fa fa-angle-down"
@@ -39,7 +39,7 @@
 												class="fa fa-caret-right" aria-hidden="true"></i> Hợp đồng ngắn hạn</a></li>
 									</ul></li>
 								
-								<li><a href="#"><i class="fa fa-list"
+								<!-- <li><a href="#"><i class="fa fa-list"
 										aria-hidden="true"></i> Lương, Tài sản<i class="fa fa-angle-down"
 										aria-hidden="true"> </i></a>
 									<ul class="gn-submenu">
@@ -49,7 +49,7 @@
 												class="fa fa-caret-right" aria-hidden="true"></i> Kê khai tài sản
 										</a></li>
 
-									</ul></li>
+									</ul></li> -->
 								
 								<li><a href="#"><i class="fa fa-list"
 										aria-hidden="true"></i>Quản lý quyết định <i class="fa fa-angle-down"
