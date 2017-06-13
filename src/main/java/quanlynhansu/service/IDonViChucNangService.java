@@ -10,7 +10,7 @@ import quanlynhansu.model.dto.DonViChucNangDTO;
 public interface IDonViChucNangService {
 	public ArrayList<DonViChucNangDTO> getAll();
 
-	void delete(Integer id);
+	void delete(Integer id, Integer version);
 
 	public DonViChucNangDTO getById(Integer id);
 

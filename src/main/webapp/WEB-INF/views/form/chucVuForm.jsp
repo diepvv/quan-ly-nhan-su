@@ -10,13 +10,14 @@
 				</div>
 				<div class="modal-body">
 					<input class="form-control" id="pk" type="hidden">
+					<input class="form-control" id="version" type="hidden">
 					<div class="form-group">
 						<label for="tenChucVu">Tên Chức Vụ</label> 
 						<input class="form-control" id="tenChucVu" name="tenChucVu" required="true" type="text"></br>
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal" id="btnCapNhap">Cập Nhập</button>
+					<button type="button" class="btn btn-default" id="btnCapNhap">Cập Nhập</button>
 					<button type="button" class="btn btn-default" data-dismiss="modal" id="btnDong">Đóng</button>
 				</div>
 			</div>

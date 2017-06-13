@@ -7,7 +7,7 @@ import quanlynhansu.model.dto.LoaiHopDongDTO;
 public interface ILoaiHopDongService {
 	public ArrayList<LoaiHopDongDTO> getAll();
 
-	void delete(Integer id);
+	void delete(Integer id, Integer version);
 
 	public LoaiHopDongDTO getById(Integer id);
 

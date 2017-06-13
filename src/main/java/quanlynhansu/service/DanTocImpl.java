@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Component;
 
 import quanlynhansu.model.dto.DanTocDTO;
@@ -31,7 +32,13 @@ public class DanTocImpl implements IDanTocService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Integer id, Integer version) {
+		Dantoc entity = new Dantoc();
+		entity = repo.findOneByPkAndVersion(id, version);
+		if (entity == null) {
+			throw new OptimisticLockingFailureException(
+					"Concurrent update error");
+		}
 		repo.delete(id);
 	}
 
@@ -57,7 +64,10 @@ public class DanTocImpl implements IDanTocService {
 		Dantoc entity = new Dantoc();
 
 		if (dto.getPk() != null && dto.getPk().intValue() != -1) {
-			entity = repo.findOne(dto.getPk());
+			entity = repo.findOneByPkAndVersion(dto.getPk(), dto.getVersion());
+			if (entity == null) {
+				throw new OptimisticLockingFailureException("Concurrent update error");
+			}
 		}
 		mapper.map(dto, entity);
 		return repo.save(entity);

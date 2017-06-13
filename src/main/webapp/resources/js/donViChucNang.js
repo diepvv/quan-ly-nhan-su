@@ -35,10 +35,11 @@ $(document).ready(function() {
 		                	 var txtPk = $(pk);
 		                	 var txtMaDonVi = $(maDonVi);
 		                	 var txtTenDonVi=$(tenDonVi);
+		                	 var txtVersion = $(version); 
 		                	 txtPk.val(-1);
 		                	 txtMaDonVi.val("");
 		                	 txtTenDonVi.val("");
-		                     
+		                	 txtVersion.val("");
 		                     $('#formDonViChucNang').modal('show');
 		                 },
 		              }
@@ -54,12 +55,12 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnDel" == id){
 	        var data = table.row($(this).parents('tr')).data();
-	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
-                    + data['tenDonVi'])
-                    var pK = data['pk'];
+	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "+ data['tenDonVi'])
+                var pK = data['pk'];
+	        	var version = data['version'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: donViChucNangController+"/delete/"+pK,  
+	                    url: donViChucNangController+"/delete/"+pK+"?version="+version,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -78,6 +79,7 @@ $(document).ready(function() {
                     var txtPk = $(pk);
 					var txtMaDonVi = $(maDonVi);
                 	var txtTenDonVi=$(tenDonVi);
+                	var txtVersion = $(version); 
 	            	$.ajax({  
 	                    url: donViChucNangService+"/getById/"+pK,  
 	                    type: 'GET',  
@@ -85,6 +87,7 @@ $(document).ready(function() {
 	                    	 txtPk.val(pK);
 	                    	 txtMaDonVi.val(res.maDonVi);
 		                	 txtTenDonVi.val(res.tenDonVi);
+		                	 txtVersion.val(res.version);
 		                     $('#formDonViChucNang').modal('show');
 	                    }
 	                });
@@ -92,32 +95,38 @@ $(document).ready(function() {
 	    });
 		
     	$("button#btnCapNhap").click(function(e) {
-
     		var endpointUrl = '/donViChucNangController/add';
     		var txtPk = $(pk);
-    		 var txtMaDonVi = $(maDonVi);
-        	 var txtTenDonVi=$(tenDonVi);
+    		var txtMaDonVi = $(maDonVi);
+        	var txtTenDonVi=$(tenDonVi);
+        	var txtVersion = $(version); 
            
-            
             var json = new Object();
             json.pk = txtPk.val();
             json.maDonVi = txtMaDonVi.val();
             json.tenDonVi = txtTenDonVi.val();
+            json.version = txtVersion.val();
             if(txtPk.val() != -1){
             	var endpointUrl = '/donViChucNangController/update';
             }
-            $.ajax({
-                type : "POST",
-                contentType: "application/json; charset=utf-8",
-                data : JSON.stringify(json),
-                url : endpointUrl,
-                success : function(msg) {
-                     table.ajax.reload();
-                },
-                error : function() {
-                      alert("Cập nhập không thành công");
-                }
-            });
+            var invalidFields = $("#formTest").find(":invalid");
+            if(invalidFields.length == 0){
+	            $.ajax({
+	                type : "POST",
+	                contentType: "application/json; charset=utf-8",
+	                data : JSON.stringify(json),
+	                url : endpointUrl,
+	                success : function(msg) {
+	                	$('#formDonViChucNang').modal('toggle');
+	                    table.ajax.reload();
+	                },
+            		error: function (data, textStatus, xhr) {
+            			alert(data.responseText);
+            		}
+	            });
+            } else {
+            	$("#formTest").submit();
+            }    
         });
     	
     	$("button#btnDong").click(function(e) {
@@ -126,10 +135,8 @@ $(document).ready(function() {
     		txtMaDonVi.val("");
          	txtTenDonVi.val("");
         }); 
-    	
-	} );
-	
-	
-		 
-		
-		 
+    	$("#formDonViChucNang").on('hidden.bs.modal', function () {
+            $("#formTest").find('.has-error').removeClass("has-error");
+            $("#formTest").find('.has-feedback').removeClass("has-feedback");
+        });
+} ); 

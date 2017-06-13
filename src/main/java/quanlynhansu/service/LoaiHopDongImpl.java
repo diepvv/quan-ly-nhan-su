@@ -32,7 +32,13 @@ public class LoaiHopDongImpl implements ILoaiHopDongService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Integer id, Integer version) {
+		Loaihopdong entity = new Loaihopdong();
+		entity = repo.findOneByPkAndVersion(id, version);
+		if (entity == null) {
+			throw new OptimisticLockingFailureException(
+					"Concurrent update error");
+		}
 		repo.delete(id);
 	}
 

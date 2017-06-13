@@ -7,7 +7,7 @@ import quanlynhansu.model.dto.ChucVuDTO;
 public interface IChucVuService {
 	public ArrayList<ChucVuDTO> getAll();
 
-	void delete(Integer id);
+	void delete(Integer id, Integer version);
 
 	public ChucVuDTO getById(Integer id);
 

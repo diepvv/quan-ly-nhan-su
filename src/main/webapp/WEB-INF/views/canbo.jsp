@@ -53,6 +53,6 @@
 		<%@include file="form/chiTietCanBoForm.jsp"%>
 		<%@include file="form/thongKeForm.jsp"%>
 		<!-- footer -->
-	<%@include file="fragment/footer.jsp"%>
+	<%-- <%@include file="fragment/footer.jsp"%> --%>
 </body>
 </html>

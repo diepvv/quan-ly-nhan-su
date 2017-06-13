@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import quanlynhansu.model.dto.NgachCongChucDTO;
 import quanlynhansu.service.INgachCongChucService;
@@ -27,9 +28,8 @@ public class NgachCongChucController {
 	}
 
 	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Integer pK, Model model)
-			throws SQLException {
-		ngachcongchuc.delete(pK);
+	public String delete(@PathVariable Integer pK, @RequestParam(value = "version") Integer version) {
+		ngachcongchuc.delete(pK, version);
 		return "ngachcongchuc";
 	}
 

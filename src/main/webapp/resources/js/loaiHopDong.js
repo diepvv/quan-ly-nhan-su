@@ -51,9 +51,10 @@ $(document).ready(function() {
 		        var data = table.row($(this).parents('tr')).data();
 		        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : " + data['tenLoaiHopDong'])
 	            var pK = data['pk'];
+		        var version = data['version'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: loaiHopDongController+"/delete/"+pK,  
+	                    url: loaiHopDongController+"/delete/"+pK+"?version="+version,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	table.ajax.reload();	                    }  

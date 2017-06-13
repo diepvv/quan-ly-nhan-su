@@ -42,6 +42,6 @@
 	<%@include file="form/loaiHopDongForm.jsp"%>
 	<!-- //inner_content-->
 	<!-- footer -->
-	<%@include file="fragment/footer.jsp"%>
+	<%-- <%@include file="fragment/footer.jsp"%> --%>
 </body>
 </html>

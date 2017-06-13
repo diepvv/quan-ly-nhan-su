@@ -7,7 +7,7 @@ import quanlynhansu.model.dto.TonGiaoDTO;
 public interface ITonGiaoService {
 	public ArrayList<TonGiaoDTO> getAll();
 
-	void delete(Integer id);
+	void delete(Integer id, Integer version);
 
 	public TonGiaoDTO getById(Integer id);
 

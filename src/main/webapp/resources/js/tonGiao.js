@@ -26,12 +26,14 @@ $(document).ready(function() {
 			dom: 'Blfrtip',
 			buttons: [
 			          {
-		                 text: 'THÊM DÂN TỘC',
+		                 text: 'THÊM TÔN GIÁO',
 		                 action: function ( e, dt, node, config ) {
 		                	 var txtPk = $(pk);
 		                	 var txtTenTonGiao=$(tenTonGiao);
+		                	 var txtVersion = $(version);
 		                	 txtPk.val(-1);
 		                	 txtTenTonGiao.val("");
+		                	 txtVersion.val("");
 		                     
 		                     $('#formTonGiao').modal('show');
 		                 },
@@ -48,12 +50,12 @@ $(document).ready(function() {
 			var id = $(this)[0].id;
 			if("btnDel" == id){
 	        var data = table.row($(this).parents('tr')).data();
-	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "
-                    + data['tenTonGiao'])
-                    var pK = data['pk'];
+	        check = confirm("Bạn có chắc chắn muốn xóa đối tượng : "+ data['tenTonGiao'])
+                var pK = data['pk'];
+	        	var version = data['version'];
 	            if(check==true){
 	            	$.ajax({  
-	                    url: tonGiaoController+"/delete/"+pK,  
+	                    url: tonGiaoController+"/delete/"+pK+"?version="+version,  
 	                    type: 'DELETE',  
 	                    success: function (res) {
 	                    	alert("Xóa Thành Công");
@@ -71,12 +73,14 @@ $(document).ready(function() {
                     var pK = data['pk'];
 					var txtPk = $(pk);
                 	var txtTenTonGiao=$(tenTonGiao);
+                	var txtVersion = $(version);
 	            	$.ajax({  
 	                    url: tonGiaoService+"/getById/"+pK,  
 	                    type: 'GET',  
 	                    success: function (res) {
 	                    	 txtPk.val(pK);
 		                	 txtTenTonGiao.val(res.tenTonGiao);
+		                	 txtVersion.val(res.version);
 		                     $('#formTonGiao').modal('show');
 	                    }
 	                });
@@ -86,39 +90,44 @@ $(document).ready(function() {
 		//twitter bootstrap btnCapNhap
     	$("button#btnCapNhap").click(function(e) {
 
-    		var endpointUrl = '/tonGiaoController/add';
+    		 var endpointUrl = '/tonGiaoController/add';
     		 var txtPk = $(pk);
         	 var txtTenTonGiao=$(tenTonGiao);
-           
+        	 var txtVersion = $(version);
             
             var json = new Object();
             json.pk = txtPk.val();
             json.tenTonGiao = txtTenTonGiao.val();
+            json.version = txtVersion.val();
             if(txtPk.val() != -1){
             	var endpointUrl = '/tonGiaoController/update';
             }
-            $.ajax({
-                type : "POST",
-                contentType: "application/json; charset=utf-8",
-                data : JSON.stringify(json),
-                url : endpointUrl,
-                success : function(msg) {
-                     table.ajax.reload();
-                },
-                error : function() {
-                      alert("Cập nhập không thành công");
-                }
-            });
+            var invalidFields = $("#formTest").find(":invalid");
+            if(invalidFields.length == 0){
+	            $.ajax({
+	                type : "POST",
+	                contentType: "application/json; charset=utf-8",
+	                data : JSON.stringify(json),
+	                url : endpointUrl,
+	                success : function(msg) {
+	                	$('#formTonGiao').modal('toggle');
+	                    table.ajax.reload();
+	                },
+            		error: function (data, textStatus, xhr) {
+            			alert(data.responseText);
+            		}
+	            });
+            } else {
+            	$("#formTest").submit();
+            }    
         });
     	
     	$("button#btnDong").click(function(e) {
     		var txtTenTonGiao=$(tenTonGiao);
          	txtTenTonGiao.val("");
         }); 
-    	
-	} );
-	
-	
-		 
-		
-		 
+    	$("#formTonGiao").on('hidden.bs.modal', function () {
+            $("#formTest").find('.has-error').removeClass("has-error");
+            $("#formTest").find('.has-feedback').removeClass("has-feedback");
+        });
+} );	 

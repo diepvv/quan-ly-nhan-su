@@ -7,7 +7,7 @@ import quanlynhansu.model.dto.NgachCongChucDTO;
 public interface INgachCongChucService {
 	public ArrayList<NgachCongChucDTO> getAll();
 
-	void delete(Integer id);
+	void delete(Integer id, Integer version);
 
 	public NgachCongChucDTO getById(Integer id);
 

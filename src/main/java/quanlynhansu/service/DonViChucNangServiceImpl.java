@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 
 import org.dozer.DozerBeanMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.stereotype.Component;
 
 import quanlynhansu.model.dto.BoMonDTO;
@@ -39,7 +40,13 @@ public class DonViChucNangServiceImpl implements IDonViChucNangService {
 	}
 
 	@Override
-	public void delete(Integer id) {
+	public void delete(Integer id, Integer version) {
+		Donvichucnang entity = new Donvichucnang();
+		entity = repo.findOneByPkAndVersion(id, version);
+		if (entity == null) {
+			throw new OptimisticLockingFailureException(
+					"Concurrent update error");
+		}
 		repo.delete(id);
 	}
 
@@ -86,7 +93,10 @@ public class DonViChucNangServiceImpl implements IDonViChucNangService {
 		Donvichucnang entity = new Donvichucnang();
 
 		if (dto.getPk() != null && dto.getPk() != -1) {
-			entity = repo.findOne(dto.getPk());
+			entity = repo.findOneByPkAndVersion(dto.getPk(), dto.getVersion());
+			if (entity == null) {
+				throw new OptimisticLockingFailureException("Concurrent update error");
+			}
 		}
 		mapper.map(dto, entity);
 		return repo.save(entity);

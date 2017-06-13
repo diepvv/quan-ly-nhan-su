@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import quanlynhansu.model.dto.DanTocDTO;
 import quanlynhansu.service.IDanTocService;
@@ -27,22 +28,19 @@ public class DanTocController {
 	}
 
 	@RequestMapping(value = "/delete/{pK}", method = RequestMethod.DELETE)
-	public String delete(@PathVariable Integer pK, Model model)
-			throws SQLException {
-		dantoc.delete(pK);
+	public String delete(@PathVariable Integer pK, @RequestParam(value = "version") Integer version) {
+		dantoc.delete(pK, version);
 		return "dantoc";
 	}
 
 	@PostMapping("/update")
-	public String update(@RequestBody DanTocDTO dt, Model model)
-			throws SQLException {
+	public String update(@RequestBody DanTocDTO dt, Model model) {
 		dantoc.update(dt);
 		return "dantoc";
 	}
 
 	@PostMapping("/add")
-	public String insert(@RequestBody DanTocDTO dt, Model model)
-			throws SQLException {
+	public String insert(@RequestBody DanTocDTO dt, Model model) {
 		dantoc.insert(dt);
 		return "dantoc";
 	}
