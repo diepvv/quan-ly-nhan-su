@@ -1,7 +1,6 @@
 package quanlynhansu.rest;
 
 import java.sql.SQLException;
-import java.text.ParseException;
 import java.util.List;
 import java.util.Set;
 
@@ -25,7 +24,7 @@ public class HopDongCanBoRestController {
 	private IDonViChucNangService donViChucNangService;
 
 	@GetMapping("/getAll")
-	public List<HopDongCanBoDTO> getAll() throws SQLException {
+	public List<HopDongCanBoDTO> getAll() {
 		return hopdongcanbo.getAll();
 	}
 
@@ -36,8 +35,7 @@ public class HopDongCanBoRestController {
 	}
 	
 	@GetMapping("/getCanBoByDonViChucNang/{donViChucNangPk}")
-	public Set<CanBoDTO> getCanBoByDonViChucNang(
-			@PathVariable Integer donViChucNangPk) {
+	public Set<CanBoDTO> getCanBoByDonViChucNang(@PathVariable Integer donViChucNangPk) {
 		return donViChucNangService.getCanBoByDonViChucNang(donViChucNangPk);
 	}
 }

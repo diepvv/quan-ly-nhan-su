@@ -14,18 +14,18 @@ public class Quyetdinh implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer pk;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "donViChucNangQd_pk", foreignKey = @ForeignKey(name = "donViChucNangQd_pk"))
 	private Donvichucnang donvichucnang;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "canBoQd_pk", foreignKey = @ForeignKey(name = "canBoQd_pk"))
 	private Canbo canbo;
 
 	private String soQuyetDinh;
 	private String tenQuyetDinh;
 
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "loaiQuyetDinhQd_pk", foreignKey = @ForeignKey(name = "loaiQuyetDinhQd_pk"))
 	private Loaiquyetdinh loaiquyetdinh;
 
